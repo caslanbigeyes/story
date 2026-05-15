@@ -19,6 +19,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 interface TriggerBody {
   workflow?: string;
   ref?: string;
+  aiProvider?: "deepseek" | "glm";
+  aiModel?: string;
 }
 
 interface GithubErrorPayload {
@@ -63,6 +65,8 @@ export default async function handler(
   const body = (req.body || {}) as TriggerBody;
   const workflow = body.workflow?.trim() || "news-crawl.yml";
   const ref = body.ref?.trim() || "main";
+  const aiProvider = body.aiProvider?.trim();
+  const aiModel = body.aiModel?.trim();
 
   const apiUrl = `https://api.github.com/repos/${repo}/actions/workflows/${encodeURIComponent(
     workflow
@@ -78,14 +82,20 @@ export default async function handler(
         "X-GitHub-Api-Version": "2022-11-28",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ ref }),
+      body: JSON.stringify({
+        ref,
+        inputs: {
+          ...(aiProvider ? { ai_provider: aiProvider } : {}),
+          ...(aiModel ? { ai_model: aiModel } : {}),
+        },
+      }),
     });
 
     // GitHub 对 dispatch 成功返回 204 No Content
     if (resp.status === 204) {
       return res.status(200).json({
         ok: true,
-        message: `已触发 ${workflow} @ ${ref}`,
+        message: `已触发 ${workflow} @ ${ref}${aiModel ? ` · ${aiModel}` : ""}`,
         actionsUrl: `https://github.com/${repo}/actions/workflows/${workflow}`,
       });
     }

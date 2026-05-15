@@ -1,11 +1,11 @@
 # News Crawler · 每日资讯自动抓取 + AI 总结
 
-每 8 小时（UTC 00 / 08 / 16）从 `https://news.likanug.top/api/s/entire` 抓取
-**Hacker News / GitHub Trending / V2EX 分享创造** 三个源的内容，逐条调用大模型
+每小时从 `https://news.likanug.top/api/s/entire` 抓取
+**Hacker News / GitHub Trending / V2EX 分享创造 / 掘金 / Product Hunt** 的内容，逐条调用大模型
 生成中文 AI 总结，最后通过 **Cloudflare Worker（`worker/`）** 发布到博客仓库
 的 `posts/` 目录。
 
-如果第一次执行失败，会自动**休眠 1 小时**后再尝试一次。
+如果第一次执行失败，会自动**休眠 30 分钟**后再尝试一次。
 
 ```
 GitHub Actions (定时)
@@ -42,17 +42,21 @@ scripts/news-crawler/
 
 | 名称                | 类型      | 必填 | 说明                                                              |
 | ------------------- | --------- | ---- | ----------------------------------------------------------------- |
-| `OPENAI_API_KEY`    | secret    | ✅   | 大模型 API Key（OpenAI 协议兼容即可）                             |
-| `OPENAI_BASE_URL`   | secret    | ❌   | 自定义网关，默认 `https://api.openai.com/v1`                      |
-| `OPENAI_MODEL`      | secret    | ❌   | 模型名，默认 `gpt-4o-mini`                                        |
+| `DEEPSEEK_API_KEY`  | secret    | △    | DeepSeek API Key，选 DeepSeek 模型时使用                          |
+| `GLM_API_KEY`       | secret    | △    | GLM / 智谱 API Key，选 GLM 模型时使用                             |
+| `OPENAI_API_KEY`    | secret    | ❌   | 通用 OpenAI 兼容 key，作为兜底                                    |
+| `NEWS_AI_PROVIDER`  | variable  | ❌   | 定时任务默认 provider，如 `deepseek` / `glm`                      |
+| `NEWS_AI_MODEL`     | variable  | ❌   | 定时任务默认模型，如 `deepseek-v4-flash` / `glm-4-long`           |
+| `OPENAI_BASE_URL`   | secret    | ❌   | 自定义网关；未配置时会按 provider 自动切换                        |
+| `OPENAI_MODEL`      | secret    | ❌   | 兼容旧配置；未设置 `NEWS_AI_MODEL` 时作为回退                     |
 | `PUBLISH_ENDPOINT`  | secret    | ✅   | Worker 地址，如 `https://story-blog-publisher.xxx.workers.dev`    |
 | `PUBLISH_TOKEN`     | secret    | ✅   | Worker 鉴权 token，本项目当前值：`781650249`                      |
 | `MAX_ITEMS_PER_SRC` | variable  | ❌   | 每个源最多处理多少条，默认 `10`                                   |
 
 > 兼容任何 OpenAI 协议的网关，比如：
 > - OpenAI 官方：`https://api.openai.com/v1`
-> - DeepSeek：`https://api.deepseek.com/v1`（模型用 `deepseek-chat`）
-> - 智谱：`https://open.bigmodel.cn/api/paas/v4`（模型用 `glm-4-flash`）
+> - DeepSeek：`https://api.deepseek.com/v1`（模型可用 `deepseek-v4-flash` / `deepseek-v4-pro`）
+> - 智谱：`https://open.bigmodel.cn/api/paas/v4`（模型可用 `glm-4-flash` / `glm-4-long`）
 > - 通义千问 OpenAI 兼容模式 / OpenRouter / SiliconFlow 等等
 
 > ⚠️ Worker 端也必须先配好自己的 secrets（详见 `worker/README.md`）：
@@ -99,22 +103,24 @@ frontmatter 由 Worker 注入：
 
 ```markdown
 ---
-title: "每日资讯 · 2026-05-15 08:00 UTC"
+title: "每日资讯 · 2026/05/15 16:00 抓取"
 date: "2026-05-15T08:00:12.345Z"
 tags: ["news", "ai-summary"]
 ---
 
-# 每日资讯聚合 · 2026-05-15-08
+# 每日资讯聚合 · 2026/05/15 16:00
 
-> 自动抓取自 `https://news.likanug.top/api/s/entire`，由 `gpt-4o-mini` 生成总结。
+> 数据采集时间：2026/05/15 16:00:12（中国标准时间）
+> 聚合来源：Hacker News / GitHub Trending / V2EX / 掘金 / Product Hunt
+> AI 模型：gpt-4o-mini
 
 ## Hacker News
 
-### RTX 5090 and M4 MacBook Air: Can It Game?
+### 1. RTX 5090 and M4 MacBook Air: Can It Game?
 
-> 212 points
-
-🔗 原文链接：<https://news.ycombinator.com/item?id=48137145>
+- 文章来源平台：Hacker News
+- 原文链接：<https://news.ycombinator.com/item?id=48137145>
+- 热度/摘要：212 points
 
 **AI 总结**
 
@@ -129,8 +135,8 @@ tags: ["news", "ai-summary"]
 
 ## 调度策略
 
-- `cron: '0 0,8,16 * * *'`：UTC 每 8 小时一次（对应北京时间 08 / 16 / 00）。
-- 失败时 `sleep 3600` 后自动二次执行，依然失败则本次跳过。
+- `cron: '0 * * * *'`：每小时执行一次。
+- 失败时 `sleep 1800` 后自动二次执行，依然失败则本次跳过。
 - `concurrency: news-crawl` 避免重复并发。
 - 发布走 Worker → GitHub Contents API；workflow 自身设了
   `permissions: contents: read`，不需要写权限。

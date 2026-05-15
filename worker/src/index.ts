@@ -531,7 +531,15 @@ async function handleDelete(
  * 此接口无需鉴权（代理的是公开数据）。
  */
 async function handleNewsProxy(request: Request, origin: string): Promise<Response> {
-  let body: unknown = { sources: ['hackernews', 'github-trending-today', 'v2ex-share'] };
+  let body: unknown = {
+    sources: [
+      "hackernews",
+      "github-trending-today",
+      "v2ex-share",
+      "juejin",
+      "producthunt",
+    ],
+  };
   try {
     body = await request.json();
   } catch {
@@ -571,6 +579,8 @@ async function handleNewsProxy(request: Request, origin: string): Promise<Respon
 interface CrawlTriggerBody {
   workflow?: string;
   ref?: string;
+  aiProvider?: "deepseek" | "glm";
+  aiModel?: string;
 }
 
 /**
@@ -596,6 +606,8 @@ async function handleCrawlTrigger(
 
   const workflow = body.workflow?.trim() || "news-crawl.yml";
   const ref = body.ref?.trim() || "main";
+  const aiProvider = body.aiProvider?.trim();
+  const aiModel = body.aiModel?.trim();
 
   const apiUrl = `https://api.github.com/repos/${env.REPO}/actions/workflows/${encodeURIComponent(
     workflow
@@ -608,7 +620,13 @@ async function handleCrawlTrigger(
         ...buildGithubHeaders(env),
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ ref }),
+      body: JSON.stringify({
+        ref,
+        inputs: {
+          ...(aiProvider ? { ai_provider: aiProvider } : {}),
+          ...(aiModel ? { ai_model: aiModel } : {}),
+        },
+      }),
     });
 
     // 204 是 GitHub 对 dispatch 成功的标准响应（无 body）
@@ -616,7 +634,7 @@ async function handleCrawlTrigger(
       return json(
         {
           ok: true,
-          message: `已触发 ${workflow} @ ${ref}`,
+          message: `已触发 ${workflow} @ ${ref}${aiModel ? ` · ${aiModel}` : ""}`,
           actionsUrl: `https://github.com/${env.REPO}/actions/workflows/${workflow}`,
         },
         200,

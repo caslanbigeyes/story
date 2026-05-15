@@ -22,6 +22,9 @@ interface Props {
 }
 
 export default function PostPage({ post, toc, prev, next, related }: Props) {
+  const isNewsDigest =
+    post.tags.includes("news") && post.tags.includes("ai-summary");
+
   return (
     <>
       <SEO
@@ -111,7 +114,9 @@ export default function PostPage({ post, toc, prev, next, related }: Props) {
         </header>
 
         <div
-          className="prose prose-gray dark:prose-invert max-w-none"
+          className={`prose prose-gray dark:prose-invert max-w-none ${
+            isNewsDigest ? "news-digest" : ""
+          }`}
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
@@ -209,7 +214,11 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     const prev = idx >= 0 && idx < all.length - 1 ? all[idx + 1] : null;
 
     const post = getPostBySlug(slug);
-    const { html, toc } = await markdownToHtml(post.content);
+    const isNewsDigest =
+      post.tags.includes("news") && post.tags.includes("ai-summary");
+    const { html, toc } = await markdownToHtml(post.content, {
+      kind: isNewsDigest ? "news-digest" : "default",
+    });
 
     const related = getRelatedPosts(slug, 3);
 

@@ -2,17 +2,20 @@
 /**
  * News Crawler
  * --------------------------------
- * 1. 从 https://news.likanug.top/api/s/entire 拉取三个源：
- *    hackernews / github-trending-today / v2ex-share
+ * 1. 从 https://news.likanug.top/api/s/entire 拉取多个源：
+ *    hackernews / github-trending-today / v2ex-share / juejin / producthunt
  * 2. 过滤出包含 url 的条目
  * 3. 逐条抓取 url 内容 → 调用大模型生成 AI 总结
  * 4. 拼装 Markdown，发布到 Cloudflare Worker（POST /），或在没配 Worker
  *    时 fallback 写入本地 posts/news-YYYY-MM-DD-HH.md
  *
  * 环境变量：
- *   OPENAI_API_KEY    必填，大模型 key（兼容 OpenAI 协议）
- *   OPENAI_BASE_URL   可选，默认 https://api.openai.com/v1
- *   OPENAI_MODEL      可选，默认 gpt-4o-mini
+ *   AI_PROVIDER       可选，deepseek / glm / openai
+ *   OPENAI_API_KEY    可选，大模型 key（兼容 OpenAI 协议）
+ *   DEEPSEEK_API_KEY  可选，DeepSeek key
+ *   GLM_API_KEY       可选，GLM / 智谱 key
+ *   OPENAI_BASE_URL   可选，默认根据 provider 推断
+ *   OPENAI_MODEL      可选，默认根据 provider 推断
  *   AI_TIMEOUT_MS     可选，单条 AI 超时，默认 60000
  *   FETCH_TIMEOUT_MS  可选，单条网页抓取超时，默认 20000
  *   MAX_ITEMS_PER_SRC 可选，每个源最多处理多少条，默认 10
@@ -38,11 +41,40 @@ import process from 'node:process';
 // ────────────────────────────────────────────────────────────────────
 // 配置
 // ────────────────────────────────────────────────────────────────────
+function inferProvider(model) {
+  const normalized = (model || '').toLowerCase();
+  if (normalized.startsWith('deepseek-')) return 'deepseek';
+  if (normalized.startsWith('glm-')) return 'glm';
+  return 'openai';
+}
+
+function getDefaultBaseUrl(provider) {
+  if (provider === 'deepseek') return 'https://api.deepseek.com/v1';
+  if (provider === 'glm') return 'https://open.bigmodel.cn/api/paas/v4';
+  return 'https://api.openai.com/v1';
+}
+
+function getDefaultModel(provider) {
+  if (provider === 'deepseek') return 'deepseek-v4-flash';
+  if (provider === 'glm') return 'glm-4-flash';
+  return 'gpt-4o-mini';
+}
+
+const AI_PROVIDER = (
+  process.env.AI_PROVIDER ||
+  inferProvider(process.env.OPENAI_MODEL)
+).toLowerCase();
+const OPENAI_MODEL = process.env.OPENAI_MODEL || getDefaultModel(AI_PROVIDER);
 const OPENAI_BASE_URL = (
-  process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1'
+  process.env.OPENAI_BASE_URL || getDefaultBaseUrl(AI_PROVIDER)
 ).replace(/\/+$/, '');
-const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini';
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
+const OPENAI_API_KEY =
+  process.env.OPENAI_API_KEY ||
+  (AI_PROVIDER === 'deepseek'
+    ? process.env.DEEPSEEK_API_KEY || ''
+    : AI_PROVIDER === 'glm'
+      ? process.env.GLM_API_KEY || ''
+      : '');
 const AI_TIMEOUT_MS = Number(process.env.AI_TIMEOUT_MS || 60000);
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 20000);
 const MAX_ITEMS_PER_SRC = Number(process.env.MAX_ITEMS_PER_SRC || 10);
@@ -61,12 +93,22 @@ const SEEN_REPO = process.env.SEEN_REPO || '';
 const SEEN_PATH = process.env.SEEN_PATH || 'data/news-seen.json';
 const MAX_SEEN = Number(process.env.MAX_SEEN || 1000);
 
-const SOURCES = ['hackernews', 'github-trending-today', 'v2ex-share'];
+const DISPLAY_TIMEZONE = process.env.DISPLAY_TIMEZONE || 'Asia/Shanghai';
+
+const SOURCES = [
+  'hackernews',
+  'github-trending-today',
+  'v2ex-share',
+  'juejin',
+  'producthunt',
+];
 
 const SOURCE_LABEL = {
   hackernews: 'Hacker News',
   'github-trending-today': 'GitHub Trending',
   'v2ex-share': 'V2EX',
+  juejin: '掘金',
+  producthunt: 'Product Hunt',
 };
 
 const UA =
@@ -120,6 +162,36 @@ function htmlToText(html) {
 function truncate(s, max = 6000) {
   if (!s) return '';
   return s.length > max ? s.slice(0, max) + '…' : s;
+}
+
+function formatDisplayTime(date) {
+  return new Intl.DateTimeFormat('zh-CN', {
+    timeZone: DISPLAY_TIMEZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).format(date);
+}
+
+function formatTitleTime(date) {
+  return new Intl.DateTimeFormat('zh-CN', {
+    timeZone: DISPLAY_TIMEZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).format(date);
+}
+
+function getDisplayTimezoneLabel() {
+  if (DISPLAY_TIMEZONE === 'Asia/Shanghai') return '中国标准时间';
+  return DISPLAY_TIMEZONE;
 }
 
 // ────────────────────────────────────────────────────────────────────
@@ -188,13 +260,13 @@ async function fetchPageText(url) {
 // ────────────────────────────────────────────────────────────────────
 async function summarize({ title, url, content, sourceLabel }) {
   if (!OPENAI_API_KEY) {
-    return '> ⚠️ 未配置 `OPENAI_API_KEY`，跳过 AI 总结。';
+    return '> ⚠️ 未配置可用的大模型 API Key，跳过 AI 总结。';
   }
 
   const userPrompt = `你是一个资深的技术资讯编辑。请基于下方信息，用简洁的中文写一段 AI 总结。
 
 要求：
-1. 输出 3 ~ 6 行要点列表（用「- 」开头），最后可附 1 行结论。
+1. 输出 3 ~ 6 行要点列表（用「- 」开头），最后 1 行固定写成「- 结论：...」。
 2. 突出技术要点、影响、可能的应用场景；避免空话与营销词。
 3. 如果原文是英文，请翻译并提炼；如果信息不足，请基于标题做合理推断并明确标注「（基于标题推断）」。
 4. 只输出 markdown 列表正文，不要输出标题、链接或额外说明。
@@ -254,7 +326,7 @@ ${truncate(content, 6000) || '（抓取正文失败，仅根据标题推断）'}
 // ────────────────────────────────────────────────────────────────────
 // 处理单条
 // ────────────────────────────────────────────────────────────────────
-async function processItem(item, sourceLabel) {
+async function processItem(item, sourceLabel, index) {
   const title = (item.title || '').replace(/\s+/g, ' ').trim();
   const url = item.url;
   const info = item.extra?.info || '';
@@ -272,19 +344,25 @@ async function processItem(item, sourceLabel) {
     sourceLabel,
   });
 
+  const metadataLines = [
+    `- 文章来源平台：${sourceLabel}`,
+    `- 原文链接：<${url}>`,
+  ];
+  if (info) metadataLines.push(`- 热度/摘要：${info}`);
+  if (hover) metadataLines.push(`- 补充信息：${hover}`);
+
   const block = [
-    `### ${title}`,
+    `### ${index}. ${title}`,
     '',
-    info ? `> ${info}${hover ? ` · ${hover}` : ''}` : hover ? `> ${hover}` : '',
-    info || hover ? '' : null,
-    `🔗 原文链接：<${url}>`,
+    ...metadataLines,
     '',
     '**AI 总结**',
     '',
     summary,
     '',
+    '---',
+    '',
   ]
-    .filter((l) => l !== null)
     .join('\n');
 
   return block;
@@ -441,7 +519,7 @@ async function writeToLocal({ title, content, tags, slug }) {
     '---',
     `title: ${JSON.stringify(title)}`,
     `date: ${JSON.stringify(new Date().toISOString())}`,
-    `excerpt: "Hacker News / GitHub Trending / V2EX 自动聚合 + AI 总结"`,
+    `excerpt: "Hacker News / GitHub Trending / V2EX / 掘金 / Product Hunt 自动聚合 + AI 总结"`,
     `tags: [${tags.map((t) => JSON.stringify(t)).join(', ')}]`,
     '---',
     '',
@@ -453,6 +531,7 @@ async function writeToLocal({ title, content, tags, slug }) {
 
 async function main() {
   log('=== News Crawler start ===');
+  log(`Provider: ${AI_PROVIDER}`);
   log(`Model: ${OPENAI_MODEL} @ ${OPENAI_BASE_URL}`);
   log(`Sources: ${SOURCES.join(', ')}`);
   log(`Max items per source: ${MAX_ITEMS_PER_SRC}`);
@@ -492,34 +571,59 @@ async function main() {
     if (bucket.items.length === 0) continue;
     log(`>> Source: ${bucket.label} (${bucket.items.length} items)`);
     const blocks = [];
+    let itemIndex = 1;
     for (const item of bucket.items) {
       try {
-        const md = await processItem(item, bucket.label);
+        const md = await processItem(item, bucket.label, itemIndex);
         blocks.push(md);
         newUrls.push(item.url);
+        itemIndex += 1;
       } catch (e) {
         log(`  ! processItem error: ${e.message}`);
         blocks.push(
-          `### ${item.title}\n\n🔗 原文链接：<${item.url}>\n\n> ⚠️ 处理失败：${e.message}\n`
+          [
+            `### ${itemIndex}. ${item.title}`,
+            '',
+            `- 文章来源平台：${bucket.label}`,
+            `- 原文链接：<${item.url}>`,
+            '',
+            `> ⚠️ 处理失败：${e.message}`,
+            '',
+            '---',
+            '',
+          ].join('\n')
         );
+        itemIndex += 1;
       }
     }
-    sections.push(`## ${bucket.label}\n\n${blocks.join('\n')}`);
+    sections.push(
+      [
+        `## ${bucket.label}`,
+        '',
+        `> 来源平台：${bucket.label} · 本次收录 ${bucket.items.length} 条`,
+        '',
+        blocks.join('\n'),
+      ].join('\n')
+    );
   }
 
   const now = new Date();
   const slug = buildSlug(now);
+  const titleTime = formatTitleTime(now);
+  const displayTime = formatDisplayTime(now);
+  const timezoneLabel = getDisplayTimezoneLabel();
 
   // 文章标题 & 标签
-  const humanTitle = `每日资讯 · ${slug.replace(/-(\d{2})$/, ' $1:00 UTC')}`;
+  const humanTitle = `每日资讯 · ${titleTime} 抓取`;
   const tags = ['news', 'ai-summary'];
 
   // 正文（不含 frontmatter，frontmatter 由 Worker 或 writeToLocal 拼）
   const contentHeader = [
-    `# 每日资讯聚合 · ${slug}`,
+    `# 每日资讯聚合 · ${titleTime}`,
     '',
-    `> 自动抓取自 \`${NEWS_API_URL}\`，由 \`${OPENAI_MODEL}\` 生成总结。`,
-    `> 数据采集时间：${now.toISOString()}`,
+    `> 数据采集时间：${displayTime}（${timezoneLabel}）`,
+    `> 聚合来源：${SOURCES.map((source) => SOURCE_LABEL[source] || source).join(' / ')}`,
+    `> AI 模型：${OPENAI_MODEL}`,
     '',
   ].join('\n');
 

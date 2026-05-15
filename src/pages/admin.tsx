@@ -3,6 +3,14 @@ import Head from "next/head";
 
 type Status = "idle" | "publishing" | "success" | "error";
 type Mode = "compose" | "manage" | "news";
+type NewsModelProvider = "deepseek" | "glm";
+
+interface NewsModelOption {
+  provider: NewsModelProvider;
+  value: string;
+  label: string;
+  description: string;
+}
 
 interface ManagedPost {
   slug: string;
@@ -20,6 +28,34 @@ interface DeleteResultItem {
 }
 
 const TOKEN_STORAGE_KEY = "story_publish_token";
+const NEWS_MODEL_STORAGE_KEY = "story_news_model";
+
+const NEWS_MODEL_OPTIONS: NewsModelOption[] = [
+  {
+    provider: "deepseek",
+    value: "deepseek-v4-flash",
+    label: "deepseek-v4-flash",
+    description: "DeepSeek · 速度优先",
+  },
+  {
+    provider: "deepseek",
+    value: "deepseek-v4-pro",
+    label: "deepseek-v4-pro",
+    description: "DeepSeek · 效果优先",
+  },
+  {
+    provider: "glm",
+    value: "glm-4-flash",
+    label: "GLM-4-Flash (免费)",
+    description: "GLM · 低成本快速",
+  },
+  {
+    provider: "glm",
+    value: "glm-4-long",
+    label: "GLM-4-Long (超长文本)",
+    description: "GLM · 长上下文",
+  },
+];
 
 function getEndpoint(): string {
   return process.env.NEXT_PUBLIC_PUBLISH_ENDPOINT || "/api/publish";
@@ -37,6 +73,7 @@ function joinEndpoint(base: string, suffix: string): string {
 export default function Admin() {
   const [mode, setMode] = useState<Mode>("compose");
   const [token, setToken] = useState("");
+  const [newsModel, setNewsModel] = useState<string>("deepseek-v4-flash");
 
   // 写作态
   const [title, setTitle] = useState("");
@@ -65,6 +102,13 @@ export default function Admin() {
     if (typeof window === "undefined") return;
     const saved = window.localStorage.getItem(TOKEN_STORAGE_KEY);
     if (saved) setToken(saved);
+    const savedModel = window.localStorage.getItem(NEWS_MODEL_STORAGE_KEY);
+    if (
+      savedModel &&
+      NEWS_MODEL_OPTIONS.some((option) => option.value === savedModel)
+    ) {
+      setNewsModel(savedModel);
+    }
   }, []);
 
   useEffect(() => {
@@ -73,6 +117,18 @@ export default function Admin() {
       window.localStorage.setItem(TOKEN_STORAGE_KEY, token);
     }
   }, [token]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(NEWS_MODEL_STORAGE_KEY, newsModel);
+  }, [newsModel]);
+
+  const selectedNewsModel = useMemo(
+    () =>
+      NEWS_MODEL_OPTIONS.find((option) => option.value === newsModel) ||
+      NEWS_MODEL_OPTIONS[0],
+    [newsModel]
+  );
 
   const allSelected = useMemo(
     () => posts.length > 0 && selected.size === posts.length,
@@ -265,7 +321,10 @@ export default function Admin() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({}),
+        body: JSON.stringify({
+          aiProvider: selectedNewsModel.provider,
+          aiModel: selectedNewsModel.value,
+        }),
       });
       const data = await resp.json().catch(() => ({}));
       if (!resp.ok || data.ok === false) {
@@ -277,6 +336,7 @@ export default function Admin() {
       setTriggerStatus("success");
       const lines = [
         `✓ ${data.message || "已触发"}`,
+        `本次模型：${selectedNewsModel.label}`,
         "GitHub Actions 已开始排队，约 10~20 秒后开始执行。",
       ];
       if (data.actionsUrl) {
@@ -344,6 +404,50 @@ export default function Admin() {
             onChange={(e) => setToken(e.target.value)}
           />
         </div>
+
+        {mode === "news" ? (
+          <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(260px,320px)]">
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                资讯爬虫模型
+              </label>
+              <select
+                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={newsModel}
+                onChange={(e) => setNewsModel(e.target.value)}
+              >
+                <optgroup label="DeepSeek">
+                  {NEWS_MODEL_OPTIONS.filter(
+                    (option) => option.provider === "deepseek"
+                  ).map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="GLM">
+                  {NEWS_MODEL_OPTIONS.filter(
+                    (option) => option.provider === "glm"
+                  ).map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </optgroup>
+              </select>
+            </div>
+
+            <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-xs leading-6 text-gray-600">
+              <div className="font-medium text-gray-900">
+                当前：{selectedNewsModel.label}
+              </div>
+              <div>{selectedNewsModel.description}</div>
+              <div className="mt-1">
+                手动试运行会把模型选择传给 GitHub Actions；定时任务仍按仓库默认配置执行。
+              </div>
+            </div>
+          </div>
+        ) : null}
 
         {/* —— 写作面板 —— */}
         {mode === "compose" ? (
@@ -572,8 +676,11 @@ export default function Admin() {
                 <code className="mx-1 px-1 bg-white border border-gray-200 rounded">
                   .github/workflows/news-crawl.yml
                 </code>
-                · 调度：<code className="mx-1 px-1 bg-white border border-gray-200 rounded">cron 0 0,8,16 * * *</code>
-                · 失败会自动 sleep 1h 重试一次
+                · 调度：
+                <code className="mx-1 px-1 bg-white border border-gray-200 rounded">
+                  cron 0 * * * *
+                </code>
+                · 失败会自动 sleep 30min 重试一次
               </p>
             </div>
 
@@ -617,9 +724,15 @@ export default function Admin() {
               · 触发成功只代表 GitHub 已收到指令，真正的运行需要约 10 ~ 20 秒后才会出现在 Actions 列表里
               <br />· 需要 Worker 端 <code className="px-1 bg-gray-100 rounded">GITHUB_TOKEN</code> 拥有
               <code className="mx-1 px-1 bg-gray-100 rounded">actions: write</code> 权限
-              <br />· 仓库 Secrets 还需配 <code className="px-1 bg-gray-100 rounded">OPENAI_API_KEY</code> /
+              <br />· 仓库 Secrets 还需配
+              <code className="mx-1 px-1 bg-gray-100 rounded">DEEPSEEK_API_KEY</code> /
+              <code className="mx-1 px-1 bg-gray-100 rounded">GLM_API_KEY</code> /
               <code className="mx-1 px-1 bg-gray-100 rounded">PUBLISH_ENDPOINT</code> /
               <code className="mx-1 px-1 bg-gray-100 rounded">PUBLISH_TOKEN</code>
+              <br />· 定时任务默认模型可通过仓库 Variable
+              <code className="mx-1 px-1 bg-gray-100 rounded">NEWS_AI_PROVIDER</code> /
+              <code className="mx-1 px-1 bg-gray-100 rounded">NEWS_AI_MODEL</code>
+              调整
             </div>
           </div>
         ) : null}

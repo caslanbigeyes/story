@@ -10,6 +10,24 @@ on:
         description: 'Manual run / retry'
         required: false
         default: 'true'
+      ai_provider:
+        description: 'AI provider for this manual run'
+        required: false
+        type: choice
+        default: deepseek
+        options:
+          - deepseek
+          - glm
+      ai_model:
+        description: 'AI model for this manual run'
+        required: false
+        type: choice
+        default: deepseek-v4-flash
+        options:
+          - deepseek-v4-flash
+          - deepseek-v4-pro
+          - glm-4-flash
+          - glm-4-long
 
 permissions:
   contents: write  # 用于更新 data/news-seen.json 去重记录
@@ -22,6 +40,17 @@ jobs:
   crawl:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    env:
+      AI_PROVIDER: ${{ github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER || 'glm' }}
+      OPENAI_MODEL: ${{ github.event.inputs.ai_model || vars.NEWS_AI_MODEL || secrets.OPENAI_MODEL || 'glm-4-flash' }}
+      OPENAI_BASE_URL: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && 'https://api.deepseek.com/v1' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && 'https://open.bigmodel.cn/api/paas/v4' || secrets.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
+      OPENAI_API_KEY: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && secrets.DEEPSEEK_API_KEY || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && secrets.GLM_API_KEY || secrets.OPENAI_API_KEY }}
+      PUBLISH_ENDPOINT: ${{ secrets.PUBLISH_ENDPOINT }}
+      PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+      MAX_ITEMS_PER_SRC: ${{ vars.MAX_ITEMS_PER_SRC || '10' }}
+      # 去重：用自动 GITHUB_TOKEN 读写 data/news-seen.json
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      SEEN_REPO: ${{ github.repository }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,16 +65,6 @@ jobs:
       - name: Run crawler (1st attempt)
         id: run1
         continue-on-error: true
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
-          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
-          PUBLISH_ENDPOINT: ${{ secrets.PUBLISH_ENDPOINT }}
-          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-          MAX_ITEMS_PER_SRC: ${{ vars.MAX_ITEMS_PER_SRC || '10' }}
-          # 去重：用自动 GITHUB_TOKEN 读写 data/news-seen.json
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SEEN_REPO: ${{ github.repository }}
         run: |
           node scripts/news-crawler/crawl.mjs
 
@@ -57,15 +76,5 @@ jobs:
 
       - name: Run crawler (2nd attempt)
         if: steps.run1.outcome == 'failure'
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
-          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
-          PUBLISH_ENDPOINT: ${{ secrets.PUBLISH_ENDPOINT }}
-          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-          MAX_ITEMS_PER_SRC: ${{ vars.MAX_ITEMS_PER_SRC || '10' }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SEEN_REPO: ${{ github.repository }}
         run: |
           node scripts/news-crawler/crawl.mjs
-

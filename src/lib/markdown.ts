@@ -11,6 +11,10 @@ export interface MarkdownResult {
   toc: TocItem[];
 }
 
+export interface MarkdownOptions {
+  kind?: "default" | "news-digest";
+}
+
 function stripTags(html: string): string {
   return html.replace(/<[^>]+>/g, "").trim();
 }
@@ -61,7 +65,22 @@ function injectHeadingIds(html: string): { html: string; toc: TocItem[] } {
   return { html: out, toc };
 }
 
-export async function markdownToHtml(md: string): Promise<MarkdownResult> {
+function enhanceNewsDigestHtml(html: string): string {
+  return html
+    .replace(
+      /<p><strong>AI 总结<\/strong><\/p>/g,
+      '<p class="news-summary-heading"><strong>AI 总结</strong></p>'
+    )
+    .replace(
+      /<li>(?:<p>)?\s*结论[：:]\s*([\s\S]*?)(?:<\/p>)?<\/li>/g,
+      '<li class="news-conclusion">$1</li>'
+    );
+}
+
+export async function markdownToHtml(
+  md: string,
+  options: MarkdownOptions = {}
+): Promise<MarkdownResult> {
   const { unified } = await import("unified");
   const remarkParse = (await import("remark-parse")).default;
   const remarkGfm = (await import("remark-gfm")).default;
@@ -78,5 +97,9 @@ export async function markdownToHtml(md: string): Promise<MarkdownResult> {
     .process(md);
 
   const withLinks = enhanceExternalLinks(String(processed));
-  return injectHeadingIds(withLinks);
+  const enhanced =
+    options.kind === "news-digest"
+      ? enhanceNewsDigestHtml(withLinks)
+      : withLinks;
+  return injectHeadingIds(enhanced);
 }

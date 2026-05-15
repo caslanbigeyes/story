@@ -296,6 +296,289 @@ html.dark .prose :is(h2, h3) > a.anchor:hover {
   color: #60a5fa;
 }
 
+/* —— News Digest（资讯聚合）卡片化 —— */
+.news-digest.prose {
+  color: #26313f;
+}
+
+.news-digest.prose > blockquote:first-of-type {
+  margin: 1.5rem 0 2rem;
+  border-left: none;
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.92));
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.05),
+    inset 0 0 0 1px rgba(148, 163, 184, 0.16);
+}
+
+.news-digest.prose > blockquote:first-of-type p {
+  margin: 0.25rem 0;
+  color: #516072;
+  font-size: 0.98rem;
+}
+
+.news-digest.prose h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding: 0;
+  border: none;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.news-digest.prose h2::before {
+  content: "";
+  width: 1.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, #2563eb, rgba(37, 99, 235, 0.15));
+}
+
+.news-digest.prose h2 + blockquote {
+  margin-top: -0.25rem;
+  margin-bottom: 1rem;
+  border-left: none;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  background: rgba(248, 250, 252, 0.92);
+  color: #64748b;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.14);
+}
+
+.news-digest.prose h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  padding: 1.15rem 1.2rem 0.9rem 1.4rem;
+  border-radius: 16px 16px 0 0;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-bottom: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.96));
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.75) inset;
+  font-size: 1.18rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+.news-digest.prose h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  bottom: 1rem;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #2563eb, #7c3aed);
+}
+
+.news-digest.prose h3 + ul,
+.news-digest.prose h3 + blockquote,
+.news-digest.prose h3 + p:not(.news-summary-heading) {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0.15rem 1.2rem 0.75rem 1.4rem;
+  background: rgba(255, 255, 255, 0.98);
+  border-left: 1px solid rgba(148, 163, 184, 0.2);
+  border-right: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.news-digest.prose h3 + ul {
+  list-style: none;
+  padding-left: 1.4rem;
+}
+
+.news-digest.prose h3 + ul > li {
+  margin: 0.45rem 0;
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  background: #f8fafc;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12);
+  color: #506070;
+  font-size: 0.96rem;
+}
+
+.news-digest.prose h3 + ul > li::marker {
+  content: "";
+}
+
+.news-digest.prose .news-summary-heading {
+  margin: 0;
+  padding: 0 1.2rem 0.2rem 1.4rem;
+  background: rgba(255, 255, 255, 0.98);
+  border-left: 1px solid rgba(148, 163, 184, 0.2);
+  border-right: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.news-digest.prose .news-summary-heading strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1d4ed8;
+  background: rgba(219, 234, 254, 0.9);
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+}
+
+.news-digest.prose .news-summary-heading strong::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.news-digest.prose h3 + ul + .news-summary-heading + ul,
+.news-digest.prose h3 + blockquote + .news-summary-heading + ul,
+.news-digest.prose h3 + p:not(.news-summary-heading) + .news-summary-heading + ul,
+.news-digest.prose h3 + .news-summary-heading + ul {
+  margin-top: 0;
+  margin-bottom: 1.4rem;
+  padding: 0.4rem 1.5rem 1.25rem 2.6rem;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.75) inset;
+}
+
+.news-digest.prose h3 + ul + .news-summary-heading + ul > li,
+.news-digest.prose h3 + blockquote + .news-summary-heading + ul > li,
+.news-digest.prose h3 + p:not(.news-summary-heading) + .news-summary-heading + ul > li,
+.news-digest.prose h3 + .news-summary-heading + ul > li {
+  margin: 0.55rem 0;
+  padding-left: 0.15rem;
+  color: #2d3748;
+}
+
+.news-digest.prose li.news-conclusion {
+  list-style: none;
+  margin-top: 0.95rem !important;
+  margin-left: -0.9rem;
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, rgba(239, 246, 255, 0.96), rgba(245, 243, 255, 0.96));
+  box-shadow:
+    inset 0 0 0 1px rgba(99, 102, 241, 0.12),
+    0 8px 20px rgba(99, 102, 241, 0.08);
+}
+
+.news-digest.prose li.news-conclusion::marker {
+  content: "";
+}
+
+.news-digest.prose li.news-conclusion::before {
+  content: "结论";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.55rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.news-digest.prose hr {
+  display: none;
+}
+
+html.dark .news-digest.prose {
+  color: #d5dbe3;
+}
+
+html.dark .news-digest.prose > blockquote:first-of-type {
+  background:
+    linear-gradient(180deg, rgba(19, 24, 31, 0.96), rgba(14, 19, 25, 0.96));
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.24),
+    inset 0 0 0 1px rgba(71, 85, 105, 0.3);
+}
+
+html.dark .news-digest.prose > blockquote:first-of-type p,
+html.dark .news-digest.prose h2 + blockquote,
+html.dark .news-digest.prose h3 + ul > li {
+  color: #aeb9c7;
+}
+
+html.dark .news-digest.prose h2 + blockquote {
+  background: rgba(20, 26, 33, 0.95);
+  box-shadow: inset 0 0 0 1px rgba(71, 85, 105, 0.25);
+}
+
+html.dark .news-digest.prose h3 {
+  background:
+    linear-gradient(180deg, rgba(19, 24, 31, 0.98), rgba(14, 19, 25, 0.98));
+  border-color: rgba(71, 85, 105, 0.35);
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+html.dark .news-digest.prose h3 + ul,
+html.dark .news-digest.prose h3 + blockquote,
+html.dark .news-digest.prose h3 + p:not(.news-summary-heading),
+html.dark .news-digest.prose .news-summary-heading,
+html.dark .news-digest.prose h3 + ul + .news-summary-heading + ul,
+html.dark .news-digest.prose h3 + blockquote + .news-summary-heading + ul,
+html.dark .news-digest.prose h3 + p:not(.news-summary-heading) + .news-summary-heading + ul,
+html.dark .news-digest.prose h3 + .news-summary-heading + ul {
+  background: rgba(14, 19, 25, 0.98);
+  border-color: rgba(71, 85, 105, 0.35);
+}
+
+html.dark .news-digest.prose h3 + ul > li {
+  background: rgba(30, 41, 59, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(71, 85, 105, 0.22);
+}
+
+html.dark .news-digest.prose .news-summary-heading strong {
+  color: #93c5fd;
+  background: rgba(30, 64, 175, 0.18);
+}
+
+html.dark .news-digest.prose h3 + ul + .news-summary-heading + ul,
+html.dark .news-digest.prose h3 + blockquote + .news-summary-heading + ul,
+html.dark .news-digest.prose h3 + p:not(.news-summary-heading) + .news-summary-heading + ul,
+html.dark .news-digest.prose h3 + .news-summary-heading + ul {
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+html.dark .news-digest.prose h3 + ul + .news-summary-heading + ul > li,
+html.dark .news-digest.prose h3 + blockquote + .news-summary-heading + ul > li,
+html.dark .news-digest.prose h3 + p:not(.news-summary-heading) + .news-summary-heading + ul > li,
+html.dark .news-digest.prose h3 + .news-summary-heading + ul > li {
+  color: #d5dbe3;
+}
+
+html.dark .news-digest.prose li.news-conclusion {
+  background:
+    linear-gradient(135deg, rgba(30, 41, 59, 0.96), rgba(49, 46, 129, 0.4));
+  box-shadow:
+    inset 0 0 0 1px rgba(99, 102, 241, 0.18),
+    0 10px 24px rgba(0, 0, 0, 0.24);
+}
+
+html.dark .news-digest.prose li.news-conclusion::before {
+  background: rgba(96, 165, 250, 0.16);
+  color: #93c5fd;
+}
+
 /* —— 噪点纹理（可选） —— */
 .texture-noise {
   position: relative;
