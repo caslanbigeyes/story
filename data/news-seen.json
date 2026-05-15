@@ -1,4 +1,35 @@
 {
-  "seen": [],
-  "updatedAt": "2026-05-15T00:00:00.000Z"
+  "seen": [
+    "https://news.ycombinator.com/item?id=48143880",
+    "https://news.ycombinator.com/item?id=48144494",
+    "https://news.ycombinator.com/item?id=48138136",
+    "https://news.ycombinator.com/item?id=48142108",
+    "https://news.ycombinator.com/item?id=48143284",
+    "https://news.ycombinator.com/item?id=48144380",
+    "https://news.ycombinator.com/item?id=48139219",
+    "https://news.ycombinator.com/item?id=48137145",
+    "https://news.ycombinator.com/item?id=48107766",
+    "https://news.ycombinator.com/item?id=48138268",
+    "https://github.com/ruvnet/RuView",
+    "https://github.com/tinyhumansai/openhuman",
+    "https://github.com/rohitg00/agentmemory",
+    "https://github.com/obra/superpowers",
+    "https://github.com/K-Dense-AI/scientific-agent-skills",
+    "https://github.com/shiyu-coder/Kronos",
+    "https://github.com/roboflow/supervision",
+    "https://github.com/influxdata/telegraf",
+    "https://github.com/supertone-inc/supertonic",
+    "https://github.com/Genymobile/scrcpy",
+    "https://www.v2ex.com/t/1212950",
+    "https://www.v2ex.com/t/1212916",
+    "https://www.v2ex.com/t/1212945",
+    "https://www.v2ex.com/t/1212941",
+    "https://www.v2ex.com/t/1212939",
+    "https://www.v2ex.com/t/1212936",
+    "https://www.v2ex.com/t/1212930",
+    "https://www.v2ex.com/t/1212922",
+    "https://www.v2ex.com/t/1212917",
+    "https://www.v2ex.com/t/1212909"
+  ],
+  "updatedAt": "2026-05-15T05:38:10.627Z"
 }
