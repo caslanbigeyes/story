@@ -43,8 +43,10 @@ jobs:
     env:
       AI_PROVIDER: ${{ github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER || 'glm' }}
       OPENAI_MODEL: ${{ github.event.inputs.ai_model || vars.NEWS_AI_MODEL || secrets.OPENAI_MODEL || 'glm-4-flash' }}
-      OPENAI_BASE_URL: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && 'https://api.deepseek.com/v1' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && 'https://open.bigmodel.cn/api/paas/v4' || secrets.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
-      OPENAI_API_KEY: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && secrets.DEEPSEEK_API_KEY || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && secrets.GLM_API_KEY || secrets.OPENAI_API_KEY }}
+      OPENAI_BASE_URL: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && 'https://api.deepseek.com' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && 'https://open.bigmodel.cn/api/paas/v4' || secrets.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
+      OPENAI_API_KEY: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && secrets.DEEPSEEK_API_KEY || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && secrets.GLM_API_KEY || secrets.OPENAI_API_KEY || '' }}
+      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+      GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
       PUBLISH_ENDPOINT: ${{ secrets.PUBLISH_ENDPOINT }}
       PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
       MAX_ITEMS_PER_SRC: ${{ vars.MAX_ITEMS_PER_SRC || '10' }}
@@ -61,6 +63,29 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Validate AI provider secrets
+        run: |
+          case "$AI_PROVIDER" in
+            deepseek)
+              if [ -z "$DEEPSEEK_API_KEY" ]; then
+                echo "::error::Missing DEEPSEEK_API_KEY secret for AI_PROVIDER=deepseek"
+                exit 1
+              fi
+              ;;
+            glm)
+              if [ -z "$GLM_API_KEY" ]; then
+                echo "::error::Missing GLM_API_KEY secret for AI_PROVIDER=glm"
+                exit 1
+              fi
+              ;;
+            openai)
+              if [ -z "$OPENAI_API_KEY" ]; then
+                echo "::error::Missing OPENAI_API_KEY secret for AI_PROVIDER=openai"
+                exit 1
+              fi
+              ;;
+          esac
 
       - name: Run crawler (1st attempt)
         id: run1

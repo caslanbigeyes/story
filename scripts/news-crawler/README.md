@@ -44,7 +44,7 @@ scripts/news-crawler/
 | ------------------- | --------- | ---- | ----------------------------------------------------------------- |
 | `DEEPSEEK_API_KEY`  | secret    | △    | DeepSeek API Key，选 DeepSeek 模型时使用                          |
 | `GLM_API_KEY`       | secret    | △    | GLM / 智谱 API Key，选 GLM 模型时使用                             |
-| `OPENAI_API_KEY`    | secret    | ❌   | 通用 OpenAI 兼容 key，作为兜底                                    |
+| `OPENAI_API_KEY`    | secret    | ❌   | 仅在 `openai` provider 下使用；不会再给 DeepSeek / GLM 自动兜底    |
 | `NEWS_AI_PROVIDER`  | variable  | ❌   | 定时任务默认 provider，如 `deepseek` / `glm`                      |
 | `NEWS_AI_MODEL`     | variable  | ❌   | 定时任务默认模型，如 `deepseek-v4-flash` / `glm-4-long`           |
 | `OPENAI_BASE_URL`   | secret    | ❌   | 自定义网关；未配置时会按 provider 自动切换                        |
@@ -55,9 +55,14 @@ scripts/news-crawler/
 
 > 兼容任何 OpenAI 协议的网关，比如：
 > - OpenAI 官方：`https://api.openai.com/v1`
-> - DeepSeek：`https://api.deepseek.com/v1`（模型可用 `deepseek-v4-flash` / `deepseek-v4-pro`）
+> - DeepSeek：`https://api.deepseek.com`（模型可用 `deepseek-v4-flash` / `deepseek-v4-pro`）
 > - 智谱：`https://open.bigmodel.cn/api/paas/v4`（模型可用 `glm-4-flash` / `glm-4-long`）
 > - 通义千问 OpenAI 兼容模式 / OpenRouter / SiliconFlow 等等
+
+> 当前 workflow 会按 provider 严格校验对应 secret：
+> - `deepseek` 只认 `DEEPSEEK_API_KEY`
+> - `glm` 只认 `GLM_API_KEY`
+> - 不再回退到别家 key，避免出现 401 但不易定位的问题
 
 > ⚠️ Worker 端也必须先配好自己的 secrets（详见 `worker/README.md`）：
 > `PUBLISH_TOKEN=781650249` / `GITHUB_TOKEN=<PAT>` / `REPO=caslanbigeyes/story`。

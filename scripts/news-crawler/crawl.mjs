@@ -49,7 +49,7 @@ function inferProvider(model) {
 }
 
 function getDefaultBaseUrl(provider) {
-  if (provider === 'deepseek') return 'https://api.deepseek.com/v1';
+  if (provider === 'deepseek') return 'https://api.deepseek.com';
   if (provider === 'glm') return 'https://open.bigmodel.cn/api/paas/v4';
   return 'https://api.openai.com/v1';
 }
@@ -58,6 +58,12 @@ function getDefaultModel(provider) {
   if (provider === 'deepseek') return 'deepseek-v4-flash';
   if (provider === 'glm') return 'glm-4-flash';
   return 'gpt-4o-mini';
+}
+
+function getExpectedEnvKey(provider) {
+  if (provider === 'deepseek') return 'DEEPSEEK_API_KEY';
+  if (provider === 'glm') return 'GLM_API_KEY';
+  return 'OPENAI_API_KEY';
 }
 
 const AI_PROVIDER = (
@@ -260,7 +266,7 @@ async function fetchPageText(url) {
 // ────────────────────────────────────────────────────────────────────
 async function summarize({ title, url, content, sourceLabel }) {
   if (!OPENAI_API_KEY) {
-    return '> ⚠️ 未配置可用的大模型 API Key，跳过 AI 总结。';
+    return `> ⚠️ 未配置 ${getExpectedEnvKey(AI_PROVIDER)}，跳过 AI 总结。`;
   }
 
   const userPrompt = `你是一个资深的技术资讯编辑。请基于下方信息，用简洁的中文写一段 AI 总结。
@@ -306,6 +312,9 @@ ${truncate(content, 6000) || '（抓取正文失败，仅根据标题推断）'}
     if (!res.ok) {
       const text = await res.text().catch(() => '');
       log(`  ! AI ${res.status}: ${text.slice(0, 200)}`);
+      if (res.status === 401) {
+        return `> ⚠️ AI 总结失败（HTTP 401）：${AI_PROVIDER} 的 API Key 无效、缺失，或与当前服务商不匹配。`;
+      }
       return `> ⚠️ AI 总结失败（HTTP ${res.status}）。`;
     }
 
@@ -533,6 +542,7 @@ async function main() {
   log('=== News Crawler start ===');
   log(`Provider: ${AI_PROVIDER}`);
   log(`Model: ${OPENAI_MODEL} @ ${OPENAI_BASE_URL}`);
+  log(`Expected key env: ${getExpectedEnvKey(AI_PROVIDER)}`);
   log(`Sources: ${SOURCES.join(', ')}`);
   log(`Max items per source: ${MAX_ITEMS_PER_SRC}`);
   log(
