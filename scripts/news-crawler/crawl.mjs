@@ -49,7 +49,7 @@ function inferProvider(model) {
 }
 
 function getDefaultBaseUrl(provider) {
-  if (provider === 'deepseek') return 'https://api.deepseek.com';
+  if (provider === 'deepseek') return 'https://api.deepseek.com/v1';
   if (provider === 'glm') return 'https://open.bigmodel.cn/api/paas/v4';
   return 'https://api.openai.com/v1';
 }

@@ -55,7 +55,7 @@ scripts/news-crawler/
 
 > 兼容任何 OpenAI 协议的网关，比如：
 > - OpenAI 官方：`https://api.openai.com/v1`
-> - DeepSeek：`https://api.deepseek.com`（模型可用 `deepseek-v4-flash` / `deepseek-v4-pro`）
+> - DeepSeek：`https://api.deepseek.com/v1`（模型可用 `deepseek-v4-flash` / `deepseek-v4-pro`）
 > - 智谱：`https://open.bigmodel.cn/api/paas/v4`（模型可用 `glm-4-flash` / `glm-4-long`）
 > - 通义千问 OpenAI 兼容模式 / OpenRouter / SiliconFlow 等等
 
