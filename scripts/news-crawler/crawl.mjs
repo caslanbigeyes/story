@@ -62,7 +62,7 @@ function getDefaultModel(provider) {
 
 function getExpectedEnvKey(provider) {
   if (provider === 'deepseek') return 'DEEPSEEK_API_KEY';
-  if (provider === 'glm') return 'GLM_API_KEY';
+  if (provider === 'glm') return 'GLM_API_KEY or OPENAI_API_KEY';
   return 'OPENAI_API_KEY';
 }
 
@@ -74,13 +74,13 @@ const OPENAI_MODEL = process.env.OPENAI_MODEL || getDefaultModel(AI_PROVIDER);
 const OPENAI_BASE_URL = (
   process.env.OPENAI_BASE_URL || getDefaultBaseUrl(AI_PROVIDER)
 ).replace(/\/+$/, '');
-const OPENAI_API_KEY =
-  process.env.OPENAI_API_KEY ||
-  (AI_PROVIDER === 'deepseek'
+const OPENAI_API_KEY = (
+  AI_PROVIDER === 'deepseek'
     ? process.env.DEEPSEEK_API_KEY || ''
     : AI_PROVIDER === 'glm'
-      ? process.env.GLM_API_KEY || ''
-      : '');
+      ? process.env.GLM_API_KEY || process.env.OPENAI_API_KEY || ''
+      : process.env.OPENAI_API_KEY || ''
+);
 const AI_TIMEOUT_MS = Number(process.env.AI_TIMEOUT_MS || 60000);
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 20000);
 const MAX_ITEMS_PER_SRC = Number(process.env.MAX_ITEMS_PER_SRC || 10);

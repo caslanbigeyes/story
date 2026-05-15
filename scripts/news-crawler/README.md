@@ -43,8 +43,8 @@ scripts/news-crawler/
 | 名称                | 类型      | 必填 | 说明                                                              |
 | ------------------- | --------- | ---- | ----------------------------------------------------------------- |
 | `DEEPSEEK_API_KEY`  | secret    | △    | DeepSeek API Key，选 DeepSeek 模型时使用                          |
-| `GLM_API_KEY`       | secret    | △    | GLM / 智谱 API Key，选 GLM 模型时使用                             |
-| `OPENAI_API_KEY`    | secret    | ❌   | 仅在 `openai` provider 下使用；不会再给 DeepSeek / GLM 自动兜底    |
+| `GLM_API_KEY`       | secret    | △    | GLM / 智谱 API Key；`glm` provider 下优先使用                      |
+| `OPENAI_API_KEY`    | secret    | ❌   | `openai` provider 必填；`glm` provider 下可作为兼容兜底            |
 | `NEWS_AI_PROVIDER`  | variable  | ❌   | 定时任务默认 provider，如 `deepseek` / `glm`                      |
 | `NEWS_AI_MODEL`     | variable  | ❌   | 定时任务默认模型，如 `deepseek-v4-flash` / `glm-4-long`           |
 | `OPENAI_BASE_URL`   | secret    | ❌   | 自定义网关；未配置时会按 provider 自动切换                        |
@@ -59,10 +59,10 @@ scripts/news-crawler/
 > - 智谱：`https://open.bigmodel.cn/api/paas/v4`（模型可用 `glm-4-flash` / `glm-4-long`）
 > - 通义千问 OpenAI 兼容模式 / OpenRouter / SiliconFlow 等等
 
-> 当前 workflow 会按 provider 严格校验对应 secret：
+> 当前 workflow 会按 provider 校验对应 secret：
 > - `deepseek` 只认 `DEEPSEEK_API_KEY`
-> - `glm` 只认 `GLM_API_KEY`
-> - 不再回退到别家 key，避免出现 401 但不易定位的问题
+> - `glm` 优先 `GLM_API_KEY`，也接受 `OPENAI_API_KEY` 兜底
+> - `openai` 只认 `OPENAI_API_KEY`
 
 > ⚠️ Worker 端也必须先配好自己的 secrets（详见 `worker/README.md`）：
 > `PUBLISH_TOKEN=781650249` / `GITHUB_TOKEN=<PAT>` / `REPO=caslanbigeyes/story`。
@@ -77,6 +77,7 @@ scripts/news-crawler/
 ```bash
 cd <repo-root>
 
+AI_PROVIDER=glm \
 OPENAI_API_KEY=sk-xxx \
 OPENAI_MODEL=gpt-4o-mini \
 PUBLISH_ENDPOINT=https://story-blog-publisher.xxx.workers.dev \
@@ -93,7 +94,7 @@ node scripts/news-crawler/crawl.mjs
 `posts/news-YYYY-MM-DD-HH.md`，便于看输出格式：
 
 ```bash
-OPENAI_API_KEY=sk-xxx MAX_ITEMS_PER_SRC=2 \
+AI_PROVIDER=glm OPENAI_API_KEY=sk-xxx MAX_ITEMS_PER_SRC=2 \
   node scripts/news-crawler/crawl.mjs
 ```
 

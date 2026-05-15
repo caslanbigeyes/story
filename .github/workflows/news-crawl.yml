@@ -44,7 +44,7 @@ jobs:
       AI_PROVIDER: ${{ github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER || 'glm' }}
       OPENAI_MODEL: ${{ github.event.inputs.ai_model || vars.NEWS_AI_MODEL || secrets.OPENAI_MODEL || 'glm-4-flash' }}
       OPENAI_BASE_URL: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && 'https://api.deepseek.com' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && 'https://open.bigmodel.cn/api/paas/v4' || secrets.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
-      OPENAI_API_KEY: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && secrets.DEEPSEEK_API_KEY || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && secrets.GLM_API_KEY || secrets.OPENAI_API_KEY || '' }}
+      OPENAI_API_KEY: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && secrets.DEEPSEEK_API_KEY || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && (secrets.GLM_API_KEY || secrets.OPENAI_API_KEY) || secrets.OPENAI_API_KEY || '' }}
       DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
       GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
       PUBLISH_ENDPOINT: ${{ secrets.PUBLISH_ENDPOINT }}
@@ -74,8 +74,8 @@ jobs:
               fi
               ;;
             glm)
-              if [ -z "$GLM_API_KEY" ]; then
-                echo "::error::Missing GLM_API_KEY secret for AI_PROVIDER=glm"
+              if [ -z "$GLM_API_KEY" ] && [ -z "$OPENAI_API_KEY" ]; then
+                echo "::error::Missing GLM_API_KEY or OPENAI_API_KEY secret for AI_PROVIDER=glm"
                 exit 1
               fi
               ;;
