@@ -6,10 +6,6 @@ on:
     - cron: '0 * * * *'
   workflow_dispatch:
     inputs:
-      retry:
-        description: 'Manual run / retry'
-        required: false
-        default: 'true'
       ignore_seen:
         description: 'Ignore seen URLs and force republish on this manual run'
         required: false
@@ -44,7 +40,7 @@ concurrency:
 jobs:
   crawl:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 50
     env:
       AI_PROVIDER: ${{ github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER || 'glm' }}
       OPENAI_MODEL: ${{ github.event.inputs.ai_model || vars.NEWS_AI_MODEL || secrets.OPENAI_MODEL || 'glm-4-flash' }}
@@ -93,19 +89,6 @@ jobs:
               ;;
           esac
 
-      - name: Run crawler (1st attempt)
-        id: run1
-        continue-on-error: true
-        run: |
-          node scripts/news-crawler/crawl.mjs
-
-      - name: Sleep 30min and retry on failure
-        if: steps.run1.outcome == 'failure'
-        run: |
-          echo "First attempt failed at $(date -u). Sleeping 1800s before retry…"
-          sleep 1800
-
-      - name: Run crawler (2nd attempt)
-        if: steps.run1.outcome == 'failure'
+      - name: Run crawler
         run: |
           node scripts/news-crawler/crawl.mjs

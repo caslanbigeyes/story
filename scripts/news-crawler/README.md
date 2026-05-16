@@ -5,7 +5,7 @@
 生成中文 AI 总结，最后通过 **Cloudflare Worker（`worker/`）** 发布到博客仓库
 的 `posts/` 目录。
 
-如果第一次执行失败，会自动**休眠 30 分钟**后再尝试一次。
+单次任务失败后不会在同一个 workflow 内长时间等待重试，而是交给下一小时的定时任务继续处理，避免队列堆积。
 
 ```
 GitHub Actions (定时)
@@ -25,7 +25,7 @@ GitHub repo posts/  →  Vercel / GitHub Pages 自动重建
 ## 文件清单
 
 ```
-.github/workflows/news-crawl.yml   ← GitHub Actions（定时 + 重试）
+.github/workflows/news-crawl.yml   ← GitHub Actions（定时触发）
 scripts/news-crawler/
 ├── crawl.mjs                       ← 爬虫脚本主体（Node 20+，纯原生 fetch）
 ├── package.json                    ← 仅声明 ESM type
@@ -52,11 +52,11 @@ scripts/news-crawler/
 | `PUBLISH_ENDPOINT`  | secret    | ✅   | Worker 地址，如 `https://story-blog-publisher.xxx.workers.dev`    |
 | `PUBLISH_TOKEN`     | secret    | ✅   | Worker 鉴权 token，本项目当前值：`781650249`                      |
 | `MAX_ITEMS_PER_SRC` | variable  | ❌   | 每个源最多处理多少条，默认 `10`                                   |
-| `IGNORE_SEEN`       | env only   | ❌   | 设为 `true` 时忽略 `data/news-seen.json`，强制本次重跑            |
+| `IGNORE_SEEN`       | env / manual input | ❌   | 设为 `true` 时忽略 `data/news-seen.json`，强制本次重跑     |
 
 > 兼容任何 OpenAI 协议的网关，比如：
 > - OpenAI 官方：`https://api.openai.com/v1`
-> - DeepSeek：`https://api.deepseek.com/v1`（模型可用 `deepseek-v4-flash` / `deepseek-v4-pro`）
+> - DeepSeek：`https://api.deepseek.com`（模型可用 `deepseek-v4-flash` / `deepseek-v4-pro`）
 > - 智谱：`https://open.bigmodel.cn/api/paas/v4`（模型可用 `glm-4-flash` / `glm-4-long`）
 > - 通义千问 OpenAI 兼容模式 / OpenRouter / SiliconFlow 等等
 
@@ -146,10 +146,11 @@ tags: ["news", "ai-summary"]
 ## 调度策略
 
 - `cron: '0 * * * *'`：每小时执行一次。
-- 失败时 `sleep 1800` 后自动二次执行，依然失败则本次跳过。
+- `timeout-minutes: 50`：单次任务最长 50 分钟，避免压到下一小时的调度窗口。
+- 失败后不在同一个 workflow 里 sleep 重试，交给下一小时任务接力，避免队列堆积。
 - `concurrency: news-crawl` 避免重复并发。
 - 发布走 Worker → GitHub Contents API；workflow 自身设了
-  `permissions: contents: read`，不需要写权限。
+  `permissions: contents: write`，用于更新 `data/news-seen.json`。
 
 ---
 
