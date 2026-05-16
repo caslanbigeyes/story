@@ -1,19 +1,12 @@
 import Link from "next/link";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { getAllTags, getPostsByTag, type PostMeta } from "@/lib/posts";
+import { formatZhDate } from "@/lib/site";
 import SEO from "@/components/SEO";
 
 interface Props {
   tag: string;
   posts: PostMeta[];
-}
-
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString("zh-CN", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
 }
 
 export default function TagPage({ tag, posts }: Props) {
@@ -52,7 +45,7 @@ export default function TagPage({ tag, posts }: Props) {
                 className="group block p-5 rounded-2xl bg-white dark:bg-gray-900/60 border border-gray-200/70 dark:border-gray-800/70 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-md dark:hover:shadow-black/40 transition-all"
               >
                 <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-2">
-                  <time dateTime={post.date}>{formatDate(post.date)}</time>
+                  <time dateTime={post.date}>{formatZhDate(post.date)}</time>
                   <span className="w-1 h-1 rounded-full bg-gray-300" />
                   <span>{post.readingTime} min</span>
                 </div>

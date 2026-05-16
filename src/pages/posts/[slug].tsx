@@ -8,6 +8,7 @@ import {
   type PostMeta,
 } from "@/lib/posts";
 import { markdownToHtml, type TocItem } from "@/lib/markdown";
+import { formatZhDate } from "@/lib/site";
 import Comments from "@/components/Comments";
 import Toc from "@/components/Toc";
 import CodeCopyEnhancer from "@/components/CodeCopyEnhancer";
@@ -117,11 +118,7 @@ export default function PostPage({ post, toc, prev, next, related }: Props) {
                   className="group block p-4 rounded-xl bg-white dark:bg-gray-900/60 border border-gray-200/70 dark:border-gray-800/70 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-md dark:hover:shadow-black/40 transition-all"
                 >
                   <div className="text-[11px] text-gray-400 dark:text-gray-500 mb-1.5">
-                    {new Date(p.date).toLocaleDateString("zh-CN", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
+                    {formatZhDate(p.date, "short")}
                   </div>
                   <div className="font-serif text-sm font-medium text-gray-900 dark:text-gray-100 line-clamp-2 leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {p.title}

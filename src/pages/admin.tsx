@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Head from "next/head";
+import { formatZhDate } from "@/lib/site";
 
 type Status = "idle" | "publishing" | "success" | "error";
 type Mode = "compose" | "manage" | "news";
@@ -629,9 +630,7 @@ export default function Admin() {
                           {p.date ? (
                             <>
                               <span className="w-1 h-1 rounded-full bg-gray-300" />
-                              <time>
-                                {new Date(p.date).toLocaleDateString("zh-CN")}
-                              </time>
+                              <time>{formatZhDate(p.date)}</time>
                             </>
                           ) : null}
                           {p.tags.length > 0 ? (

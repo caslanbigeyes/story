@@ -1,18 +1,11 @@
 import Link from "next/link";
 import type { GetStaticProps } from "next";
 import { getAllPosts, type PostMeta } from "@/lib/posts";
+import { formatZhDate } from "@/lib/site";
 import SEO from "@/components/SEO";
 
 interface Props {
   posts: PostMeta[];
-}
-
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString("zh-CN", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
 }
 
 function TagPill({ tag }: { tag: string }) {
@@ -51,7 +44,7 @@ function FeaturedCard({ post }: { post: PostMeta }) {
         ) : null}
 
         <div className="flex items-center flex-wrap gap-3 text-xs text-gray-400">
-          <time dateTime={post.date}>{formatDate(post.date)}</time>
+          <time dateTime={post.date}>{formatZhDate(post.date)}</time>
           <span className="w-1 h-1 rounded-full bg-gray-500" />
           <span>{post.readingTime} min read</span>
           {post.tags && post.tags.length > 0 ? (
@@ -101,7 +94,7 @@ function PostCard({ post, index }: { post: PostMeta; index: number }) {
       <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-3">
-        <time dateTime={post.date}>{formatDate(post.date)}</time>
+        <time dateTime={post.date}>{formatZhDate(post.date)}</time>
         <span className="w-1 h-1 rounded-full bg-gray-300" />
         <span>{post.readingTime} min</span>
       </div>
