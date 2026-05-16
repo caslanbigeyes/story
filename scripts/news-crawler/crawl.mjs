@@ -360,6 +360,7 @@ ${truncate(content, 6000) || '（抓取正文失败，仅根据标题推断）'}
     const summary =
       AI_PROVIDER === 'gemini'
         ? (data?.candidates?.[0]?.content?.parts || [])
+            .filter((part) => !part?.thought)
             .map((part) => part?.text || '')
             .join('\n')
             .trim()
