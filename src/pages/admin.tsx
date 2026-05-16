@@ -29,6 +29,7 @@ interface DeleteResultItem {
 
 const TOKEN_STORAGE_KEY = "story_publish_token";
 const NEWS_MODEL_STORAGE_KEY = "story_news_model";
+const DEFAULT_NEWS_MODEL = "glm-4-flash";
 
 const NEWS_MODEL_OPTIONS: NewsModelOption[] = [
   {
@@ -73,7 +74,7 @@ function joinEndpoint(base: string, suffix: string): string {
 export default function Admin() {
   const [mode, setMode] = useState<Mode>("compose");
   const [token, setToken] = useState("");
-  const [newsModel, setNewsModel] = useState<string>("deepseek-v4-flash");
+  const [newsModel, setNewsModel] = useState<string>(DEFAULT_NEWS_MODEL);
 
   // 写作态
   const [title, setTitle] = useState("");
@@ -126,6 +127,7 @@ export default function Admin() {
   const selectedNewsModel = useMemo(
     () =>
       NEWS_MODEL_OPTIONS.find((option) => option.value === newsModel) ||
+      NEWS_MODEL_OPTIONS.find((option) => option.value === DEFAULT_NEWS_MODEL) ||
       NEWS_MODEL_OPTIONS[0],
     [newsModel]
   );
@@ -566,7 +568,7 @@ export default function Admin() {
             ) : null}
 
             {!loadingList && posts.length === 0 && !listError ? (
-              <div className="py-12 text-center text-sm text-gray-400">
+              <div className="py-6 text-center text-sm text-gray-400">
                 暂无文章
               </div>
             ) : null}
@@ -665,7 +667,7 @@ export default function Admin() {
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm text-gray-700 space-y-2">
               <div className="font-medium text-gray-900">News Crawl · 每 8 小时一次</div>
               <p>
-                自动抓取 <code className="px-1 bg-white border border-gray-200 rounded">Hacker News</code> /{" "}
+                <code className="px-1 bg-white border border-gray-200 rounded">Hacker News</code> /{" "}
                 <code className="px-1 bg-white border border-gray-200 rounded">GitHub Trending</code> /{" "}
                 <code className="px-1 bg-white border border-gray-200 rounded">V2EX 分享创造</code>，
                 对每条链接调用大模型生成 AI 总结，最后通过本 Worker 提交到{" "}

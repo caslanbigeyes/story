@@ -56,7 +56,7 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       </header>
 
-      <main className="flex-1 max-w-3xl w-full mx-auto px-6 py-12 md:py-16">
+      <main className="flex-1 max-w-3xl w-full mx-auto px-6 py-6 md:py-16">
         {children}
       </main>
 

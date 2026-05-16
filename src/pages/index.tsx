@@ -154,53 +154,7 @@ export default function Home({ posts }: Props) {
       <SEO />
 
       <div className="space-y-16">
-        {/* Hero 区 */}
-        <section className="relative pt-6 pb-10 animate-fade-up">
-          <div className="absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl" />
-            <div className="absolute top-10 right-1/4 w-96 h-96 bg-purple-100/40 rounded-full blur-3xl" />
-          </div>
 
-          <div className="flex items-center gap-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-[0.2em] mb-4">
-            <span className="w-6 h-px bg-gray-400 dark:bg-gray-600" />
-            Journal
-          </div>
-
-          <h1 className="font-serif text-4xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-gray-50 leading-[1.05] mb-6">
-            思考、记录、分享
-            <br />
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent animate-gradient">
-              用文字留下此刻
-            </span>
-          </h1>
-
-          <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed max-w-xl">
-            一个用 Markdown 写作的个人空间。这里记录代码、生活、与那些值得被记住的瞬间。
-          </p>
-
-          <div className="mt-8 flex items-center gap-6 text-sm text-gray-500 dark:text-gray-400">
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              共 {posts.length} 篇文章
-            </span>
-            <span className="h-4 w-px bg-gray-300 dark:bg-gray-700" />
-            <Link
-              href="/admin"
-              className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors inline-flex items-center gap-1"
-            >
-              写一篇
-              <svg
-                className="w-3.5 h-3.5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-          </div>
-        </section>
 
         {posts.length === 0 ? (
           <div className="py-20 text-center">

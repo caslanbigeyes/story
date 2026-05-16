@@ -233,7 +233,7 @@ async function fetchNewsList() {
 }
 
 // ────────────────────────────────────────────────────────────────────
-// 抓取 url 内容
+//  url 内容
 // ────────────────────────────────────────────────────────────────────
 async function fetchPageText(url) {
   try {
@@ -631,14 +631,14 @@ async function main() {
   const timezoneLabel = getDisplayTimezoneLabel();
 
   // 文章标题 & 标签
-  const humanTitle = `每日资讯 · ${titleTime} 抓取`;
+  const humanTitle = `  ${titleTime}`;
   const tags = ['news', 'ai-summary'];
 
   // 正文（不含 frontmatter，frontmatter 由 Worker 或 writeToLocal 拼）
   const contentHeader = [
     `# 每日资讯聚合 · ${titleTime}`,
     '',
-    `> 数据采集时间：${displayTime}（${timezoneLabel}）`,
+    `> 采集时间：${displayTime}（${timezoneLabel}）`,
     `> 聚合来源：${SOURCES.map((source) => SOURCE_LABEL[source] || source).join(' / ')}`,
     `> AI 模型：${OPENAI_MODEL}`,
     '',

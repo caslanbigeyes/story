@@ -1,6 +1,6 @@
 # News Crawler · 每日资讯自动抓取 + AI 总结
 
-每小时从 `https://news.likanug.top/api/s/entire` 抓取
+每小时从 `https://news.likanug.top/api/s/entire` 
 **Hacker News / GitHub Trending / V2EX 分享创造 / 掘金 / Product Hunt** 的内容，逐条调用大模型
 生成中文 AI 总结，最后通过 **Cloudflare Worker（`worker/`）** 发布到博客仓库
 的 `posts/` 目录。
@@ -113,7 +113,7 @@ frontmatter 由 Worker 注入：
 
 ```markdown
 ---
-title: "每日资讯 · 2026/05/15 16:00 抓取"
+title: "每日资讯 · 2026/05/15 16:00 "
 date: "2026-05-15T08:00:12.345Z"
 tags: ["news", "ai-summary"]
 ---

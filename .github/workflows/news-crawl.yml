@@ -15,7 +15,7 @@ on:
         description: 'AI provider for this manual run'
         required: false
         type: choice
-        default: deepseek
+        default: glm
         options:
           - deepseek
           - glm
@@ -23,7 +23,7 @@ on:
         description: 'AI model for this manual run'
         required: false
         type: choice
-        default: deepseek-v4-flash
+        default: glm-4-flash
         options:
           - deepseek-v4-flash
           - deepseek-v4-pro
