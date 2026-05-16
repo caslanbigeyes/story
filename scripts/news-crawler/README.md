@@ -52,6 +52,7 @@ scripts/news-crawler/
 | `PUBLISH_ENDPOINT`  | secret    | ✅   | Worker 地址，如 `https://story-blog-publisher.xxx.workers.dev`    |
 | `PUBLISH_TOKEN`     | secret    | ✅   | Worker 鉴权 token，本项目当前值：`781650249`                      |
 | `MAX_ITEMS_PER_SRC` | variable  | ❌   | 每个源最多处理多少条，默认 `10`                                   |
+| `IGNORE_SEEN`       | env only   | ❌   | 设为 `true` 时忽略 `data/news-seen.json`，强制本次重跑            |
 
 > 兼容任何 OpenAI 协议的网关，比如：
 > - OpenAI 官方：`https://api.openai.com/v1`
@@ -72,12 +73,15 @@ scripts/news-crawler/
 
 ## 本地手动跑
 
+> 手动触发 GitHub Actions 时，可以勾选 `ignore_seen`，忽略历史去重并强制重新生成一篇资讯文章。
+
 ### 1) 调真实 Worker 发布
 
 ```bash
 cd <repo-root>
 
 AI_PROVIDER=glm \
+IGNORE_SEEN=true \
 OPENAI_API_KEY=sk-xxx \
 OPENAI_MODEL=gpt-4o-mini \
 PUBLISH_ENDPOINT=https://story-blog-publisher.xxx.workers.dev \
@@ -94,7 +98,7 @@ node scripts/news-crawler/crawl.mjs
 `posts/news-YYYY-MM-DD-HH.md`，便于看输出格式：
 
 ```bash
-AI_PROVIDER=glm OPENAI_API_KEY=sk-xxx MAX_ITEMS_PER_SRC=2 \
+AI_PROVIDER=glm IGNORE_SEEN=true OPENAI_API_KEY=sk-xxx MAX_ITEMS_PER_SRC=2 \
   node scripts/news-crawler/crawl.mjs
 ```
 

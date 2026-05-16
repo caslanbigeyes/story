@@ -10,6 +10,11 @@ on:
         description: 'Manual run / retry'
         required: false
         default: 'true'
+      ignore_seen:
+        description: 'Ignore seen URLs and force republish on this manual run'
+        required: false
+        type: boolean
+        default: false
       ai_provider:
         description: 'AI provider for this manual run'
         required: false
@@ -50,6 +55,7 @@ jobs:
       PUBLISH_ENDPOINT: ${{ secrets.PUBLISH_ENDPOINT }}
       PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
       MAX_ITEMS_PER_SRC: ${{ vars.MAX_ITEMS_PER_SRC || '10' }}
+      IGNORE_SEEN: ${{ github.event.inputs.ignore_seen == 'true' && 'true' || 'false' }}
       # 去重：用自动 GITHUB_TOKEN 读写 data/news-seen.json
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       SEEN_REPO: ${{ github.repository }}

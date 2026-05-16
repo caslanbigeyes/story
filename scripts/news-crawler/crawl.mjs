@@ -29,6 +29,7 @@
  *
  *   ── 去重（可选） ──
  *   GITHUB_TOKEN      GitHub PAT 或 Actions 自动 token，用于读写 seen-ids
+ *   IGNORE_SEEN       可选，true/1/yes 时忽略 seen-ids，强制本次重跑
  *   SEEN_REPO         仓库名，格式 owner/repo，默认读 SEEN_PATH 所在仓库
  *   SEEN_PATH         seen-ids 文件路径，默认 data/news-seen.json
  *   MAX_SEEN          最多保留多少条 seen URL，默认 1000
@@ -95,6 +96,7 @@ const NEWS_API_URL =
   (PUBLISH_ENDPOINT ? `${PUBLISH_ENDPOINT}/news-proxy` : 'https://news.likanug.top/api/s/entire');
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
+const IGNORE_SEEN = /^(1|true|yes|on)$/i.test(process.env.IGNORE_SEEN || '');
 const SEEN_REPO = process.env.SEEN_REPO || '';
 const SEEN_PATH = process.env.SEEN_PATH || 'data/news-seen.json';
 const MAX_SEEN = Number(process.env.MAX_SEEN || 1000);
@@ -400,6 +402,10 @@ async function ensureDir(p) {
 // 去重：seen-ids 存储在 GitHub repo 的 data/news-seen.json
 // ────────────────────────────────────────────────────────────────────
 async function loadSeenUrls() {
+  if (IGNORE_SEEN) {
+    log('IGNORE_SEEN enabled, skipping seen-ids check.');
+    return new Set();
+  }
   if (!SEEN_REPO) return new Set();
   try {
     const rawUrl = `https://raw.githubusercontent.com/${SEEN_REPO}/main/${SEEN_PATH}`;
@@ -545,6 +551,7 @@ async function main() {
   log(`Expected key env: ${getExpectedEnvKey(AI_PROVIDER)}`);
   log(`Sources: ${SOURCES.join(', ')}`);
   log(`Max items per source: ${MAX_ITEMS_PER_SRC}`);
+  log(`Ignore seen URLs: ${IGNORE_SEEN ? 'yes' : 'no'}`);
   log(
     `Publish channel: ${
       PUBLISH_ENDPOINT ? `worker(${PUBLISH_ENDPOINT})` : `local(${POSTS_DIR}/)`
