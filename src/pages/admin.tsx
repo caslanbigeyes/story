@@ -3,7 +3,7 @@ import Head from "next/head";
 
 type Status = "idle" | "publishing" | "success" | "error";
 type Mode = "compose" | "manage" | "news";
-type NewsModelProvider = "deepseek" | "glm";
+type NewsModelProvider = "deepseek" | "glm" | "gemini";
 
 interface NewsModelOption {
   provider: NewsModelProvider;
@@ -55,6 +55,24 @@ const NEWS_MODEL_OPTIONS: NewsModelOption[] = [
     value: "glm-4-long",
     label: "GLM-4-Long (超长文本)",
     description: "GLM · 长上下文",
+  },
+  {
+    provider: "gemini",
+    value: "gemini-flash-latest",
+    label: "Gemini Flash Latest",
+    description: "Gemini · 最新快速版",
+  },
+  {
+    provider: "gemini",
+    value: "gemini-2.5-flash",
+    label: "Gemini 2.5 Flash",
+    description: "Gemini · 稳定快速版",
+  },
+  {
+    provider: "gemini",
+    value: "gemini-2.5-pro",
+    label: "Gemini 2.5 Pro",
+    description: "Gemini · 推理增强版",
   },
 ];
 
@@ -436,6 +454,15 @@ export default function Admin() {
                     </option>
                   ))}
                 </optgroup>
+                <optgroup label="Gemini">
+                  {NEWS_MODEL_OPTIONS.filter(
+                    (option) => option.provider === "gemini"
+                  ).map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </optgroup>
               </select>
             </div>
 
@@ -729,6 +756,7 @@ export default function Admin() {
               <br />· 仓库 Secrets 还需配
               <code className="mx-1 px-1 bg-gray-100 rounded">DEEPSEEK_API_KEY</code> /
               <code className="mx-1 px-1 bg-gray-100 rounded">GLM_API_KEY</code> /
+              <code className="mx-1 px-1 bg-gray-100 rounded">GEMINI_API_KEY</code> /
               <code className="mx-1 px-1 bg-gray-100 rounded">PUBLISH_ENDPOINT</code> /
               <code className="mx-1 px-1 bg-gray-100 rounded">PUBLISH_TOKEN</code>
               <br />· 定时任务默认模型可通过仓库 Variable

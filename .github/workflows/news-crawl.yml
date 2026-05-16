@@ -19,6 +19,7 @@ on:
         options:
           - deepseek
           - glm
+          - gemini
       ai_model:
         description: 'AI model for this manual run'
         required: false
@@ -29,6 +30,9 @@ on:
           - deepseek-v4-pro
           - glm-4-flash
           - glm-4-long
+          - gemini-flash-latest
+          - gemini-2.5-flash
+          - gemini-2.5-pro
 
 permissions:
   contents: write  # 用于更新 data/news-seen.json 去重记录
@@ -44,10 +48,11 @@ jobs:
     env:
       AI_PROVIDER: ${{ github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER || 'glm' }}
       OPENAI_MODEL: ${{ github.event.inputs.ai_model || vars.NEWS_AI_MODEL || secrets.OPENAI_MODEL || 'glm-4-flash' }}
-      OPENAI_BASE_URL: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && 'https://api.deepseek.com' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && 'https://open.bigmodel.cn/api/paas/v4' || secrets.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
+      OPENAI_BASE_URL: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && 'https://api.deepseek.com' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && 'https://open.bigmodel.cn/api/paas/v4' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'gemini' && 'https://generativelanguage.googleapis.com/v1beta' || secrets.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
       OPENAI_API_KEY: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && secrets.DEEPSEEK_API_KEY || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && (secrets.GLM_API_KEY || secrets.OPENAI_API_KEY) || secrets.OPENAI_API_KEY || '' }}
       DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
       GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       PUBLISH_ENDPOINT: ${{ secrets.PUBLISH_ENDPOINT }}
       PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
       MAX_ITEMS_PER_SRC: ${{ vars.MAX_ITEMS_PER_SRC || '10' }}
@@ -78,6 +83,12 @@ jobs:
             glm)
               if [ -z "$GLM_API_KEY" ] && [ -z "$OPENAI_API_KEY" ]; then
                 echo "::error::Missing GLM_API_KEY or OPENAI_API_KEY secret for AI_PROVIDER=glm"
+                exit 1
+              fi
+              ;;
+            gemini)
+              if [ -z "$GEMINI_API_KEY" ]; then
+                echo "::error::Missing GEMINI_API_KEY secret for AI_PROVIDER=gemini"
                 exit 1
               fi
               ;;

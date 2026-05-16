@@ -44,9 +44,10 @@ scripts/news-crawler/
 | ------------------- | --------- | ---- | ----------------------------------------------------------------- |
 | `DEEPSEEK_API_KEY`  | secret    | △    | DeepSeek API Key，选 DeepSeek 模型时使用                          |
 | `GLM_API_KEY`       | secret    | △    | GLM / 智谱 API Key；`glm` provider 下优先使用                      |
+| `GEMINI_API_KEY`    | secret    | △    | Gemini API Key，选 Gemini 模型时使用                               |
 | `OPENAI_API_KEY`    | secret    | ❌   | `openai` provider 必填；`glm` provider 下可作为兼容兜底            |
-| `NEWS_AI_PROVIDER`  | variable  | ❌   | 定时任务默认 provider，如 `deepseek` / `glm`                      |
-| `NEWS_AI_MODEL`     | variable  | ❌   | 定时任务默认模型，如 `deepseek-v4-flash` / `glm-4-long`           |
+| `NEWS_AI_PROVIDER`  | variable  | ❌   | 定时任务默认 provider，如 `deepseek` / `glm` / `gemini`           |
+| `NEWS_AI_MODEL`     | variable  | ❌   | 定时任务默认模型，如 `deepseek-v4-flash` / `glm-4-long` / `gemini-flash-latest` |
 | `OPENAI_BASE_URL`   | secret    | ❌   | 自定义网关；未配置时会按 provider 自动切换                        |
 | `OPENAI_MODEL`      | secret    | ❌   | 兼容旧配置；未设置 `NEWS_AI_MODEL` 时作为回退                     |
 | `PUBLISH_ENDPOINT`  | secret    | ✅   | Worker 地址，如 `https://story-blog-publisher.xxx.workers.dev`    |
@@ -58,11 +59,13 @@ scripts/news-crawler/
 > - OpenAI 官方：`https://api.openai.com/v1`
 > - DeepSeek：`https://api.deepseek.com`（模型可用 `deepseek-v4-flash` / `deepseek-v4-pro`）
 > - 智谱：`https://open.bigmodel.cn/api/paas/v4`（模型可用 `glm-4-flash` / `glm-4-long`）
+> - Gemini：`https://generativelanguage.googleapis.com/v1beta`（模型可用 `gemini-flash-latest` / `gemini-2.5-flash` / `gemini-2.5-pro`）
 > - 通义千问 OpenAI 兼容模式 / OpenRouter / SiliconFlow 等等
 
 > 当前 workflow 会按 provider 校验对应 secret：
 > - `deepseek` 只认 `DEEPSEEK_API_KEY`
 > - `glm` 优先 `GLM_API_KEY`，也接受 `OPENAI_API_KEY` 兜底
+> - `gemini` 只认 `GEMINI_API_KEY`
 > - `openai` 只认 `OPENAI_API_KEY`
 
 > ⚠️ Worker 端也必须先配好自己的 secrets（详见 `worker/README.md`）：

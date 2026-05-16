@@ -10,10 +10,11 @@
  *    时 fallback 写入本地 posts/news-YYYY-MM-DD-HH.md
  *
  * 环境变量：
- *   AI_PROVIDER       可选，deepseek / glm / openai
+ *   AI_PROVIDER       可选，deepseek / glm / gemini / openai
  *   OPENAI_API_KEY    可选，大模型 key（兼容 OpenAI 协议）
  *   DEEPSEEK_API_KEY  可选，DeepSeek key
  *   GLM_API_KEY       可选，GLM / 智谱 key
+ *   GEMINI_API_KEY    可选，Google Gemini key
  *   OPENAI_BASE_URL   可选，默认根据 provider 推断
  *   OPENAI_MODEL      可选，默认根据 provider 推断
  *   AI_TIMEOUT_MS     可选，单条 AI 超时，默认 60000
@@ -46,24 +47,28 @@ function inferProvider(model) {
   const normalized = (model || '').toLowerCase();
   if (normalized.startsWith('deepseek-')) return 'deepseek';
   if (normalized.startsWith('glm-')) return 'glm';
+  if (normalized.startsWith('gemini-')) return 'gemini';
   return 'openai';
 }
 
 function getDefaultBaseUrl(provider) {
-  if (provider === 'deepseek') return 'https://api.deepseek.com/v1';
+  if (provider === 'deepseek') return 'https://api.deepseek.com';
   if (provider === 'glm') return 'https://open.bigmodel.cn/api/paas/v4';
+  if (provider === 'gemini') return 'https://generativelanguage.googleapis.com/v1beta';
   return 'https://api.openai.com/v1';
 }
 
 function getDefaultModel(provider) {
   if (provider === 'deepseek') return 'deepseek-v4-flash';
   if (provider === 'glm') return 'glm-4-flash';
+  if (provider === 'gemini') return 'gemini-flash-latest';
   return 'gpt-4o-mini';
 }
 
 function getExpectedEnvKey(provider) {
   if (provider === 'deepseek') return 'DEEPSEEK_API_KEY';
   if (provider === 'glm') return 'GLM_API_KEY or OPENAI_API_KEY';
+  if (provider === 'gemini') return 'GEMINI_API_KEY';
   return 'OPENAI_API_KEY';
 }
 
@@ -75,11 +80,13 @@ const OPENAI_MODEL = process.env.OPENAI_MODEL || getDefaultModel(AI_PROVIDER);
 const OPENAI_BASE_URL = (
   process.env.OPENAI_BASE_URL || getDefaultBaseUrl(AI_PROVIDER)
 ).replace(/\/+$/, '');
-const OPENAI_API_KEY = (
+const AI_API_KEY = (
   AI_PROVIDER === 'deepseek'
     ? process.env.DEEPSEEK_API_KEY || ''
     : AI_PROVIDER === 'glm'
       ? process.env.GLM_API_KEY || process.env.OPENAI_API_KEY || ''
+      : AI_PROVIDER === 'gemini'
+        ? process.env.GEMINI_API_KEY || ''
       : process.env.OPENAI_API_KEY || ''
 );
 const AI_TIMEOUT_MS = Number(process.env.AI_TIMEOUT_MS || 60000);
@@ -267,7 +274,7 @@ async function fetchPageText(url) {
 // 调大模型
 // ────────────────────────────────────────────────────────────────────
 async function summarize({ title, url, content, sourceLabel }) {
-  if (!OPENAI_API_KEY) {
+  if (!AI_API_KEY) {
     return `> ⚠️ 未配置 ${getExpectedEnvKey(AI_PROVIDER)}，跳过 AI 总结。`;
   }
 
@@ -290,26 +297,55 @@ ${truncate(content, 6000) || '（抓取正文失败，仅根据标题推断）'}
   const timer = setTimeout(() => ctrl.abort(), AI_TIMEOUT_MS);
 
   try {
-    const res = await fetch(`${OPENAI_BASE_URL}/chat/completions`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        authorization: `Bearer ${OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: OPENAI_MODEL,
-        temperature: 0.4,
-        messages: [
-          {
-            role: 'system',
-            content:
-              '你是一个中文技术资讯编辑，擅长把英文/技术内容提炼成简洁要点。',
-          },
-          { role: 'user', content: userPrompt },
-        ],
-      }),
-      signal: ctrl.signal,
-    });
+    const res =
+      AI_PROVIDER === 'gemini'
+        ? await fetch(
+            `${OPENAI_BASE_URL}/models/${encodeURIComponent(OPENAI_MODEL)}:generateContent`,
+            {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json',
+                'x-goog-api-key': AI_API_KEY,
+              },
+              body: JSON.stringify({
+                contents: [
+                  {
+                    parts: [
+                      {
+                        text:
+                          '你是一个中文技术资讯编辑，擅长把英文/技术内容提炼成简洁要点。\n\n' +
+                          userPrompt,
+                      },
+                    ],
+                  },
+                ],
+                generationConfig: {
+                  temperature: 0.4,
+                },
+              }),
+              signal: ctrl.signal,
+            }
+          )
+        : await fetch(`${OPENAI_BASE_URL}/chat/completions`, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              authorization: `Bearer ${AI_API_KEY}`,
+            },
+            body: JSON.stringify({
+              model: OPENAI_MODEL,
+              temperature: 0.4,
+              messages: [
+                {
+                  role: 'system',
+                  content:
+                    '你是一个中文技术资讯编辑，擅长把英文/技术内容提炼成简洁要点。',
+                },
+                { role: 'user', content: userPrompt },
+              ],
+            }),
+            signal: ctrl.signal,
+          });
 
     if (!res.ok) {
       const text = await res.text().catch(() => '');
@@ -321,7 +357,13 @@ ${truncate(content, 6000) || '（抓取正文失败，仅根据标题推断）'}
     }
 
     const data = await res.json();
-    const summary = data?.choices?.[0]?.message?.content?.trim() || '';
+    const summary =
+      AI_PROVIDER === 'gemini'
+        ? (data?.candidates?.[0]?.content?.parts || [])
+            .map((part) => part?.text || '')
+            .join('\n')
+            .trim()
+        : data?.choices?.[0]?.message?.content?.trim() || '';
     if (!summary) {
       return '> ⚠️ AI 返回为空。';
     }

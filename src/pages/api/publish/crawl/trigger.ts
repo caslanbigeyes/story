@@ -19,7 +19,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 interface TriggerBody {
   workflow?: string;
   ref?: string;
-  aiProvider?: "deepseek" | "glm";
+  aiProvider?: "deepseek" | "glm" | "gemini";
   aiModel?: string;
 }
 
