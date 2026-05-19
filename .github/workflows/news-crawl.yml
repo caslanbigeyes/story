@@ -2,8 +2,8 @@ name: News Crawl
 
 on:
   schedule:
-    # 每 1 小时跑一次
-    - cron: '0 * * * *'
+    # 每 30 分钟跑一次
+    - cron: '*/30 * * * *'
   workflow_dispatch:
     inputs:
       ignore_seen:

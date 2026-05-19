@@ -35,6 +35,7 @@ export default function Layout({ children }: LayoutProps) {
           <nav className="flex items-center gap-1 text-sm">
             {[
               { href: "/", label: "首页" },
+              { href: "/news", label: "读后感" },
               { href: "/tags", label: "标签" },
               { href: "/admin", label: "写作" },
             ].map((item) => (

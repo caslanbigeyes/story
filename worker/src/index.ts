@@ -538,6 +538,7 @@ async function handleNewsProxy(request: Request, origin: string): Promise<Respon
       "v2ex-share",
       "juejin",
       "producthunt",
+      'zhihu'
     ],
   };
   try {

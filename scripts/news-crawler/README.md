@@ -125,7 +125,7 @@ tags: ["news", "ai-summary"]
 
 > 数据采集时间：2026/05/15 16:00:12（中国标准时间）
 > 聚合来源：Hacker News / GitHub Trending / V2EX / 掘金 / Product Hunt
-> AI 模型：gpt-4o-mini
+<!-- > AI 模型：gpt-4o-mini -->
 
 ## Hacker News
 
