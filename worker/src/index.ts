@@ -580,7 +580,7 @@ async function handleNewsProxy(request: Request, origin: string): Promise<Respon
 interface CrawlTriggerBody {
   workflow?: string;
   ref?: string;
-  aiProvider?: "deepseek" | "glm" | "gemini";
+  aiProvider?: "deepseek" | "glm" | "gemini" | "openrouter";
   aiModel?: string;
 }
 

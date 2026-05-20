@@ -4,7 +4,7 @@ import { formatZhDate } from "@/lib/site";
 
 type Status = "idle" | "publishing" | "success" | "error";
 type Mode = "compose" | "manage" | "news";
-type NewsModelProvider = "deepseek" | "glm" | "gemini";
+type NewsModelProvider = "deepseek" | "glm" | "gemini" | "openrouter";
 
 interface NewsModelOption {
   provider: NewsModelProvider;
@@ -74,6 +74,30 @@ const NEWS_MODEL_OPTIONS: NewsModelOption[] = [
     value: "gemini-2.5-pro",
     label: "Gemini 2.5 Pro",
     description: "Gemini · 推理增强版",
+  },
+  {
+    provider: "openrouter",
+    value: "z-ai/glm-4.5-air:free",
+    label: "GLM-4.5-Air (免费)",
+    description: "OpenRouter · 中文资讯总结友好",
+  },
+  {
+    provider: "openrouter",
+    value: "deepseek/deepseek-r1:free",
+    label: "DeepSeek R1 (免费)",
+    description: "OpenRouter · 推理增强，速度偏慢",
+  },
+  {
+    provider: "openrouter",
+    value: "qwen/qwen3-coder:free",
+    label: "Qwen3 Coder (免费)",
+    description: "OpenRouter · 代码场景",
+  },
+  {
+    provider: "openrouter",
+    value: "openrouter/free",
+    label: "OpenRouter Auto (免费)",
+    description: "OpenRouter · 自动路由免费模型",
   },
 ];
 
@@ -458,6 +482,15 @@ export default function Admin() {
                 <optgroup label="Gemini">
                   {NEWS_MODEL_OPTIONS.filter(
                     (option) => option.provider === "gemini"
+                  ).map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="OpenRouter (免费)">
+                  {NEWS_MODEL_OPTIONS.filter(
+                    (option) => option.provider === "openrouter"
                   ).map((option) => (
                     <option key={option.value} value={option.value}>
                       {option.label}

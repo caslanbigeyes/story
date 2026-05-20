@@ -20,6 +20,7 @@ on:
           - deepseek
           - glm
           - gemini
+          - openrouter
       ai_model:
         description: 'AI model for this manual run'
         required: false
@@ -33,6 +34,10 @@ on:
           - gemini-flash-latest
           - gemini-2.5-flash
           - gemini-2.5-pro
+          - z-ai/glm-4.5-air:free
+          - deepseek/deepseek-r1:free
+          - qwen/qwen3-coder:free
+          - openrouter/free
 
 permissions:
   contents: write  # 用于更新 data/news-seen.json 去重记录
@@ -48,11 +53,15 @@ jobs:
     env:
       AI_PROVIDER: ${{ github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER || 'glm' }}
       OPENAI_MODEL: ${{ github.event.inputs.ai_model || vars.NEWS_AI_MODEL || secrets.OPENAI_MODEL || 'glm-4-flash' }}
-      OPENAI_BASE_URL: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && 'https://api.deepseek.com' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && 'https://open.bigmodel.cn/api/paas/v4' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'gemini' && 'https://generativelanguage.googleapis.com/v1beta' || secrets.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
-      OPENAI_API_KEY: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && secrets.DEEPSEEK_API_KEY || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && (secrets.GLM_API_KEY || secrets.OPENAI_API_KEY) || secrets.OPENAI_API_KEY || '' }}
+      OPENAI_BASE_URL: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && 'https://api.deepseek.com' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && 'https://open.bigmodel.cn/api/paas/v4' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'gemini' && 'https://generativelanguage.googleapis.com/v1beta' || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'openrouter' && 'https://openrouter.ai/api/v1' || secrets.OPENAI_BASE_URL || 'https://api.openai.com/v1' }}
+      OPENAI_API_KEY: ${{ (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'deepseek' && secrets.DEEPSEEK_API_KEY || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'glm' && (secrets.GLM_API_KEY || secrets.OPENAI_API_KEY) || (github.event.inputs.ai_provider || vars.NEWS_AI_PROVIDER) == 'openrouter' && (secrets.OPENROUTER_API_KEY || secrets.OPENAI_API_KEY) || secrets.OPENAI_API_KEY || '' }}
       DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
       GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      # OpenRouter 排行榜可选标识；不设置也能调用，仅用于在 openrouter.ai 上把流量归到本仓库
+      OPENROUTER_REFERER: ${{ vars.OPENROUTER_REFERER || format('https://github.com/{0}', github.repository) }}
+      OPENROUTER_TITLE: ${{ vars.OPENROUTER_TITLE || 'story-news-crawler' }}
       PUBLISH_ENDPOINT: ${{ secrets.PUBLISH_ENDPOINT }}
       PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
       MAX_ITEMS_PER_SRC: ${{ vars.MAX_ITEMS_PER_SRC || '10' }}
@@ -89,6 +98,12 @@ jobs:
             gemini)
               if [ -z "$GEMINI_API_KEY" ]; then
                 echo "::error::Missing GEMINI_API_KEY secret for AI_PROVIDER=gemini"
+                exit 1
+              fi
+              ;;
+            openrouter)
+              if [ -z "$OPENROUTER_API_KEY" ] && [ -z "$OPENAI_API_KEY" ]; then
+                echo "::error::Missing OPENROUTER_API_KEY (or OPENAI_API_KEY fallback) secret for AI_PROVIDER=openrouter"
                 exit 1
               fi
               ;;

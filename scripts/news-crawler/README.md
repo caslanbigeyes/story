@@ -45,11 +45,14 @@ scripts/news-crawler/
 | `DEEPSEEK_API_KEY`  | secret    | △    | DeepSeek API Key，选 DeepSeek 模型时使用                          |
 | `GLM_API_KEY`       | secret    | △    | GLM / 智谱 API Key；`glm` provider 下优先使用                      |
 | `GEMINI_API_KEY`    | secret    | △    | Gemini API Key，选 Gemini 模型时使用                               |
-| `OPENAI_API_KEY`    | secret    | ❌   | `openai` provider 必填；`glm` provider 下可作为兼容兜底            |
-| `NEWS_AI_PROVIDER`  | variable  | ❌   | 定时任务默认 provider，如 `deepseek` / `glm` / `gemini`           |
-| `NEWS_AI_MODEL`     | variable  | ❌   | 定时任务默认模型，如 `deepseek-v4-flash` / `glm-4-long` / `gemini-flash-latest` |
+| `OPENROUTER_API_KEY`| secret    | △    | OpenRouter API Key（`sk-or-v1-...`），`openrouter` provider 下使用 |
+| `OPENAI_API_KEY`    | secret    | ❌   | `openai` provider 必填；`glm` / `openrouter` provider 下可作为兜底  |
+| `NEWS_AI_PROVIDER`  | variable  | ❌   | 定时任务默认 provider，如 `deepseek` / `glm` / `gemini` / `openrouter` |
+| `NEWS_AI_MODEL`     | variable  | ❌   | 定时任务默认模型，如 `deepseek-v4-flash` / `glm-4-long` / `gemini-flash-latest` / `z-ai/glm-4.5-air:free` |
 | `OPENAI_BASE_URL`   | secret    | ❌   | 自定义网关；未配置时会按 provider 自动切换                        |
 | `OPENAI_MODEL`      | secret    | ❌   | 兼容旧配置；未设置 `NEWS_AI_MODEL` 时作为回退                     |
+| `OPENROUTER_REFERER`| variable  | ❌   | OpenRouter 排行榜归属 URL；未配置时默认 `https://github.com/<repo>` |
+| `OPENROUTER_TITLE`  | variable  | ❌   | OpenRouter 排行榜应用名；默认 `story-news-crawler`                 |
 | `PUBLISH_ENDPOINT`  | secret    | ✅   | Worker 地址，如 `https://story-blog-publisher.xxx.workers.dev`    |
 | `PUBLISH_TOKEN`     | secret    | ✅   | Worker 鉴权 token，本项目当前值：`781650249`                      |
 | `MAX_ITEMS_PER_SRC` | variable  | ❌   | 每个源最多处理多少条，默认 `10`                                   |
@@ -66,7 +69,16 @@ scripts/news-crawler/
 > - `deepseek` 只认 `DEEPSEEK_API_KEY`
 > - `glm` 优先 `GLM_API_KEY`，也接受 `OPENAI_API_KEY` 兜底
 > - `gemini` 只认 `GEMINI_API_KEY`
+> - `openrouter` 优先 `OPENROUTER_API_KEY`，也接受 `OPENAI_API_KEY` 兜底
 > - `openai` 只认 `OPENAI_API_KEY`
+
+> **OpenRouter 免费模型推荐**（model id，可直接填到 `NEWS_AI_MODEL` 或手动触发的 `ai_model`）：
+> - `z-ai/glm-4.5-air:free`（默认，中文资讯总结友好）
+> - `deepseek/deepseek-r1:free`（推理更强，速度偏慢）
+> - `qwen/qwen3-coder:free`（代码类资讯）
+> - `openrouter/free`（官方路由，自动挑可用免费模型）
+>
+> 免费模型有速率/每日额度限制，定时任务高频跑容易被限流。建议把 cron 间隔拉长到 1 小时以上，或把 `MAX_ITEMS_PER_SRC` 调小。
 
 > ⚠️ Worker 端也必须先配好自己的 secrets（详见 `worker/README.md`）：
 > `PUBLISH_TOKEN=781650249` / `GITHUB_TOKEN=<PAT>` / `REPO=caslanbigeyes/story`。
@@ -103,6 +115,23 @@ node scripts/news-crawler/crawl.mjs
 ```bash
 AI_PROVIDER=glm IGNORE_SEEN=true OPENAI_API_KEY=sk-xxx MAX_ITEMS_PER_SRC=2 \
   node scripts/news-crawler/crawl.mjs
+```
+
+### 3) 用 OpenRouter 免费模型本地跑
+
+```bash
+AI_PROVIDER=openrouter \
+OPENROUTER_API_KEY=sk-or-v1-xxx \
+OPENAI_MODEL=z-ai/glm-4.5-air:free \
+IGNORE_SEEN=true MAX_ITEMS_PER_SRC=1 \
+  node scripts/news-crawler/crawl.mjs
+```
+
+可选附加：
+
+```bash
+OPENROUTER_REFERER=https://github.com/<owner>/<repo>  # 出现在 openrouter.ai 排行榜
+OPENROUTER_TITLE=story-news-crawler                   # 应用名
 ```
 
 ---

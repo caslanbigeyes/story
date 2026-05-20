@@ -10,11 +10,14 @@
  *    时 fallback 写入本地 posts/news-YYYY-MM-DD-HH.md
  *
  * 环境变量：
- *   AI_PROVIDER       可选，deepseek / glm / gemini / openai
+ *   AI_PROVIDER       可选，deepseek / glm / gemini / openai / openrouter
  *   OPENAI_API_KEY    可选，大模型 key（兼容 OpenAI 协议）
  *   DEEPSEEK_API_KEY  可选，DeepSeek key
  *   GLM_API_KEY       可选，GLM / 智谱 key
  *   GEMINI_API_KEY    可选，Google Gemini key
+ *   OPENROUTER_API_KEY 可选，OpenRouter key（推荐用免费模型，如 z-ai/glm-4.5-air:free）
+ *   OPENROUTER_REFERER 可选，OpenRouter 排行榜来源标识（HTTP-Referer 头）
+ *   OPENROUTER_TITLE  可选，OpenRouter 排行榜应用名（X-Title 头）
  *   OPENAI_BASE_URL   可选，默认根据 provider 推断
  *   OPENAI_MODEL      可选，默认根据 provider 推断
  *   AI_TIMEOUT_MS     可选，单条 AI 超时，默认 60000
@@ -46,6 +49,9 @@ import { createHash } from 'node:crypto';
 // ────────────────────────────────────────────────────────────────────
 function inferProvider(model) {
   const normalized = (model || '').toLowerCase();
+  // OpenRouter 风格：以 ":free" 结尾，或形如 "vendor/model"（且非 gemini）
+  if (normalized.endsWith(':free')) return 'openrouter';
+  if (normalized.startsWith('openrouter/')) return 'openrouter';
   if (normalized.startsWith('deepseek-')) return 'deepseek';
   if (normalized.startsWith('glm-')) return 'glm';
   if (normalized.startsWith('gemini-')) return 'gemini';
@@ -56,6 +62,7 @@ function getDefaultBaseUrl(provider) {
   if (provider === 'deepseek') return 'https://api.deepseek.com';
   if (provider === 'glm') return 'https://open.bigmodel.cn/api/paas/v4';
   if (provider === 'gemini') return 'https://generativelanguage.googleapis.com/v1beta';
+  if (provider === 'openrouter') return 'https://openrouter.ai/api/v1';
   return 'https://api.openai.com/v1';
 }
 
@@ -63,6 +70,8 @@ function getDefaultModel(provider) {
   if (provider === 'deepseek') return 'deepseek-v4-flash';
   if (provider === 'glm') return 'glm-4-flash';
   if (provider === 'gemini') return 'gemini-flash-latest';
+  // OpenRouter 中文资讯总结优选 GLM-4.5-Air 免费版（对中文友好且免费）
+  if (provider === 'openrouter') return 'z-ai/glm-4.5-air:free';
   return 'glm-4-flash';
 }
 
@@ -70,6 +79,7 @@ function getExpectedEnvKey(provider) {
   if (provider === 'deepseek') return 'DEEPSEEK_API_KEY';
   if (provider === 'glm') return 'GLM_API_KEY or OPENAI_API_KEY';
   if (provider === 'gemini') return 'GEMINI_API_KEY';
+  if (provider === 'openrouter') return 'OPENROUTER_API_KEY';
   return 'OPENAI_API_KEY';
 }
 
@@ -88,8 +98,14 @@ const AI_API_KEY = (
       ? process.env.GLM_API_KEY || process.env.OPENAI_API_KEY || ''
       : AI_PROVIDER === 'gemini'
         ? process.env.GEMINI_API_KEY || ''
+      : AI_PROVIDER === 'openrouter'
+        ? process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY || ''
       : process.env.OPENAI_API_KEY || ''
 );
+
+// OpenRouter 排行榜可选标识（不传也能用）
+const OPENROUTER_REFERER = process.env.OPENROUTER_REFERER || '';
+const OPENROUTER_TITLE = process.env.OPENROUTER_TITLE || '';
 const AI_TIMEOUT_MS = Number(process.env.AI_TIMEOUT_MS || 60000);
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 20000);
 const MAX_ITEMS_PER_SRC = Number(process.env.MAX_ITEMS_PER_SRC || 10);
@@ -313,6 +329,13 @@ async function callChatModel({ systemPrompt, userPrompt, temperature = 0.4 }) {
             headers: {
               'content-type': 'application/json',
               authorization: `Bearer ${AI_API_KEY}`,
+              // OpenRouter 排行榜可选头：传了会把本应用列入站点统计
+              ...(AI_PROVIDER === 'openrouter' && OPENROUTER_REFERER
+                ? { 'HTTP-Referer': OPENROUTER_REFERER }
+                : {}),
+              ...(AI_PROVIDER === 'openrouter' && OPENROUTER_TITLE
+                ? { 'X-Title': OPENROUTER_TITLE }
+                : {}),
             },
             body: JSON.stringify({
               model: OPENAI_MODEL,
@@ -910,7 +933,7 @@ async function main() {
     '',
     `> 采集时间：${displayTime}（${timezoneLabel}）`,
     `> 聚合来源：${SOURCES.map((source) => SOURCE_LABEL[source] || source).join(' / ')}`,
-    // `> AI 模型：${OPENAI_MODEL}`,
+    `> AI 模型：${OPENAI_MODEL}`,
     '',
   ].join('\n');
 
