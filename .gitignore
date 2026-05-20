@@ -10,3 +10,6 @@ yarn-debug.log*
 yarn-error.log*
 .vscode/
 .idea/
+
+# TypeScript 增量构建缓存（本地产物，不入库）
+*.tsbuildinfo
