@@ -1,11 +1,5 @@
 {
   "seen": [
-    "https://news.ycombinator.com/item?id=48222733",
-    "https://news.ycombinator.com/item?id=48225426",
-    "https://news.ycombinator.com/item?id=48225852",
-    "https://news.ycombinator.com/item?id=48225040",
-    "https://news.ycombinator.com/item?id=48190373",
-    "https://news.ycombinator.com/item?id=48199011",
     "https://news.ycombinator.com/item?id=48223693",
     "https://news.ycombinator.com/item?id=48221896",
     "https://news.ycombinator.com/item?id=48224768",
@@ -999,7 +993,13 @@
     "https://www.v2ex.com/t/1215657",
     "https://www.zhihu.com/question/2042778573321266131",
     "https://www.zhihu.com/question/2042540536305641413",
-    "https://www.zhihu.com/question/12005197517"
+    "https://www.zhihu.com/question/12005197517",
+    "https://news.ycombinator.com/item?id=48258271",
+    "https://www.v2ex.com/t/1215768",
+    "https://www.v2ex.com/t/1215767",
+    "https://www.producthunt.com/products/brew-5?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+LatestNews+%28ID%3A+253296%29",
+    "https://www.zhihu.com/question/351770580",
+    "https://www.zhihu.com/question/2000857889544361382"
   ],
-  "updatedAt": "2026-05-26T22:23:23.872Z"
+  "updatedAt": "2026-05-26T23:42:29.504Z"
 }
