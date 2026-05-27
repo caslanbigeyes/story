@@ -129,6 +129,121 @@ const MAX_SEEN = Number(process.env.MAX_SEEN || 1000);
 const NEWS_ITEMS_PATH = process.env.NEWS_ITEMS_PATH || 'data/news-items.json';
 const MAX_NEWS_ITEMS = Number(process.env.MAX_NEWS_ITEMS || 500);
 
+// ────────────────────────────────────────────────────────────────────
+// 读后感模板（基于 writeSkills.md 的十种结构 + 情绪基调）
+// ────────────────────────────────────────────────────────────────────
+//
+// 设计原则：
+// 1. 每个模板把 writeSkills.md 里"卖货式推文"的结构，翻译成
+//    "深夜微信发给朋友的读后感"语境下的可执行指令。
+// 2. 每个模板搭配一个独立的"情绪基调"，由 picker 滑窗保证
+//    连续五篇情绪互不撞车（templates.length=10 > windowSize=5，
+//    候选永远非空）。
+// 3. 结构指令只描述骨架，不规定字数/格式——硬约束在 generateReflection
+//    里集中维护（DRY，避免十处重复同一条规则）。
+const REFLECTION_TEMPLATES = [
+  {
+    id: 'cognitive-flip',
+    name: '认知颠覆型',
+    mood: '略带抬杠的不服，克制的锐利',
+    structure:
+      '开头抛出一个看似"大家都默认的"认知，紧接着用一句话把它推翻；之后两到三段用你被这条资讯戳到的具体细节支撑你的反驳；结尾留一句独立可传播的判断句。',
+  },
+  {
+    id: 'personal-trace',
+    name: '个人经历拆解型',
+    mood: '复盘的平静里藏一丝后怕',
+    structure:
+      '开头用一个具体的时间或数字锚定一件过去的事；中间复盘两到三个关键转折点，每个转折点配一句具体到地铁/对话/天气的场景；结尾写一句"现在回头看才发现的事"。',
+  },
+  {
+    id: 'framework',
+    name: '框架输出型',
+    mood: '冷静自信里夹着普通人的克制',
+    structure:
+      '先点出这条资讯让你在意的那个"判断点"，然后把你脑子里的判断逻辑拆成 3 步小框架（每步一句，像工程师的 checklist）；最后给一个"什么情况下框架失效"的边界条件。',
+  },
+  {
+    id: 'curated-list',
+    name: '清单型',
+    mood: '实用、带一点强迫症的整理感',
+    structure:
+      '开头说出你读完这条资讯之后联想到的"自己最近留意/纠结的几件事"，列成 3 条短句，每条配一句具体场景；结尾一句"如果只能选一个，我选 X，原因很简单——"。不要写成 markdown 列表，要混在自然段里。',
+  },
+  {
+    id: 'before-after',
+    name: '前后对比型',
+    mood: '释然中夹一点自嘲，时间的钝感',
+    structure:
+      '开头用"半年前 / 一年前的我"和"现在的我"两个具体到场景的速写并列；中间一段写"读到这条资讯我才意识到什么变了"；结尾给一句最反直觉的认知。',
+  },
+  {
+    id: 'in-progress',
+    name: '过程透明型',
+    mood: '实诚的轻焦虑，自我怀疑',
+    structure:
+      '把你当下正在做的一件具体小事（带数字/进度）抛出来；用这条资讯当镜子照出你心里某个不安；结尾留一句"下一步打算做什么/不做什么"。',
+  },
+  {
+    id: 'ab-compare',
+    name: '对比分析型',
+    mood: '中立、拉锯、平和',
+    structure:
+      '把这条资讯把你卡进去的"A 和 B"两件事摆出来；写出两到三个差异维度（每个维度一句对比句）；结尾给"什么情况下选哪个"，并补一个限定条件避免绝对化。',
+  },
+  {
+    id: 'story-hook',
+    name: '故事钩型',
+    mood: '怀旧、怔忡、怅然',
+    structure:
+      '开头是一个有悬念的小场景（具体到地点/光线/谁说了什么）；中间用两到三句话把场景一步步推进；高潮处给一个意外的细节；最后用一句话把这条资讯和这个故事钉在一起，不要解释、不要升华。',
+  },
+  {
+    id: 'how-to',
+    name: '教学实操型',
+    mood: '沉稳、克制的说教感，干净',
+    structure:
+      '从"读完这条资讯，我会给当年的自己什么建议"切入；写出三到四步具体可执行的小动作，每步混在段落里讲清楚；结尾留一句"我以前在哪一步踩过坑"。',
+  },
+  {
+    id: 'manifesto',
+    name: '观点宣言型',
+    mood: '决绝、不退让，略冷',
+    structure:
+      '第一句就抛出你的明确立场，不含糊、不让步；中间两到三段每段一个支撑论据，用具体场景而不是抽象大词；结尾承认一个边界条件，再用一句话强化立场。',
+  },
+];
+
+/**
+ * 创建读后感模板挑选器。
+ *
+ * 使用滑动窗口（默认 5）保证"最近 N 篇"的模板与情绪不重复，
+ * 完整覆盖一轮后窗口自然滑走，最早的模板重新进入候选。
+ *
+ * SOLID-S：只负责"挑下一篇用什么模板"，与 prompt 拼装解耦。
+ * KISS：候选集 = templates - recent，从中均匀随机取一个。
+ *
+ * @param {{ windowSize?: number, templates?: typeof REFLECTION_TEMPLATES }} opts
+ * @returns {() => typeof REFLECTION_TEMPLATES[number]}
+ */
+function createReflectionTemplatePicker(opts = {}) {
+  const templates = opts.templates || REFLECTION_TEMPLATES;
+  const windowSize = Math.max(
+    1,
+    Math.min(opts.windowSize ?? 5, Math.max(1, templates.length - 1))
+  );
+  const recent = [];
+
+  return function pick() {
+    let pool = templates.filter((t) => !recent.includes(t.id));
+    if (pool.length === 0) pool = templates; // 兜底：不该发生，但保证总有候选
+    const chosen = pool[Math.floor(Math.random() * pool.length)];
+    recent.push(chosen.id);
+    while (recent.length > windowSize) recent.shift();
+    return chosen;
+  };
+}
+
 const DISPLAY_TIMEZONE = process.env.DISPLAY_TIMEZONE || 'Asia/Shanghai';
 
 const SOURCES = [
@@ -411,22 +526,38 @@ ${truncate(content, 6000) || '（抓取正文失败，仅根据标题推断）'}
 /**
  * 写"读后感"。
  *
- * 设计要点（依据仓库根目录 readSkills.md）：
+ * 设计要点（依据仓库根目录 readSkills.md + writeSkills.md）：
  *   - 不复述原文、不空话、不强行升华
  *   - 抓一个具体的"刺痛点"，加入具体生活场景，写矛盾感
  *   - 停在情绪里
  *   - 因为完全自动化没有"真实经历"，prompt 明确允许"想象一个普通人的具体场景"，
  *     前端会标注「AI 模拟人写的读后感」避免误导
+ *   - template 参数来自 createReflectionTemplatePicker()，决定本篇的
+ *     结构骨架与情绪基调；十种模板 + 滑窗保证最近 5 篇不撞车
+ *
+ * @param {{
+ *   title: string,
+ *   url: string,
+ *   content: string,
+ *   sourceLabel: string,
+ *   template: typeof REFLECTION_TEMPLATES[number]
+ * }} args
  */
-async function generateReflection({ title, url, content, sourceLabel }) {
+async function generateReflection({ title, url, content, sourceLabel, template }) {
   if (!AI_API_KEY) {
     return `> ⚠️ 未配置 ${getExpectedEnvKey(AI_PROVIDER)}，跳过 AI 读后感。`;
   }
 
   const systemPrompt =
-    '你不是在写"标准读后感"。你是在模拟一个普通的、有具体生活的中国成年人，深夜读完一条资讯后随手发给老朋友的微信文字。你说话直白、口语化、允许停顿和短句。';
+    '你不是在写"标准读后感"。你是在模拟一个普通的、有具体生活的中国成年人，深夜读完一条资讯后随手发给老朋友的微信文字。你说话直白、口语化、允许停顿和短句。同一个人在不同心情下会有不同的表达方式——这次你接到的"情绪 / 结构"要求是任务的一部分，必须落到字里行间，但绝不能把模板名字写出来。';
 
   const userPrompt = `请基于下方这条资讯，写一段"像人"的读后感。
+
+【本次结构 / 情绪】
+- 结构：${template.name}
+- 情绪基调：${template.mood}
+- 骨架指令：${template.structure}
+（重要：以上是写作的隐形骨架，不要在正文里出现"按 xxx 结构""我用 xxx 模板"之类的元说明，也不要写出模板名字。）
 
 【硬性要求】
 1. 不要复述原文。绝对不要"作者表达了…""这反映了…""这则新闻告诉我们…"。
@@ -438,6 +569,7 @@ async function generateReflection({ title, url, content, sourceLabel }) {
 7. 不要强行升华。不要给结论。停在一个情绪里就好。
 8. 字数控制在 200 ~ 400 字。
 9. 输出纯文本段落（可以多段），不要标题、不要 markdown 列表、不要分隔符、不要署名。
+10. 情绪基调必须贯穿全文——读者读完应能感受到这一篇和上一篇是不同状态下的同一个人在说话。
 
 【资讯信息】
 - 来源：${sourceLabel}
@@ -451,7 +583,7 @@ ${truncate(content, 4000) || '（仅有标题，请基于标题与常识自由�
     const text = await callChatModel({
       systemPrompt,
       userPrompt,
-      temperature: 0.85,
+      temperature: 0.9, // 模板已经强约束结构，把温度调高一档让情绪基调更鲜明
     });
     if (!text) return '> ⚠️ AI 读后感返回为空。';
     return text;
@@ -472,7 +604,7 @@ function buildNewsItemId(url) {
   return createHash('sha1').update(url).digest('hex').slice(0, 12);
 }
 
-async function processItem(item, source, index) {
+async function processItem(item, source, index, pickTemplate) {
   const title = (item.title || '').replace(/\s+/g, ' ').trim();
   const url = item.url;
   const info = item.extra?.info || '';
@@ -490,11 +622,16 @@ async function processItem(item, source, index) {
     sourceLabel: source.label,
   });
 
+  // 每条都从滑动窗口 picker 取一个模板，保证最近 5 条结构/情绪不撞车
+  const template = pickTemplate();
+  log(`    · reflection template = ${template.name}（${template.mood}）`);
+
   const reflection = await generateReflection({
     title,
     url,
     content: contentForAI,
     sourceLabel: source.label,
+    template,
   });
 
   const metadataLines = [
@@ -526,6 +663,12 @@ async function processItem(item, source, index) {
     info,
     hover,
     reflection,
+    // 记录本次模板，便于前端展示"这一篇是哪种调性"，也便于将来做去重/分析
+    reflectionTemplate: {
+      id: template.id,
+      name: template.name,
+      mood: template.mood,
+    },
     createdAt: new Date().toISOString(),
   };
 
@@ -872,6 +1015,9 @@ async function main() {
   const newUrls = [];
   const newNewsItems = [];
   const sections = [];
+  // 整个 main 共享一个 picker：滑动窗口跨 bucket 持续生效，
+  // 避免"换了一个来源就重新洗牌"导致同一情绪连续两次出现。
+  const pickReflectionTemplate = createReflectionTemplatePicker({ windowSize: 5 });
   for (const bucket of buckets) {
     if (bucket.items.length === 0) continue;
     log(`>> Source: ${bucket.label} (${bucket.items.length} items)`);
@@ -882,7 +1028,8 @@ async function main() {
         const { block, newsItem } = await processItem(
           item,
           { id: bucket.srcId, label: bucket.label },
-          itemIndex
+          itemIndex,
+          pickReflectionTemplate
         );
         blocks.push(block);
         newUrls.push(item.url);

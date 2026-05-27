@@ -5,7 +5,7 @@ export const config = { runtime: "edge" };
 
 export default function handler(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const title = (searchParams.get("title") || "My Blog").slice(0, 80);
+  const title = (searchParams.get("title") || "llf").slice(0, 80);
   const subtitle = (searchParams.get("subtitle") || "思考、记录、分享").slice(0, 80);
   const tags = (searchParams.get("tags") || "")
     .split(",")
@@ -47,7 +47,7 @@ export default function handler(req: NextRequest) {
             M
           </div>
           <div style={{ fontSize: 24, fontWeight: 600, opacity: 0.9 }}>
-            My Blog
+            llf
           </div>
         </div>
 

@@ -13,7 +13,7 @@ export default function Document() {
         <link
           rel="alternate"
           type="application/rss+xml"
-          title="My Blog RSS"
+          title="llf RSS"
           href="/rss.xml"
         />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />

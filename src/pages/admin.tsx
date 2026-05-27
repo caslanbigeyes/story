@@ -401,7 +401,7 @@ export default function Admin() {
   return (
     <>
       <Head>
-        <title>后台 · My Blog</title>
+        <title>llf · story</title>
       </Head>
 
       <section className="space-y-6">

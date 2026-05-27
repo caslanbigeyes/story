@@ -7,6 +7,16 @@
     "SimSun", Georgia, "Times New Roman", serif;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
     "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
+    Menlo, Consolas, monospace;
+
+  /* —— 霓虹黑色电影调色板 —— */
+  --neon-cyan: #00f0ff;
+  --neon-magenta: #ff2dd1;
+  --neon-blue: #5b8cff;
+  --neon-violet: #9b5cff;
+  --noir-ink: #05060a;
+  --noir-fog: #0c1018;
 }
 
 html,
@@ -22,8 +32,8 @@ body {
 
 html.dark,
 html.dark body {
-  background: #0b0d10;
-  color: #e6e8eb;
+  background: var(--noir-ink);
+  color: #d5dbe6;
 }
 
 .font-serif {
@@ -144,6 +154,7 @@ html.dark ::selection {
   font-style: normal;
   border-radius: 0 8px 8px 0;
   quotes: none;
+  display: none;
 }
 .prose blockquote p::before,
 .prose blockquote p::after {
@@ -641,4 +652,210 @@ html {
   .prose :is(h2, h3) > a.anchor {
     display: none;
   }
+}
+
+/* ============================================================
+   霓虹黑色电影 / 赛博朋克美学
+   ============================================================ */
+
+/* —— 暗色滚动条调成霓虹青 —— */
+html.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 240, 255, 0.35), rgba(255, 45, 209, 0.25));
+  border-radius: 0;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(0, 240, 255, 0.55), rgba(255, 45, 209, 0.4));
+}
+html.dark ::selection {
+  background: rgba(0, 240, 255, 0.32);
+  color: #f5fbff;
+}
+
+/* —— 雨夜城市 · 全局气氛 —— */
+html.dark body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 70% 50% at 18% 8%, rgba(0, 240, 255, 0.10), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 88% 12%, rgba(255, 45, 209, 0.10), transparent 60%),
+    radial-gradient(ellipse 90% 50% at 50% 110%, rgba(91, 140, 255, 0.10), transparent 70%);
+}
+
+/* —— 透视网格（雨夜街道感） —— */
+html.dark body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 80%);
+}
+
+/* —— 扫描线（CRT/胶片质感）—— */
+.noir-scanlines {
+  position: relative;
+}
+.noir-scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03) 0,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.7;
+}
+
+/* —— 霓虹发光文字 —— */
+.neon-text {
+  color: #eafcff;
+  text-shadow:
+    0 0 4px rgba(0, 240, 255, 0.85),
+    0 0 14px rgba(0, 240, 255, 0.55),
+    0 0 28px rgba(255, 45, 209, 0.35);
+}
+.neon-text-magenta {
+  color: #fff0fb;
+  text-shadow:
+    0 0 4px rgba(255, 45, 209, 0.9),
+    0 0 14px rgba(255, 45, 209, 0.55),
+    0 0 28px rgba(155, 92, 255, 0.35);
+}
+
+/* 浅色模式下不要发光 */
+html:not(.dark) .neon-text,
+html:not(.dark) .neon-text-magenta {
+  color: inherit;
+  text-shadow: none;
+}
+
+/* —— 霓虹边框（锐利几何） —— */
+.neon-border {
+  position: relative;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  box-shadow:
+    0 0 0 1px rgba(0, 240, 255, 0.08) inset,
+    0 0 14px rgba(0, 240, 255, 0.18),
+    0 8px 30px rgba(0, 0, 0, 0.5);
+}
+.neon-border-magenta {
+  border-color: rgba(255, 45, 209, 0.3);
+  box-shadow:
+    0 0 0 1px rgba(255, 45, 209, 0.08) inset,
+    0 0 14px rgba(255, 45, 209, 0.18),
+    0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* —— 霓虹闪烁（loading / 标识用，subtle） —— */
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.7));
+  }
+  20%, 24%, 55% {
+    opacity: 0.55;
+    filter: drop-shadow(0 0 2px rgba(0, 240, 255, 0.3));
+  }
+}
+.neon-flicker {
+  animation: neon-flicker 6s infinite;
+}
+
+/* —— 扫描线水平掠过（菜单覆盖层 / 标题装饰） —— */
+@keyframes scan-sweep {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+.scan-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 240, 255, 0.12) 48%,
+    rgba(0, 240, 255, 0.22) 50%,
+    rgba(0, 240, 255, 0.12) 52%,
+    transparent 100%
+  );
+  height: 30vh;
+  animation: scan-sweep 6s linear infinite;
+}
+
+/* —— 数字编号（赛博朋克常用） —— */
+.cyber-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
+/* —— 抽屉菜单进出动画 —— */
+@keyframes drawer-in {
+  0% { opacity: 0; transform: translateY(-8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-drawer-in {
+  animation: drawer-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes menu-item-in {
+  0% { opacity: 0; transform: translateX(-18px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+}
+.animate-menu-item {
+  animation: menu-item-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* —— 汉堡按钮三条线 —— */
+.hamburger-line {
+  display: block;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.25s ease,
+              width 0.3s ease;
+}
+
+/* —— Tailwind 用的暗模式覆盖：菜单背板（雨夜玻璃） —— */
+.noir-glass {
+  background:
+    linear-gradient(180deg, rgba(5, 6, 10, 0.92), rgba(5, 6, 10, 0.96)),
+    radial-gradient(ellipse 60% 40% at 20% 10%, rgba(0, 240, 255, 0.12), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 90%, rgba(255, 45, 209, 0.10), transparent 70%);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+
+/* 浅色模式的玻璃（保持可读 / 略带氛围） */
+html:not(.dark) .noir-glass {
+  background:
+    linear-gradient(180deg, rgba(250, 250, 249, 0.94), rgba(250, 250, 249, 0.98)),
+    radial-gradient(ellipse 60% 40% at 20% 10%, rgba(91, 140, 255, 0.08), transparent 70%);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+}
+
+/* —— 暗色 prose 配色加强对比度 —— */
+html.dark .prose {
+  color: #c9d1dc;
+}
+html.dark .prose a {
+  color: #6ff7ff;
+  background-image: linear-gradient(#6ff7ff, #ff64de);
 }
