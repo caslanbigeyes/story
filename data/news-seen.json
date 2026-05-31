@@ -1,11 +1,5 @@
 {
   "seen": [
-    "https://www.v2ex.com/t/1215698",
-    "https://www.v2ex.com/t/1215697",
-    "https://www.v2ex.com/t/1215695",
-    "https://juejin.cn/post/7642917750826500123",
-    "https://www.producthunt.com/products/plurai/launches/plurai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+LatestNews+%28ID%3A+253296%29",
-    "https://www.producthunt.com/products/clera/launches/clera?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+LatestNews+%28ID%3A+253296%29",
     "https://www.producthunt.com/products/open-wearables/launches/open-wearables-3?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+LatestNews+%28ID%3A+253296%29",
     "https://www.zhihu.com/question/2042187587520049806",
     "https://www.zhihu.com/question/2042528464721416949",
@@ -999,7 +993,13 @@
     "https://www.v2ex.com/t/1216861",
     "https://www.v2ex.com/t/1216858",
     "https://www.zhihu.com/question/2044140930731438378",
-    "https://www.zhihu.com/question/2044518201330073873"
+    "https://www.zhihu.com/question/2044518201330073873",
+    "https://news.ycombinator.com/item?id=48347961",
+    "https://news.ycombinator.com/item?id=48348578",
+    "https://news.ycombinator.com/item?id=48348429",
+    "https://news.ycombinator.com/item?id=48348704",
+    "https://news.ycombinator.com/item?id=48321916",
+    "https://github.com/a5c-ai/babysitter"
   ],
-  "updatedAt": "2026-05-31T18:48:01.177Z"
+  "updatedAt": "2026-05-31T20:12:19.525Z"
 }
