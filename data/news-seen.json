@@ -1,8 +1,5 @@
 {
   "seen": [
-    "https://github.com/sveltejs/svelte",
-    "https://github.com/nginx/nginx",
-    "https://github.com/golang/go",
     "https://github.com/obra/superpowers",
     "https://github.com/santifer/career-ops",
     "https://github.com/openai/whisper",
@@ -999,7 +996,10 @@
     "https://www.zhihu.com/question/2051337399167185693",
     "https://www.zhihu.com/question/2051267421386937558",
     "https://www.zhihu.com/question/2050766119007524198",
-    "https://www.zhihu.com/question/2045869287718625520"
+    "https://www.zhihu.com/question/2045869287718625520",
+    "https://www.zhihu.com/question/2050541541630940368",
+    "https://www.zhihu.com/question/2046377502424278429",
+    "https://www.zhihu.com/question/2050973852595908631"
   ],
-  "updatedAt": "2026-06-19T18:18:03.589Z"
+  "updatedAt": "2026-06-19T20:16:23.033Z"
 }
