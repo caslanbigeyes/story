@@ -1,14 +1,5 @@
 {
   "seen": [
-    "https://github.com/music-assistant/server",
-    "https://github.com/kenn-io/agentsview",
-    "https://github.com/LMCache/LMCache",
-    "https://github.com/microsoft/PowerToys",
-    "https://github.com/andrewyng/aisuite",
-    "https://github.com/NVIDIA/SkillSpector",
-    "https://www.producthunt.com/products/brew-5/launches/brew-4?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+LatestNews+%28ID%3A+253296%29",
-    "https://www.producthunt.com/products/bond-12?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+LatestNews+%28ID%3A+253296%29",
-    "https://www.producthunt.com/products/publora?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+LatestNews+%28ID%3A+253296%29",
     "https://www.producthunt.com/products/pancake-6/launches/pancake-6?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+LatestNews+%28ID%3A+253296%29",
     "https://www.zhihu.com/question/2048794857506698964",
     "https://www.zhihu.com/question/2048781222197961924",
@@ -999,7 +990,16 @@
     "https://www.zhihu.com/question/2054886687050655628",
     "https://www.zhihu.com/question/2054648629869146324",
     "https://www.zhihu.com/question/2054102040578675951",
-    "https://www.zhihu.com/question/2054848866889855133"
+    "https://www.zhihu.com/question/2054848866889855133",
+    "https://www.zhihu.com/question/2053430924146996760",
+    "https://www.zhihu.com/question/2054894865851184155",
+    "https://www.zhihu.com/question/514078942",
+    "https://www.zhihu.com/question/2053870272458100869",
+    "https://www.zhihu.com/roundtable/opc",
+    "https://www.zhihu.com/question/2054848792436762180",
+    "https://www.zhihu.com/question/2053987860768887837",
+    "https://www.zhihu.com/question/2054243716655854373",
+    "https://www.zhihu.com/question/2054512729973696049"
   ],
-  "updatedAt": "2026-06-29T06:53:56.185Z"
+  "updatedAt": "2026-06-29T12:03:40.464Z"
 }
