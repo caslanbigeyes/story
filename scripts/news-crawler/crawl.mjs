@@ -23,7 +23,8 @@
  *   AI_TIMEOUT_MS     可选，单条 AI 超时，默认 60000
  *   FETCH_TIMEOUT_MS  可选，单条网页抓取超时，默认 20000
  *   MAX_ITEMS_PER_SRC 可选，每个源最多处理多少条，默认 10
- *   NEWS_API_URL      可选，默认 https://news.likanug.top/api/s/entire
+ *   NEWS_API_URL      可选，最高优先的新闻源；未配置则按顺序 fallback：
+ *                       Worker /news-proxy → news.likanug.top → newsnow.busiyi.world
  *
  *   ── 发布通道（二选一） ──
  *   PUBLISH_ENDPOINT  Cloudflare Worker 地址，例如
@@ -114,10 +115,30 @@ const POSTS_DIR = process.env.POSTS_DIR || 'posts';
 const PUBLISH_ENDPOINT = (process.env.PUBLISH_ENDPOINT || '').replace(/\/+$/, '');
 const PUBLISH_TOKEN = process.env.PUBLISH_TOKEN || '';
 
-// 优先用环境变量；有 Worker 时走代理（避免 GitHub Actions IP 被 Cloudflare 拦截）；最后直连
-const NEWS_API_URL =
-  process.env.NEWS_API_URL ||
-  (PUBLISH_ENDPOINT ? `${PUBLISH_ENDPOINT}/news-proxy` : 'https://news.likanug.top/api/s/entire');
+// 候选新闻源，按顺序 fallback：任何一个返回合法数组就用。
+// 顺序说明：
+//   1. NEWS_API_URL           —— 显式配置，最高优先
+//   2. PUBLISH_ENDPOINT/news-proxy —— Worker 代理，避免 GitHub Actions IP 被上游拦截
+//   3. https://news.likanug.top   —— 原主源
+//   4. https://newsnow.busiyi.world —— 备用源（likanug 挂过 D1 binding 之后加的兜底）
+// 注意 2/3 本质是同一后端，主源挂时会一起失败，所以 4 才是真正的容灾。
+function buildNewsApiCandidates() {
+  const seen = new Set();
+  const list = [];
+  const add = (url) => {
+    if (!url) return;
+    const key = url.replace(/\/+$/, '');
+    if (seen.has(key)) return;
+    seen.add(key);
+    list.push(key);
+  };
+  add(process.env.NEWS_API_URL);
+  if (PUBLISH_ENDPOINT) add(`${PUBLISH_ENDPOINT}/news-proxy`);
+  add('https://news.likanug.top/api/s/entire');
+  add('https://newsnow.busiyi.world/api/s/entire');
+  return list;
+}
+const NEWS_API_CANDIDATES = buildNewsApiCandidates();
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
 const IGNORE_SEEN = /^(1|true|yes|on)$/i.test(process.env.IGNORE_SEEN || '');
@@ -351,30 +372,49 @@ function getDisplayTimezoneLabel() {
 // 拉接口
 // ────────────────────────────────────────────────────────────────────
 async function fetchNewsList() {
-  log('Fetching news list:', NEWS_API_URL);
-  const res = await fetchWithTimeout(
-    NEWS_API_URL,
-    {
-      method: 'POST',
-      headers: {
-        accept: 'application/json',
-        'content-type': 'application/json',
-        origin: 'https://news.likanug.top',
-        referer: 'https://news.likanug.top/',
-        'user-agent': UA,
-      },
-      body: JSON.stringify({ sources: SOURCES }),
-    },
-    30000
-  );
-  if (!res.ok) {
-    throw new Error(`News API ${res.status} ${res.statusText}`);
+  if (NEWS_API_CANDIDATES.length === 0) {
+    throw new Error('No news API candidates configured');
   }
-  const data = await res.json();
-  if (!Array.isArray(data)) {
-    throw new Error('News API returns non-array payload');
+  const errors = [];
+  for (const url of NEWS_API_CANDIDATES) {
+    log('Fetching news list:', url);
+    try {
+      // 按 URL 自动匹配 origin/referer，避免跨源头被上游反爬拒掉
+      let origin = 'https://news.likanug.top';
+      try {
+        origin = new URL(url).origin;
+      } catch {}
+      const res = await fetchWithTimeout(
+        url,
+        {
+          method: 'POST',
+          headers: {
+            accept: 'application/json',
+            'content-type': 'application/json',
+            origin,
+            referer: `${origin}/`,
+            'user-agent': UA,
+          },
+          body: JSON.stringify({ sources: SOURCES }),
+        },
+        30000
+      );
+      if (!res.ok) {
+        const body = await res.text().catch(() => '');
+        throw new Error(`HTTP ${res.status} ${body.slice(0, 160)}`);
+      }
+      const data = await res.json();
+      if (!Array.isArray(data)) {
+        throw new Error(`non-array payload: ${JSON.stringify(data).slice(0, 160)}`);
+      }
+      if (errors.length > 0) log(`  · fallback 命中：${url}`);
+      return data;
+    } catch (e) {
+      log(`  ! ${url} 失败: ${e.message}`);
+      errors.push(`${url}: ${e.message}`);
+    }
   }
-  return data;
+  throw new Error(`所有 news API 候选均失败:\n  - ${errors.join('\n  - ')}`);
 }
 
 // ────────────────────────────────────────────────────────────────────
