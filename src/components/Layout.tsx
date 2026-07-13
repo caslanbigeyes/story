@@ -70,7 +70,7 @@ export default function Layout({ children }: LayoutProps) {
                 Nocturne
               </span>
               <span className="cyber-num text-[10px] text-gray-500 dark:text-fuchsia-300/80 tracking-[0.25em] uppercase">
-                夜色手稿
+                llf
               </span>
             </span>
           </Link>
