@@ -1,6 +1,198 @@
 {
   "items": [
     {
+      "id": "43343ee7550e",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "《雍正王朝》里，雍正罚李卫一年不发工资，李卫饿死了怎么办？",
+      "url": "https://www.zhihu.com/question/2059626939745412615",
+      "info": "79 万热度",
+      "hover": "",
+      "reflection": "这事儿啊，你说我看了那个《雍正王朝》里头雍正罚李卫一年不发工资那段，心里真是挺不是滋味的。哎，一边儿是皇帝罚大臣，另一边儿是李卫家徒四壁，这俩放一块儿，你说我能不犯嘀咕嘛？\n\n你说雍正吧，那可是皇上，罚个把人不发工资，咱也管不着。可李卫这哥们儿，那可也是忠心耿耿啊，皇帝一罚，他连饭都吃不上，这事儿搁谁身上都难受啊。\n\n对比一下，哎，这皇帝啊，他考虑的是江山社稷，可这李卫呢，他考虑的不过是养家糊口。一个在天上，一个在地下，这俩咋能比呢？\n\n我记得有一次，我加班到深夜，地铁上人挤人，看着窗外，外面黑漆漆的，心里也是挺闷的。那时候啊，我就想，咱们普通人，哪有那么多风光霁月的事啊，不就是个吃喝拉撒，日子过得紧巴巴的嘛。\n\n所以说，这事儿啊，要我说，什么情况下选哪个，还真不好说。你要是雍正，那你得考虑整个天下；你要是李卫，那就只能顾着自己和家里了。咱俩啊，都不容易，对吧？\n\n哎，想想也就这样吧，矛盾感嘛，这谁都会有。我懂这道理，但还是难受。这生活，真是让人又爱又恨啊。",
+      "reflectionTemplate": {
+        "id": "ab-compare",
+        "name": "对比分析型",
+        "mood": "中立、拉锯、平和"
+      },
+      "createdAt": "2026-07-14T23:01:09.511Z"
+    },
+    {
+      "id": "4397e79e1bb8",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "2026 年美加墨世界杯世界杯半决赛法国 0:2 西班牙，如何评价这场比赛？",
+      "url": "https://www.zhihu.com/question/2060590007564363522",
+      "info": "152 万热度",
+      "hover": "",
+      "reflection": "半年前，我还在为法国队加油，那会儿每天下班回家第一件事就是看比赛直播，和室友一起分析战术，讨论谁会是下一个金球奖得主。一年前的我，简直就是足球迷界的狂热分子。\n\n现在的我，连踢球的人都不认识几个了。今天看到这条新闻，我突然意识到，我好像变了。不是变得不关注足球了，而是对很多事情都变得不那么热心了。\n\n比如，今天在地铁上，我看着窗外，那些年轻的面孔，穿着队服，兴高采烈地讨论着比赛，我突然想起了自己年轻的时候。那时候，我也是这样的，为了喜欢的球队熬夜看球，为了一个进球激动得跳起来。但现在，我连熬夜的动力都没有了。\n\n我都成年了，但还是有点难受。我知道这样不对，但还是喜欢沉浸在自己的小世界里。有时候，我也在想，是不是自己太矫情了，但心里就是觉得不爽。\n\n这世界变化太快了，连我喜欢的足球比赛，都变得让我有点看不懂了。唉，矛盾感真是让人头疼。",
+      "reflectionTemplate": {
+        "id": "before-after",
+        "name": "前后对比型",
+        "mood": "释然中夹一点自嘲，时间的钝感"
+      },
+      "createdAt": "2026-07-14T23:00:43.760Z"
+    },
+    {
+      "id": "74023edddf55",
+      "sourceId": "v2ex-share",
+      "sourceLabel": "V2EX",
+      "title": "用 gpt5.6 Terra 生成了网站的介绍页",
+      "url": "https://www.v2ex.com/t/1227336",
+      "info": "",
+      "hover": "",
+      "reflection": "哎，你看看现在这些高科技，什么AI生成网站介绍页，我就纳闷了，这机器能懂审美吗？我就记得上次在地铁上，看到那个小年轻拿着手机，一脸陶醉地跟旁边的人炫耀：“我刚才用AI帮我设计了个网站，好看吧！”我当时就笑了，审美这东西，机器能懂吗？再说了，我加班到深夜，盯着电脑屏幕，跟那些代码和设计图斗智斗勇，那才叫审美呢！你告诉我，机器能理解那种感觉吗？我懂这道理但还是难受，我就不信，这机器能比得上一个有血有肉的人。",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-07-14T23:00:22.058Z"
+    },
+    {
+      "id": "3e4e35c61e9e",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Banter",
+      "url": "https://news.ycombinator.com/item?id=48861098",
+      "info": "5 points",
+      "hover": "",
+      "reflection": "哎呀，我刚看了条Hacker News上的资讯，说Y Combinator要开秋季2026批次的申请了，截止日期是7月27号。这让我有点儿火大，我就想知道，他们这是怎么了？每年不都是这么搞吗？就不能有个定规吗？\n\n我记得前年，我还在公司加班到半夜，看着窗外黑漆漆的天，想着这一年又要结束了。那时候我就觉得，生活就应该有规律，这样才踏实。可现在，你看，他们又改了游戏规则，让人家怎么受得了？\n\n就像我在地铁上，看到别人低头刷手机，我就想，现在的人都这么忙了吗？连个聊天的功夫都没有了。可我转念一想，说不定人家就是故意这样，不想被打扰呢。\n\n我这个人，就是有点儿轴，知道这样不对还是难受。我都成年了还是这样，有时候觉得自己挺傻的。但我就想，生活不就应该有固定的节奏吗？你说呢？",
+      "reflectionTemplate": {
+        "id": "manifesto",
+        "name": "观点宣言型",
+        "mood": "决绝、不退让，略冷"
+      },
+      "createdAt": "2026-07-14T23:00:12.279Z"
+    },
+    {
+      "id": "d7e8590308d3",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Same model, same Q4_K_M label: 5.02, 5.07 and 5.27 bits per weight",
+      "url": "https://news.ycombinator.com/item?id=48912947",
+      "info": "9 points",
+      "hover": "",
+      "reflection": "哎，这信息一出来，我脑子里就闪过一个想法：要是当年我能早点学会这些技术细节，现在肯定不一样了。想想看，我现在每天不是在地铁上就是在加班，有时候跟同事讨论技术问题，一说到那些复杂的参数，我就有点蒙。我记得有一次，我们讨论一个项目，我那时候就是不太懂这些Q4_K_M label啊，5.02，5.07，5.27 bits per weight，结果被领导批评了，说我基础知识不扎实。\n\n那我就想，如果我当时能像现在这样，稍微花点时间研究一下这些技术细节，至少不会在那种情况下那么尴尬。首先，我得每天花点时间，比如每天下班后，在地铁上用手机查查资料，哪怕是简短的教程也行。然后，遇到不懂的，我就记下来，上网搜搜看，或者找同事帮忙。还有，我得多看一些实际应用的案例，这样能更好地理解这些参数在实际工作中是怎么用的。\n\n我以前在哪一步踩过坑？大概就是在遇到不懂的问题时，总是想着“先放着，明天再说”，结果问题越积越多，最后成了大难题。哎，都成年了，还是有点学生气，明明知道这样不对，但还是控制不住自己。",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-07-14T22:59:52.858Z"
+    },
+    {
+      "id": "0fd3523549be",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Human Canaries: Remembering the Munitionettes",
+      "url": "https://news.ycombinator.com/item?id=48900541",
+      "info": "6 points",
+      "hover": "",
+      "reflection": "哎，刚看到这条Hacker News上的资讯，突然心里有点乱。最近我一直在纠结几件事，先说说吧。\n\n第一件，就是每天早上起床后，总是忍不住刷手机，一看就是半小时，明明知道这样不好，但还是控制不住。就像那天早上，我站在地铁里，看着窗外的人群，手机屏幕上那些无意义的新闻，让我感觉时间都浪费了。\n\n第二件，工作上的事情。最近项目挺多，加班是常态，但每次加班到深夜，看着电脑屏幕，心里就特别难受。就像那天晚上，我加班到十一点，和同事一起看着窗外的夜色，都觉得生活好累。\n\n第三件，就是和朋友之间的相处。有时候觉得，自己明明已经很努力去维护关系了，但还是感觉有点疏远。就像那天，我约了朋友去喝咖啡，聊了半天，感觉还是有点隔阂。\n\n如果只能选一个，我选第一件，原因很简单——手机真的太容易让人沉迷了。我都成年了，但还是控制不住自己，这让我挺难受的。",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-07-14T22:59:35.555Z"
+    },
+    {
+      "id": "cf2c479e0633",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Accretive Editing",
+      "url": "https://news.ycombinator.com/item?id=48858541",
+      "info": "11 points",
+      "hover": "",
+      "reflection": "刚看到那个Accretive Editing的文章，突然想到我最近在搞的这个项目，进度才到三分之一呢，越看越觉得自己好多地方做的不够好。\n\n你说，明明都是搞编程的，别人都能写出那种高效的工具，我这边写个简单的程序都卡壳，这不是搞笑了嘛。我就跟那个地铁2号线一样，一站一站慢慢来，但看看周围那些飞驰而过的大神，真是焦虑得不行。\n\n今儿晚上加班到九点，回家的路上跟同事闲聊，说到项目进度，那 guy 一副轻松样，说他最近优化了代码结构，效率提高不少。我心里那个难受啊，我都这么大人了，还是被比自己年轻的人甩了几条街。\n\n说到底，还是感觉自己不够扎实。我知道要继续加油，但是那种自我怀疑的感觉，真是让人烦躁。哎，反正不管怎样，我得把这一块先搞懂。下一步就是好好研究一下，不，是得加快进度，别让人家看不起咱。\n\n哎，写着写着自己都觉得好累。这活儿得慢慢来吧。晚安啦，朋友。",
+      "reflectionTemplate": {
+        "id": "in-progress",
+        "name": "过程透明型",
+        "mood": "实诚的轻焦虑，自我怀疑"
+      },
+      "createdAt": "2026-07-14T22:59:19.576Z"
+    },
+    {
+      "id": "3a08e66978b1",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Microsoft Deletes User's 25-Year-Old Account with Thousands Spent on Games",
+      "url": "https://news.ycombinator.com/item?id=48913220",
+      "info": "34 points",
+      "hover": "",
+      "reflection": "哎，看到这条微软删了用户25年的账号的新闻，我就有点儿感慨。你说这账号里头可能还有几千块钱的游戏币呢，这可咋办？\n\n首先，微软这操作肯定是有他们的道理的。毕竟，账号管理得规范，不能让一些废弃的账号乱七八糟的。那第一步，我就想，这账号管理规范，那肯定得定期清理一下。第二步，我又想，这用户25年都没用，那估计是早就不玩了，清理一下也正常。第三步，我就觉得，这微软也是挺有责任心的，得把用户的钱退回来。\n\n但说实话，我心里还是有点儿不舒服。就像那天晚上，我加班到十一点多，坐地铁回家，看着窗外，那灯火通明的城市，我突然就想起这事儿了。我都知道，这账号管理有规定，可我还是觉得，这微软删账号的时候，是不是应该先通知一下用户呢？我都成年了，但还是有点儿难受。\n\n矛盾啊，我知道这样不对，但还是有点儿愤愤不平。哎，生活就是这样，有时候你懂道理，但还是难受。",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-07-14T22:59:02.296Z"
+    },
+    {
+      "id": "97fa937433ac",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "The Estranged Worlds of J. G. Ballard",
+      "url": "https://news.ycombinator.com/item?id=48899473",
+      "info": "16 points",
+      "hover": "",
+      "reflection": "嘿，老哥，我刚看完那条Hacker News上的资讯，关于J. G. Ballard的《疏离世界》，还挺有意思的。你说啥，让我想起那会儿加班到九点的晚上，坐在六号线上，旁边一个乘客看样子是加班回家的。突然想到，我当时心里就特别矛盾，想着这么晚了回家还得做一顿饭，累死我了，但同时又觉得自己成年了，得自己照顾自己啊。那时候，我就觉得成年人的世界好复杂。\n\n后来想想，那个乘客估计也有他的烦恼，谁的生活不是这样呢？成年了，就得面对这些。就像今天这篇资讯里提到的，J. G. Ballard的世界里，人们也面临着各种疏离。现在我回头看才发现，原来成年人的生活，就是一场一场的疏离和矛盾啊。",
+      "reflectionTemplate": {
+        "id": "personal-trace",
+        "name": "个人经历拆解型",
+        "mood": "复盘的平静里藏一丝后怕"
+      },
+      "createdAt": "2026-07-14T22:58:46.938Z"
+    },
+    {
+      "id": "5c3a404a8052",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "How I use HTMX with Go",
+      "url": "https://news.ycombinator.com/item?id=48912175",
+      "info": "42 points",
+      "hover": "",
+      "reflection": "嘿，老友，我刚看完一条Hacker News上的资讯，说起来还挺有意思的。你记得上次我们在地铁上讨论的那个Go语言吗？我那时候还开玩笑说，咱们得找个时间一起研究研究，看看能不能用它来干点啥。嘿，今天我看了这个，说真的，有点心动了。\n\n那篇文章讲的是怎么用HTMX和Go结合起来。你知道，HTMX这东西，听起来就挺高大上的，我之前还以为它是啥高科技产品呢。结果一看，嘿，还真是，挺有意思的。比如，他们提到的那个小包，能让HTML模板文件、HTML原始字符串或者纯文本链式响应，听起来就像是把各种工具串联起来，让编程变得轻松点。\n\n我突然想起，上次加班到深夜，我坐在电脑前，看着窗外的灯光，那时候我在想，要是能有个简单点的方法来做这些复杂的页面交互就好了。现在一看，嘿，这不就是吗？\n\n我就这样，一边想着，一边心里有点矛盾。我知道，咱们都已经不小了，应该专注于工作，但是看到这些新技术，我还是忍不住想试试。你说，这是不是说明我还没完全长大啊？\n\n哎，算了，管它呢。说不定，这 HTMX 和 Go 的组合，能让我在编程的路上走得更远呢。咱们下次见面，我得跟你好好聊聊这个。嘿，你说，这会不会是我们共同的下一个挑战呢？😄",
+      "reflectionTemplate": {
+        "id": "story-hook",
+        "name": "故事钩型",
+        "mood": "怀旧、怔忡、怅然"
+      },
+      "createdAt": "2026-07-14T22:58:31.452Z"
+    },
+    {
+      "id": "be6a791a5910",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Financing the AI boom: from cash flows to debt [pdf]",
+      "url": "https://news.ycombinator.com/item?id=48913443",
+      "info": "12 points",
+      "hover": "",
+      "reflection": "半年前，我还热衷于讨论AI的未来，那时候觉得这玩意儿离我们好像还挺远，最多就是听听那些高大上的科技论坛上的发言。结果现在一看到“Financing the AI boom: from cash flows to debt”这类标题，心里就忍不住犯嘀咕。\n\n再想以前，我一有时间就想着研究研究股票市场，梦想着投资下一个AI独角兽。可现在一看，这AI泡沫，融资、债务，真是让人眼花缭乱。我记得有一次，下班高峰期在二号线地铁上，周围的人都在低头看手机，我竟然还在想，如果我现在投资AI，会不会是下一个“马云”？\n\n现在读到这条资讯，我突然意识到，自己的心态变了。不再是那个盲目乐观、梦想一夜暴富的年轻人了，我开始学会理性分析，开始关注金融风险。\n\n不过，说起来也真是有点搞笑，我都这个年纪了，还是喜欢幻想自己能抓住下一个风口。你说，是不是每个人到了一定年纪，心里都会有一股冲动，想要证明自己，哪怕知道这样做不对，哪怕我知道现实很残酷，我还是忍不住。\n\n看着窗外的夜景，心里突然冒出一个反直觉的认知：可能我们这一代人，注定要与AI共生共死了。不过，谁又能说，这不会是一个全新的开始呢？",
+      "reflectionTemplate": {
+        "id": "before-after",
+        "name": "前后对比型",
+        "mood": "释然中夹一点自嘲，时间的钝感"
+      },
+      "createdAt": "2026-07-14T22:58:09.989Z"
+    },
+    {
+      "id": "faf2dd1932e4",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Dependabot version updates introduce default package cooldown",
+      "url": "https://news.ycombinator.com/item?id=48913050",
+      "info": "36 points",
+      "hover": "",
+      "reflection": "哎，最近老觉得自己的电脑软件更新太频繁了，每次都催得我手忙脚乱的。这不，看到这条Hacker News上的资讯，说Dependabot版本更新引入了默认包冷却时间，心里突然就有种说不出的感觉。\n\n第一件事儿，就是那个自动更新的Dependabot，每次我一打开电脑，它就催我更新，我这边还没来得及看清楚更新内容呢，它就又催了。记得有一次，我在地铁上，手机上突然弹出来一个更新提醒，我一看，得，又得停下来处理这个事儿。\n\n第二件事儿，就是更新太频繁了，有时候我甚至怀疑，这些更新真的有必要吗？就像那天晚上加班到九点，电脑突然弹出来一个更新提示，我一看，得，又得停下来处理。我都成年了，但还是觉得这种被催的感觉挺难受的。\n\n第三件事儿，就是更新之后可能会出现的问题。就像有一次，我更新了一个软件，结果发现软件直接崩溃了，那时候我真是欲哭无泪啊。\n\n如果只能选一个，我选那个自动更新的Dependabot。原因很简单——它就像那个总是催你做事的家长，虽然有时候让人有点烦，但也能让你时刻保持警惕，不至于落后于时代。",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-07-14T22:57:51.766Z"
+    },
+    {
       "id": "19b95cec46a5",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7807,199 +7999,7 @@
         "mood": "略带抬杠的不服，克制的锐利"
       },
       "createdAt": "2026-07-13T06:56:36.704Z"
-    },
-    {
-      "id": "94b820425a0f",
-      "sourceId": "zhihu",
-      "sourceLabel": "知乎",
-      "title": "如何看待周星驰新电影《功夫女足》预测票房大幅飙升至 25 亿人民币？",
-      "url": "https://www.zhihu.com/question/2059770577624290592",
-      "info": "1163 万热度",
-      "hover": "《功夫女足》预测票房大幅飙升至 25 亿人民币，上映首日票房 2.6 亿人民币，上映第二日票房 2.4 亿人民币，能否为 2026 暑期档打开局面？",
-      "reflection": "哎，刚才刷知乎，看到说周星驰的新电影《功夫女足》票房预测要飙到25亿人民币，我愣了一下。这数字听着就挺夸张的，不过想想，星爷的电影确实挺能吸引人的。我记得上次加班到九点，在地铁二号线回家的路上，看到窗外的夜景，突然就想起小时候看星爷电影的日子，那时候的我们，好像对电影的要求没这么多，只要开心就好。\n\n现在呢，虽然长大了，知道电影票房这种东西都是商业运作的结果，但心里还是有点不是滋味。我懂这道理，但还是难受。就像今天晚上，我跟我朋友聊起这个，他说：“现在的电影，票房高不代表电影好，可大家不还是冲着票房去？”我沉默了，是啊，我们都长大了，可还是摆脱不了这种矛盾感。\n\n哎，这世界变化太快了，我们这代人，心里总是装着太多的东西。就像那个25亿的票房数字，它背后，是我们对童年的怀念，对电影的热爱，还有那份说不清道不明的矛盾感。",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-07-13T06:56:17.223Z"
-    },
-    {
-      "id": "4e7fce06a0d1",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Alson Shop",
-      "url": "https://www.producthunt.com/products/alsonai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 24",
-      "hover": "The AI-native bookstore for our storybooks",
-      "reflection": "哎，看到这个Alson Shop的新闻，我第一反应就是：人工智能书店？这玩意儿能行吗？我就在想，咱们这个时代，科技发展得越来越快，但书店这种地方，感觉还是得有那种纸质书的味道才算完整。然后我就开始分析，第一，这AI书店能提供什么？第二，它和传统书店比有什么优势？第三，它怎么解决人们对于纸质书的那种情感需求？\n\n第一点，AI书店肯定能提供更便捷的搜索和推荐功能，这没问题。第二点，可能就是价格和库存管理上更高效。但第三点，我就有点犯难了。你知道，我每天晚上加班到九点，下班后挤地铁回住处，那时候看一本书，就是想找个地方放松一下，感受一下文字的温度。AI书店能给我这个吗？\n\n我就想起了昨天晚上，我在地铁二号线，看着窗外灯火阑珊，心里想着回家还得多久。那时候，我手里拿的那本纸质书，翻页的声音、纸张的质感，还有那些文字带来的共鸣，是AI能给的吗？我知道这样不对，但我还是喜欢那种感觉。我都成年了，但还是有点小情绪。",
-      "reflectionTemplate": {
-        "id": "framework",
-        "name": "框架输出型",
-        "mood": "冷静自信里夹着普通人的克制"
-      },
-      "createdAt": "2026-07-13T06:55:56.682Z"
-    },
-    {
-      "id": "0af757e91891",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "LockIn for Chrome",
-      "url": "https://www.producthunt.com/products/lockin-mcp?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 26",
-      "hover": "Increase productivity with AI distraction blocking",
-      "reflection": "嘿，老友，我刚看完这条Product Hunt上的资讯，标题是“LockIn for Chrome”，说是一款能提高生产力、阻断AI干扰的浏览器插件。哎，看完之后，我就想起了自己当年那个效率低下的样子。\n\n说起来，我当时就是各种APP、网页一打开，效率反而越来越低。要是我当时有这款插件，肯定能少踩不少坑。嗯，那我得给自己当年提几个建议：\n\n1. 每次工作前先关闭那些干扰软件，别让手机成瘾。\n2. 定时工作，比如工作25分钟后休息5分钟，效率更高。\n3. 用清单记录要完成的任务，一条条划掉，成就感满满。\n\n哎，我成年了但还是老样子，每次一有空就刷手机。记得有一次加班到深夜，我看着窗外的月亮，心里还挺不是滋味。我知道这样不对，但还是控制不住。哎，我以前在哪一步踩过坑？大概就是没能坚持那三步吧。",
-      "reflectionTemplate": {
-        "id": "how-to",
-        "name": "教学实操型",
-        "mood": "沉稳、克制的说教感，干净"
-      },
-      "createdAt": "2026-07-13T06:55:37.143Z"
-    },
-    {
-      "id": "88150a182cea",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Flowing",
-      "url": "https://www.producthunt.com/products/flowing?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 26",
-      "hover": " Ground your academic writing in your own papers.",
-      "reflection": "哎，想起去年夏天，我还在那家初创公司加班到深夜。那时候，我们团队的项目压力特别大，每天都要赶进度。我记得有一次，我加班到晚上十一点多，坐地铁回家。那时候的地铁特别挤，我站在车厢里，看着窗外，外面下着大雨，心里特别不是滋味。\n\n突然，我手机震动了一下，是一条工作消息。我赶紧打开看，发现是老板催进度。我心里一阵烦躁，但又知道不能推脱。我懂，成年人的世界，就是这样，有时候你得硬着头皮上。\n\n那天晚上，我在地铁上站了半个多小时，直到最后一班车。那时候，我突然觉得，自己是不是太累了。我明明知道这样不对，但还是得继续。我都成年了，但还是难受。\n\n现在回头看才发现，那时候的自己，真是太傻了。Flowing这个产品，虽然我只看了标题，但我想，它应该能帮到我们这些写论文的人。有时候，把学术写作跟自己的论文结合起来，可能真的能减轻不少压力。哎，希望我们都能找到属于自己的“Flowing”。",
-      "reflectionTemplate": {
-        "id": "personal-trace",
-        "name": "个人经历拆解型",
-        "mood": "复盘的平静里藏一丝后怕"
-      },
-      "createdAt": "2026-07-13T06:55:16.873Z"
-    },
-    {
-      "id": "b635aa6bc63e",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "CONTRABAND VR Cinema",
-      "url": "https://www.producthunt.com/products/contraband-vr-cinema?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 28",
-      "hover": "A theatrical experience with friends, from home.",
-      "reflection": "半年前，我还沉浸在一部电影院的观影体验里，那是一家小小的影院，我们一票难求。可一年前，我记得我还和朋友抱怨过，现在的电影怎么都不如以前好了，剧情太水，特效也没啥新意。结果现在呢？读到这条资讯，我才发现，我可能又OUT了。\n\n现在的我，下班后直接窝在家里，戴上VR眼镜，和朋友一起看了一场“电影院级别的VR电影”。你说这算啥？明明是在家，怎么就像真的一样？我还记得，那晚我和同事一起坐地铁回家的路上，聊得正high，他说：“你知道吗，以后在家就能体验电影院的氛围了。”我当时还觉得他在胡说八道呢。结果现在，这不就实现了吗？\n\n我突然意识到，我们这一代人，真的被时间带得有点钝感了。我记得那晚加班到凌晨三点，窗外的灯光模糊一片，我突然觉得自己好累，可又停不下来。矛盾感油然而生：我都这么大了，还这么拼，这是为啥？也许，这就是我们这一代人的矛盾吧。",
-      "reflectionTemplate": {
-        "id": "before-after",
-        "name": "前后对比型",
-        "mood": "释然中夹一点自嘲，时间的钝感"
-      },
-      "createdAt": "2026-07-13T06:55:01.223Z"
-    },
-    {
-      "id": "8c0a0514960e",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Offer Max",
-      "url": "https://www.producthunt.com/products/offer-max?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 32",
-      "hover": "Every job application is a click, not an evening ",
-      "reflection": "哎，今天看到这个 Offer Max 的东西，心里有点儿不是滋味。A 是说现在找工作都变成点一下鼠标的事了，B 是说以前找工作那叫一个磨人啊，晚上不睡白天不起。一个是快，一个是慢，对比一下，A 就像地铁2号线，速度快得让人晕；B 像地铁1号线，虽然慢，但稳当。\n\n我呢，有时候也想快点儿，比如加班到深夜，一看Offer Max，心里就痒痒的，想着点一下就能搞定。但转念又一想，我懂这道理，但还是难受。就像那天晚上，我加班到十一点，看着窗外的夜景，心里想着要是能像Offer Max那样快点儿结束这工作就好了。\n\n但说到底，什么情况下选哪个，还得看个人。要是你时间紧，任务重，那选A，快准狠；要是你心态平和，不急不躁，那选B，稳扎稳打。不过，我还是觉得，限定条件得加上去，比如，别因为追求快而忽略了质量，也别因为追求稳而耽误了时机。毕竟，生活不是非黑即白，有时候，快与慢，得自己把握那个度。",
-      "reflectionTemplate": {
-        "id": "ab-compare",
-        "name": "对比分析型",
-        "mood": "中立、拉锯、平和"
-      },
-      "createdAt": "2026-07-13T06:54:39.916Z"
-    },
-    {
-      "id": "d3d37f9d2327",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "ServiceBeard",
-      "url": "https://www.producthunt.com/products/servicebeard?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 154",
-      "hover": "Sync your mailbox with your issue tracker",
-      "reflection": "哎呀，最近看到这个Product Hunt上的ServiceBeard，说是同步邮箱和问题跟踪器，哎哟，一开始还觉得挺有用，可是一想，这不得乱套了吗？\n\n我那天在地铁上，挤得跟沙丁鱼似的，看那群上班族一个个低着头刷手机，这要是真用了这个，那不得更头大了？想想我上次加班到半夜，那邮箱里堆得跟小山似的邮件，还得跟问题跟踪器里那堆事儿对应上，想想就头大。\n\n我就纳闷了，这生活不就图个清静吗？用这个，那邮件跟问题跟踪器里的东西同步上了，那不得成天忙得跟狗似的？我都成年了，还是想偶尔轻松一下，不是吗？\n\n你看，这地铁里，每个人都好像有自己的小世界，有人看书，有人刷剧，就没人想给自己找麻烦。我呢，我懂这道理，但还是难受，感觉自己的生活节奏被这所谓的“便利”给打乱了。\n\n所以说，这ServiceBeard，虽然看起来挺高级，但我个人觉得，还是让它躺在Product Hunt上晾晾太阳吧。生活嘛，不就是这样，简单点不好吗？",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-07-13T06:54:14.460Z"
-    },
-    {
-      "id": "c39f7cd8c95b",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Second Brain for AI v2",
-      "url": "https://www.producthunt.com/products/second-brain-cloudflare?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 350",
-      "hover": "AI memory that connects the dots across every tool",
-      "reflection": "哎，今天刷到这个\"Second Brain for AI v2\"，我突然想到自己最近挺头疼的三件事。第一，每天工作完，脑袋里像装了个乱七八糟的硬盘，明明记得有个不错的点子，一转眼就找不着了。第二，晚上回家路上，看着窗外的夜景，总是忍不住想，这么晚了，还没搞定那些工作邮件，是不是该早点休息了？第三，跟朋友聊天，说到某个话题，突然卡壳，明明知道答案，却一时半会儿想不起来。\n\n如果只能选一个，我选第一件事。原因很简单——每次想起那个点子，我就难受。就像地铁里，你突然想到一个重要信息，却发现自己忘了带手机，那种无助感，你能理解吗？😔",
-      "reflectionTemplate": {
-        "id": "curated-list",
-        "name": "清单型",
-        "mood": "实用、带一点强迫症的整理感"
-      },
-      "createdAt": "2026-07-13T06:53:50.123Z"
-    },
-    {
-      "id": "663214db5dd4",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "FetchSandbox",
-      "url": "https://www.producthunt.com/products/fetchsandbox?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 383",
-      "hover": "API integration testing that remembers what breaks",
-      "reflection": "哎哟，看到这个FetchSandbox，我突然想起了小时候家里那台破电脑，每次系统出点小毛病，修都修不好，还得找懂电脑的邻居帮忙。现在想想，那时候的邻里情谊，真是纯朴得让人怀念啊。\n\n我记得那天，天都快黑了，我从地铁站出来，累得直不起腰。回家的路上，看到几个大妈在聊天，一个说：“哎，现在的年轻人啊，连个电脑都不会修。”另一个接口：“就是啊，小时候咱们谁不会修呢，邻居帮忙，一会儿就解决了。”我听着，心里五味杂陈，我都这么大人了，可有时候，电脑这东西，还真得求人。\n\n回到家里，我加班到很晚，电脑里堆满了各种文件。突然，屏幕闪了一下， FetchSandbox 这个词跃然眼前。哎，真是巧，刚才在大妈那里提到的邻里互助，这FetchSandbox不就是在做类似的事情吗？它记得电脑哪些地方会出问题，这不就像邻居家的大哥，懂电脑，能帮你解决大问题一样吗？\n\n可是，我突然觉得自己真是OUT了。这FetchSandbox都能做这样的事，那我岂不是该去学习学习，提升提升自己了？哎，矛盾啊，我知道这样不对，可我还是忍不住想要依赖别人，我懂这道理，但还是难受。",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-07-13T06:53:36.927Z"
-    },
-    {
-      "id": "a3a03417bde8",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "JustVibe",
-      "url": "https://www.producthunt.com/products/justvibe?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 531",
-      "hover": "The search engine for doing, with apps built for you",
-      "reflection": "哎，今天看了一个叫JustVibe的产品，这名字听着就有点意思。说真的，我一下子就被吸引了，因为这玩意儿说是搜索引擎，但其实是个帮你找到能做事的APP。我就纳闷了，这年头搜索引擎那么多，干嘛还弄这么个玩意儿出来？\n\n我琢磨了三步：首先，这东西能吸引我，肯定是它找到了某个点子，让人眼前一亮。然后，我想它可能是在细分领域里做了点文章，找到了那些平时被忽略的需求。最后，我得承认，这玩意儿可能真的能解决一些问题，让人做事更高效。\n\n但话说回来，我就在想，这东西能火吗？我就想象自己刚从地铁出来，累得要死，还要加班到深夜。这时候，我打开手机，想找个APP轻松一下，却发现这玩意儿得下载一堆APP才能用，这让我有点烦。我知道这样不对，但我还是有点难受，我懂这道理但还是难受。\n\n我懂，生活嘛，就是得适应变化，但这变化也太快了吧。我就这样，矛盾着，又有点无奈。",
-      "reflectionTemplate": {
-        "id": "framework",
-        "name": "框架输出型",
-        "mood": "冷静自信里夹着普通人的克制"
-      },
-      "createdAt": "2026-07-13T06:53:03.140Z"
-    },
-    {
-      "id": "e72a314c6e86",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Miora",
-      "url": "https://www.producthunt.com/products/miora-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 552",
-      "hover": "Scale your creativity on editable canvas with agent memory",
-      "reflection": "嘿，老李，我刚看了Product Hunt上的一条资讯，Miora，说啥能放大你的创意，啥的。我一听就感觉有点扯，你看看现在的工具，创意不创意的，不都差不多嘛。\n\n我就想想自己，每天地铁挤来挤去，下班了还加个班，累死累活，回来还得想创意，这生活也太惨了点。昨天我坐2号线，旁边一哥们儿手机上弄的那个画，一看就是用这种工具画的，我觉得也没啥特别的，也就那样。\n\n我就纳闷了，现在这些工具，都把创意当什么了？不就那么点功能，弄来弄去，还叫放大创意？我小时候，就拿着个破画本，都能画出自己心中的世界，现在倒好，工具多了，反而创意受限了。\n\n我知道这样不对，但我就是觉得难受。我都成年了，还跟以前一样，对那些花里胡哨的东西不感冒，可能这就是所谓的固执吧。我就喜欢简单点，老李，你说我是不是有点怪？\n\n哎，不说这些了，你最近怎么样？别太累着自己，身体重要。",
-      "reflectionTemplate": {
-        "id": "manifesto",
-        "name": "观点宣言型",
-        "mood": "决绝、不退让，略冷"
-      },
-      "createdAt": "2026-07-13T06:52:46.348Z"
-    },
-    {
-      "id": "a468ee662361",
-      "sourceId": "juejin",
-      "sourceLabel": "掘金",
-      "title": "给键盘党的英语记忆工具：我做了一款「打字背单词」桌面应用",
-      "url": "https://juejin.cn/post/7660395581106159642",
-      "info": "",
-      "hover": "",
-      "reflection": "哎，刚刚看到那个「打字背单词」桌面应用的信息，心里突然有点不是滋味。我这人，虽然不是键盘党，但每天也得在电脑前敲敲打打，尤其是写东西的时候。我写的东西，现在都到第23篇了，可每次写完，心里总觉得少了点什么。\n\n你看，我刚刚写完这篇东西，就看到那个应用，突然觉得自己是不是也该找个方法来提高效率，可同时又觉得，这样真的好吗？我都成年了，还学人家背单词，是不是有点太…太…太…怎么说呢，太不成熟了？\n\n记得有一次，我加班到晚上10点，地铁上的人都走得差不多了，就我一个人坐在那里，看着窗外，心里想着今天的工作，想着明天的工作，突然就想到这个应用。我当时就在想，要是能有个这样的工具，我可能就不会这么焦虑了。\n\n可转念一想，我又觉得自己是不是太依赖工具了？我知道这样不对，但还是忍不住想试试。哎，矛盾啊，矛盾！\n\n下一步打算做什么？我也不知道。可能还是继续这样，慢慢来吧。毕竟，人生嘛，不就是要慢慢探索，慢慢成长的吗？",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-07-13T06:52:20.086Z"
     }
   ],
-  "updatedAt": "2026-07-14T21:32:47.761Z"
+  "updatedAt": "2026-07-14T23:01:12.315Z"
 }
