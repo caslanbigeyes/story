@@ -1,18 +1,5 @@
 {
   "seen": [
-    "https://news.ycombinator.com/item?id=48928313",
-    "https://news.ycombinator.com/item?id=48881064",
-    "https://news.ycombinator.com/item?id=48907259",
-    "https://news.ycombinator.com/item?id=48927915",
-    "https://news.ycombinator.com/item?id=48928343",
-    "https://news.ycombinator.com/item?id=48863891",
-    "https://news.ycombinator.com/item?id=48928402",
-    "https://www.v2ex.com/t/1227604",
-    "https://www.v2ex.com/t/1227599",
-    "https://www.zhihu.com/question/2060953385851957613",
-    "https://www.zhihu.com/question/2060769193977280048",
-    "https://www.zhihu.com/question/2060771091736425253",
-    "https://www.zhihu.com/question/2060498559150056475",
     "https://www.zhihu.com/question/2059894582096270775",
     "https://www.zhihu.com/question/2060477471263122436",
     "https://www.zhihu.com/question/2060789279962261463",
@@ -999,7 +986,20 @@
     "https://www.zhihu.com/question/2060160756528702468",
     "https://www.zhihu.com/question/2062172305267200014",
     "https://www.zhihu.com/question/286733645",
-    "https://www.zhihu.com/question/317421219"
+    "https://www.zhihu.com/question/317421219",
+    "https://news.ycombinator.com/item?id=48968063",
+    "https://news.ycombinator.com/item?id=48968067",
+    "https://news.ycombinator.com/item?id=48891334",
+    "https://news.ycombinator.com/item?id=48968348",
+    "https://www.v2ex.com/t/1228412",
+    "https://www.v2ex.com/t/1228409",
+    "https://www.v2ex.com/t/1228408",
+    "https://www.v2ex.com/t/1228405",
+    "https://www.v2ex.com/t/1228401",
+    "https://www.producthunt.com/products/recume?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+    "https://www.zhihu.com/question/2062188301013071138",
+    "https://www.zhihu.com/question/2062227990260311853",
+    "https://www.zhihu.com/question/2051758275461436294"
   ],
-  "updatedAt": "2026-07-19T14:09:41.159Z"
+  "updatedAt": "2026-07-19T15:34:14.023Z"
 }
