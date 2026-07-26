@@ -1,6 +1,102 @@
 {
   "items": [
     {
+      "id": "33c919dcc473",
+      "sourceId": "v2ex-share",
+      "sourceLabel": "V2EX",
+      "title": "写的开源股票数据库 free-stockdb 快速破 1000 星。日 k 分钟 k、etf 量化底座 2 分钟启动+完全免费",
+      "url": "https://www.v2ex.com/t/1229982",
+      "info": "",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-07-26T21:36:39.493Z"
+    },
+    {
+      "id": "9dcb6987c80c",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "How AST-grep Rewrote Tree-sitter in Rust and Made It 30% Faster",
+      "url": "https://news.ycombinator.com/item?id=49060509",
+      "info": "13 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "story-hook",
+        "name": "故事钩型",
+        "mood": "怀旧、怔忡、怅然"
+      },
+      "createdAt": "2026-07-26T21:35:30.876Z"
+    },
+    {
+      "id": "4356e919ddb9",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Show HN: Infinite Jigsaw Game",
+      "url": "https://news.ycombinator.com/item?id=49061879",
+      "info": "7 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "ab-compare",
+        "name": "对比分析型",
+        "mood": "中立、拉锯、平和"
+      },
+      "createdAt": "2026-07-26T21:34:21.710Z"
+    },
+    {
+      "id": "22e44a57afa9",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Simulate cassette tape audio profiles using FFmpeg",
+      "url": "https://news.ycombinator.com/item?id=49061887",
+      "info": "7 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "before-after",
+        "name": "前后对比型",
+        "mood": "释然中夹一点自嘲，时间的钝感"
+      },
+      "createdAt": "2026-07-26T21:33:12.082Z"
+    },
+    {
+      "id": "e9628e3f789a",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Classic WTF: Server Room Fans and More Fun",
+      "url": "https://news.ycombinator.com/item?id=49005150",
+      "info": "8 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "manifesto",
+        "name": "观点宣言型",
+        "mood": "决绝、不退让，略冷"
+      },
+      "createdAt": "2026-07-26T21:32:03.558Z"
+    },
+    {
+      "id": "687c34849f74",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Plasma Tunnels Reveal How Dying Satellites Fall to Earth",
+      "url": "https://news.ycombinator.com/item?id=49062120",
+      "info": "4 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-07-26T21:30:54.947Z"
+    },
+    {
       "id": "87f2f466ebaf",
       "sourceId": "hackernews",
       "sourceLabel": "Hacker News",
@@ -7903,103 +7999,7 @@
         "mood": "怀旧、怔忡、怅然"
       },
       "createdAt": "2026-07-24T20:27:18.201Z"
-    },
-    {
-      "id": "b854dd24a564",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Marimo Now Runs in PyCharm",
-      "url": "https://news.ycombinator.com/item?id=49004464",
-      "info": "10 points",
-      "hover": "",
-      "reflection": "哎，说起来，上次加班到晚上十一点多，坐地铁回家的那趟，真是够呛。当时车厢里人挤人，我挤在角落里，看着窗外模糊的夜景，心里就想着：“哎，这日子过得，怎么就这么累啊。”然后，今天看到这条新闻，说Marimo现在可以在PyCharm里运行了，我就突然想起那次加班的经历。\n\n那次加班，领导突然提出要加一个功能，说是紧急需求。我就那么一愣，心里想着：“这都几点了，还加什么功能啊。”结果，就是那个晚上，我坐在电脑前，敲代码到深夜。当时，我看着屏幕上的代码，心里就一个字——烦。可是，我还是得继续敲，因为我知道，这事儿我得赶在明天早上之前解决。\n\n现在回头看才发现，当时那么拼命，其实也没那么可怕。虽然辛苦，但那种解决问题的成就感，还是挺让人满足的。不过，我懂，成年人的世界，就是这样，有时候，你得为了生活，做一些不那么情愿的事情。就像现在，我知道加班不好，但还是得做。哎，矛盾啊。",
-      "reflectionTemplate": {
-        "id": "personal-trace",
-        "name": "个人经历拆解型",
-        "mood": "复盘的平静里藏一丝后怕"
-      },
-      "createdAt": "2026-07-24T20:27:04.356Z"
-    },
-    {
-      "id": "44b75fe327af",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "I got into YC (Startup School) by hacking it",
-      "url": "https://news.ycombinator.com/item?id=49039448",
-      "info": "67 points",
-      "hover": "",
-      "reflection": "哎哟，这事儿一出来，我就有点儿不淡定了。你说这世界上谁没个“黑客精神”？但你说黑客精神用在了申请创业学校，这就有点儿过了吧？咱们不是都说，诚实守信是咱们的立身之本嘛，怎么现在申请个学校还得靠“黑客”手段？\n\n我记得有一次加班到深夜，坐在地铁上，旁边一个小伙子在那儿刷手机，一边刷一边还自言自语：“这破系统怎么又卡了？”我当时就想，这不就是典型的“黑客精神”吗？但那时候他只是想找个办法解决问题，现在呢？这“黑客精神”倒好，成了申请学校的捷径。\n\n我懂，这社会嘛，竞争激烈，有时候不得不想点辙。但我还是觉得，这样子搞，是不是有点太过了？我都成年了，但还是觉得这样子不地道。哎，这世界啊，真是让人又爱又恨。",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-07-24T20:26:50.015Z"
-    },
-    {
-      "id": "33f5536da124",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Don't Take the Black Pill [video]",
-      "url": "https://news.ycombinator.com/item?id=49038298",
-      "info": "44 points",
-      "hover": "",
-      "reflection": "唉，看完了这条Hacker News上的视频标题“Don't Take the Black Pill”，我就想到最近公司的那事。你知不知道，做软件这行有时候，管理层的想法和我们这些工程师的心思简直就差了十万八千里。比如说，管理层可能更在乎的是短期效益，而咱们工程师呢，更愿意花时间打磨那些能提高软件稳定性的细节。这就是A和B的区别，A是管理层想要的快速解决方案，B是我们工程师追求的高质量代码。\n\n对比一下，A方案可能就是“先应付一下”，而B方案呢，是要“真正解决问题”。可现实是，你选A方案可能能顺利完成任务，选B方案，说不定就得加班加点，甚至可能会得罪管理层。就像前两天，我有个同事就因为坚持用B方案，结果被领导说了一通。\n\n然后呢，我坐在回家的地铁上，看着窗外，心里五味杂陈。我都这把年纪了，还是得面对这种选择。你说我该选哪个？其实吧，关键看具体情况。比如，如果项目紧急，那肯定先选A，能快速推进项目进度。但如果项目时间充裕，那当然要选B，保证软件的质量。\n\n哎，反正生活就是这样，总是在矛盾中前行。你也不能说哪个绝对好，哪个绝对坏，关键还是看实际情况。",
-      "reflectionTemplate": {
-        "id": "ab-compare",
-        "name": "对比分析型",
-        "mood": "中立、拉锯、平和"
-      },
-      "createdAt": "2026-07-24T20:26:35.218Z"
-    },
-    {
-      "id": "ab8aef6f2aaf",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Fil-C: Garbage In, Memory Safety Out [video]",
-      "url": "https://news.ycombinator.com/item?id=49026933",
-      "info": "37 points",
-      "hover": "",
-      "reflection": "这 Fil-C 的东西，一看标题就感觉是个技术深水区。说实话，我这种搞不懂数据库的，平时也就是看看新闻，偶尔来两句“技术改变生活”。但是今天这条，让我心里有点小波澜。\n\n首先，我就好奇这 Fil-C 怎么就能保证内存安全？不是都说程序员就像是在电脑里摆积木吗？稍微不小心，积木就倒了，电脑就崩溃。这 Fil-C 是怎么做到让积木不倒的？\n\n然后，我想起了前两天晚上，我加班到九点，地铁上的人多到像沙丁鱼罐头。我看着手机，想着这编程跟生活好像也有点相似。我们都是在一个框架里工作，比如公司制度、社会规范，这些框架其实都是为了安全，不让我们的生活“崩溃”。\n\n可是，这 Fil-C 和 Rust 的对比，又让我有点矛盾。我知道，遵守规则是好的，但有时候，太死板了也会让人难受。就像我，明明知道加班对身体不好，但还是坚持到了九点。\n\n再说了，这 Fil-C 能不能解决现实生活中的问题？比如，我家的热水器有时候会出问题，这要是用 Fil-C 来改进，不知道能不能让热水器不那么容易“崩溃”。\n\n总之，这条新闻让我有了点思考。生活就像编程，安全很重要，但有时候，也需要一点打破规则的勇气。不过，这勇气，得有底线的。",
-      "reflectionTemplate": {
-        "id": "framework",
-        "name": "框架输出型",
-        "mood": "冷静自信里夹着普通人的克制"
-      },
-      "createdAt": "2026-07-24T20:26:16.818Z"
-    },
-    {
-      "id": "32b502e2b61c",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Postgres LISTEN/NOTIFY actually scales",
-      "url": "https://news.ycombinator.com/item?id=49040296",
-      "info": "52 points",
-      "hover": "",
-      "reflection": "哎哟，这条资讯一出来，我就心里犯嘀咕了。我这人呢，做项目就爱瞎研究，最近正好在弄个后台系统，看到这信息，感觉像是在镜子里看到了自己那个小焦虑。\n\n你说这技术，我研究来研究去，搞了个基于Postgres的LISTEN/NOTIFY，心想这玩意儿不是应该挺稳定的吗？结果呢，这资讯一出来，我突然觉得，是不是我用错了方向啊？\n\n比如说吧，我现在这个项目，进度到这一步了，每天得加个班到九点多。我在想，是不是我应该再好好想想，别等到后面发现技术选型有问题，那不就得从头再来吗？我就这么一成年人的，还犯这样的错，心里难免不是滋味。\n\n不过呢，也不能就这么放弃啊。我得看看这篇资讯提到的性能问题，好好琢磨琢磨，看能不能在现有的基础上找到解决办法。我得想个法子，不增加太多开销，还能保证系统稳定。\n\n下一步嘛，我得找个时间好好研究一下这个LISTEN/NOTIFY，看看有没有适合我项目的新方法。我得找个不那么容易出错的方向，不能因为这个小细节耽误了整个项目啊。",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-07-24T20:25:53.963Z"
-    },
-    {
-      "id": "5a2c922bd209",
-      "sourceId": "zhihu",
-      "sourceLabel": "知乎",
-      "title": "LPL2026 赛季第三赛段组内赛 EDG 1:2 BLG，如何评价这场比赛？",
-      "url": "https://www.zhihu.com/question/2064077683093418226",
-      "info": "120 万热度",
-      "hover": "",
-      "reflection": "半年前，我还在为EDG的每一场胜利欢呼雀跃，一年的时间过去，现在的我，连比赛结果都懒得关心了。地铁上，看着窗外的人群，他们忙碌的身影，仿佛和电竞比赛一样，充满了激情和汗水，可我，却觉得这一切都那么遥远。\n\n读到这条资讯，我才意识到，自己好像真的变了。曾经的我对电竞有着无比的热情，可现在，那种热情已经渐渐消退。我知道这样不对，我还是会关注比赛，但那种激动的心情，已经不再像以前那样强烈了。\n\n我懂，这道理，但还是难受。成年人的生活，就是这样，有了钝感，有了自嘲，有了释然。就像今天，我坐在办公室里，加班到深夜，看着窗外的夜景，心里想着，这就是生活吧，平淡而又真实。\n\n最反直觉的认知是，原来，我们都会变。就像EDG，曾经的风光无限，现在也可能变得黯淡无光。但这就是生活，有起有落，有笑有泪。",
-      "reflectionTemplate": {
-        "id": "before-after",
-        "name": "前后对比型",
-        "mood": "释然中夹一点自嘲，时间的钝感"
-      },
-      "createdAt": "2026-07-24T19:01:53.878Z"
     }
   ],
-  "updatedAt": "2026-07-26T20:34:56.056Z"
+  "updatedAt": "2026-07-26T21:36:41.550Z"
 }
