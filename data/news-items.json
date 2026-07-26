@@ -1,6 +1,118 @@
 {
   "items": [
     {
+      "id": "e9936e8eaef2",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "对父母彻底失望是怎样的感受？",
+      "url": "https://www.zhihu.com/question/267639920",
+      "info": "59 万热度",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-07-26T22:41:31.855Z"
+    },
+    {
+      "id": "8b91efab0109",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "为何《新三国》孙策那句「恭喜爹可以称帝了！」那么让人难绷？",
+      "url": "https://www.zhihu.com/question/1992997146002228643",
+      "info": "91 万热度",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "in-progress",
+        "name": "过程透明型",
+        "mood": "实诚的轻焦虑，自我怀疑"
+      },
+      "createdAt": "2026-07-26T22:40:22.301Z"
+    },
+    {
+      "id": "a2d00df16e6a",
+      "sourceId": "v2ex-share",
+      "sourceLabel": "V2EX",
+      "title": "分享这几个月学习转 AI 以及面试被拷打的经验， Data-Driven AI",
+      "url": "https://www.v2ex.com/t/1229983",
+      "info": "",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "manifesto",
+        "name": "观点宣言型",
+        "mood": "决绝、不退让，略冷"
+      },
+      "createdAt": "2026-07-26T22:39:13.002Z"
+    },
+    {
+      "id": "040d747a7ed7",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Private mission launches to extend life of out-of-gas communication satellites",
+      "url": "https://news.ycombinator.com/item?id=49018302",
+      "info": "4 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-07-26T22:38:03.780Z"
+    },
+    {
+      "id": "93b3fc0fc861",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Multiway Turing Machines (2021 pre-ai)",
+      "url": "https://news.ycombinator.com/item?id=49062259",
+      "info": "12 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "before-after",
+        "name": "前后对比型",
+        "mood": "释然中夹一点自嘲，时间的钝感"
+      },
+      "createdAt": "2026-07-26T22:36:54.892Z"
+    },
+    {
+      "id": "42fa929f0c9c",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Teaching Kids Forth – Anna Liberty",
+      "url": "https://news.ycombinator.com/item?id=49062700",
+      "info": "10 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "personal-trace",
+        "name": "个人经历拆解型",
+        "mood": "复盘的平静里藏一丝后怕"
+      },
+      "createdAt": "2026-07-26T22:35:46.306Z"
+    },
+    {
+      "id": "1ef21ab2c874",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "We have proof automation now",
+      "url": "https://news.ycombinator.com/item?id=49062291",
+      "info": "13 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "ab-compare",
+        "name": "对比分析型",
+        "mood": "中立、拉锯、平和"
+      },
+      "createdAt": "2026-07-26T22:34:37.643Z"
+    },
+    {
       "id": "33c919dcc473",
       "sourceId": "v2ex-share",
       "sourceLabel": "V2EX",
@@ -7887,119 +7999,7 @@
         "mood": "复盘的平静里藏一丝后怕"
       },
       "createdAt": "2026-07-24T20:28:58.474Z"
-    },
-    {
-      "id": "294436c7d2c5",
-      "sourceId": "zhihu",
-      "sourceLabel": "知乎",
-      "title": "商务部宣布为维护国家安全和利益，将 14 家欧盟实体列入出口管制管控名单，有哪些信息值得关注？",
-      "url": "https://www.zhihu.com/question/2064019046736175870",
-      "info": "231 万热度",
-      "hover": "根据《中华人民共和国出口管制法》和《中华人民共和国两用物项出口管制条例》等法律法规有关规定，为维护国家安全和利益，履行防扩散等国际义务，决定将拉法特集团等 14 家欧盟实体列入出口管制管控名单（见附件），并采取以下措施： 一、禁止出口经营者向上述 14 家实体出口两用物项，禁止境外组织和个人将原产于中华人民共和国的两用物项转移或提供给上述 14 家实体；正在开展的相关活动应当立即停止。 二、特殊情况下确需出口的，出口经营者应当向商务部提出申请。 本公告自公布之日起正式实施。 出口管制管控名单 （2026 年 7 月 24 日） 1. 拉法特集团（Lafert S.p.A.） 地址：Via J.F. Kennedy 43, San Donà di Piave, Venice, Italy 邮编：30027 2. 嘉耐特公司（Garnet S.r.l.） 地址：Via De Gasperi 31, Concorezzo (MB), Italy 邮编：20863 3. 辛德豪瑟材料有限公司（Sindlhauser Materials GmbH） 地址：Daimlerstraße 68, Kempten, Germany 邮编：87437 4. 莱茵金属公司（Rheinmetall AG） 地址：Rheinmetall Platz 1, Düsseldorf, Germany 邮编：40476 5. 安特拉科化工贸易有限公司（Antraco Chemie-Handelsgesellschaft mbH） 地址：Düsseldorfer Landstraße 17, Duisburg, Germany 邮编：47279 6.InPACT 公司（InPACT S.A.） 地址：265 Rue de la Volta, Saint-Marcel, France 邮编：73600 7. 三五实验室（III-V LAB） 地址：1 avenue Augustin Fresnel, Palaiseau, France 邮编：F-91767 8.Cavok UAS 公司（Cavok UAS） 地址：Allée des Cuirassiers, Sainte-Menehould, France 邮编：51800 9. 维戈尔光电公司（Vigo Photonics S.A.） 地址：129/133 Poznanska St., Ozarow Mazowiecki, Poland 邮编：05-850 10. 弗罗茨瓦夫理工大学（Politechnika Wroclawska） 地址：Wybrzeze Stanislawa Wyspianskiego 27, Wroclaw, Poland 邮编：50-370 11.IHC 公司（IHC Merwede Holding B.V.） 地址：Smitweg 6, Kinderdijk, The Netherlands 邮编：2961 12. 太脱拉卡车公司（TATRA TRUCKS a.s.） 地址：Areal Tatry 1450/1, Koprivnice, Czech Republic 邮编：74221 13.Opticoelectron 集团（Opticoelectron Group） 地址：Industrial Park Opticoeletron, Panagyurishte, Bulgaria 邮编：4500 14.Ekspla 公司（Ekspla UAB） 地址：Savanoriu Ave 237, Vilnius, Lithuania 邮编：LT-02300",
-      "reflection": "哎，刚刚看到商务部那则公告，说为了维护国家安全和利益，把14家欧盟实体列入了出口管制名单。这事儿让我突然想到，哎，我那天在地铁上，看到那几个外国人在聊天，我还特意多看了两眼。你说这世界大了，人和人真是各怀心思。\n\n哎，我就想着，咱们国家能这样做，肯定有它的道理。那三个步骤，首先就是维护国家安全，其次呢，就是履行国际义务，最后嘛，就是要保护咱们的利益。听起来挺合理。\n\n但说实话，心里还是挺不是滋味。我知道这样做是对的，但是，哎，我都成年了，心里还是有种说不出来的感觉。就像那天晚上，加班到快11点，我看着窗外，那个加班狗，就是我，就难受得不行。哎，这大概就是矛盾感吧。\n\n不过，也得承认，这事儿不是绝对的。毕竟，有时候，咱们也得权衡利弊，不能一竿子打死。就像那个特殊情况下的出口申请，这就得看具体情况了。哎，做人真是挺难的，既要理性，又要感性，还要有那份克制。",
-      "reflectionTemplate": {
-        "id": "framework",
-        "name": "框架输出型",
-        "mood": "冷静自信里夹着普通人的克制"
-      },
-      "createdAt": "2026-07-24T20:28:45.575Z"
-    },
-    {
-      "id": "39a851590e55",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Peekinduck",
-      "url": "https://www.producthunt.com/products/peekin-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 21",
-      "hover": "AI voice agents for B2B SaaS demos, onboarding & support",
-      "reflection": "今天在Product Hunt上看到Peekinduck，突然觉得自己好焦虑。你知道我在做什么吗？我正在做我的第45份工作计划，就是这45页的文档，写得我头晕脑胀的。看着电脑屏幕，我忽然想起这个AI，能自动帮B2B软件演示和用户引导，那要是用上了这个，我岂不是可以轻松不少？可是转念又一想，我这人就是不安心，生怕自己被AI取代了，我都成年了还是这个心态。\n\n我刚才在4号线的地铁上，旁边的大叔手机里突然响起一个AI助手的声音，那声音听起来还挺专业的。我心里突然一阵不安，好像我也应该跟上这时代的脚步，可我就是提不起劲来。看着窗外的灯光，我心里一阵矛盾，我懂这个社会需要进步，可是我就是难受。\n\n下一步打算做什么？可能我还是会继续加班到深夜，努力做好每一份工作计划，同时也要学会适应这些新兴的AI技术，说不定我哪天就用得上呢。哎，成年人的生活总是充满挑战，不是吗？",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-07-24T20:28:30.941Z"
-    },
-    {
-      "id": "47754cd01990",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Self-host your mail server",
-      "url": "https://news.ycombinator.com/item?id=49020751",
-      "info": "55 points",
-      "hover": "",
-      "reflection": "哎呀，看完这个Hacker News上关于自建邮件服务器的帖子，我有点不服气了。哎，你别说，大家都默认用第三方邮件服务，但自建邮件服务器难道就那么不堪吗？\n\n我记得有一次加班到深夜，正准备发邮件给客户，突然想起自家的邮件服务器。我当时心里还挺得意的，觉得自己挺潮的。结果，邮件发送出去后，好几个小时都没收到回复。我还以为是自己写错了地址，后来客户说邮件根本没收到。这可把我气坏了，自建邮件服务器居然还有这种问题。\n\n再说了，现在不都有现成的解决方案吗？比如说SMTP relay，再找个VPS来处理邮件，不就搞定了？而且，自建邮件服务器还能自定义域名，这多酷啊。我知道这样不对，但我就喜欢这种自己动手丰衣足食的感觉。\n\n总之，我觉得自建邮件服务器并不是那么糟糕，关键是要掌握好方法。当然了，如果只是为了方便，用现成的第三方邮件服务也没啥不好。不过，我还是会选择自己试试看。毕竟，生活不是只有一种选择，对吧？",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-07-24T20:28:16.777Z"
-    },
-    {
-      "id": "184b308b7510",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "BGP ORIGIN attribute manipulation and its impact on the Internet",
-      "url": "https://news.ycombinator.com/item?id=49039490",
-      "info": "17 points",
-      "hover": "",
-      "reflection": "半年前，我还傻乎乎地以为互联网就是高速、便捷、公平的。一年前的我，每天晚上加班到九点，挤在地铁13号线，看着窗外一闪而过的灯光，心里想着，这就是我为之奋斗的未来。但现在，读完这条Hacker News上的资讯，我突然意识到，原来互联网背后，还有这么多看不见的“游戏”。\n\n我记得有一次，我和一个搞网络技术的朋友聊天，他告诉我，互联网的很多问题，其实都是因为那些“核心ISP”在玩儿“BGP路由”的游戏。我当时还不太懂，只是觉得，这世界太复杂了，成年人的世界果然不是我想象的那样简单。\n\n现在想想，我都成年了，但还是会被这些看似遥远的事情戳到心里。我知道这样不对，但还是忍不住想多了解一点。就像我现在，坐在办公室里，看着窗外的夜景，心里想着，互联网的“游戏”还在继续，而我们，又能做些什么呢？\n\n我突然意识到，原来，成年人的世界，就像这个互联网一样，充满了各种规则和“游戏”。我们都在其中，既是玩家，也是观众。而我能做的，可能就是保持一颗清醒的头脑，不被这些“游戏”所迷惑。",
-      "reflectionTemplate": {
-        "id": "before-after",
-        "name": "前后对比型",
-        "mood": "释然中夹一点自嘲，时间的钝感"
-      },
-      "createdAt": "2026-07-24T20:28:02.024Z"
-    },
-    {
-      "id": "ec5e9d0552b3",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Unitree As2-W",
-      "url": "https://news.ycombinator.com/item?id=49038045",
-      "info": "51 points",
-      "hover": "",
-      "reflection": "哎呀，刚看完这条Hacker News上的Unitree As2-W的新闻，心里突然就冒出几个事儿来。\n\n首先，我最近在考虑要不要换手机，这个纠结啊，毕竟现在这手机更新换代太快了，看着看着又想换新的。这不，前两天刚看到地铁上那哥们儿拿着新手机，那配置，那屏幕，我这心里就痒痒的。\n\n其次，工作上的事也让人头疼。天天加班到九点十点，这身体可真顶不住。有时候想想，都这么大人了，还是得注意身体啊，可现实是，不加班不行啊，项目催得紧。\n\n最后，就是最近想学点新东西，提升一下自己。但是这事儿一提上日程，我就犯懒，总觉得时间不够用。\n\n如果只能选一个，我选手机。原因很简单——我这人吧，就是有点强迫症，看见好的东西就想换，尤其是手机这种日常用品，更新换代太频繁了，我得赶趟儿跟上潮流啊。",
-      "reflectionTemplate": {
-        "id": "curated-list",
-        "name": "清单型",
-        "mood": "实用、带一点强迫症的整理感"
-      },
-      "createdAt": "2026-07-24T20:27:47.484Z"
-    },
-    {
-      "id": "db9159dc3b4e",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "The small, real, original web",
-      "url": "https://news.ycombinator.com/item?id=49038977",
-      "info": "26 points",
-      "hover": "",
-      "reflection": "哎，这事儿啊，我一看那个标题就感觉不对劲。现在的互联网，谁不知道是个大染缸啊，还说什么“小、真、原创”的互联网？我呸，别逗了。\n\n我记得以前，我还在读大学那会儿，那会儿的互联网，那才叫简单。咱们就随便找个论坛，写点东西，发个帖子，那叫一个纯粹。那时候，大家都是真心实意地交流，不像现在，一打开网页，全是广告和垃圾信息。\n\n我那天晚上加班到十一点多，坐地铁回家。那地铁上的人，一个个都低着头，不是玩手机就是看电脑，谁也没心思跟谁搭话。我就想，哎，这要是回到那个小众的互联网时代，大家还能聊聊天，说说话，那得多好。\n\n可是，我又想，人都这样了，我还能怎么办？我懂这个道理，但还是难受。这世道，就是这样，你越想回到过去，现实就越给你一记响亮的耳光。我还能说什么呢？只能硬着头皮往前走，适应这个变化的世界吧。哎，人啊，真是矛盾。",
-      "reflectionTemplate": {
-        "id": "manifesto",
-        "name": "观点宣言型",
-        "mood": "决绝、不退让，略冷"
-      },
-      "createdAt": "2026-07-24T20:27:32.108Z"
-    },
-    {
-      "id": "6367dac44fae",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Extending Polars with Rust Expression Plugins",
-      "url": "https://news.ycombinator.com/item?id=48998589",
-      "info": "29 points",
-      "hover": "",
-      "reflection": "哎，今天看到这条Hacker News上的资讯，说是用Rust语言扩展了Polars库，这名字听起来就挺高级的。突然想起以前在学校的时候，那时候电脑课学编程，老师就是用Rust教的，那时候感觉好新鲜，现在再看，还挺怀念的。\n\n我记得有一次，我们小组在电脑实验室做项目，那时候的灯光昏暗，我们围坐在一起，讨论着代码。有个同学突然说：“咱们得找个好方法来提高效率。”那时候的我们，都是一群对未来充满期待的小年轻。现在想想，那时候的我们，真是简单啊。\n\n现在呢，每天加班到很晚，地铁上的人多得像沙丁鱼罐头，我看着窗外，心里却总觉得少了点什么。那天晚上，我在1号线地铁上，旁边坐着一个姑娘，她低头刷着手机，屏幕上闪烁着各种信息。我突然想起，我们那时候，好像也没那么多烦恼，简单点，快乐点。\n\n哎，说起来，我懂这个社会，也知道该努力工作，可心里就是难受。就像那个Rust插件，听起来很高大上，但离我们的生活好像有点远。有时候，我还是会怀念那个简单、充满期待的日子。",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-07-24T20:27:18.201Z"
     }
   ],
-  "updatedAt": "2026-07-26T21:36:41.550Z"
+  "updatedAt": "2026-07-26T22:41:33.785Z"
 }
