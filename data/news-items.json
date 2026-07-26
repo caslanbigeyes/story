@@ -1,6 +1,86 @@
 {
   "items": [
     {
+      "id": "87f2f466ebaf",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "It's not empowering to hand off the details",
+      "url": "https://news.ycombinator.com/item?id=49060592",
+      "info": "8 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "before-after",
+        "name": "前后对比型",
+        "mood": "释然中夹一点自嘲，时间的钝感"
+      },
+      "createdAt": "2026-07-26T20:34:52.565Z"
+    },
+    {
+      "id": "bb9b6f0bf068",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Thoughts on Integers (2023)",
+      "url": "https://news.ycombinator.com/item?id=49009582",
+      "info": "4 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "in-progress",
+        "name": "过程透明型",
+        "mood": "实诚的轻焦虑，自我怀疑"
+      },
+      "createdAt": "2026-07-26T20:33:43.645Z"
+    },
+    {
+      "id": "dd551a7afb4f",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Using ThinkPad T480 as a mobile phone",
+      "url": "https://news.ycombinator.com/item?id=49059977",
+      "info": "41 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "manifesto",
+        "name": "观点宣言型",
+        "mood": "决绝、不退让，略冷"
+      },
+      "createdAt": "2026-07-26T20:32:34.485Z"
+    },
+    {
+      "id": "d80f5c02c806",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Building the Grace Cathedral Experience",
+      "url": "https://news.ycombinator.com/item?id=49008834",
+      "info": "14 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-07-26T20:31:25.493Z"
+    },
+    {
+      "id": "81c225e92dc5",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "What does GitHub's security team even do?",
+      "url": "https://news.ycombinator.com/item?id=49061769",
+      "info": "20 points",
+      "hover": "",
+      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
+      "reflectionTemplate": {
+        "id": "ab-compare",
+        "name": "对比分析型",
+        "mood": "中立、拉锯、平和"
+      },
+      "createdAt": "2026-07-26T20:30:16.971Z"
+    },
+    {
       "id": "232345ebdd99",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7919,87 +7999,7 @@
         "mood": "释然中夹一点自嘲，时间的钝感"
       },
       "createdAt": "2026-07-24T19:01:53.878Z"
-    },
-    {
-      "id": "4af1cdd0edf9",
-      "sourceId": "zhihu",
-      "sourceLabel": "知乎",
-      "title": "Shams：勒布朗 - 詹姆斯 2 年 800 万签约 76 人，第二年球员选项，如何评价这一操作？",
-      "url": "https://www.zhihu.com/question/2064134421758971967",
-      "info": "138 万热度",
-      "hover": "勒布朗 - 詹姆斯刚刚宣布了自己在自由市场的决定，根据 Shams Charania 的报道，詹姆斯 2 年 800 万签约 76 人，第二年球员选项！",
-      "reflection": "哎，看了这条关于勒布朗·詹姆斯签约76人的新闻，突然想起了自己当年那个热血沸腾的篮球梦。那时候，我也是立志要成为下一个NBA球星，每天晚上都练到半夜，可现实呢，唉，真是让人感慨。\n\n说起来，那时候我最大的问题就是太想一步到位了。总想着一蹴而就，结果呢，不是受伤就是状态低迷。现在想想，当年要是能稳扎稳打，一步一个脚印，可能结果会不一样。\n\n比如说，我当时应该每天至少保证8小时的睡眠，可那时候加班到深夜，还想着要锻炼身体，结果第二天不是累得跟狗一样，就是状态不佳。现在我明白了，身体是革命的本钱，没有健康的身体，一切都是空谈。\n\n还有，我应该把更多的时间放在基础训练上，而不是盲目追求高难度的动作。基础不牢，地动山摇啊！现在想想，真是后悔当初没把基础打牢。\n\n我以前在哪一步踩过坑？大概就是在追求速度和表现的同时，忽略了身体的恢复和基础训练吧。唉，这道理我懂，但还是难受。以后，我得更加沉稳，更加克制，一步一个脚印地去实现自己的梦想。",
-      "reflectionTemplate": {
-        "id": "how-to",
-        "name": "教学实操型",
-        "mood": "沉稳、克制的说教感，干净"
-      },
-      "createdAt": "2026-07-24T19:01:41.215Z"
-    },
-    {
-      "id": "6e7118e69501",
-      "sourceId": "zhihu",
-      "sourceLabel": "知乎",
-      "title": "王虹获奖感言「很幸运在合适时间遇见合适的人，得到正确引导」，你怎么看？",
-      "url": "https://www.zhihu.com/question/2063821607458576344",
-      "info": "233 万热度",
-      "hover": "王虹获奖后感言：很幸运能够在合适的时间遇见合适的人，得到正确的引导",
-      "reflection": "那天晚上加班到九点，地铁二号线的人特别多，我站在车厢角落里，手机上刷到这条消息。王虹获奖感言里的“很幸运”，让我想起自己曾经的迷茫和困惑。我好像也遇到过那些“合适的人”，可那时候，我却错过了。\n\n我记得那是个下雨天，我站在办公室门口，看着窗外的雨滴，和同事小王聊天。我说，感觉自己好像总是走在错误的道路上。小王拍了拍我的肩膀，说，有时候，错过也是一种成长。可我那时候不懂，以为那就是我命中的坎坷。\n\n现在回想起来，我突然意识到，那些坎坷其实也是指引我前行的路标。就像地铁里的人流，每个人都是那个“合适的人”，他们在不同的时间，用不同的方式，引导我找到了自己的方向。\n\n我都成年了，还是会有那种“矛盾感”，知道这样不对，但还是控制不住自己的情绪。也许这就是生活吧，在平静的复盘里，藏着一丝后怕。但我也知道，只有经历过这些，我才能更加珍惜现在。",
-      "reflectionTemplate": {
-        "id": "personal-trace",
-        "name": "个人经历拆解型",
-        "mood": "复盘的平静里藏一丝后怕"
-      },
-      "createdAt": "2026-07-24T19:01:24.842Z"
-    },
-    {
-      "id": "b507363505cd",
-      "sourceId": "zhihu",
-      "sourceLabel": "知乎",
-      "title": "如何看待「詹姆斯 2 年 800 万美元加盟 76 人，第 2 年球员选项」，老詹这一决定的未来前景如何 ？",
-      "url": "https://www.zhihu.com/question/2064132609781798497",
-      "info": "254 万热度",
-      "hover": "Shams 报道：勒布朗 - 詹姆斯 2 年 800 万签约 76 人，第二年球员选项。 大家对老詹这个选择感到意外吗？",
-      "reflection": "哎，今儿晚上看到老詹加盟76人的消息，突然心里就有点不是滋味。想象着那天晚上，我在1号线地铁上，车厢里昏黄的灯光，我旁边的哥们儿在跟人打电话，那语气，就跟这消息一样，突然就来了个反转。我听着，心里就琢磨，这老詹怎么就签了800万呢？这要是搁以前，他哪会这么便宜啊！\n\n然后我就想起了自己，也是啊，我都这把年纪了，还在为了生活奔波，加班到深夜，看着窗外那些灯火阑珊，心里就有点酸酸的。我知道这样不对，我还是会羡慕那些能够随心所欲的人，就像老詹一样，哪怕只是800万，也是别人奋斗一辈子都达不到的高度。\n\n我就这么想着，心里就有点矛盾，我都成年了，但还是难受。有时候想想，是不是该放下那些不切实际的幻想，好好干自己的活儿，可就是放不下。哎，这就是生活吧，总有些东西，让我们心里痒痒的，却又抓不到。",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-07-24T19:01:12.388Z"
-    },
-    {
-      "id": "de0ab5d806bb",
-      "sourceId": "v2ex-share",
-      "sourceLabel": "V2EX",
-      "title": "Claude Opus 5 发布了！",
-      "url": "https://www.v2ex.com/t/1229668",
-      "info": "",
-      "hover": "",
-      "reflection": "哎，这Claude Opus 5发布了，你说我稀奇不稀奇？我看了那个帖子，心里就一个感觉，就是“哎，这不又是一个新版本吗？”说实话，我都快审美疲劳了。你说我该不该更新？我知道更新有新功能，但我就是提不起劲。\n\n我记得上次更新，我还特意去研究了半天，结果呢？就那么几个小改动，能有多大用？我就在想，这玩意儿是不是越更新越没劲了？就像我每天坐地铁，从2号线到4号线，从4号线到13号线，就那么几站地，每天来回，不腻味吗？\n\n我就想啊，这科技发展得这么快，我们这些普通人，是不是得跟上节奏？可是一想到又要花时间研究，又要适应新变化，心里就堵得慌。我懂，这社会就是得不断进步，可我就是不愿意成为那个“不断进步”的牺牲品。\n\n我就在想，这Claude Opus 5，它到底能给我带来什么？是新鲜感，还是便利？我有点怀疑。哎，我就这样，矛盾得很。我知道这样不对，但还是不愿意轻易更新。我都成年了，但还是个孩子心性，就喜欢新鲜玩意儿，但又害怕新鲜玩意儿带来的麻烦。\n\n我就这样，站在原地，看着窗外的夜景，心里五味杂陈。我知道，这世界不会因为我的不更新而停止转动，但我就是不愿意随波逐流。我就这样，决绝地站在自己的立场上，不退让。",
-      "reflectionTemplate": {
-        "id": "manifesto",
-        "name": "观点宣言型",
-        "mood": "决绝、不退让，略冷"
-      },
-      "createdAt": "2026-07-24T19:00:57.705Z"
-    },
-    {
-      "id": "9aa7caa945a7",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "The hardest way to make a GIF",
-      "url": "https://news.ycombinator.com/item?id=49032126",
-      "info": "7 points",
-      "hover": "",
-      "reflection": "哎，看完了这条Hacker News上的资讯，我那叫一个不服气啊。你说，这世界上谁没想过做个GIF？可这资讯一出来，就让我感觉，搞GIF原来比造宇宙还难啊！\n\n我这不是抬杠，真事。前两天我在地铁里，看到旁边一个哥们儿拿着手机刷，屏幕上就是一个动图，挺有意思。我就想，哎呀，这GIF不就那么回事儿吗？结果呢？这资讯里说的，制作GIF的过程复杂到我都想放弃了。我都成年了，还在为这玩意儿犯难，这不科学啊！\n\n我就想，是不是我自己太笨了？可转念又一想，这世界上的事儿，谁规定了一定要这么干？比如那个动图，要是我自己拍、自己剪辑，肯定有不一样的味道。就像我加班到深夜，看着窗外的那盏路灯，虽然我知道生活不应该是这样，可我还是难受。我都这样了，还不许我有个简单的梦想吗？\n\n哎，所以说，这个世界上最难的，不是技术，而是认知。我们总以为大家都默认的道理，其实未必就是真理。这个资讯，让我又看到了一丝希望，也许，我能找到属于自己的GIF之路呢。",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-07-24T19:00:38.925Z"
     }
   ],
-  "updatedAt": "2026-07-26T19:30:32.403Z"
+  "updatedAt": "2026-07-26T20:34:56.056Z"
 }
