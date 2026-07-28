@@ -1,6 +1,150 @@
 {
   "items": [
     {
+      "id": "e17334fb56c8",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "三十岁左右的你，正处于什么状态？",
+      "url": "https://www.zhihu.com/question/64072861",
+      "info": "81 万热度",
+      "hover": "本题已收录至知乎圆桌 30 岁人生攻略，更多「30 岁」相关话题欢迎关注讨论。 80 后的我们，应该已经步入婚姻的殿堂，组建了家庭，或者有了孩子，生活和工作上都遇到了很大的压力…（当然也有很多因为各种原因还未步入结婚的进程）时常感叹一个人的命运有时候真的轮不到自己掌握，对于现在，明天、未来、诸多惆怅。 这个时候的你，是什么状态呢？做过什么？在做什么？又想做什么？四十岁左右（38～42）的你，现在处于什么状态？",
+      "reflection": "哎，今天看了一条知乎上的文章，标题是“三十岁左右的你，正处于什么状态？”，突然感觉自己好焦虑。你知道，我这人就是那种有点强迫症，总爱列清单的人。比如说，我最近就特别在意这三件事。\n\n第一，每天下班后，看着窗外的路灯，想着自己还单着，心里就有点不是滋味。我明明是个挺优秀的 guy，怎么就找不到合适的另一半呢？\n\n第二，每次地铁上，看着周围的人都那么忙，而我好像除了工作还是工作，心里就觉得自己是不是太无趣了？\n\n第三，最近老感觉自己精力不济，有时候加班到深夜，还是觉得效率低，心里就有点自责。\n\n如果只能选一个，我选第一，原因很简单——我害怕自己就这样错过了爱情。我都这个年纪了，还是孤身一人，这不科学啊！可是，我也知道，急不来，得慢慢来。哎，纠结啊！",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-07-28T21:41:34.855Z"
+    },
+    {
+      "id": "f47b13f40da1",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "如何评价 7 月 29 日上映的电影《蜘蛛侠: 崭新之日》？",
+      "url": "https://www.zhihu.com/question/2065624050513208016",
+      "info": "97 万热度",
+      "hover": "电影《蜘蛛侠：崭新之日》已经在中国大陆地区结束了首映，大家观感如何？",
+      "reflection": "哎哟，你说这蜘蛛侠电影，我一听名字就感觉老套了。大家都说蜘蛛侠系列就是青春和热血的象征，可我看完《蜘蛛侠：崭新之日》后，心里就是一愣。你说，这电影里的小蜘蛛不就只是个中二少年吗？我就在想，这青春热血哪儿去了？\n\n记得那天晚上，我加班到九点，地铁上人特别多。我挤在角落里，耳机里放的是《蜘蛛侠》的主题曲，感觉还挺热血的。然后我一抬头，看到旁边一个大叔拿着手机刷知乎，还点开了那个《蜘蛛侠：崭新之日》的问题。我就好奇地看了眼，结果……哎，我懂这道理但还是难受。\n\n我懂，电影是艺术，艺术要创新，要颠覆。但是，颠覆过头了，是不是就失去了一些原有的味道？就像那个大叔，他的青春可能就不是这样的热血和叛逆。我都不好意思说他了，毕竟我都成年了，还是这么抬杠。\n\n哎，我也不知道怎么说了。反正，看完这部电影，我有点不爽。我觉得，青春不应该是这样的。就像那个大叔，他的青春可能就是平凡而真实的，而不是电影里那样光鲜亮丽。我猜，这就是我想说的吧。",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-07-28T21:41:16.037Z"
+    },
+    {
+      "id": "775db05bb5f5",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Hulios: An eBPF-powered, transparent Tor gateway for Linux",
+      "url": "https://news.ycombinator.com/item?id=49089045",
+      "info": "11 points",
+      "hover": "",
+      "reflection": "哎，看到这个Hulios的消息，我一下子就被那个“透明Tor网关”给吸引了。你知道吧，我一直对网络安全这块挺感兴趣的，但这东西又太专业了，我这种门外汉看得云里雾里的。\n\n首先，我得承认，我对这个eBPF技术有点懵。然后我就在想，这玩意儿要是能普及开来，对我们这些普通人来说，上网是不是就能更安心一点？就像我在地铁上刷个微博，不用提心吊胆地担心隐私泄露。\n\n然后我又开始分析，这东西要真有用，第一步得确保它安全可靠，第二步得保证它的易用性，最后一步就是看它能不能普及到广大用户中去。不过，我也得承认，我这种想法挺理想化的。\n\n不过，说到底，我还是有点矛盾。我知道，技术进步是好事，但我又担心，这种透明网关会不会让一些不良分子更容易下手？就像我加班到深夜，看着窗外的城市灯火通明，心里五味杂陈。\n\n哎，我懂这道理，但还是难受。这种矛盾感，估计得等到技术真正普及，我们才能慢慢体会吧。",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-07-28T21:40:57.484Z"
+    },
+    {
+      "id": "9b9f478305f9",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Recursion is lying to you",
+      "url": "https://news.ycombinator.com/item?id=49089406",
+      "info": "8 points",
+      "hover": "",
+      "reflection": "哎，看了这条Hacker News上的资讯，心里突然有点不是滋味。你说这递归算法，写起来简单，可是一运行，哎，问题就来了。我这不正写着报告呢，写着写着，突然想到一个递归的问题，就有点犯难了。\n\n我这是在地铁上，刚从公司出来，到家还得一个多小时。心里想着，这递归问题，理论上我知道该怎么解决，可一想到那些复杂的关系，就头大。我懂，递归效率低，容易栈溢出，可就是有点难以割舍。\n\n刚才在地铁上，旁边一个小姑娘拿着手机，玩得津津有味。我看着她，心里想着，这年轻人，真是不知道生活的艰辛。我呢，都这个年纪了，还是得面对这些实际问题。我知道这样不对，但还是喜欢写点复杂的算法，图个新鲜感。\n\n哎，下一步打算做什么？我得赶紧把这个报告写完，然后好好研究一下递归的问题。这生活，有时候真让人矛盾。",
+      "reflectionTemplate": {
+        "id": "in-progress",
+        "name": "过程透明型",
+        "mood": "实诚的轻焦虑，自我怀疑"
+      },
+      "createdAt": "2026-07-28T21:40:42.216Z"
+    },
+    {
+      "id": "0759e9df86e0",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Show HN: How far do I have to go to run into 100k people?",
+      "url": "https://news.ycombinator.com/item?id=49028358",
+      "info": "11 points",
+      "hover": "",
+      "reflection": "哎，你信不信，昨天晚上我在地铁一号线，看着那个密密麻麻的人头，突然就想起了Hacker News上的那个帖子，说怎么才能遇到一万人。当时就傻了，想想我自己，每天在这座城市里穿梭，每天都能遇到那么多人，可真正有交集的又有几个呢？ \n\n然后我就想起了自己加班到深夜的场景，那个灯火通明的办公室，大家都在各自忙着自己的事情，我甚至能感觉到每个人身上的疲惫。突然觉得，我们就像那些跑马拉松的人，都在拼命往前跑，却没有人停下来，哪怕只是短暂地看看身边的人群。\n\n我突然想起，上次和朋友吃饭，他抱怨说自己每天都在和各种人打交道，却感觉越来越孤独。我当时还想反驳他，可现在想想，自己不也是一样吗？我们都在这个大都市里奔跑，却不知道终点在哪里。\n\n哎，可能这就是生活吧，一边奔跑，一边寻找属于自己的那一份温暖。",
+      "reflectionTemplate": {
+        "id": "story-hook",
+        "name": "故事钩型",
+        "mood": "怀旧、怔忡、怅然"
+      },
+      "createdAt": "2026-07-28T21:40:21.933Z"
+    },
+    {
+      "id": "2a4e3a261cb3",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Interview with Boris Cherny [video]",
+      "url": "https://news.ycombinator.com/item?id=49077040",
+      "info": "13 points",
+      "hover": "",
+      "reflection": "唉，刚看到这条Hacker News上的访谈，Boris Cherny那家伙说了一番话，让我有点感触。他说啊，用AI的时候，先别急着自定义一堆设置，直接用最新模型试试，可能会给你惊喜。\n\n我就想起自己，以前用AI写东西的时候，总喜欢搞个什么CLAUDE.md，技能点一堆，好像这样才能写出好文章。结果呢，有时候花了老半天，出来的东西还不见得怎么样。后来想想，其实我就是自己给自己找了个心理安慰，觉得自己好像还在做点什么似的。\n\n比如，前两天我在地铁上，看着窗外的人群，突然想起那会儿自己加班到深夜，还在那里捣鼓这些乱七八糟的东西。我都这么大了，还弄这个，真是挺逗的。我知道这样不对，但还是忍不住想试试新模型，看看能不能给我点惊喜。\n\n哎呀，我以前在哪一步踩过坑啊？可能就是那个“自我安慰”的阶段吧。",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-07-28T21:39:57.830Z"
+    },
+    {
+      "id": "a87dc2cccdcd",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "I sent Claude Opus 5 '–-' and it wrote me 5k tokens about a cartographer",
+      "url": "https://news.ycombinator.com/item?id=49089689",
+      "info": "9 points",
+      "hover": "",
+      "reflection": "哎，我刚看到这条Hacker News上的资讯，说有人用Claude Opus 5生成了一段5千字关于制图家的文本，我一下就想到了自己最近几件挺纠结的事。比如，我最近在地铁上看到那些广告，总是忍不住想，这文案是怎么想出来的？还有，我每次加班到深夜，看着电脑屏幕，心里就想，这些代码，到底是为了什么写的？再比如，和同事聊天的时候，提到一些新技术，我总是觉得自己好像落伍了。\n\n如果只能选一个，我选加班到深夜那件事。原因很简单——我都成年了，但还是觉得时间不够用，想多学点东西，但又觉得这样不对，毕竟身体是革命的本钱嘛。就像那个AI写出来的制图家故事，虽然看不懂，但想想，这要是能帮我解决一些工作上的难题，那多好呀。哎，生活就是这样，矛盾又真实。",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-07-28T21:39:43.371Z"
+    },
+    {
+      "id": "097bacffc6d1",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "The Fabled Flatbreads of Uzbekistan (2015)",
+      "url": "https://news.ycombinator.com/item?id=49036460",
+      "info": "43 points",
+      "hover": "",
+      "reflection": "哎哟，说起来，我最近看了一个Hacker News上的帖子，标题是“乌兹别克斯坦的传说饼”，讲的是一些外国美食文化。本来我也就随便看看，结果没想到，一条评论戳到了我。\n\n那个评论说，不管哪个地方，菜系基本上都是那四样东西的组合——大米、蔬菜、种子油、还有鸡蛋，然后再加上当地的特色。这让我突然想到，哎，好像还真是这么回事儿啊。你看，咱们中国人做菜，不也是这样吗？\n\n然后我就想起了上次加班到深夜，在地铁上啃的那个三明治，简单到不能再简单，就是面包、肉、生菜和一点沙拉酱。其实想想，这不也就是这四样东西的组合吗？但是，我就是觉得，这味道怎么就那么对味儿呢？\n\n再想想，我懂这道理但还是难受。我都成年了，还是会被这种简单又熟悉的味道给打败。你说说，这生活，为什么就不能复杂一点呢？不过话说回来，简单点也挺好，不用想太多，吃完就舒服。嘿，这矛盾感，真是让人说不清啊。",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-07-28T21:39:26.584Z"
+    },
+    {
+      "id": "3caa98cf8bc0",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "OpenAI just open-sourced Codex Security",
+      "url": "https://news.ycombinator.com/item?id=49089755",
+      "info": "56 points",
+      "hover": "",
+      "reflection": "哎，看了这条OpenAI开源Codex Security的新闻，感觉有点意思。A是OpenAI开源了这个东西，B是阿里巴巴也开源了类似的CLI代码审查工具。A和B，一个在硅谷，一个在杭州，感觉就像是中国和美国的科技巨头在暗中较劲似的。\n\n说差异吧，A是开源的，B是商业的；A是针对安全领域，B是通用代码审查；A刚开源，B可能已经商业化应用了。感觉就是两个不同方向的产品，各有各的玩法。\n\n那啥情况下选哪个呢？如果是个人开发者，或者对安全有特殊需求，那A可能更合适；如果是企业，追求效率和质量，那B可能更实在。不过，限定条件是，你得有足够的资源去适应和利用这些工具。\n\n想到前两天加班到深夜，在地铁上看着窗外，突然觉得，这科技发展得真快，有时候我都不知道该跟上了。我懂这道理但还是难受，感觉自己就像个跟不上时代的老人。哎，矛盾感啊。",
+      "reflectionTemplate": {
+        "id": "ab-compare",
+        "name": "对比分析型",
+        "mood": "中立、拉锯、平和"
+      },
+      "createdAt": "2026-07-28T21:39:04.150Z"
+    },
+    {
       "id": "baa069e18723",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7855,151 +7999,7 @@
         "mood": "释然中夹一点自嘲，时间的钝感"
       },
       "createdAt": "2026-07-26T19:30:29.807Z"
-    },
-    {
-      "id": "52e919a9db2a",
-      "sourceId": "zhihu",
-      "sourceLabel": "知乎",
-      "title": "LPL2026 赛季第三赛段组内赛 AL 1:2 BLG，如何评价这场比赛？",
-      "url": "https://www.zhihu.com/question/2064790995586306393",
-      "info": "137 万热度",
-      "hover": "",
-      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-07-26T19:29:21.404Z"
-    },
-    {
-      "id": "bb763ee441e3",
-      "sourceId": "zhihu",
-      "sourceLabel": "知乎",
-      "title": "继《争洛阳》后《群星闪耀时》也官宣撤档，这个暑期档怎么一部部片子都跑了？",
-      "url": "https://www.zhihu.com/question/2064850023011935595",
-      "info": "210 万热度",
-      "hover": "[图片]",
-      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
-      "reflectionTemplate": {
-        "id": "manifesto",
-        "name": "观点宣言型",
-        "mood": "决绝、不退让，略冷"
-      },
-      "createdAt": "2026-07-26T19:28:12.771Z"
-    },
-    {
-      "id": "c8cde0439dce",
-      "sourceId": "v2ex-share",
-      "sourceLabel": "V2EX",
-      "title": "5 年 PHPer，现在学 Java 还来得及吗？",
-      "url": "https://www.v2ex.com/t/1229977",
-      "info": "",
-      "hover": "",
-      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-07-26T19:27:04.312Z"
-    },
-    {
-      "id": "8299b76443ac",
-      "sourceId": "v2ex-share",
-      "sourceLabel": "V2EX",
-      "title": "[开源分享] Mac 优先的 Claude Code 桌面工作台。另支持菜单栏额度监控,桌面小组件等扩展能力",
-      "url": "https://www.v2ex.com/t/1229978",
-      "info": "",
-      "hover": "",
-      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
-      "reflectionTemplate": {
-        "id": "how-to",
-        "name": "教学实操型",
-        "mood": "沉稳、克制的说教感，干净"
-      },
-      "createdAt": "2026-07-26T19:25:56.302Z"
-    },
-    {
-      "id": "b0b89f85eff4",
-      "sourceId": "v2ex-share",
-      "sourceLabel": "V2EX",
-      "title": "图片转马赛克网站",
-      "url": "https://www.v2ex.com/t/1229980",
-      "info": "",
-      "hover": "",
-      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
-      "reflectionTemplate": {
-        "id": "framework",
-        "name": "框架输出型",
-        "mood": "冷静自信里夹着普通人的克制"
-      },
-      "createdAt": "2026-07-26T19:24:48.184Z"
-    },
-    {
-      "id": "4597ae401b21",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Calling all open source maintainers working with Ruby",
-      "url": "https://news.ycombinator.com/item?id=49060277",
-      "info": "7 points",
-      "hover": "",
-      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
-      "reflectionTemplate": {
-        "id": "personal-trace",
-        "name": "个人经历拆解型",
-        "mood": "复盘的平静里藏一丝后怕"
-      },
-      "createdAt": "2026-07-26T19:23:39.527Z"
-    },
-    {
-      "id": "f648af4740f1",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "French firefighters face 'pyrocumulonimbus' for first time",
-      "url": "https://news.ycombinator.com/item?id=49060495",
-      "info": "27 points",
-      "hover": "",
-      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-07-26T19:22:30.661Z"
-    },
-    {
-      "id": "54e5707c2c5c",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Sum of Cubes via Difference Tables",
-      "url": "https://news.ycombinator.com/item?id=49020647",
-      "info": "7 points",
-      "hover": "",
-      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-07-26T19:21:22.093Z"
-    },
-    {
-      "id": "51dd2a57ef0a",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Introduction to Data-Oriented Design [pdf]",
-      "url": "https://news.ycombinator.com/item?id=49060724",
-      "info": "3 points",
-      "hover": "",
-      "reflection": "> ⚠️ AI 读后感失败（HTTP 401）：glm 的 API Key 无效。",
-      "reflectionTemplate": {
-        "id": "curated-list",
-        "name": "清单型",
-        "mood": "实用、带一点强迫症的整理感"
-      },
-      "createdAt": "2026-07-26T19:20:14.104Z"
     }
   ],
-  "updatedAt": "2026-07-28T20:03:25.595Z"
+  "updatedAt": "2026-07-28T21:41:37.749Z"
 }
