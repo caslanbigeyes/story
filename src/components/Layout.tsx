@@ -12,6 +12,7 @@ interface LayoutProps {
 const NAV_ITEMS = [
   { href: "/", label: "首页", en: "Home" },
   { href: "/news", label: "读后感", en: "Dispatches" },
+  { href: "/lab", label: "实验室", en: "Lab" },
   { href: "/tags", label: "标签", en: "Index" },
   // { href: "/admin", label: "写作", en: "Compose" },
 ];

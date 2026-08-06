@@ -1,0 +1,172 @@
+{
+  "automationId": "15-webgl",
+  "cadenceMinutes": 15,
+  "startedAt": "2026-08-05T16:53:26+0800",
+  "currentSlot": 16,
+  "completedSlots": 16,
+  "lastUpdatedAt": "2026-08-05T20:54:44+0800",
+  "lastSummary": "第 16 格已完成：Three.js 场景增加 Deploy readiness checklist 与 Final portfolio package，完成 16 个 15 分钟 WebGL/Three.js 训练单元闭环；生产 build 已尝试，最后被既有 tags 导出路径问题阻塞。",
+  "nextAction": "4 小时 WebGL/Three.js 首轮训练已完成；后续可进入第二阶段：先修复既有 `/tags/Life.html` build 导出问题，再做真实 GLB 模型加载、Draco/Meshopt/KTX2 压缩和线上部署。",
+  "history": [
+    {
+      "slot": 1,
+      "time": "00:00-00:15",
+      "title": "确认 GPU 画布链路",
+      "status": "completed",
+      "completedAt": "2026-08-05T17:08:14+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 中保留原生 WebGL 渐变三角形，并新增 GPU 管线验收面板。",
+      "verification": "执行 `npx tsc --noEmit`；本地路由 `/lab/15-minute-webgl-plan` 返回 200；WebGL canvas 画出非空白渐变三角形。",
+      "troubleshooting": "本轮重点排查 WebGL context 获取、shader 编译、program 链接、buffer 上传、attribute 绑定和 drawArrays 绘制链路。"
+    },
+    {
+      "slot": 2,
+      "time": "00:15-00:30",
+      "title": "理解顶点属性",
+      "status": "completed",
+      "completedAt": "2026-08-05T17:23:14+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 中为 WebGL 三角形加入顶点调色盘、交错内存表格和 attribute 布局说明。",
+      "verification": "切换调色盘后，WebGL buffer 使用同样的 5-float stride 重新上传，画布颜色插值实时变化；页面展示 `a_position` offset 0、`a_color` offset 8 bytes。",
+      "troubleshooting": "本轮重点排查 vertexAttribPointer 的 stride/offset 是否和 Float32Array 排列一致，避免颜色属性错读成位置或出现黑屏。"
+    },
+    {
+      "slot": 3,
+      "time": "00:30-00:45",
+      "title": "用 uniform 驱动动画",
+      "status": "completed",
+      "completedAt": "2026-08-05T17:38:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 中为 WebGL 旋转三角形加入暂停/继续、0.5x/1x/2x 速度控制、2x2 旋转矩阵读数和 uniform 验收面板。",
+      "verification": "选择第 3 格后，三角形由 `u_angle` 驱动旋转；点击暂停会停止 angle 累积；切换速度会改变旋转速度；页面展示 cos/sin 矩阵。",
+      "troubleshooting": "本轮重点排查 uniform 名称是否被 shader 优化、gl.uniform1f 是否在 drawArrays 前调用、暂停时是否仍错误累积角度。"
+    },
+    {
+      "slot": 4,
+      "time": "00:45-01:00",
+      "title": "写第一个片元特效",
+      "status": "completed",
+      "completedAt": "2026-08-05T17:53:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 中为 shader 波纹加入 frequency、speed、intensity 三组 uniform 参数控制，并补充 fragment shader 验收面板。",
+      "verification": "选择第 4 格后，两个全屏三角形铺满画布；切换 frequency/speed/intensity 后，波纹密度、运动速度和亮度强度实时变化；页面展示 gl_FragCoord、u_resolution、distance field、sin wave 和 mix 的验收说明。",
+      "troubleshooting": "本轮重点排查 u_resolution 是否随 canvas 像素尺寸更新、片元坐标是否按最短边归一化、uniform 参数是否在 drawArrays 前上传，避免移动端拉伸或波纹失控。"
+    },
+    {
+      "slot": 5,
+      "time": "01:00-01:15",
+      "title": "Scene / Camera / Renderer",
+      "status": "completed",
+      "completedAt": "2026-08-05T18:09:14+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 中增强 Three.js 场景 demo：加入 AxesHelper，并补充 scene graph、camera/renderer contract、Three.js scene check 三组验收面板。",
+      "verification": "选择第 5 格后，TorusKnot、GridHelper、AxesHelper、双点光和 OrbitControls 正常运行；页面展示 PerspectiveCamera fov/near/far/position、renderer pixelRatio 策略和 resize 合同。",
+      "troubleshooting": "本轮重点排查 renderer.setSize 与 camera.aspect 是否同步、OrbitControls 是否每帧 update、对象卸载时是否 traverse dispose，避免热更新和路由切换后的资源泄漏。"
+    },
+    {
+      "slot": 6,
+      "time": "01:15-01:30",
+      "title": "材质和光照的业务效果",
+      "status": "completed",
+      "completedAt": "2026-08-05T18:24:14+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 中为 Three.js 场景加入 material polished/balanced/matte、light soft/studio/dramatic 控制，并补充 PBR material lab 与 Material and lighting check 面板。",
+      "verification": "选择第 6 格后，切换 material 会改变 metalness/roughness，切换 light 会改变 key/rim/ambient 强度；runtime note 展示当前 PBR 预设和光照预设。",
+      "troubleshooting": "本轮重点排查材质参数是否每帧同步到 MeshStandardMaterial、环境光是否过曝、点光源强度是否过高导致高光失真，以及移动端 DPR 下高光是否仍可观察。"
+    },
+    {
+      "slot": 7,
+      "time": "01:30-01:45",
+      "title": "点击模型区域",
+      "status": "completed",
+      "completedAt": "2026-08-05T18:39:14+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 中增强 Raycaster picking demo：点击命中后高亮 Mesh，显示 hit marker、ray line、NDC 坐标和 hit distance，并补充 Raycaster targets 与 interaction check 面板。",
+      "verification": "选择第 7 格后，点击画布中心可命中 Body，runtime note 输出命中部件、NDC 和 distance；点击空白区域会隐藏辅助线并显示未命中。",
+      "troubleshooting": "本轮重点排查 canvas 坐标到 NDC 的换算、intersectObjects 的命中排序、命中状态清理，以及场景旋转时射线辅助线是否使用世界坐标。"
+    },
+    {
+      "slot": 8,
+      "time": "01:45-02:00",
+      "title": "做配置器最小闭环",
+      "status": "completed",
+      "completedAt": "2026-08-05T18:54:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 中将配置器扩展为 Body/Lens/Button 三部件配置：主体色、镜片 tint、按钮 finish 映射到独立材质，并生成稳定 SKU code。",
+      "verification": "选择第 8 格后，切换 body/lens/button 控件会实时更新材质；SKU state 面板展示 `CAM-...` code、部件状态和配置器验收点。",
+      "troubleshooting": "本轮重点排查 UI 状态是否只更新目标部件材质、透明镜片 opacity 是否保持可见、SKU code 是否稳定，以及有限预设是否能表达真实业务约束。"
+    },
+    {
+      "slot": 9,
+      "time": "02:00-02:15",
+      "title": "限制 DPR",
+      "status": "completed",
+      "completedAt": "2026-08-05T19:09:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的配置器 demo 中加入 battery/balanced/sharp 三档 DPR cap，渲染循环动态使用 min(nativeDPR, cap)，并展示 CSS 尺寸、真实 canvas 像素尺寸和像素预算。",
+      "verification": "选择第 9 格后，点击 `dpr cap battery/balanced/sharp` 会更新 Stats 中 DPR；DPR pixel budget 面板展示 native、cap、css、canvas 和 pixels 数值。",
+      "troubleshooting": "本轮重点排查 renderer.setPixelRatio 是否随 cap 变化、canvas 像素预算是否按 DPR 平方增长、移动端高 DPR 是否会带来 fill-rate/显存/发热压力，以及 FPS 低时如何切换 battery 降级。"
+    },
+    {
+      "slot": 10,
+      "time": "02:15-02:30",
+      "title": "响应式画布",
+      "status": "completed",
+      "completedAt": "2026-08-05T19:24:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 Three.js 场景中加入 phone/tablet/desktop 三档 viewport 预设，点击后改变 canvas 容器宽度，并实时展示 CSS 尺寸、真实 canvas 像素和 camera aspect。",
+      "verification": "选择第 10 格后，点击 `resize viewport phone/tablet/desktop` 会改变 live demo 宽度；Responsive canvas metrics 面板同步更新 css、canvas、aspect，模型不应被拉伸。",
+      "troubleshooting": "本轮重点排查 renderer.setSize(width,height,false)、camera.aspect、updateProjectionMatrix 是否同步，canvas 是否遵守 max-width 避免移动端横向溢出，以及 DPR 与 resize 共同影响真实像素预算。"
+    },
+    {
+      "slot": 11,
+      "time": "02:30-02:45",
+      "title": "3D 数据点位",
+      "status": "completed",
+      "completedAt": "2026-08-05T19:39:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 data-points demo 中加入 orbit/city/signal 三个模拟 JSON 数据源，切换后重建 BufferGeometry，并为 position/color 两组 Float32Array attribute 展示点数和 byte budget。",
+      "verification": "选择第 11 格后，点击 `dataviz dataset orbit/city/signal` 会切换点云规模；Data buffer mapping 面板展示 source、points、attributes、bytes，runtime note 展示当前数据源上传状态。",
+      "troubleshooting": "本轮重点排查是否避免每个点创建一个 Mesh、position/color attribute 长度是否一致、切换数据源时旧 geometry/material 是否 dispose，以及巡航路径 Line 是否与点位共享同一坐标空间。"
+    },
+    {
+      "slot": 12,
+      "time": "02:45-03:00",
+      "title": "减少 Draw Call",
+      "status": "completed",
+      "completedAt": "2026-08-05T19:54:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 performance demo 中加入 baseline/dense/stress 三档 InstancedMesh 实例规模，所有实例共享 BoxGeometry 和 MeshStandardMaterial，并展示 instanceMatrix byte budget、实例数和 draw call。",
+      "verification": "选择第 12 格后，点击 `instance preset baseline/dense/stress` 会重建 InstancedMesh；Instance performance 面板展示 preset、instances、matrix bytes、draw calls，Stats 中 draw call 保持较低。",
+      "troubleshooting": "本轮重点排查实例是否共享 geometry/material、instanceMatrix 是否 needsUpdate、实例规模升高时 triangles/FPS 是否变化，以及 draw call 低但 GPU 工作量仍会增加的性能取舍。"
+    },
+    {
+      "slot": 13,
+      "time": "03:00-03:15",
+      "title": "建立排障记录",
+      "status": "completed",
+      "completedAt": "2026-08-05T20:09:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 Debug 单元中加入 WebGL incident record、Debug metric checklist 和 Common incident actions，将 performance demo 的 FPS、DPR、draw call、triangles、像素预算、实例规模整理成线上排障模板。",
+      "verification": "选择第 13 格后，页面展示 risk、fps、dpr、draw calls、triangles、instances；Debug metric checklist 覆盖 FPS/DPR/Draw Calls/Triangles/Pixel Budget/Instance Matrix。",
+      "troubleshooting": "本轮重点建立排查顺序：先确认设备和路由，再记录核心指标，区分加载、CPU 提交、GPU fill-rate、几何量、实例规模和兼容问题，最后给出降级和回滚动作。"
+    },
+    {
+      "slot": 14,
+      "time": "03:15-03:30",
+      "title": "处理 context lost",
+      "status": "completed",
+      "completedAt": "2026-08-05T20:24:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 Context 单元中为 WebGL rotation demo 加入 running/lost/restored 生命周期模拟；lost 状态停止 draw call，restored 状态恢复渲染，并新增 Context lifecycle state 与 Context lost check 面板。",
+      "verification": "选择第 14 格后，点击 `context lost` 会让 Stats draw calls 变为 0 并显示模拟丢失说明；点击 `context restored` 后画布恢复旋转，面板展示恢复状态和资源重建检查项。",
+      "troubleshooting": "本轮重点排查 webglcontextlost 是否 preventDefault、丢失后是否停止 RAF/draw call、是否给用户降级提示、恢复时是否重建 shader/program/buffer/texture，以及卸载时是否删除 GPU 资源。"
+    },
+    {
+      "slot": 15,
+      "time": "03:30-03:45",
+      "title": "抽取作品集 README",
+      "status": "completed",
+      "completedAt": "2026-08-05T20:39:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 Portfolio 单元中为配置器 demo 增加 Portfolio README draft 和 Interview script，覆盖项目定位、核心功能、技术栈、优化点、兼容性、交付物和面试表达。",
+      "verification": "选择第 15 格后，页面展示 Portfolio README draft、Interview script，并引用当前可演示 SKU code；配置器交互仍可切换 Body/Lens/Button。",
+      "troubleshooting": "本轮重点把技术点转成可交付叙事：先讲业务交互，再讲 Three.js 材质映射、DPR/resize 优化、context lost 和排障记录，避免只罗列 demo。"
+    },
+    {
+      "slot": 16,
+      "time": "03:45-04:00",
+      "title": "本地验收到线上发布",
+      "status": "completed",
+      "completedAt": "2026-08-05T20:54:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 Deploy 单元中加入 Deploy readiness checklist 和 Final portfolio package，覆盖 type check、production build、route smoke、mobile budget、fallback、rollback 和最终作品集材料。",
+      "verification": "选择第 16 格后，页面展示部署验收门禁与最终作品集清单；本轮执行 `npx tsc --noEmit` 通过，本地路由 `/lab/15-minute-webgl-plan` 返回 200；`npm run build` 已编译成功并生成静态页，但最后因既有 `/tags/Life.html` 导出重命名 ENOENT 失败。",
+      "troubleshooting": "本轮重点把本地可运行 demo 转成发布前门禁：类型检查、路由可访问、移动端指标可记录、context lost 有降级提示、异常时能回滚；生产 build 暴露的阻塞点在 tags 导出路径，和本轮实验室改动无关。"
+    }
+  ]
+}
