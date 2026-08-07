@@ -16,8 +16,8 @@ const LAB_ITEMS: LabItem[] = [
     slug: "15-minute-webgl-plan",
     title: "15 分钟 WebGL 学习计划",
     en: "15-minute WebGL Training Plan",
-    desc: "4 小时冲刺：每 15 分钟一个可运行 demo，覆盖 WebGL、Three.js、交互、配置器和性能。",
-    tags: ["Plan", "WebGL", "Three.js"],
+    desc: "每 15 分钟推进一个可运行实验，覆盖 WebGL、Three.js、模型加载、移动端和线上交付。",
+    tags: ["Plan", "WebGL", "GLB"],
     status: "live",
   },
   {

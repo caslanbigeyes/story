@@ -1,12 +1,12 @@
 {
-  "automationId": "15-webgl",
+  "automationId": "15-webgl-three-js",
   "cadenceMinutes": 15,
   "startedAt": "2026-08-05T16:53:26+0800",
-  "currentSlot": 16,
-  "completedSlots": 16,
-  "lastUpdatedAt": "2026-08-05T20:54:44+0800",
-  "lastSummary": "第 16 格已完成：Three.js 场景增加 Deploy readiness checklist 与 Final portfolio package，完成 16 个 15 分钟 WebGL/Three.js 训练单元闭环；生产 build 已尝试，最后被既有 tags 导出路径问题阻塞。",
-  "nextAction": "4 小时 WebGL/Three.js 首轮训练已完成；后续可进入第二阶段：先修复既有 `/tags/Life.html` build 导出问题，再做真实 GLB 模型加载、Draco/Meshopt/KTX2 压缩和线上部署。",
+  "currentSlot": 27,
+  "completedSlots": 26,
+  "lastUpdatedAt": "2026-08-06T18:02:27+0800",
+  "lastSummary": "第 26 格已完成：model-loader demo 新增 Compression shipping strategy、Decoder loading plan、Cache and rollback、Shipping decision matrix，把 Draco/Meshopt/KTX2、poster fallback、缓存版本和回滚整理成模型交付方案。",
+  "nextAction": "第 27 轮推进线上观测指标面板：把 FPS、DPR、draw calls、triangles、资源状态和用户设备整理成 WebGL telemetry 字段。",
   "history": [
     {
       "slot": 1,
@@ -167,6 +167,106 @@
       "deliverable": "在 `/lab/15-minute-webgl-plan` 的 Deploy 单元中加入 Deploy readiness checklist 和 Final portfolio package，覆盖 type check、production build、route smoke、mobile budget、fallback、rollback 和最终作品集材料。",
       "verification": "选择第 16 格后，页面展示部署验收门禁与最终作品集清单；本轮执行 `npx tsc --noEmit` 通过，本地路由 `/lab/15-minute-webgl-plan` 返回 200；`npm run build` 已编译成功并生成静态页，但最后因既有 `/tags/Life.html` 导出重命名 ENOENT 失败。",
       "troubleshooting": "本轮重点把本地可运行 demo 转成发布前门禁：类型检查、路由可访问、移动端指标可记录、context lost 有降级提示、异常时能回滚；生产 build 暴露的阻塞点在 tags 导出路径，和本轮实验室改动无关。"
+    },
+    {
+      "slot": 17,
+      "time": "04:00-04:15",
+      "title": "加载 glTF 模型",
+      "status": "completed",
+      "completedAt": "2026-08-06T20:39:44+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 中新增 `model-loader` demo，使用 GLTFLoader.parse 解析内嵌 glTF JSON + binary buffer，加载后遍历 scene graph 并统计 nodes、meshes、buffer bytes。",
+      "verification": "选择第 17 格后，画布出现由 GLTFLoader 加载的 3D 模型；GLTF load result 面板展示 nodes、meshes、buffer、draw calls；Model loading check 覆盖 loader、scene graph、fallback 和 cleanup。",
+      "troubleshooting": "本轮重点排查 loader 解析失败 fallback、模型加载后材质/灯光是否可见、scene graph 遍历统计是否正确，以及路由切换时是否 traverse dispose 释放 geometry/material。"
+    },
+    {
+      "slot": 18,
+      "time": "04:15-04:30",
+      "title": "建立模型体积预算",
+      "status": "completed",
+      "completedAt": "2026-08-06T21:10:00+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 `model-loader` demo 中新增 raw/mobile/fallback 三档 asset budget 控制，使用 GLTFLoader.load 加载 Blob URL，并展示加载进度、原始体积、几何体积、贴图体积、优化后体积和目标预算。",
+      "verification": "选择第 18 格后，点击 Raw/Mobile/Fallback 会重建模型加载链路；GLTF load result 展示 progress 与 budget status；Asset delivery budget 展示 original、geometry、texture、optimized、target；Delivery checklist 覆盖 progress、budget、decoder、fallback。",
+      "troubleshooting": "本轮重点排查真实 URL 加载进度是否可见、模型预算是否超过移动端目标、Draco/Meshopt/KTX2 decoder 是否应该懒加载、以及低端设备或加载失败时是否有 poster fallback。"
+    },
+    {
+      "slot": 19,
+      "time": "04:30-04:45",
+      "title": "真实 GLB URL 加载",
+      "status": "completed",
+      "completedAt": "2026-08-06T16:16:57+0800",
+      "deliverable": "新增 `/api/lab/product-marker-glb`，动态返回合法 GLB 二进制；`/lab/15-minute-webgl-plan` 的 `model-loader` demo 新增 Real GLB API / Blob glTF source 切换，并展示 source mode、URL、progress、buffer bytes 和 GLB URL contract。",
+      "verification": "选择第 19 格或第 20 格时默认使用 Real GLB API；画布加载 API Product Marker 模型；GLTF load result 展示 Real GLB API、`/api/lab/product-marker-glb`、progress=100%；GLB URL contract 展示 `model/gltf-binary`、Content-Length 进度和缓存/版本说明。",
+      "troubleshooting": "本轮重点排查 API 是否返回正确 GLB header、Content-Type/Content-Length 是否满足进度统计、GLTFLoader 是否能解析 BIN chunk、URL 版本和缓存策略是否能支持线上回滚。"
+    },
+    {
+      "slot": 20,
+      "time": "04:45-05:00",
+      "title": "加载失败 fallback UI",
+      "status": "completed",
+      "completedAt": "2026-08-06T16:31:57+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 `model-loader` demo 中新增 Broken GLB URL source，GLTFLoader 加载失败后展示 2D poster fallback、错误 URL、错误信息、Retry 按钮和 Fallback incident checklist。",
+      "verification": "选择第 20 格后自动切到 Broken GLB URL；页面显示 Poster fallback state、failed url、poster、retry；点击 Retry 后切回 Real GLB API 并重新加载 GLB，progress 回到 100%，canvas 不白屏且移动端不横向溢出。",
+      "troubleshooting": "本轮重点排查线上 GLB 404/解析失败时是否进入 fallback、是否记录 source/URL/error/DPR/预算、是否给用户重试入口，以及是否用 poster 兜底避免 WebGL 区域白屏。"
+    },
+    {
+      "slot": 21,
+      "time": "05:00-05:15",
+      "title": "配置器作品页骨架",
+      "status": "completed",
+      "completedAt": "2026-08-06T16:46:57+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 configurator demo 中新增 Product showcase skeleton、User flow、Mobile delivery budget、Delivery package 和 Acceptance gates，用同一页说明产品定位、用户流程、SKU、移动端预算和作品集交付材料。",
+      "verification": "选择第 21 格后，画布显示配置器，右侧展示 Product showcase skeleton、User flow、Mobile delivery budget、Delivery package、Acceptance gates；切换 Body/Lens/Button 后 SKU 和预算面板仍同步更新。",
+      "troubleshooting": "本轮重点排查作品页是否从用户任务讲起、SKU 是否始终可见、移动预算是否可记录、交付包是否覆盖 README/录屏/截图/QA，以及配置器作品是否避免只罗列 Three.js API。"
+    },
+    {
+      "slot": 22,
+      "time": "05:15-05:30",
+      "title": "配置数据源 JSON 化",
+      "status": "completed",
+      "completedAt": "2026-08-06T17:01:57+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 中将配置器 Body/Lens/Button 选项集中到 `CONFIGURATOR_DATA_SOURCE`，SKU 由 `skuPrefix + skuOrder` 生成，并新增 Config data source、Material binding map、SKU rule check、JSON preview 面板。",
+      "verification": "选择第 22 格后，页面展示结构化配置源、材质绑定、SKU 规则和 JSON 预览；切换 Body/Lens/Button 后 SKU、材质和移动预算仍同步。",
+      "troubleshooting": "本轮重点排查 UI 控件、材质参数和 SKU code 是否读取同一份数据，避免配置器常见的状态漂移、SKU 顺序错乱和不可生产配置泄漏。"
+    },
+    {
+      "slot": 23,
+      "time": "05:30-05:45",
+      "title": "配置器部件说明热点",
+      "status": "completed",
+      "completedAt": "2026-08-06T17:17:27+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 Raycaster picking demo 中新增 Hotspot business contract、Active hotspot 和 Hotspot troubleshooting：点击 Lens/Body/Button/Port 后，面板同步展示命中部件、NDC、distance、业务说明、配置约束、SKU 影响和下一步 UI 动作。",
+      "verification": "选择第 23 格后，点击 3D 部件会高亮 Mesh、显示 hit marker/ray line，并让 Active hotspot 从等待状态切换到具体部件说明；点空白会清空命中状态。",
+      "troubleshooting": "本轮重点排查 pointer 坐标到 NDC 的换算、Raycaster 命中对象到业务 part 的映射、可配置热点与 explain-only 热点的区别、以及命中状态是否在 miss 时被正确清空。"
+    },
+    {
+      "slot": 24,
+      "time": "05:45-06:00",
+      "title": "作品页验收脚本",
+      "status": "completed",
+      "completedAt": "2026-08-06T17:32:27+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的配置器 demo 中新增 QA evidence snapshot、Release gates、Release smoke script 和 Incident response，实时展示 SKU、FPS、DPR、draw calls、triangles、canvas 像素和发布风险。",
+      "verification": "选择第 24 格后，页面展示 QA evidence snapshot、Release gates、Release smoke script、Incident response；配置器画布运行，SKU 与性能指标同步，移动端 390px 下无横向溢出。",
+      "troubleshooting": "本轮重点排查 WebGL 作品页上线前的验收链路：route smoke、canvas 非空白、移动端 viewport、SKU 同源、GLB/context lost fallback 和线上事故响应。"
+    },
+    {
+      "slot": 25,
+      "time": "06:00-06:15",
+      "title": "移动端性能降级开关",
+      "status": "completed",
+      "completedAt": "2026-08-06T17:47:27+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 performance demo 中新增 quality/balanced/battery/fallback 四档策略按钮，点击后同步修改 DPR cap 和 InstancedMesh 实例规模；新增 Mobile degradation switchboard、Trigger ladder、Degradation action map。",
+      "verification": "选择第 25 格后，点击 battery/fallback 会把 DPR cap 降到 1 且实例规模切到 baseline；页面展示 level、trigger、recommended dpr、recommended instances、pixel budget、triangles 和降级动作。",
+      "troubleshooting": "本轮重点排查移动端 WebGL 降级链路：FPS < 30、pixel budget > 2M、instances > 900、draw calls 过高和 context lost 分别如何触发 battery/fallback，而不是凭感觉关闭效果。"
+    },
+    {
+      "slot": 26,
+      "time": "06:15-06:30",
+      "title": "压缩资源交付策略",
+      "status": "completed",
+      "completedAt": "2026-08-06T18:02:27+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 model-loader demo 中新增 Compression shipping strategy、Decoder loading plan、Cache and rollback、Shipping decision matrix，展示 raw/mobile/fallback 体积预算、压缩率、节省体积、decoder 懒加载、缓存版本和回滚策略。",
+      "verification": "选择第 26 格后，切换 Raw/Mobile/Fallback 预算按钮会更新 original、optimized、saved、ratio、target、status；页面展示 Meshopt/Draco、KTX2/Basis、Lazy decoder、Poster fallback 的交付策略。",
+      "troubleshooting": "本轮重点排查模型交付是否只谈压缩而忽略贴图、decoder、缓存和兜底；线上 GLB 应同时有 hashed URL、immutable cache、decoder fallback、poster fallback 和可回滚版本。"
     }
   ]
 }

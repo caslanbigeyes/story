@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import SEO from "@/components/SEO";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import progress from "../../../data/webgl-learning-progress.json";
 
 type DemoKey =
@@ -13,7 +14,8 @@ type DemoKey =
   | "picking"
   | "configurator"
   | "data-points"
-  | "performance";
+  | "performance"
+  | "model-loader";
 
 interface Slot {
   time: string;
@@ -46,6 +48,23 @@ interface DemoStats {
   instanceBytes?: number;
   instancePreset?: string;
   contextState?: "running" | "lost" | "restored";
+  modelNodes?: number;
+  modelMeshes?: number;
+  modelBytes?: number;
+  modelProgress?: number;
+  modelBudgetName?: string;
+  modelTargetBytes?: number;
+  modelOriginalBytes?: number;
+  modelOptimizedBytes?: number;
+  modelTextureBytes?: number;
+  modelUrl?: string;
+  modelSourceMode?: string;
+  modelStatus?: "loading" | "ready" | "fallback";
+  modelError?: string;
+  hitTarget?: string;
+  hitDistance?: number;
+  hitNdcX?: number;
+  hitNdcY?: number;
 }
 
 const PIPELINE_CHECKS = [
@@ -176,23 +195,106 @@ const PICKING_TARGETS = [
   ["Port", "底部接口，适合模拟小面积命中和精细交互。"],
 ];
 
-const CONFIG_BODY_COLORS = [
-  { name: "cyan", color: 0x00f0ff },
-  { name: "magenta", color: 0xff2dd1 },
-  { name: "lime", color: 0x7ddf64 },
-  { name: "amber", color: 0xffb84d },
+const CONFIGURATOR_DATA_SOURCE = {
+  version: "camera-config-v1",
+  productId: "nocturne-camera",
+  skuPrefix: "CAM",
+  skuOrder: ["body", "lens", "button"],
+  parts: {
+    body: {
+      label: "Body",
+      mesh: "body",
+      material: "MeshStandardMaterial.color",
+      constraint: "主体色只能从品牌色板选择，避免不可生产配色。",
+      options: [
+        { name: "cyan", color: 0x00f0ff },
+        { name: "magenta", color: 0xff2dd1 },
+        { name: "lime", color: 0x7ddf64 },
+        { name: "amber", color: 0xffb84d },
+      ],
+    },
+    lens: {
+      label: "Lens",
+      mesh: "lens",
+      material: "MeshPhysicalMaterial.color + opacity",
+      constraint: "镜片 tint 控制透明度，不开放任意 opacity 输入。",
+      options: [
+        { name: "clear", color: 0xb8f7ff, opacity: 0.52 },
+        { name: "smoke", color: 0x91a2b8, opacity: 0.68 },
+        { name: "rose", color: 0xffb6df, opacity: 0.58 },
+      ],
+    },
+    button: {
+      label: "Button",
+      mesh: "button",
+      material: "MeshStandardMaterial.color + metalness",
+      constraint: "按钮 finish 映射金属度，保持商品质感稳定。",
+      options: [
+        { name: "graphite", color: 0x111827, metalness: 0.5 },
+        { name: "chrome", color: 0xd8e4ef, metalness: 0.86 },
+        { name: "accent", color: 0xfff3a3, metalness: 0.42 },
+      ],
+    },
+  },
+} as const;
+
+const CONFIG_BODY_COLORS = CONFIGURATOR_DATA_SOURCE.parts.body.options;
+const CONFIG_LENS_PRESETS = CONFIGURATOR_DATA_SOURCE.parts.lens.options;
+const CONFIG_BUTTON_PRESETS = CONFIGURATOR_DATA_SOURCE.parts.button.options;
+
+const CONFIGURATOR_PART_BINDINGS = [
+  ["body", CONFIGURATOR_DATA_SOURCE.parts.body.mesh, CONFIGURATOR_DATA_SOURCE.parts.body.material, CONFIGURATOR_DATA_SOURCE.parts.body.constraint],
+  ["lens", CONFIGURATOR_DATA_SOURCE.parts.lens.mesh, CONFIGURATOR_DATA_SOURCE.parts.lens.material, CONFIGURATOR_DATA_SOURCE.parts.lens.constraint],
+  ["button", CONFIGURATOR_DATA_SOURCE.parts.button.mesh, CONFIGURATOR_DATA_SOURCE.parts.button.material, CONFIGURATOR_DATA_SOURCE.parts.button.constraint],
 ];
 
-const CONFIG_LENS_PRESETS = [
-  { name: "clear", color: 0xb8f7ff, opacity: 0.52 },
-  { name: "smoke", color: 0x91a2b8, opacity: 0.68 },
-  { name: "rose", color: 0xffb6df, opacity: 0.58 },
+const CONFIGURATOR_SCHEMA_CHECKS = [
+  ["Single source", "UI 按钮、材质更新和 SKU code 都读取 CONFIGURATOR_DATA_SOURCE。"],
+  ["Part contract", "每个 part 都声明 label、mesh、material、constraint 和 options。"],
+  ["SKU rule", "skuPrefix + skuOrder 决定 code 生成顺序，避免 UI 顺序变化影响 SKU。"],
+  ["Material values", "颜色、opacity、metalness 都在 option 中声明，render loop 只消费结构化数据。"],
 ];
 
-const CONFIG_BUTTON_PRESETS = [
-  { name: "graphite", color: 0x111827, metalness: 0.5 },
-  { name: "chrome", color: 0xd8e4ef, metalness: 0.86 },
-  { name: "accent", color: 0xfff3a3, metalness: 0.42 },
+const PICKING_HOTSPOT_CONTRACTS = [
+  {
+    label: "Lens",
+    part: "lens",
+    business: "镜片热点打开 tint 说明，告诉用户 clear/smoke/rose 会改变透明度和视觉情绪。",
+    constraint: CONFIGURATOR_DATA_SOURCE.parts.lens.constraint,
+    skuImpact: "影响 SKU 第二段 Lens code，也影响透明材质 opacity。",
+    nextUi: "打开 Lens 说明浮层，聚焦 tint 选项。",
+  },
+  {
+    label: "Body",
+    part: "body",
+    business: "主体热点解释品牌主色和大面积材质，是配置器最重要的视觉决策。",
+    constraint: CONFIGURATOR_DATA_SOURCE.parts.body.constraint,
+    skuImpact: "影响 SKU 第一段 Body code，也决定商品首屏主视觉。",
+    nextUi: "打开 Body 色板，提示当前主体色是否可生产。",
+  },
+  {
+    label: "Button",
+    part: "button",
+    business: "按钮热点说明 finish 差异，适合展示 graphite/chrome/accent 的细节质感。",
+    constraint: CONFIGURATOR_DATA_SOURCE.parts.button.constraint,
+    skuImpact: "影响 SKU 第三段 Button code，也影响 metalness 高光表现。",
+    nextUi: "打开 Button finish 面板，说明金属度映射。",
+  },
+  {
+    label: "Port",
+    part: "support",
+    business: "接口热点不进入 SKU，只做规格说明、售后提示或兼容性解释。",
+    constraint: "非可配置部件只展示说明，不写入 CONFIGURATOR_DATA_SOURCE 的 SKU 顺序。",
+    skuImpact: "不影响 SKU，用于区分 explain-only hotspot 和 configurable hotspot。",
+    nextUi: "打开规格说明浮层，不改变材质状态。",
+  },
+];
+
+const PICKING_HOTSPOT_CHECKS = [
+  ["Hit to business", "Raycaster 命中 Mesh 后要映射到业务 part，而不是只显示 Mesh.name。"],
+  ["Configurable vs explain-only", "Body/Lens/Button 会影响 SKU；Port 只说明规格，不进入 SKU。"],
+  ["Feedback latency", "点击后高亮、marker、ray line 和说明面板必须同帧更新。"],
+  ["Miss reset", "点空白要清空命中状态，避免用户误以为仍选中上一部件。"],
 ];
 
 const CONFIGURATOR_CHECKS = [
@@ -303,6 +405,48 @@ const DEBUG_ACTIONS = [
   ["交互错位", "检查 canvas rect、NDC 换算、camera aspect 和 resize 时机。"],
 ];
 
+const MOBILE_DEGRADE_PRESETS = [
+  {
+    name: "quality",
+    dprCap: 2,
+    instanceIndex: 1,
+    intent: "高端设备展示效果，保留较清晰 canvas 和 dense 实例规模。",
+  },
+  {
+    name: "balanced",
+    dprCap: 1.5,
+    instanceIndex: 1,
+    intent: "移动端默认策略，限制像素预算但保留主要 3D 信息量。",
+  },
+  {
+    name: "battery",
+    dprCap: 1,
+    instanceIndex: 0,
+    intent: "发热、掉帧或低端机策略，优先稳定帧率和触控响应。",
+  },
+  {
+    name: "fallback",
+    dprCap: 1,
+    instanceIndex: 0,
+    intent: "持续低 FPS 或 context lost 时切 2D poster/静态图，暂停非必要动画。",
+  },
+];
+
+const MOBILE_DEGRADE_TRIGGERS = [
+  ["FPS < 30", "进入 battery，先降 DPR，再减少实例、关闭阴影/后处理。"],
+  ["Pixel budget > 2M", "DPR 会平方级放大像素，优先把 cap 降到 1 或 1.5。"],
+  ["Instances > 900", "InstancedMesh 低 draw call 但 GPU 顶点/片元仍会增加，需要回到 baseline。"],
+  ["Draw calls > 60", "检查材质和 Mesh 是否失去合批，避免每个物体独立提交。"],
+  ["Context lost", "立即展示 fallback，停止 render loop，恢复后重建 GPU 资源。"],
+];
+
+const MOBILE_DEGRADE_ACTIONS = [
+  ["quality", "DPR 2 + dense，用于桌面或高端机展示效果，不作为移动端保底。"],
+  ["balanced", "DPR 1.5 + dense，是默认移动端起点，兼顾清晰度和性能。"],
+  ["battery", "DPR 1 + baseline，用于低电量、发热、掉帧和低端机。"],
+  ["fallback", "DPR 1 + baseline + poster/静态图，用于持续低 FPS、GLB 失败或 context lost。"],
+];
+
 const CONTEXT_ACTIONS = ["running", "lost", "restored"] as const;
 
 const CONTEXT_CHECKS = [
@@ -329,6 +473,84 @@ const PORTFOLIO_TALKING_POINTS = [
   "我补了 context lost、draw call、FPS、triangles 等排障记录，能说明线上白屏、卡顿和降级策略。",
 ];
 
+const CONFIGURATOR_PRODUCT_BRIEF = [
+  ["Product", "Nocturne Camera · Modular 3D product configurator"],
+  ["Audience", "移动端优先的官网/电商访客，目标是在 30 秒内看懂外观差异并生成 SKU。"],
+  ["Primary action", "选择 Body / Lens / Button 三个部件，实时预览材质并得到稳定 SKU code。"],
+  ["Business value", "减少静态渲染图数量，把颜色和材质组合交给 WebGL 实时展示。"],
+];
+
+const CONFIGURATOR_USER_FLOW = [
+  ["Inspect", "进入页面先看到可旋转 3D 商品，而不是说明文字。"],
+  ["Configure", "切换主体色、镜片 tint、按钮 finish，SKU 和材质同步变化。"],
+  ["Validate", "查看移动端 DPR、draw call 和 triangles，确认当前组合可上线。"],
+  ["Package", "沉淀线上 demo、README、录屏、移动端截图和排障记录。"],
+];
+
+const CONFIGURATOR_DELIVERY_PACKAGE = [
+  ["Demo URL", "部署后的 `/lab/15-minute-webgl-plan` 或独立作品页地址。"],
+  ["Repository", "README 写清功能、技术栈、配置数据、优化点和 fallback。"],
+  ["Recording", "30 秒录屏：旋转商品、切换三处部件、展示 SKU 和移动预算。"],
+  ["QA evidence", "`npx tsc --noEmit`、路由 200、移动端无横向溢出、canvas 非空白。"],
+];
+
+const CONFIGURATOR_ACCEPTANCE_GATES = [
+  ["SKU visible", "任何配置组合都能生成稳定 code，方便业务下单或埋点。"],
+  ["3D visible", "WebGL canvas 非空白；失败时要切到 poster fallback。"],
+  ["Mobile budget", "DPR 有上限，像素预算和 draw call 可解释。"],
+  ["State contract", "UI 选项、材质参数、SKU 文案来自同一份结构，避免状态漂移。"],
+];
+
+const CONFIGURATOR_QA_GATES = [
+  {
+    label: "Route smoke",
+    status: "manual",
+    evidence: "`/lab`、`/lab/15-minute-webgl-plan` 和 `/api/lab/product-marker-glb` 都要返回 200。",
+    failure: "路由失败先确认 Next dev/build 输出、API handler、静态导出路径和回滚版本。",
+  },
+  {
+    label: "Canvas health",
+    status: "runtime",
+    evidence: "页面运行时必须有 canvas、draw call 大于 0，截图里 3D 商品不能空白。",
+    failure: "空白先看 WebGL context、模型/材质可见性、renderer loop、context lost 和控制台错误。",
+  },
+  {
+    label: "Mobile viewport",
+    status: "runtime",
+    evidence: "390px 宽度下无横向溢出，DPR cap、canvas 像素和交互控件仍可读。",
+    failure: "移动端溢出优先检查固定宽度、pre/code 换行、按钮网格和 canvas 容器 max-width。",
+  },
+  {
+    label: "SKU contract",
+    status: "runtime",
+    evidence: "当前 SKU 必须由 CONFIGURATOR_DATA_SOURCE 的 body/lens/button 顺序生成。",
+    failure: "SKU 错乱时检查 UI 顺序、skuOrder、选项索引和材质映射是否仍同源。",
+  },
+  {
+    label: "Fallback path",
+    status: "manual",
+    evidence: "GLB 加载失败、低端机和 context lost 要有 poster、Retry、battery DPR 或回滚动作。",
+    failure: "线上白屏时先切 fallback 或回滚，再复盘资源 URL、解码器、缓存和设备指标。",
+  },
+];
+
+const CONFIGURATOR_QA_SCRIPT = [
+  ["Select", "进入第 24 格，确认配置器 demo 自动运行并能旋转/拖拽。"],
+  ["Configure", "切换 Body、Lens、Button，确认 SKU、材质和 Mobile delivery budget 同步变化。"],
+  ["Measure", "记录 FPS、DPR、draw calls、triangles、canvas pixel budget。"],
+  ["Mobile", "切到 390px 宽度，确认无横向溢出、canvas 非空白、按钮不挤压。"],
+  ["Fallback", "切到 model-loader 的 Broken GLB URL，确认 poster fallback 和 Retry 入口。"],
+  ["Ship", "把截图、录屏、route 200、tsc 结果和排障记录写进 README。"],
+];
+
+const CONFIGURATOR_RELEASE_RESPONSES = [
+  ["FPS < 30", "先降 DPR 到 battery，再减少透明材质、阴影/后处理、实例数量和贴图尺寸。"],
+  ["Draw calls high", "检查是否重复创建 Mesh/Material，优先合批、InstancedMesh 或合并 BufferGeometry。"],
+  ["GLB slow", "记录模型/贴图体积，接 Draco/Meshopt/KTX2，decoder 懒加载，首屏用 poster。"],
+  ["Mobile overflow", "收紧固定宽度、pre 换行、网格列数和 canvas 容器 max-width。"],
+  ["White screen", "看 route、资源 URL、WebGL context、loader error、context lost，再回滚可用版本。"],
+];
+
 const DEPLOY_CHECKLIST = [
   ["Type check", "`npx tsc --noEmit` 通过，确保实验页、JSON 进度和 Three.js 类型没有断裂。"],
   ["Production build", "`npm run build` 通过后再发布，避免只在 dev server 上看起来正常。"],
@@ -346,15 +568,249 @@ const FINAL_ARTIFACTS = [
   "面试表达：为什么选 Three.js、模型过大怎么优化、白屏/卡顿/context lost 怎么排查。",
 ];
 
+const MODEL_LOADER_CHECKS = [
+  ["Loader", "使用 GLTFLoader 解析 glTF JSON + binary buffer，模拟真实模型加载链路。"],
+  ["Scene graph", "加载后遍历 gltf.scene，统计 node 和 mesh 数量，理解模型层级。"],
+  ["Material", "为 MeshStandardMaterial 配置灯光和环境，让模型不是只靠纯色贴图。"],
+  ["Fallback", "加载失败时给出错误 note，真实项目要展示占位模型或 2D 降级图。"],
+  ["Cleanup", "路由切换时 traverse dispose，释放 geometry/material，避免重复加载泄漏。"],
+];
+
+const MODEL_BUDGETS = [
+  ["Raw buffer", "432 B", "本实验内嵌 position + normal 两个 accessor，方便马上验证加载链路。"],
+  ["Online target", "< 2 MB", "移动端首屏产品模型建议先压到可流畅加载的量级。"],
+  ["Compression", "Draco / Meshopt", "真实 GLB 进入下一步再接压缩 decoder 和加载进度。"],
+  ["Texture", "KTX2 / Basis", "大多数线上 WebGL 卡顿来自贴图体积和像素预算，而不只是模型顶点。"],
+];
+
+const MODEL_ASSET_PRESETS = [
+  {
+    name: "raw handoff",
+    label: "Raw",
+    originalBytes: 7_800_000,
+    geometryBytes: 3_100_000,
+    textureBytes: 4_200_000,
+    optimizedBytes: 7_800_000,
+    targetBytes: 2_000_000,
+    compression: "None",
+    route: "真实 `.glb` 交付前的原始导出，适合本地验收，不适合移动端首屏。",
+  },
+  {
+    name: "mobile optimized",
+    label: "Mobile",
+    originalBytes: 7_800_000,
+    geometryBytes: 680_000,
+    textureBytes: 1_080_000,
+    optimizedBytes: 1_760_000,
+    targetBytes: 2_000_000,
+    compression: "Meshopt + KTX2",
+    route: "线上首屏模型预算：几何压缩、贴图转码、按需加载 decoder。",
+  },
+  {
+    name: "poster fallback",
+    label: "Fallback",
+    originalBytes: 7_800_000,
+    geometryBytes: 0,
+    textureBytes: 180_000,
+    optimizedBytes: 180_000,
+    targetBytes: 350_000,
+    compression: "2D poster",
+    route: "低端设备或 context lost 时先展示 2D 占位图，再懒加载 3D。",
+  },
+];
+
+const MODEL_DELIVERY_CHECKS = [
+  ["Progress", "真实 URL 加载必须展示进度，避免 3D 首屏白等。"],
+  ["Budget", "记录原始体积、优化后体积、目标预算，和产品确认首屏取舍。"],
+  ["Decoder", "Draco/Meshopt/KTX2 decoder 要懒加载，避免为了压缩反而拖慢首屏 JS。"],
+  ["Fallback", "移动端低性能、加载失败或 context lost 时，用 poster/2D 图兜底。"],
+];
+
+const MODEL_COMPRESSION_PIPELINE = [
+  {
+    step: "Geometry",
+    tool: "Meshopt / Draco",
+    input: "3.10 MB",
+    output: "680 KB",
+    rule: "规则：几何压缩只处理顶点、索引、法线等 buffer，不解决贴图大和 fill-rate。",
+  },
+  {
+    step: "Texture",
+    tool: "KTX2 / Basis",
+    input: "4.20 MB",
+    output: "1.08 MB",
+    rule: "规则：贴图转码优先影响下载体积、显存和采样成本，移动端收益通常最大。",
+  },
+  {
+    step: "Decoder",
+    tool: "Lazy decoder",
+    input: "JS bundle",
+    output: "on demand",
+    rule: "规则：Draco/Meshopt/KTX2 decoder 按需加载，避免压缩收益被首屏 JS 抵消。",
+  },
+  {
+    step: "Fallback",
+    tool: "Poster",
+    input: "3D unavailable",
+    output: "180 KB",
+    rule: "规则：低端设备、加载失败、context lost 时先给用户可见产品，不让 WebGL 区域空白。",
+  },
+];
+
+const MODEL_CACHE_VERSION_RULES = [
+  ["Hashed URL", "`/models/camera.mobile.meshopt.ktx2.v18.glb`，资源变更即换 hash 或版本号。"],
+  ["Immutable cache", "带 hash 的 GLB/KTX2 可长缓存；HTML/manifest 保持短缓存方便回滚。"],
+  ["Decoder path", "decoder 路径版本固定，CDN 404 时要能 fallback 到未压缩或 poster。"],
+  ["Rollback", "保留上一个 mobile optimized GLB，线上异常先回滚版本，再看设备和错误日志。"],
+];
+
+const MODEL_SHIPPING_DECISIONS = [
+  ["raw handoff", "只允许内网验收或美术对齐，不进入移动端首屏。"],
+  ["mobile optimized", "默认线上交付：Meshopt + KTX2 + 懒加载 decoder，控制在 2 MB 内。"],
+  ["poster fallback", "低端设备、prefers-reduced-motion、context lost 或 GLB 失败时展示。"],
+];
+
+const MODEL_SOURCE_MODES = [
+  {
+    id: "api-glb",
+    label: "Real GLB API",
+    url: "/api/lab/product-marker-glb",
+    expectedBytes: 1_224,
+    contract: "走真实 HTTP URL，响应 model/gltf-binary，GLTFLoader 解析 GLB header + BIN chunk。",
+  },
+  {
+    id: "blob-gltf",
+    label: "Blob glTF",
+    url: "blob://embedded-product-marker",
+    expectedBytes: 432,
+    contract: "前端创建 Blob URL，适合离线验证 loader 和 scene graph，不代表线上资源链路。",
+  },
+  {
+    id: "broken-glb",
+    label: "Broken GLB URL",
+    url: "/api/lab/missing-product.glb",
+    expectedBytes: 0,
+    contract: "故意请求不存在的 GLB，验证错误捕获、poster fallback、重试和白屏排障。",
+  },
+] as const;
+
+type ModelSourceMode = (typeof MODEL_SOURCE_MODES)[number]["id"];
+
+const MODEL_FALLBACK_CHECKS = [
+  ["Detect", "loader error 后立刻进入 fallback 状态，停止等待 3D 空白画布。"],
+  ["Poster", "展示轻量 2D poster/占位文案，让用户知道产品内容仍可浏览。"],
+  ["Retry", "提供一键重试，恢复到最近可用 GLB URL，而不是让用户刷新整页。"],
+  ["Observe", "记录 source、URL、错误信息、DPR 和资源预算，方便线上复盘。"],
+];
+
+function arrayBufferToBase64(buffer: ArrayBuffer) {
+  let binary = "";
+  const bytes = new Uint8Array(buffer);
+  for (let i = 0; i < bytes.byteLength; i += 1) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary);
+}
+
+function createEmbeddedProductGltf() {
+  const positions = new Float32Array([
+    -1, -0.6, 1, 1, -0.6, 1, 1, -0.6, -1,
+    -1, -0.6, 1, 1, -0.6, -1, -1, -0.6, -1,
+    0, 0.95, 0, -1, -0.6, 1, 1, -0.6, 1,
+    0, 0.95, 0, 1, -0.6, 1, 1, -0.6, -1,
+    0, 0.95, 0, 1, -0.6, -1, -1, -0.6, -1,
+    0, 0.95, 0, -1, -0.6, -1, -1, -0.6, 1,
+  ]);
+  const normals = new Float32Array([
+    0, -1, 0, 0, -1, 0, 0, -1, 0,
+    0, -1, 0, 0, -1, 0, 0, -1, 0,
+    0, 0.55, 0.83, 0, 0.55, 0.83, 0, 0.55, 0.83,
+    0.83, 0.55, 0, 0.83, 0.55, 0, 0.83, 0.55, 0,
+    0, 0.55, -0.83, 0, 0.55, -0.83, 0, 0.55, -0.83,
+    -0.83, 0.55, 0, -0.83, 0.55, 0, -0.83, 0.55, 0,
+  ]);
+  const buffer = new ArrayBuffer(positions.byteLength + normals.byteLength);
+  new Float32Array(buffer, 0, positions.length).set(positions);
+  new Float32Array(buffer, positions.byteLength, normals.length).set(normals);
+  return {
+    byteLength: buffer.byteLength,
+    json: JSON.stringify({
+      asset: { version: "2.0", generator: "15-minute-webgl-plan" },
+      scene: 0,
+      scenes: [{ nodes: [0] }],
+      nodes: [{ name: "Loaded Product Marker", mesh: 0, rotation: [0, 0.785, 0] }],
+      meshes: [
+        {
+          name: "EmbeddedProductMesh",
+          primitives: [{ attributes: { POSITION: 0, NORMAL: 1 }, material: 0 }],
+        },
+      ],
+      materials: [
+        {
+          name: "Loaded cyan PBR",
+          pbrMetallicRoughness: {
+            baseColorFactor: [0.0, 0.94, 1.0, 1.0],
+            metallicFactor: 0.55,
+            roughnessFactor: 0.28,
+          },
+        },
+      ],
+      buffers: [
+        {
+          uri: `data:application/octet-stream;base64,${arrayBufferToBase64(buffer)}`,
+          byteLength: buffer.byteLength,
+        },
+      ],
+      bufferViews: [
+        { buffer: 0, byteOffset: 0, byteLength: positions.byteLength, target: 34962 },
+        { buffer: 0, byteOffset: positions.byteLength, byteLength: normals.byteLength, target: 34962 },
+      ],
+      accessors: [
+        {
+          bufferView: 0,
+          componentType: 5126,
+          count: positions.length / 3,
+          type: "VEC3",
+          min: [-1, -0.6, -1],
+          max: [1, 0.95, 1],
+        },
+        { bufferView: 1, componentType: 5126, count: normals.length / 3, type: "VEC3" },
+      ],
+    }),
+  };
+}
+
+function getModelAssetPreset(index: number) {
+  return MODEL_ASSET_PRESETS[index % MODEL_ASSET_PRESETS.length];
+}
+
+function getModelSourceMode(mode: ModelSourceMode) {
+  return MODEL_SOURCE_MODES.find((item) => item.id === mode) ?? MODEL_SOURCE_MODES[0];
+}
+
+function formatBytes(bytes: number) {
+  if (bytes >= 1_000_000) return `${(bytes / 1_000_000).toFixed(2)} MB`;
+  if (bytes >= 1_000) return `${Math.round(bytes / 1_000)} KB`;
+  return `${bytes.toLocaleString()} B`;
+}
+
+function getBudgetStatus(bytes: number, targetBytes: number) {
+  return bytes <= targetBytes ? "within budget" : "over budget";
+}
+
 function getConfiguratorSku(bodyIndex: number, lensIndex: number, buttonIndex: number) {
   const body = CONFIG_BODY_COLORS[bodyIndex % CONFIG_BODY_COLORS.length];
   const lens = CONFIG_LENS_PRESETS[lensIndex % CONFIG_LENS_PRESETS.length];
   const button = CONFIG_BUTTON_PRESETS[buttonIndex % CONFIG_BUTTON_PRESETS.length];
+  const selected = { body, lens, button };
+  const suffix = CONFIGURATOR_DATA_SOURCE.skuOrder
+    .map((part) => selected[part].name.toUpperCase())
+    .join("-");
   return {
     body,
     lens,
     button,
-    code: `CAM-${body.name.toUpperCase()}-${lens.name.toUpperCase()}-${button.name.toUpperCase()}`,
+    code: `${CONFIGURATOR_DATA_SOURCE.skuPrefix}-${suffix}`,
   };
 }
 
@@ -398,6 +854,53 @@ function getInstancePreset(index: number) {
   return INSTANCE_PRESETS[index % INSTANCE_PRESETS.length];
 }
 
+function getMobileDegradePolicy(stats: DemoStats, instanceCount: number, dprCap: number) {
+  const pixelBudget = stats.pixelBudget ?? 0;
+  if (stats.contextState === "lost") {
+    return {
+      level: "fallback",
+      trigger: "WebGL context lost",
+      recommendedDpr: 1,
+      recommendedInstances: INSTANCE_PRESETS[0].count,
+      action: "展示 poster fallback，停止 render loop，恢复后重建资源。",
+    };
+  }
+  if (stats.fps > 0 && stats.fps < 30) {
+    return {
+      level: "battery",
+      trigger: `FPS ${stats.fps} < 30`,
+      recommendedDpr: 1,
+      recommendedInstances: INSTANCE_PRESETS[0].count,
+      action: "先降 DPR 到 1，再把实例规模切 baseline，保住触控和滚动响应。",
+    };
+  }
+  if (pixelBudget > 2_000_000 || instanceCount > 900) {
+    return {
+      level: "battery",
+      trigger: pixelBudget > 2_000_000 ? `pixel budget ${pixelBudget.toLocaleString()} > 2M` : `instances ${instanceCount} > 900`,
+      recommendedDpr: 1,
+      recommendedInstances: INSTANCE_PRESETS[0].count,
+      action: "进入 battery：降低像素预算和 GPU 顶点压力，再观察 FPS 是否恢复。",
+    };
+  }
+  if (dprCap > 1.5 || instanceCount > 500) {
+    return {
+      level: "balanced",
+      trigger: "高画质或 dense 实例规模，需要观察移动端发热。",
+      recommendedDpr: 1.5,
+      recommendedInstances: INSTANCE_PRESETS[1].count,
+      action: "默认保持 balanced，真机发热或掉帧时一键切 battery。",
+    };
+  }
+  return {
+    level: "quality",
+    trigger: "当前指标稳定",
+    recommendedDpr: dprCap,
+    recommendedInstances: instanceCount,
+    action: "可维持当前策略，并记录截图、FPS、DPR、draw calls 和 triangles。",
+  };
+}
+
 const DEMO_LABELS: Record<DemoKey, string> = {
   "webgl-triangle": "原生 WebGL 渐变三角形",
   "webgl-rotation": "WebGL uniform 旋转",
@@ -407,6 +910,7 @@ const DEMO_LABELS: Record<DemoKey, string> = {
   configurator: "商品配置器雏形",
   "data-points": "WebGL 数据点位",
   performance: "InstancedMesh 性能样例",
+  "model-loader": "GLTFLoader 模型加载",
 };
 
 const PLAN: Slot[] = [
@@ -554,6 +1058,114 @@ const PLAN: Slot[] = [
     verify: "`npm run build` 通过，访问 `/lab/15-minute-webgl-plan`。",
     interview: "能交付的 WebGL 项目必须包含加载策略、真机测试、性能记录和部署地址。",
   },
+  {
+    time: "04:00-04:15",
+    stage: "Asset",
+    title: "加载 glTF 模型",
+    demo: "model-loader",
+    goal: "用 GLTFLoader 跑通模型 JSON、buffer、scene graph、mesh/material 的加载链路。",
+    verify: "画布出现由 GLTFLoader 加载的 3D 模型，面板展示 node、mesh、buffer bytes。",
+    interview: "线上 3D 项目不是只 new Mesh，真实模型要处理 loader、资源路径、进度、失败 fallback 和 dispose。",
+  },
+  {
+    time: "04:15-04:30",
+    stage: "Asset",
+    title: "建立模型体积预算",
+    demo: "model-loader",
+    goal: "理解 GLB/贴图体积、压缩和移动端加载预算。",
+    verify: "能说出 raw buffer、线上目标体积、Draco/Meshopt/KTX2 的作用。",
+    interview: "模型优化要分几何压缩、贴图压缩、懒加载和降级，而不是只让美术减面。",
+  },
+  {
+    time: "04:30-04:45",
+    stage: "Asset",
+    title: "真实 GLB URL 加载",
+    demo: "model-loader",
+    goal: "用 GLTFLoader.load 访问真实 URL，验证 HTTP 头、content length、progress 和 GLB 解析。",
+    verify: "选择 Real GLB API 后模型加载完成，面板展示 URL、source mode、progress=100%。",
+    interview: "真实项目要把模型当成线上资源交付：URL、缓存、进度、失败、版本和回滚都要设计。",
+  },
+  {
+    time: "04:45-05:00",
+    stage: "Resilience",
+    title: "加载失败 fallback UI",
+    demo: "model-loader",
+    goal: "补齐模型加载失败时的用户提示、poster 降级和重试入口。",
+    verify: "模拟错误 URL 后不白屏，页面展示 fallback 状态和重试建议。",
+    interview: "WebGL 线上白屏不应该直接暴露给用户，要有 2D 兜底、重试和可观测日志。",
+  },
+  {
+    time: "05:00-05:15",
+    stage: "Product",
+    title: "配置器作品页骨架",
+    demo: "configurator",
+    goal: "把训练 demo 过渡成可展示的 3D 产品配置器作品页结构。",
+    verify: "页面能讲清产品名、配置项、SKU、移动端预算和交付材料。",
+    interview: "作品页要从用户任务开始讲，而不是从 Three.js API 开始讲。",
+  },
+  {
+    time: "05:15-05:30",
+    stage: "Product",
+    title: "配置数据源 JSON 化",
+    demo: "configurator",
+    goal: "把颜色、材质、部件和 SKU 约束整理成可配置数据源。",
+    verify: "切换部件时 UI、材质和 SKU 来自同一份结构化配置。",
+    interview: "配置器的复杂度在业务状态和模型材质映射，不只是 3D 渲染。",
+  },
+  {
+    time: "05:30-05:45",
+    stage: "Interaction",
+    title: "配置器部件说明热点",
+    demo: "picking",
+    goal: "把 Raycaster 命中结果转换成部件说明、配置约束和 SKU 影响。",
+    verify: "点击不同 3D 部件时，高亮、命中距离和说明面板同步变化。",
+    interview: "商品热点需要把屏幕坐标、3D 命中、业务部件和 UI 状态连接起来。",
+  },
+  {
+    time: "05:45-06:00",
+    stage: "QA",
+    title: "作品页验收脚本",
+    demo: "configurator",
+    goal: "沉淀配置器上线前验收清单：路由、画布、移动端、SKU、性能指标。",
+    verify: "`tsc` 通过，路由返回 200，桌面和移动端 canvas 非空白且无横向溢出。",
+    interview: "我会把 WebGL 作品当线上页面验收：类型、路由、真机、性能和 fallback 都留证据。",
+  },
+  {
+    time: "06:00-06:15",
+    stage: "Mobile",
+    title: "移动端性能降级开关",
+    demo: "performance",
+    goal: "把 FPS、DPR、实例数量和像素预算连接成可解释的降级策略。",
+    verify: "切换实例规模和 DPR 后，页面能说明何时进入 battery/fallback 策略。",
+    interview: "移动端 WebGL 性能优化要有指标触发和产品降级方案，而不是凭感觉关效果。",
+  },
+  {
+    time: "06:15-06:30",
+    stage: "Asset",
+    title: "压缩资源交付策略",
+    demo: "model-loader",
+    goal: "把 Draco、Meshopt、KTX2、poster fallback 和缓存版本整理成模型交付策略。",
+    verify: "能解释原始 GLB、移动端优化 GLB、poster fallback 各自的体积预算和加载路径。",
+    interview: "模型优化要同时管几何、贴图、decoder、缓存和失败兜底，不能只说压缩。",
+  },
+  {
+    time: "06:30-06:45",
+    stage: "Observe",
+    title: "线上观测指标面板",
+    demo: "performance",
+    goal: "把 FPS、DPR、draw calls、triangles、资源状态和用户设备整理成线上观测字段。",
+    verify: "页面能输出一组可复制到 README/埋点方案里的 WebGL telemetry 字段。",
+    interview: "线上 WebGL 不是只看本机流畅，要能记录设备、资源、渲染和降级状态。",
+  },
+  {
+    time: "06:45-07:00",
+    stage: "Product",
+    title: "首屏加载编排",
+    demo: "model-loader",
+    goal: "把 poster、progress、decoder、GLB、fallback 和 retry 编排成用户可感知的加载流程。",
+    verify: "页面能说明首屏 0-100% 加载阶段、失败兜底和重试路径。",
+    interview: "3D 首屏交付要设计等待体验和失败路径，不能只等 GLB 加载完成。",
+  },
 ];
 
 const COLORS = [0x00f0ff, 0xff2dd1, 0x7ddf64, 0xffb84d];
@@ -635,6 +1247,8 @@ function useLiveDemo(
   dprCapRef: React.MutableRefObject<number>,
   dataPresetIndex: number,
   instancePresetIndex: number,
+  modelAssetIndex: number,
+  modelSourceMode: ModelSourceMode,
   contextAction: "running" | "lost" | "restored",
 ) {
   const [stats, setStats] = useState<DemoStats>({
@@ -680,6 +1294,8 @@ function useLiveDemo(
             dprCapRef,
             dataPresetIndex,
             instancePresetIndex,
+            modelAssetIndex,
+            modelSourceMode,
             setStats,
           );
 
@@ -687,7 +1303,7 @@ function useLiveDemo(
       cleanup();
       if (canvas.parentNode === host) host.removeChild(canvas);
     };
-  }, [colorIndex, contextAction, dataPresetIndex, demo, hostRef, instancePresetIndex]);
+  }, [colorIndex, contextAction, dataPresetIndex, demo, hostRef, instancePresetIndex, modelAssetIndex, modelSourceMode]);
 
   return stats;
 }
@@ -941,6 +1557,8 @@ function runThreeDemo(
   dprCapRef: React.MutableRefObject<number>,
   dataPresetIndex: number,
   instancePresetIndex: number,
+  modelAssetIndex: number,
+  modelSourceMode: ModelSourceMode,
   setStats: (stats: DemoStats) => void,
 ) {
   const getDpr = () => Math.min(window.devicePixelRatio || 1, dprCapRef.current);
@@ -986,8 +1604,26 @@ function runThreeDemo(
     | null = null;
   let dataVizStats: { points: number; bytes: number; source: string } | null = null;
   let instanceStats: { instances: number; bytes: number; preset: string } | null = null;
+  let modelStats: { nodes: number; meshes: number; bytes: number } | null = null;
+  let modelProgress = 0;
+  let modelLoadedBytes = 0;
+  let modelTotalBytes = 0;
+  let modelStatus: DemoStats["modelStatus"] = "loading";
+  let modelError = "";
+  let modelObjectUrl: string | null = null;
+  const modelBudget = getModelAssetPreset(modelAssetIndex);
+  const modelSource = getModelSourceMode(modelSourceMode);
   let hitMarker: THREE.Mesh | null = null;
   let rayLine: THREE.Line | null = null;
+  let pickingHit:
+    | {
+        target: string;
+        distance: number;
+        ndcX: number;
+        ndcY: number;
+      }
+    | null = null;
+  let disposed = false;
 
   if (demo === "three-scene") {
     const preset = MATERIAL_PRESETS[materialPresetRef.current];
@@ -1132,6 +1768,79 @@ function runThreeDemo(
     note = `${preset.name} preset：${preset.count} 个立方体共享 geometry/material，只上传 instanceMatrix 约 ${instanceStats.bytes} bytes`;
   }
 
+  if (demo === "model-loader") {
+    const loader = new GLTFLoader();
+    const asset = createEmbeddedProductGltf();
+    const modelUrl =
+      modelSource.id === "api-glb"
+        ? modelSource.url
+        : modelSource.id === "broken-glb"
+          ? modelSource.url
+          : URL.createObjectURL(new Blob([asset.json], { type: "model/gltf+json" }));
+    if (modelSource.id === "blob-gltf") modelObjectUrl = modelUrl;
+    note = `GLTFLoader 正在加载 ${modelSource.label}；预算预设=${modelBudget.name}`;
+    loader.load(
+      modelUrl,
+      (gltf) => {
+        if (disposed) {
+          disposeObject3D(gltf.scene);
+          return;
+        }
+        let nodes = 0;
+        let meshes = 0;
+        gltf.scene.traverse((child) => {
+          nodes += 1;
+          if ((child as THREE.Mesh).isMesh) {
+            meshes += 1;
+            const mesh = child as THREE.Mesh;
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+          }
+        });
+        gltf.scene.scale.setScalar(1.35);
+        gltf.scene.position.y = 0.1;
+        group.add(gltf.scene);
+        modelStats = { nodes, meshes, bytes: modelTotalBytes || modelLoadedBytes || modelSource.expectedBytes || asset.byteLength };
+        modelProgress = 100;
+        modelStatus = "ready";
+        modelError = "";
+        note = `GLTFLoader ${modelSource.label} 加载完成：${nodes} nodes，${meshes} mesh，buffer=${formatBytes(modelStats.bytes)}；${modelBudget.name}=${formatBytes(modelBudget.optimizedBytes)} / target ${formatBytes(modelBudget.targetBytes)}`;
+      },
+      (event) => {
+        modelLoadedBytes = event.loaded;
+        modelTotalBytes = event.total || modelTotalBytes;
+        if (event.lengthComputable && event.total > 0) {
+          modelProgress = Math.round((event.loaded / event.total) * 100);
+        } else {
+          modelProgress = Math.max(modelProgress, 35);
+        }
+      },
+      (error) => {
+        modelStatus = "fallback";
+        modelProgress = 100;
+        modelError = error instanceof Error ? error.message : String(error);
+        const poster = new THREE.Mesh(
+          new THREE.PlaneGeometry(3.2, 2),
+          new THREE.MeshBasicMaterial({ color: 0x102033, transparent: true, opacity: 0.92 }),
+        );
+        const frame = new THREE.LineSegments(
+          new THREE.EdgesGeometry(new THREE.PlaneGeometry(3.25, 2.05)),
+          new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.8 }),
+        );
+        const marker = new THREE.Mesh(
+          new THREE.TorusGeometry(0.48, 0.035, 12, 48),
+          new THREE.MeshBasicMaterial({ color: 0xff2dd1 }),
+        );
+        poster.position.set(0, 0.1, 0);
+        frame.position.copy(poster.position);
+        marker.position.set(0, 0.1, 0.04);
+        group.add(poster, frame, marker);
+        modelStats = { nodes: 3, meshes: 2, bytes: modelSource.expectedBytes };
+        note = `GLTFLoader ${modelSource.label} 加载失败，已展示 poster fallback；error=${modelError}`;
+      },
+    );
+  }
+
   const onPointerDown = (event: PointerEvent) => {
     if (demo !== "picking") return;
     const rect = renderer.domElement.getBoundingClientRect();
@@ -1160,10 +1869,17 @@ function runThreeDemo(
         ]);
         rayLine.visible = true;
       }
+      pickingHit = {
+        target: hit.name,
+        distance: hitResult.distance,
+        ndcX: pointer.x,
+        ndcY: pointer.y,
+      };
       note = `命中部件：${hit.name}；NDC=(${pointer.x.toFixed(2)}, ${pointer.y.toFixed(2)})；distance=${hitResult.distance.toFixed(2)}`;
     } else {
       if (hitMarker) hitMarker.visible = false;
       if (rayLine) rayLine.visible = false;
+      pickingHit = null;
       note = `未命中；NDC=(${pointer.x.toFixed(2)}, ${pointer.y.toFixed(2)})`;
     }
   };
@@ -1251,6 +1967,23 @@ function runThreeDemo(
       instances: instanceStats?.instances,
       instanceBytes: instanceStats?.bytes,
       instancePreset: instanceStats?.preset,
+      modelNodes: modelStats?.nodes,
+      modelMeshes: modelStats?.meshes,
+      modelBytes: modelStats?.bytes,
+      modelProgress,
+      modelBudgetName: modelBudget.name,
+      modelTargetBytes: modelBudget.targetBytes,
+      modelOriginalBytes: modelBudget.originalBytes,
+      modelOptimizedBytes: modelBudget.optimizedBytes,
+      modelTextureBytes: modelBudget.textureBytes,
+      modelUrl: modelSource.id === "blob-gltf" ? "Blob URL" : modelSource.url,
+      modelSourceMode: modelSource.label,
+      modelStatus,
+      modelError,
+      hitTarget: pickingHit?.target,
+      hitDistance: pickingHit?.distance,
+      hitNdcX: pickingHit?.ndcX,
+      hitNdcY: pickingHit?.ndcY,
       note,
     });
     raf = requestAnimationFrame(render);
@@ -1258,11 +1991,13 @@ function runThreeDemo(
   raf = requestAnimationFrame(render);
 
   return () => {
+    disposed = true;
     cancelAnimationFrame(raf);
     renderer.domElement.removeEventListener("pointerdown", onPointerDown);
     controls.dispose();
     disposeObject3D(scene);
     renderer.dispose();
+    if (modelObjectUrl) URL.revokeObjectURL(modelObjectUrl);
   };
 }
 
@@ -1284,6 +2019,10 @@ export default function FifteenMinuteWebGLPlan() {
   const [resizePreset, setResizePreset] = useState(1);
   const [dataPreset, setDataPreset] = useState(0);
   const [instancePreset, setInstancePreset] = useState(1);
+  const [modelAssetPreset, setModelAssetPreset] = useState(1);
+  const [modelSourceMode, setModelSourceMode] = useState<ModelSourceMode>(
+    progress.currentSlot === 20 ? "broken-glb" : "api-glb",
+  );
   const [contextAction, setContextAction] = useState<"running" | "lost" | "restored">("running");
   const hostRef = useRef<HTMLDivElement | null>(null);
   const animationPausedRef = useRef(rotationPaused);
@@ -1313,6 +2052,8 @@ export default function FifteenMinuteWebGLPlan() {
   const resizeViewport = RESIZE_VIEWPORTS[resizePreset];
   const dataSet = getDataVizDataset(dataPreset);
   const instanceSet = getInstancePreset(instancePreset);
+  const modelAsset = getModelAssetPreset(modelAssetPreset);
+  const modelSource = getModelSourceMode(modelSourceMode);
   const stats = useLiveDemo(
     current.demo,
     colorIndex,
@@ -1329,6 +2070,8 @@ export default function FifteenMinuteWebGLPlan() {
     dprCapRef,
     dataPreset,
     instancePreset,
+    modelAssetPreset,
+    modelSourceMode,
     contextAction,
   );
   const debugSample = {
@@ -1346,6 +2089,32 @@ export default function FifteenMinuteWebGLPlan() {
       : debugSample.dpr > 2 || debugSample.pixelBudget > 2_000_000 || debugSample.instances > 900
         ? "观察风险"
         : "当前健康";
+  const mobileDegradePolicy = getMobileDegradePolicy(stats, stats.instances ?? instanceSet.count, dprCap);
+  const activePickingHotspot = PICKING_HOTSPOT_CONTRACTS.find((item) => item.label === stats.hitTarget);
+  const modelCompressionSummary = {
+    original: modelAsset.originalBytes,
+    optimized: modelAsset.optimizedBytes,
+    saved: Math.max(0, modelAsset.originalBytes - modelAsset.optimizedBytes),
+    ratio: modelAsset.optimizedBytes / Math.max(1, modelAsset.originalBytes),
+    status: getBudgetStatus(modelAsset.optimizedBytes, modelAsset.targetBytes),
+    target: modelAsset.targetBytes,
+  };
+  const qaEvidence = {
+    sku: configuratorSku.code,
+    fps: stats.fps,
+    dpr: stats.dpr,
+    dprCap,
+    drawCalls: stats.drawCalls,
+    triangles: stats.triangles,
+    canvas: `${stats.pixelWidth ?? 0} x ${stats.pixelHeight ?? 0}`,
+    pixelBudget: stats.pixelBudget ?? 0,
+    risk:
+      stats.fps > 0 && stats.fps < 30
+        ? "降级候选"
+        : (stats.pixelBudget ?? 0) > 2_000_000 || stats.drawCalls > 60
+          ? "需要观察"
+          : "可发布样例",
+  };
   const uniformMatrix = {
     cos: Math.cos(uniformPreviewAngle),
     sin: Math.sin(uniformPreviewAngle),
@@ -1360,6 +2129,14 @@ export default function FifteenMinuteWebGLPlan() {
     }, 250);
     return () => window.clearInterval(id);
   }, [current.demo]);
+
+  useEffect(() => {
+    if (current.stage === "Resilience") {
+      setModelSourceMode("broken-glb");
+    } else if (current.demo === "model-loader") {
+      setModelSourceMode("api-glb");
+    }
+  }, [current.demo, current.stage]);
 
   const grouped = useMemo(
     () =>
@@ -1388,7 +2165,7 @@ export default function FifteenMinuteWebGLPlan() {
         <header className="min-w-0 space-y-4">
           <div className="flex items-center gap-3 text-xs font-medium text-gray-500 dark:text-cyan-300/80 uppercase tracking-[0.25em] cyber-num">
             <span className="w-6 h-px bg-gray-400 dark:bg-cyan-400/70 dark:shadow-[0_0_6px_rgba(0,240,255,0.7)]" />
-            4 hours · 16 demos
+            phase training · {PLAN.length} labs
           </div>
           <div className="space-y-3">
             <h1 className="font-serif text-2xl md:text-5xl font-bold tracking-tight leading-tight text-gray-900 dark:text-gray-50 [overflow-wrap:anywhere]">
@@ -1820,6 +2597,89 @@ export default function FifteenMinuteWebGLPlan() {
                   <p className="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
                     当前压力：{instanceSet.intent}
                   </p>
+                  {current.title === "移动端性能降级开关" ? (
+                    <div className="flex flex-wrap items-center gap-2 border-t border-gray-200/70 pt-3 dark:border-cyan-400/15">
+                      <span className="cyber-num w-20 text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-cyan-300/70">
+                        strategy
+                      </span>
+                      {MOBILE_DEGRADE_PRESETS.map((preset) => (
+                        <button
+                          key={preset.name}
+                          type="button"
+                          aria-label={`mobile degrade ${preset.name}`}
+                          onClick={() => {
+                            setDprCap(preset.dprCap);
+                            setInstancePreset(preset.instanceIndex);
+                          }}
+                          className={`h-8 rounded-md border px-3 text-xs transition-colors ${
+                            dprCap === preset.dprCap && instancePreset === preset.instanceIndex
+                              ? "border-fuchsia-500/70 bg-fuchsia-50 text-fuchsia-700 dark:border-fuchsia-300/70 dark:bg-fuchsia-400/10 dark:text-fuchsia-200"
+                              : "border-gray-300/70 text-gray-500 hover:border-fuchsia-400/60 dark:border-fuchsia-400/20 dark:text-fuchsia-300/70"
+                          }`}
+                        >
+                          {preset.name}
+                        </button>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+
+              {current.demo === "model-loader" ? (
+                <div className="space-y-3 border-t border-gray-200/70 px-4 py-3 dark:border-cyan-400/15">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="cyber-num w-20 text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-cyan-300/70">
+                      source
+                    </span>
+                    {MODEL_SOURCE_MODES.map((source) => (
+                      <button
+                        key={source.id}
+                        type="button"
+                        aria-label={`model source ${source.id}`}
+                        onClick={() => setModelSourceMode(source.id)}
+                        className={`h-8 rounded-md border px-3 text-xs transition-colors ${
+                          modelSourceMode === source.id
+                            ? "border-fuchsia-500/70 bg-fuchsia-50 text-fuchsia-700 dark:border-fuchsia-300/70 dark:bg-fuchsia-400/10 dark:text-fuchsia-200"
+                            : "border-gray-300/70 text-gray-500 hover:border-fuchsia-400/60 dark:border-fuchsia-400/20 dark:text-fuchsia-300/70"
+                        }`}
+                      >
+                        {source.label}
+                      </button>
+                    ))}
+                    {stats.modelStatus === "fallback" ? (
+                      <button
+                        type="button"
+                        aria-label="retry real glb api"
+                        onClick={() => setModelSourceMode("api-glb")}
+                        className="h-8 rounded-md border border-emerald-500/70 bg-emerald-50 px-3 text-xs text-emerald-700 transition-colors hover:border-emerald-600 dark:border-emerald-300/70 dark:bg-emerald-400/10 dark:text-emerald-200"
+                      >
+                        Retry
+                      </button>
+                    ) : null}
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="cyber-num w-20 text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-cyan-300/70">
+                      asset
+                    </span>
+                    {MODEL_ASSET_PRESETS.map((preset, index) => (
+                      <button
+                        key={preset.name}
+                        type="button"
+                        aria-label={`model asset ${preset.name}`}
+                        onClick={() => setModelAssetPreset(index)}
+                        className={`h-8 rounded-md border px-3 text-xs transition-colors ${
+                          modelAssetPreset === index
+                            ? "border-cyan-500/70 bg-cyan-50 text-cyan-700 dark:border-cyan-300/70 dark:bg-cyan-400/10 dark:text-cyan-200"
+                            : "border-gray-300/70 text-gray-500 hover:border-cyan-400/60 dark:border-cyan-400/20 dark:text-cyan-300/70"
+                        }`}
+                      >
+                        {preset.label} · {formatBytes(preset.optimizedBytes)}
+                      </button>
+                    ))}
+                  </div>
+                  <p className="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+                    当前来源：{modelSource.contract} 当前预算：{modelAsset.compression} · {modelAsset.route}
+                  </p>
                 </div>
               ) : null}
 
@@ -2129,6 +2989,431 @@ export default function FifteenMinuteWebGLPlan() {
                     ))}
                   </div>
                 </section>
+
+                {current.title === "移动端性能降级开关" ? (
+                  <>
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        Mobile degradation switchboard
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {[
+                          ["level", mobileDegradePolicy.level],
+                          ["trigger", mobileDegradePolicy.trigger],
+                          ["recommended dpr", `${mobileDegradePolicy.recommendedDpr}x`],
+                          ["recommended instances", mobileDegradePolicy.recommendedInstances],
+                          ["current dpr", `${stats.dpr}x / cap ${dprCap}x`],
+                          ["current instances", stats.instances ?? instanceSet.count],
+                          ["pixel budget", (stats.pixelBudget ?? 0).toLocaleString()],
+                          ["triangles", stats.triangles],
+                        ].map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-emerald-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        {mobileDegradePolicy.action}
+                      </p>
+                    </section>
+
+                    <section className="rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                        Trigger ladder
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {MOBILE_DEGRADE_TRIGGERS.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-amber-300/50 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-amber-700 dark:text-amber-200">
+                                rule {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-blue-300/60 bg-blue-50/70 p-4 dark:border-blue-300/20 dark:bg-blue-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-blue-700 dark:text-blue-300">
+                        Degradation action map
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {MOBILE_DEGRADE_ACTIONS.map(([label, body]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-blue-300/50 bg-white/70 p-3 dark:border-blue-300/20 dark:bg-black/20"
+                          >
+                            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                              <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：我不会只说“优化性能”，而是用 FPS、DPR、像素预算、实例数和 fallback 状态触发明确降级。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+              </>
+            ) : null}
+
+            {current.demo === "model-loader" ? (
+              <>
+                <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                  <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                    GLTF load result
+                  </div>
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    {[
+                      ["source", stats.modelSourceMode ?? modelSource.label],
+                      ["url", stats.modelUrl ?? modelSource.url],
+                      ["nodes", stats.modelNodes ?? 0],
+                      ["meshes", stats.modelMeshes ?? 0],
+                      ["buffer", formatBytes(stats.modelBytes ?? 0)],
+                      ["progress", `${stats.modelProgress ?? 0}%`],
+                      ["status", stats.modelStatus ?? "loading"],
+                      ["draw calls", stats.drawCalls],
+                      ["budget", getBudgetStatus(modelAsset.optimizedBytes, modelAsset.targetBytes)],
+                    ].map(([label, value]) => (
+                      <div
+                        key={label}
+                        className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                      >
+                        <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-cyan-300/80">
+                          {label}
+                        </div>
+                        <div className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
+                          {value}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-cyan-950/10 dark:bg-cyan-950/60">
+                    <div
+                      className="h-full rounded-full bg-cyan-500 transition-[width] duration-300 dark:bg-cyan-300"
+                      style={{ width: `${Math.min(100, Math.max(0, stats.modelProgress ?? 0))}%` }}
+                    />
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                    这个实验用 <span className="font-semibold text-gray-900 dark:text-gray-100">GLTFLoader.load</span>{" "}
+                    加载真实 GLB API 或 Blob URL，对照线上 `.glb` 资源地址、进度回调和失败 fallback。
+                    当前来源是 <span className="font-semibold text-gray-900 dark:text-gray-100">{modelSource.label}</span>，
+                    预算预设是 <span className="font-semibold text-gray-900 dark:text-gray-100">{modelAsset.name}</span>。
+                  </p>
+                </section>
+
+                {stats.modelStatus === "fallback" || current.stage === "Resilience" ? (
+                  <section className="rounded-lg border border-amber-300/70 bg-amber-50/80 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                    <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                      Poster fallback state
+                    </div>
+                    <div className="mt-3 grid grid-cols-2 gap-2">
+                      {[
+                        ["state", stats.modelStatus ?? "loading"],
+                        ["failed url", stats.modelUrl ?? modelSource.url],
+                        ["poster", "2D product marker"],
+                        ["retry", "Real GLB API"],
+                      ].map(([label, value]) => (
+                        <div
+                          key={label}
+                          className="rounded-md border border-amber-300/60 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                        >
+                          <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-amber-300/80">
+                            {label}
+                          </div>
+                          <p className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                            {value}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                      错误信息：{stats.modelError || "等待加载结果"}。真实线上页面要在这里记录 source、URL、设备 DPR、
+                      Content-Length、loader 错误和回滚版本，同时让用户看到 2D poster 而不是空白区域。
+                    </p>
+                  </section>
+                ) : null}
+
+                <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                  <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                    Model loading check
+                  </div>
+                  <div className="mt-3 grid gap-2">
+                    {MODEL_LOADER_CHECKS.map(([label, body], index) => (
+                      <div
+                        key={label}
+                        className="rounded-md border border-gray-200/70 bg-white/70 p-3 dark:border-cyan-400/10 dark:bg-black/20"
+                      >
+                        <div className="flex items-start gap-3">
+                          <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-300">
+                            gate {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                            <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                            <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="rounded-lg border border-fuchsia-300/60 bg-fuchsia-50/70 p-4 dark:border-fuchsia-300/20 dark:bg-fuchsia-400/10">
+                  <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-fuchsia-700 dark:text-fuchsia-300">
+                    GLB URL contract
+                  </div>
+                  <div className="mt-3 grid gap-2">
+                    {[
+                      ["endpoint", modelSource.url],
+                      ["content type", modelSource.id === "api-glb" ? "model/gltf-binary" : "model/gltf+json"],
+                      ["progress", "依赖 Content-Length；无 total 时展示保守进度"],
+                      ["cache", modelSource.id === "api-glb" ? "no-store for lab，线上应带版本 hash" : "浏览器内存 Blob，离开页面 revokeObjectURL"],
+                    ].map(([label, value]) => (
+                      <div
+                        key={label}
+                        className="rounded-md border border-fuchsia-300/50 bg-white/70 p-3 dark:border-fuchsia-300/20 dark:bg-black/20"
+                      >
+                        <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-fuchsia-300/80">
+                          {label}
+                        </div>
+                        <p className="mt-1 text-sm leading-relaxed text-gray-700 dark:text-gray-300">{value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                  <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                    Asset delivery budget
+                  </div>
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    {[
+                      ["original", formatBytes(modelAsset.originalBytes)],
+                      ["geometry", formatBytes(modelAsset.geometryBytes)],
+                      ["texture", formatBytes(modelAsset.textureBytes)],
+                      ["optimized", formatBytes(modelAsset.optimizedBytes)],
+                      ["target", formatBytes(modelAsset.targetBytes)],
+                      ["status", getBudgetStatus(modelAsset.optimizedBytes, modelAsset.targetBytes)],
+                    ].map(([label, value]) => (
+                      <div
+                        key={label}
+                        className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                      >
+                        <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-emerald-300/80">
+                          {label}
+                        </div>
+                        <div className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
+                          {value}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-3 rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20">
+                    <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-emerald-300/80">
+                      delivery route
+                    </div>
+                    <p className="mt-1 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                      {modelAsset.route}
+                    </p>
+                  </div>
+                </section>
+
+                <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                  <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                    Model budget
+                  </div>
+                  <div className="mt-3 grid gap-2">
+                    {MODEL_BUDGETS.map(([label, value, body]) => (
+                      <div
+                        key={label}
+                        className="rounded-md border border-gray-200/70 bg-white/70 p-3 dark:border-cyan-400/10 dark:bg-black/20"
+                      >
+                        <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                          <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                          <span className="cyber-num text-xs text-cyan-700 dark:text-cyan-200">{value}</span>
+                        </div>
+                        <p className="mt-1 text-sm leading-relaxed text-gray-500 dark:text-gray-400">{body}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                  <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                    Delivery checklist
+                  </div>
+                  <div className="mt-3 grid gap-2">
+                    {MODEL_DELIVERY_CHECKS.map(([label, body], index) => (
+                      <div
+                        key={label}
+                        className="rounded-md border border-gray-200/70 bg-white/70 p-3 dark:border-cyan-400/10 dark:bg-black/20"
+                      >
+                        <div className="flex items-start gap-3">
+                          <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-200">
+                            ship {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                            <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                            <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {current.title === "压缩资源交付策略" ? (
+                  <>
+                    <section className="rounded-lg border border-blue-300/60 bg-blue-50/70 p-4 dark:border-blue-300/20 dark:bg-blue-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-blue-700 dark:text-blue-300">
+                        Compression shipping strategy
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {[
+                          ["selected", modelAsset.name],
+                          ["compression", modelAsset.compression],
+                          ["original", formatBytes(modelCompressionSummary.original)],
+                          ["optimized", formatBytes(modelCompressionSummary.optimized)],
+                          ["saved", formatBytes(modelCompressionSummary.saved)],
+                          ["ratio", `${Math.round(modelCompressionSummary.ratio * 100)}%`],
+                          ["target", formatBytes(modelCompressionSummary.target)],
+                          ["status", modelCompressionSummary.status],
+                        ].map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-blue-300/50 bg-white/70 p-3 dark:border-blue-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-blue-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        当前交付路线：{modelAsset.route}
+                      </p>
+                    </section>
+
+                    <section className="rounded-lg border border-fuchsia-300/60 bg-fuchsia-50/70 p-4 dark:border-fuchsia-300/20 dark:bg-fuchsia-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-fuchsia-700 dark:text-fuchsia-300">
+                        Decoder loading plan
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {MODEL_COMPRESSION_PIPELINE.map((item, index) => (
+                          <div
+                            key={item.step}
+                            className="rounded-md border border-fuchsia-300/50 bg-white/70 p-3 dark:border-fuchsia-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                                {String(index + 1).padStart(2, "0")} · {item.step}
+                              </span>
+                              <span className="cyber-num text-xs text-fuchsia-700 dark:text-fuchsia-200">
+                                {item.tool} · {item.input} → {item.output}
+                              </span>
+                            </div>
+                            <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              {item.rule}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        Cache and rollback
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {MODEL_CACHE_VERSION_RULES.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                cache {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                        Shipping decision matrix
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {MODEL_SHIPPING_DECISIONS.map(([label, body]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-amber-300/50 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                          >
+                            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                              <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：我会把模型交付拆成几何压缩、贴图转码、decoder 懒加载、缓存版本和失败兜底五件事一起验收。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.stage === "Resilience" ? (
+                  <section className="rounded-lg border border-rose-300/70 bg-rose-50/80 p-4 dark:border-rose-300/25 dark:bg-rose-400/10">
+                    <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-rose-700 dark:text-rose-300">
+                      Fallback incident checklist
+                    </div>
+                    <div className="mt-3 grid gap-2">
+                      {MODEL_FALLBACK_CHECKS.map(([label, body], index) => (
+                        <div
+                          key={label}
+                          className="rounded-md border border-rose-300/60 bg-white/70 p-3 dark:border-rose-300/20 dark:bg-black/20"
+                        >
+                          <div className="flex items-start gap-3">
+                            <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-rose-700 dark:text-rose-200">
+                              fail {String(index + 1).padStart(2, "0")}
+                            </span>
+                            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                              <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                ) : null}
               </>
             ) : null}
 
@@ -2698,6 +3983,111 @@ export default function FifteenMinuteWebGLPlan() {
                     ))}
                   </div>
                 </section>
+
+                {current.title === "配置器部件说明热点" ? (
+                  <>
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        Hotspot business contract
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PICKING_HOTSPOT_CONTRACTS.map((hotspot) => (
+                          <div
+                            key={hotspot.label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                                {hotspot.label}
+                              </span>
+                              <span className="cyber-num text-xs text-cyan-700 dark:text-cyan-200">
+                                part · {hotspot.part}
+                              </span>
+                            </div>
+                            <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              {hotspot.business}
+                            </p>
+                            <p className="mt-1 text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+                              {hotspot.skuImpact}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        Active hotspot
+                      </div>
+                      {activePickingHotspot ? (
+                        <div className="mt-3 space-y-3">
+                          <div className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20">
+                            <div className="cyber-num text-xs uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                              hit · {activePickingHotspot.label}
+                            </div>
+                            <p className="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                              {activePickingHotspot.business}
+                            </p>
+                          </div>
+                          <div className="grid grid-cols-2 gap-2">
+                            {[
+                              ["ndc", `${(stats.hitNdcX ?? 0).toFixed(2)}, ${(stats.hitNdcY ?? 0).toFixed(2)}`],
+                              ["distance", (stats.hitDistance ?? 0).toFixed(2)],
+                              ["constraint", activePickingHotspot.constraint],
+                              ["next ui", activePickingHotspot.nextUi],
+                            ].map(([label, value]) => (
+                              <div
+                                key={label}
+                                className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                              >
+                                <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-emerald-300/80">
+                                  {label}
+                                </div>
+                                <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                                  {value}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="mt-3 rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20">
+                          <div className="cyber-num text-xs uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                            waiting for pointer hit
+                          </div>
+                          <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                            点击画布中的 Lens、Body、Button 或 Port。命中后这里会展示业务说明、NDC、距离、
+                            SKU 影响和下一步 UI 动作；点空白会清空状态。
+                          </p>
+                        </div>
+                      )}
+                    </section>
+
+                    <section className="rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                        Hotspot troubleshooting
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PICKING_HOTSPOT_CHECKS.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-amber-300/50 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-amber-700 dark:text-amber-200">
+                                qa {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+                  </>
+                ) : null}
               </>
             ) : null}
 
@@ -2758,6 +4148,354 @@ export default function FifteenMinuteWebGLPlan() {
                     ))}
                   </div>
                 </section>
+
+                {current.stage === "Product" || current.stage === "QA" ? (
+                  <>
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        Product showcase skeleton
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {CONFIGURATOR_PRODUCT_BRIEF.map(([label, body]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                              <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                        User flow
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {CONFIGURATOR_USER_FLOW.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-gray-200/70 bg-white/70 p-3 dark:border-cyan-400/10 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-200">
+                                step {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        Mobile delivery budget
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {[
+                          ["sku", configuratorSku.code],
+                          ["dpr cap", `${dprCap}x`],
+                          ["draw calls", stats.drawCalls],
+                          ["triangles", stats.triangles],
+                          ["canvas", `${stats.pixelWidth ?? 0} x ${stats.pixelHeight ?? 0}`],
+                          ["pixel budget", (stats.pixelBudget ?? 0).toLocaleString()],
+                        ].map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-emerald-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                        Delivery package
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {CONFIGURATOR_DELIVERY_PACKAGE.map(([label, body]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-gray-200/70 bg-white/70 p-3 dark:border-cyan-400/10 dark:bg-black/20"
+                          >
+                            <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                              <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-fuchsia-300/60 bg-fuchsia-50/70 p-4 dark:border-fuchsia-300/20 dark:bg-fuchsia-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-fuchsia-700 dark:text-fuchsia-300">
+                        Acceptance gates
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {CONFIGURATOR_ACCEPTANCE_GATES.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-fuchsia-300/50 bg-white/70 p-3 dark:border-fuchsia-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-fuchsia-700 dark:text-fuchsia-200">
+                                gate {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    {current.title === "配置数据源 JSON 化" ? (
+                      <>
+                        <section className="rounded-lg border border-blue-300/60 bg-blue-50/70 p-4 dark:border-blue-300/20 dark:bg-blue-400/10">
+                          <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-blue-700 dark:text-blue-300">
+                            Config data source
+                          </div>
+                          <div className="mt-3 grid grid-cols-2 gap-2">
+                            {[
+                              ["version", CONFIGURATOR_DATA_SOURCE.version],
+                              ["product", CONFIGURATOR_DATA_SOURCE.productId],
+                              ["sku prefix", CONFIGURATOR_DATA_SOURCE.skuPrefix],
+                              ["sku order", CONFIGURATOR_DATA_SOURCE.skuOrder.join(" > ")],
+                              ["body options", CONFIG_BODY_COLORS.length],
+                              ["lens options", CONFIG_LENS_PRESETS.length],
+                              ["button options", CONFIG_BUTTON_PRESETS.length],
+                              ["total combos", CONFIG_BODY_COLORS.length * CONFIG_LENS_PRESETS.length * CONFIG_BUTTON_PRESETS.length],
+                            ].map(([label, value]) => (
+                              <div
+                                key={label}
+                                className="rounded-md border border-blue-300/50 bg-white/70 p-3 dark:border-blue-300/20 dark:bg-black/20"
+                              >
+                                <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-blue-300/80">
+                                  {label}
+                                </div>
+                                <div className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
+                                  {value}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+
+                        <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                          <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                            Material binding map
+                          </div>
+                          <div className="mt-3 grid gap-2">
+                            {CONFIGURATOR_PART_BINDINGS.map(([part, mesh, material, constraint]) => (
+                              <div
+                                key={part}
+                                className="rounded-md border border-gray-200/70 bg-white/70 p-3 dark:border-cyan-400/10 dark:bg-black/20"
+                              >
+                                <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                                  <span className="font-semibold text-gray-900 dark:text-gray-100">{part}</span>
+                                  <span className="cyber-num text-xs text-cyan-700 dark:text-cyan-200">
+                                    {mesh} · {material}
+                                  </span>
+                                </div>
+                                <p className="mt-1 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                                  {constraint}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+
+                        <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                          <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                            SKU rule check
+                          </div>
+                          <div className="mt-3 rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20">
+                            <div className="cyber-num text-xs uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                              {CONFIGURATOR_DATA_SOURCE.skuPrefix} + {CONFIGURATOR_DATA_SOURCE.skuOrder.join(" + ")}
+                            </div>
+                            <p className="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                              当前组合输出 <span className="font-semibold text-gray-900 dark:text-gray-100">{configuratorSku.code}</span>。
+                              调整 UI 顺序不会改变 SKU 顺序，因为规则来自数据源。
+                            </p>
+                          </div>
+                          <div className="mt-3 grid gap-2">
+                            {CONFIGURATOR_SCHEMA_CHECKS.map(([label, body], index) => (
+                              <div
+                                key={label}
+                                className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                              >
+                                <div className="flex items-start gap-3">
+                                  <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                    data {String(index + 1).padStart(2, "0")}
+                                  </span>
+                                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                    <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                    <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                                  </p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+
+                        <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                          <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                            JSON preview
+                          </div>
+                          <pre className="mt-3 whitespace-pre-wrap break-words rounded-md border border-gray-200/70 bg-white/80 p-3 text-xs leading-relaxed text-gray-600 dark:border-cyan-400/10 dark:bg-black/25 dark:text-cyan-100/80">
+                            {JSON.stringify(
+                              {
+                                version: CONFIGURATOR_DATA_SOURCE.version,
+                                productId: CONFIGURATOR_DATA_SOURCE.productId,
+                                skuPrefix: CONFIGURATOR_DATA_SOURCE.skuPrefix,
+                                skuOrder: CONFIGURATOR_DATA_SOURCE.skuOrder,
+                                parts: Object.fromEntries(
+                                  Object.entries(CONFIGURATOR_DATA_SOURCE.parts).map(([key, part]) => [
+                                    key,
+                                    {
+                                      mesh: part.mesh,
+                                      material: part.material,
+                                      options: part.options.map((option) => option.name),
+                                    },
+                                  ]),
+                                ),
+                              },
+                              null,
+                              2,
+                            )}
+                          </pre>
+                        </section>
+                      </>
+                    ) : null}
+
+                    {current.stage === "QA" ? (
+                      <>
+                        <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                          <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                            QA evidence snapshot
+                          </div>
+                          <div className="mt-3 grid grid-cols-2 gap-2">
+                            {[
+                              ["sku", qaEvidence.sku],
+                              ["risk", qaEvidence.risk],
+                              ["fps", qaEvidence.fps],
+                              ["dpr / cap", `${qaEvidence.dpr} / ${qaEvidence.dprCap}`],
+                              ["draw calls", qaEvidence.drawCalls],
+                              ["triangles", qaEvidence.triangles],
+                              ["canvas", qaEvidence.canvas],
+                              ["pixels", qaEvidence.pixelBudget.toLocaleString()],
+                            ].map(([label, value]) => (
+                              <div
+                                key={label}
+                                className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                              >
+                                <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-emerald-300/80">
+                                  {label}
+                                </div>
+                                <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                                  {value}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+
+                        <section className="rounded-lg border border-blue-300/60 bg-blue-50/70 p-4 dark:border-blue-300/20 dark:bg-blue-400/10">
+                          <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-blue-700 dark:text-blue-300">
+                            Release gates
+                          </div>
+                          <div className="mt-3 grid gap-2">
+                            {CONFIGURATOR_QA_GATES.map((gate, index) => (
+                              <div
+                                key={gate.label}
+                                className="rounded-md border border-blue-300/50 bg-white/70 p-3 dark:border-blue-300/20 dark:bg-black/20"
+                              >
+                                <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                                  <span className="font-semibold text-gray-900 dark:text-gray-100">
+                                    {String(index + 1).padStart(2, "0")} · {gate.label}
+                                  </span>
+                                  <span className="cyber-num text-xs uppercase tracking-[0.16em] text-blue-700 dark:text-blue-200">
+                                    {gate.status}
+                                  </span>
+                                </div>
+                                <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                  {gate.evidence}
+                                </p>
+                                <p className="mt-1 text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+                                  failure: {gate.failure}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+
+                        <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                          <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                            Release smoke script
+                          </div>
+                          <div className="mt-3 grid gap-2">
+                            {CONFIGURATOR_QA_SCRIPT.map(([label, body], index) => (
+                              <div
+                                key={label}
+                                className="rounded-md border border-gray-200/70 bg-white/70 p-3 dark:border-cyan-400/10 dark:bg-black/20"
+                              >
+                                <div className="flex items-start gap-3">
+                                  <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-200">
+                                    step {String(index + 1).padStart(2, "0")}
+                                  </span>
+                                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                    <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                    <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                                  </p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+
+                        <section className="rounded-lg border border-rose-300/70 bg-rose-50/70 p-4 dark:border-rose-300/25 dark:bg-rose-400/10">
+                          <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-rose-700 dark:text-rose-300">
+                            Incident response
+                          </div>
+                          <div className="mt-3 grid gap-2">
+                            {CONFIGURATOR_RELEASE_RESPONSES.map(([label, body], index) => (
+                              <div
+                                key={label}
+                                className="rounded-md border border-rose-300/50 bg-white/70 p-3 dark:border-rose-300/20 dark:bg-black/20"
+                              >
+                                <div className="flex items-start gap-3">
+                                  <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-rose-700 dark:text-rose-200">
+                                    fix {String(index + 1).padStart(2, "0")}
+                                  </span>
+                                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                    <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                    <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                                  </p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+                      </>
+                    ) : null}
+                  </>
+                ) : null}
 
                 {current.stage === "Portfolio" ? (
                   <>
