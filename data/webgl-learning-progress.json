@@ -2,11 +2,11 @@
   "automationId": "15-webgl-three-js",
   "cadenceMinutes": 15,
   "startedAt": "2026-08-05T16:53:26+0800",
-  "currentSlot": 28,
-  "completedSlots": 27,
-  "lastUpdatedAt": "2026-08-08T21:30:37+0800",
-  "lastSummary": "第 27 格已完成：performance demo 新增 WebGL telemetry payload、Telemetry field contract、Sampling events 和 Incident playbook，把 FPS、DPR、draw calls、triangles、资源状态、质量降级和用户场景整理成线上观测字段。",
-  "nextAction": "第 28 轮推进首屏加载编排：把 poster、progress、decoder、GLB、fallback 和 retry 串成用户可感知的 3D 首屏流程。",
+  "currentSlot": 41,
+  "completedSlots": 41,
+  "lastUpdatedAt": "2026-08-09T07:48:39+0800",
+  "lastSummary": "第 41 格已完成：执行 `npm run build` 生产门禁；编译成功并生成 1331 个静态页后，在既有 `/tags/Life.html` export rename 处失败；作品页和训练页新增 Production build evidence，明确不是 product showcase 回归。",
+  "nextAction": "第 42 轮建议二选一：修复全站 tags export 的 `/tags/Life.html` 问题，或为 product showcase 归档 desktop/mobile/fallback 截图并收尾当前 WebGL 产品训练。",
   "history": [
     {
       "slot": 1,
@@ -277,6 +277,146 @@
       "deliverable": "在 `/lab/15-minute-webgl-plan` 的 performance demo 中新增 WebGL telemetry payload、Telemetry field contract、Sampling events 和 Incident playbook，展示可复制的 `webgl_render_sample` JSON 字段。",
       "verification": "选择第 27 格后，页面展示 severity、fps、dpr、draw calls、triangles、instances、pixel budget、quality，以及 device/render/quality/asset/interaction 五组 telemetry 字段。",
       "troubleshooting": "本轮重点排查线上 WebGL 问题是否有足够字段复盘；低 FPS、draw calls 高、pixel budget 高、triangles 高和资源错误分别对应不同处理路径。"
+    },
+    {
+      "slot": 28,
+      "time": "06:45-07:00",
+      "title": "首屏加载编排",
+      "status": "completed",
+      "completedAt": "2026-08-09T04:33:08+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 model-loader demo 中新增 First-screen loading orchestration、0-100% loading timeline、User-visible state machine 和 Release gates，展示 poster、progress、decoder、GLB fetch/parse、3D reveal、fallback/retry 的首屏编排。",
+      "verification": "选择第 28 格后，页面展示当前 phase、progress、source、decoder、fallback、retry、budget、bytes；Broken GLB URL 可进入 poster fallback，Retry 回到 Real GLB API；首屏发布门禁覆盖 no blank、progress、budget、decoder、retry、observe。",
+      "troubleshooting": "本轮重点排查 3D 首屏是否会白屏等待、progress 是否可解释、decoder 是否懒加载、GLB 失败是否有 poster fallback 和 retry、线上是否记录 source/URL/progress/bytes/DPR/status/error。"
+    },
+    {
+      "slot": 29,
+      "time": "07:00-07:15",
+      "title": "真实作品页首屏验收",
+      "status": "completed",
+      "completedAt": "2026-08-09T04:48:08+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 model-loader demo 中新增 Portfolio first-screen QA packet、First-screen requirements、Viewport QA matrix 和 Incident rehearsal，输出 source、progress、bytes、DPR、canvas、draw calls、fallback、budget 等作品页首屏证据。",
+      "verification": "选择第 29 格后，页面展示作品页 QA 包、首屏需求、phone/tablet/desktop 视口矩阵和 GLB 404/decoder miss/slow network/context lost 演练；现有 Real GLB API、Broken GLB URL、Retry、预算按钮仍可用于验证。",
+      "troubleshooting": "本轮重点排查作品页是否只有 3D demo 而缺少产品首屏证据；必须同时覆盖用户第一眼、真实运行指标、移动端预算、fallback 复现和面试叙事。"
+    },
+    {
+      "slot": 30,
+      "time": "07:15-07:30",
+      "title": "模型资源自动化压缩管线",
+      "status": "completed",
+      "completedAt": "2026-08-09T05:03:08+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 model-loader demo 中新增 Automated asset pipeline report、glTF-Transform command plan、CI gates and rollback、Versioned outputs，展示 inspect、geometry、texture、hash、budget 五步资产管线。",
+      "verification": "选择第 30 格后，页面展示当前资源预设的 original、optimized、saved、ratio、target、CI status、rollback；Raw/Mobile/Fallback 预算按钮会改变 CI 结果；命令计划覆盖 glTF-Transform inspect/optimize/etc1s、hash 和 budget check。",
+      "troubleshooting": "本轮重点排查模型优化是否仍依赖手工口头约定；资产管线必须产出 inspect 报告、压缩 GLB、KTX2 贴图、hash URL、预算 JSON、decoder path 和上一版回滚地址。"
+    },
+    {
+      "slot": 31,
+      "time": "07:30-07:45",
+      "title": "真机矩阵验收",
+      "status": "completed",
+      "completedAt": "2026-08-09T05:18:08+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 model-loader demo 中新增 Device QA live evidence、Phone/tablet/desktop matrix、Screenshot and telemetry evidence、Regression drills before release，展示当前 DPR、DPR cap、canvas pixels、GLB source、progress、fallback、telemetry severity 等真机验收字段。",
+      "verification": "选择第 31 格后，页面展示 iPhone SE/Android mid/iPad/Desktop retina 四档矩阵、截图与 telemetry 留证清单，以及 slow network、Broken GLB、High DPR、Context lost、Budget fail 五个回归演练。",
+      "troubleshooting": "本轮重点排查发布前 QA 是否只在桌面浏览器看一眼；真机矩阵必须覆盖首屏非空白、移动端 DPR/像素预算、触控、慢网、fallback、context lost、资源预算和 telemetry 字段。"
+    },
+    {
+      "slot": 32,
+      "time": "07:45-08:00",
+      "title": "线上异常复盘演练",
+      "status": "completed",
+      "completedAt": "2026-08-09T05:33:08+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 model-loader demo 中新增 WebGL incident report、Response timeline、Evidence fields for postmortem、Action map、Postmortem questions，输出结构化 incident JSON。",
+      "verification": "选择第 32 格后，页面展示 incident id/status/symptom/severity/asset/budget/rollback/action，JSON 报告包含 telemetry、asset、budget、rollback；模板覆盖 Detect/Protect/Diagnose/Rollback/Follow-up，以及 asset_error/context_lost/slow_network/budget_fail/fps_drop 处置动作。",
+      "troubleshooting": "本轮重点排查线上 WebGL 事故是否能复盘：先保护用户可见体验，再用 telemetry 分类资源、渲染、设备、降级和交互问题；资源类回滚 manifest，渲染类降级质量，最后补齐 CI 预算和真机矩阵门禁。"
+    },
+    {
+      "slot": 33,
+      "time": "08:00-08:15",
+      "title": "作品集发布包",
+      "status": "completed",
+      "completedAt": "2026-08-09T05:48:08+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 model-loader demo 中新增 Portfolio release summary、README outline、45s recording script、Screenshot checklist、Submission files、Release gates，汇总 demo、README、录屏、截图、资源预算、真机 QA 和 incident report。",
+      "verification": "选择第 33 格后，页面展示 route/demo/source/progress/budget/canvas/DPR/QA/incident/rollback 发布摘要；README outline 覆盖项目、核心 demo、WebGL 深度、交付证据和面试框架；录屏脚本、截图清单、提交文件和发布门禁均可直接复制到作品集材料。",
+      "troubleshooting": "本轮重点排查作品集是否只有页面链接而缺少交付证据；发布包必须包含可运行 demo、README、录屏、截图、asset-budget.json、incident-report.json、`tsc` 验证、route smoke、移动端非空白和回滚路径。"
+    },
+    {
+      "slot": 34,
+      "time": "08:15-08:30",
+      "title": "独立作品页切分",
+      "status": "completed",
+      "completedAt": "2026-08-09T06:03:08+0800",
+      "deliverable": "新增 `/lab/product-showcase` 独立作品页，并在 `/lab` 追加入口；页面包含真实 GLB API 加载、OrbitControls、battery/balanced/sharp DPR cap、Broken URL fallback/retry、runtime evidence 和 release evidence。",
+      "verification": "训练页第 34 格展示 Product showcase handoff 和 Split acceptance gates；`/lab/product-showcase` 具备真实 `/api/lab/product-marker-glb` 加载、poster fallback、Retry、DPR cap、canvas/draw calls/triangles/bytes 运行指标。",
+      "troubleshooting": "本轮重点排查训练成果是否还困在训练页；独立作品页需要面向访问者展示产品首屏，同时保留 GLB source、fallback、移动 DPR、runtime evidence 和 QA 发布证据。"
+    },
+    {
+      "slot": 35,
+      "time": "08:30-08:45",
+      "title": "作品页移动端视觉复核",
+      "status": "completed",
+      "completedAt": "2026-08-09T06:18:08+0800",
+      "deliverable": "在 `/lab/product-showcase` 中新增 Mobile visual QA、Recording path、fallback poster 英文访问者文案，并将 canvas 高度调整为 340/420/520 三档；训练页第 35 格新增 Product showcase visual review 与 Screenshot verification checklist。",
+      "verification": "选择第 35 格后，训练页展示 mobile height、poster copy、controls wrap、recording path、evidence panels 五项复核；`/lab/product-showcase` 页面包含 390px/720px/960px 视觉 QA、4 段录屏路径、fallback poster 文案和稳定首屏画布高度。",
+      "troubleshooting": "本轮重点排查独立作品页在移动端是否只是桌面版缩小：按钮必须可换行，poster 文案不遮挡，canvas 不吞首屏，QA 证据面板可截图，fallback/retry 路径可录屏。"
+    },
+    {
+      "slot": 36,
+      "time": "08:45-09:00",
+      "title": "本地浏览器验证",
+      "status": "completed",
+      "completedAt": "2026-08-09T06:33:08+0800",
+      "deliverable": "训练页第 36 格新增 Local browser verification、This run evidence 与 Test anchors；`/lab/product-showcase` 增加 `data-testid=product-showcase-stage/product-showcase-canvas-host/product-showcase-fallback/runtime-evidence/browser-verification`，并记录 route、desktop/mobile、canvas、fallback、evidence 六项浏览器验收。",
+      "verification": "`npx tsc --noEmit` 通过；在 `127.0.0.1:3015` 上 `/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` 均返回 200；SSR HTML 中确认 product-showcase stage、canvas host、runtime evidence、browser verification 锚点存在。",
+      "troubleshooting": "本轮重点排查 WebGL 作品是否只有类型检查而缺少浏览器证据：3003 被一个不响应的 node 进程占用，因此改用 3015 验证且不杀无关进程；仓库未安装 Playwright/Puppeteer，desktop/mobile 截图和 canvas pixel check 留到下一格补齐。"
+    },
+    {
+      "slot": 37,
+      "time": "09:00-09:15",
+      "title": "页面内视觉证据采样",
+      "status": "completed",
+      "completedAt": "2026-08-09T06:48:09+0800",
+      "deliverable": "`/lab/product-showcase` 新增 Visual self-check：通过 WebGL `readPixels` 采样中心与四角像素，记录 viewport、document width、stage rect、canvas CSS/pixel size、overflow、fallback visible verdict；训练页第 37 格新增 Visual self-check packet、This run visual evidence 和 Troubleshooting record。",
+      "verification": "`npx tsc --noEmit` 通过；在 `127.0.0.1:3015` 上 `/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` 均返回 200；作品页 HTML 包含 `data-testid=visual-self-check`、`data-testid=canvas-pixel-sample`、`data-overflow`；页面运行后可显示 `ready canvas sampled nonblank`、`poster fallback visible` 或待复核状态。",
+      "troubleshooting": "本轮重点排查没有 Playwright/Puppeteer 时如何继续验证 WebGL 可见性：把读像素、溢出检测、fallback 可见性和 viewport 证据内置到页面，后续截图只负责归档，不再是唯一验证来源。"
+    },
+    {
+      "slot": 38,
+      "time": "09:15-09:30",
+      "title": "QA 报告导出",
+      "status": "completed",
+      "completedAt": "2026-08-09T07:03:09+0800",
+      "deliverable": "`/lab/product-showcase` 新增 QA report export 区块，实时汇总 route、loadState、progress、DPR cap、runtime stats、visualEvidence、desktop/mobile/fallback screenshots 和 verdicts，并提供 copy report json；训练页第 38 格新增 QA report export schema、This run report evidence 和 Screenshot archive guide。",
+      "verification": "`npx tsc --noEmit` 通过；在 `127.0.0.1:3015` 上 `/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` 均返回 200；作品页 HTML 包含 `data-testid=qa-report-export`、`data-testid=qa-report-json`、`copy report json`；报告包含 route/runtime/visualEvidence/screenshots/verdicts 五组字段。",
+      "troubleshooting": "本轮重点排查视觉证据是否只能留在页面里看：QA report 把 WebGL runtime、像素采样、fallback、overflow 和截图场景转成可移动 JSON，可贴到 README、PR、incident report 或作品集说明。"
+    },
+    {
+      "slot": 39,
+      "time": "09:30-09:45",
+      "title": "README 与发布清单生成",
+      "status": "completed",
+      "completedAt": "2026-08-09T07:18:09+0800",
+      "deliverable": "`/lab/product-showcase` 新增 README / release checklist 区块，生成可复制 release notes Markdown，包含 README Summary、Release Checklist、Incident Appendix；训练页第 39 格新增 README release docs、This run delivery evidence 和 Troubleshooting record。",
+      "verification": "`npx tsc --noEmit` 通过；在 `127.0.0.1:3015` 上 `/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` 均返回 200；作品页 HTML 包含 `data-testid=release-notes-export`、`data-testid=release-notes-markdown`、`copy release notes`；Markdown 引用 runtime state、visual verdict、overflow、fallback verdict。",
+      "troubleshooting": "本轮重点排查 QA JSON 是否难以直接提交：release notes 把 WebGL 运行证据拆成 README 段落、发布勾选项和异常附录，评审不需要读源码也能看到功能、验证、风险和回滚路径。"
+    },
+    {
+      "slot": 40,
+      "time": "09:45-10:00",
+      "title": "最终发布签收",
+      "status": "completed",
+      "completedAt": "2026-08-09T07:33:39+0800",
+      "deliverable": "`/lab/product-showcase` 新增 Final release gate 区块，生成可复制 final release summary，覆盖 route、state、runtime、visual、fallback、QA report、release notes、known warning、rollback；训练页第 40 格新增 Final release gate、This run signoff evidence 和 Production build decision。",
+      "verification": "`npx tsc --noEmit` 通过；在 `127.0.0.1:3015` 上 `/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` 均返回 200；作品页 HTML 包含 `data-testid=final-release-gate`、`data-testid=final-release-summary`、`copy final gate`；最终签收摘要引用 route、runtime stats、visual evidence、fallback verdict、known warning 和 signoff。",
+      "troubleshooting": "本轮重点排查作品是否已有足够发布签收证据：final gate 把 demo route、type safety、runtime/visual evidence、QA packet、fallback drill、known warning 和 rollback 统一收口；生产 build 应作为下一轮最终门禁单独执行。"
+    },
+    {
+      "slot": 41,
+      "time": "10:00-10:15",
+      "title": "生产构建门禁记录",
+      "status": "completed",
+      "completedAt": "2026-08-09T07:48:39+0800",
+      "deliverable": "执行 `npm run build`，并在 `/lab/product-showcase` Final release gate 中新增 Production build evidence；训练页第 41 格新增 Production build evidence、Build gate decision 和 Troubleshooting record。",
+      "verification": "`npm run build` 编译成功并生成 1331 个静态页后失败于 `ENOENT rename .next/export/tags/Life.html -> .next/server/pages/tags/Life.html`；同时记录 `/news` 853 kB、`/` 304 kB、`/tags/ai-summary` 与 `/tags/news` 301 kB page-data warnings；`npx tsc --noEmit` 后续复验通过。",
+      "troubleshooting": "本轮重点区分 production build 失败是否为 WebGL lab 回归：失败点是既有 tags 导出重命名问题，product showcase 的 type check 和 route smoke 仍通过；发布决策拆成作品页可本地评审、全站生产导出待修。"
     }
   ]
 }

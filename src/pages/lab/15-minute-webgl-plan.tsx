@@ -568,6 +568,166 @@ const FINAL_ARTIFACTS = [
   "面试表达：为什么选 Three.js、模型过大怎么优化、白屏/卡顿/context lost 怎么排查。",
 ];
 
+const PORTFOLIO_RELEASE_README = [
+  ["Project", "3D product showcase and configurator lab，覆盖 WebGL shader、Three.js 场景、GLTFLoader、性能预算和线上排障。"],
+  ["Core demo", "`/lab/15-minute-webgl-plan`：可切换配置器、模型加载、性能矩阵、真机 QA 和 incident report。"],
+  ["WebGL depth", "shader/uniform、Raycaster、InstancedMesh、DPR cap、resize、context lost、GLB fallback、telemetry。"],
+  ["Delivery proof", "`npx tsc --noEmit`、route smoke、非空白 canvas、移动端截图、预算报告、异常复盘模板。"],
+  ["Interview frame", "从用户首屏体验讲起，再解释资源管线、性能降级、真机矩阵和线上复盘。"],
+];
+
+const PORTFOLIO_RELEASE_RECORDING_SCRIPT = [
+  ["0-5s", "进入 `/lab/15-minute-webgl-plan`，展示 3D canvas 首帧和当前 slot/阶段。"],
+  ["5-15s", "切 Real GLB API，展示 progress、source、bytes、DPR、canvas pixels。"],
+  ["15-25s", "切 Broken GLB URL，展示 poster fallback 和 Retry 恢复路径。"],
+  ["25-35s", "展示 asset pipeline、device QA matrix 和 incident report JSON。"],
+  ["35-45s", "收尾展示 README 摘要、截图清单、`tsc` 验证和下一步计划。"],
+];
+
+const PORTFOLIO_RELEASE_SCREENSHOTS = [
+  ["hero", "3D 首帧或 poster/progress 同屏，证明首屏非空白。"],
+  ["model-loader", "GLTF load result + Asset delivery budget + Real GLB API。"],
+  ["fallback", "Broken GLB URL poster fallback + Retry。"],
+  ["asset-pipeline", "Automated asset pipeline report + glTF-Transform command plan。"],
+  ["device-qa", "Phone/tablet/desktop matrix + telemetry evidence。"],
+  ["incident", "WebGL incident report + action map。"],
+];
+
+const PORTFOLIO_RELEASE_SUBMISSION = [
+  ["README.md", "项目定位、技术栈、核心 demo、运行方式、优化点、QA 证据、排障模板。"],
+  ["recording.mp4", "45 秒录屏，覆盖加载、fallback、预算、真机矩阵和 incident report。"],
+  ["screenshots/", "至少 6 张截图：首屏、模型、fallback、资产管线、真机 QA、incident。"],
+  ["asset-budget.json", "original、optimized、saved、ratio、target、CI status、rollback。"],
+  ["incident-report.json", "telemetry、asset、budget、rollback、action、postmortem questions。"],
+];
+
+const PORTFOLIO_RELEASE_GATES = [
+  ["Type check", "`npx tsc --noEmit` 通过。"],
+  ["Route smoke", "`/lab/15-minute-webgl-plan` 返回 200；本地服务不可用时记录原因。"],
+  ["Canvas proof", "桌面和移动端截图里 WebGL 区域非空白，fallback 也可见。"],
+  ["Mobile proof", "phone/tablet/desktop 矩阵有 DPR cap、canvas pixels、resource status。"],
+  ["Rollback proof", "asset manifest 或报告里有上一版 GLB/poster fallback/Retry 路径。"],
+];
+
+const PRODUCT_SHOWCASE_HANDOFF = [
+  ["Route", "`/lab/product-showcase`，面向作品集访问者的独立 3D product showcase。"],
+  ["GLB", "使用真实 `/api/lab/product-marker-glb`，并提供 Broken URL fallback/retry 演练。"],
+  ["Controls", "OrbitControls + DPR cap，支持 battery/balanced/sharp 三档移动端像素预算。"],
+  ["Evidence", "首屏 runtime evidence 显示 state、progress、DPR、canvas、draw calls、triangles、bytes。"],
+  ["Fallback", "加载失败时 poster/progress 仍可见，不让独立作品页出现空白 canvas。"],
+];
+
+const PRODUCT_SHOWCASE_VISUAL_REVIEW = [
+  ["Mobile height", "作品页 canvas 使用 340/420/520 三档高度，避免手机首屏被超高画布吞掉。"],
+  ["Poster copy", "fallback overlay 有 poster、progress、错误说明和英文访问者文案。"],
+  ["Controls wrap", "DPR 和 fallback 按钮允许换行，390px 宽度下不产生横向溢出。"],
+  ["Recording path", "页面新增 4 段录屏路径：Real GLB、DPR、fallback、retry。"],
+  ["Evidence panels", "Release evidence、Mobile visual QA 和 Recording path 可以直接截图进作品集。"],
+];
+
+const PRODUCT_SHOWCASE_BROWSER_VERIFICATION = [
+  ["Route smoke", "`/lab/product-showcase` 和 `/lab/15-minute-webgl-plan` 都需要在 dev server 下返回 200。"],
+  ["Desktop viewport", "1280x900 截图检查 canvas、runtime evidence 并排可读，WebGL 首帧或 poster 不空白。"],
+  ["Mobile viewport", "390x844 截图检查按钮换行、页面无横向溢出、canvas 高度稳定。"],
+  ["Canvas pixels", "读取 canvas 宽高与像素数据；若 GLB 失败，fallback poster 也要产生可见首屏。"],
+  ["Fallback path", "切 Broken URL 后确认 `data-load-state=fallback`、poster copy、Retry 和错误记录可见。"],
+  ["Evidence export", "把 route、viewport、canvas、fallback、overflow 五项结果写回训练页和作品页证据面板。"],
+];
+
+const PRODUCT_SHOWCASE_BROWSER_RUN = [
+  ["Type check", "`npx tsc --noEmit` passed for the current lab changes."],
+  ["Route smoke", "`/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` returned 200 on `127.0.0.1:3015`."],
+  ["SSR anchors", "`product-showcase-stage`、`product-showcase-canvas-host`、`runtime-evidence`、`browser-verification` are present in HTML."],
+  ["Port note", "`3003` is occupied by a nonresponding node listener, so this run used `3015` without killing unrelated work."],
+  ["Screenshot gap", "Playwright/Puppeteer are not installed in this repo, so desktop/mobile screenshot evidence is queued for the next slot."],
+];
+
+const PRODUCT_SHOWCASE_SELF_CHECK = [
+  ["Runtime sampler", "`/lab/product-showcase` 现在用 WebGL `readPixels` 采样中心与四角像素，输出 canvas 是否非空白。"],
+  ["Overflow guard", "页面比较 `scrollWidth` 与 `innerWidth`，移动端一旦横向溢出会在证据面板暴露。"],
+  ["Fallback visible", "GLB 未 ready 时检查 poster fallback DOM 是否可见，避免截图只剩空 canvas。"],
+  ["Evidence anchors", "新增 `visual-self-check`、`canvas-pixel-sample`、`data-overflow`，截图和脚本都可复查。"],
+  ["Viewport packet", "记录 viewport、stage rect、canvas CSS size、canvas pixel size 和更新时间。"],
+];
+
+const PRODUCT_SHOWCASE_SELF_CHECK_RUN = [
+  ["No extra package", "不依赖 Playwright/Puppeteer；先把浏览器内可见性检查做成产品页原生能力。"],
+  ["Route smoke", "`/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` returned 200 on `127.0.0.1:3015`."],
+  ["SSR anchors", "`visual-self-check`、`canvas-pixel-sample`、`data-overflow` are present in `/lab/product-showcase` HTML."],
+  ["Canvas evidence", "页面运行后可直接看到 `ready canvas sampled nonblank` 或 fallback 可见状态。"],
+  ["Mobile signal", "390px 手动打开时，overflow 结果会从 DOM 证据面板和 `data-overflow` 同步暴露。"],
+  ["Next verification", "下一轮可用浏览器面板或截图工具保存 desktop/mobile/fallback 三张证据图。"],
+];
+
+const PRODUCT_SHOWCASE_QA_REPORT = [
+  ["Route", "`/lab/product-showcase` 和本地 route smoke 结果进入 report。"],
+  ["Runtime", "loadState、progress、DPR cap、canvas、draw calls、triangles、bytes 进入 report。"],
+  ["Visual", "viewport、document width、overflow、stage、canvas pixels、pixel sample、verdict 进入 report。"],
+  ["Fallback", "sourceMode、error、fallback verdict 和 retry 录屏场景进入 report。"],
+  ["Screenshots", "Desktop、Mobile、Fallback 三个截图场景以结构化数组输出。"],
+  ["Export", "作品页提供 `qa-report-export`、`qa-report-json` 和 copy report json 操作。"],
+];
+
+const PRODUCT_SHOWCASE_QA_REPORT_RUN = [
+  ["No tool lock-in", "报告来自页面运行状态，不依赖某个自动截图工具。"],
+  ["Route smoke", "`/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` returned 200 on `127.0.0.1:3015`."],
+  ["SSR anchors", "`qa-report-export`、`qa-report-json`、`copy report json` are present in `/lab/product-showcase` HTML."],
+  ["Portable JSON", "JSON 可贴到 README、PR 描述、incident report 或作品集说明。"],
+  ["Evidence fields", "route、runtime、visualEvidence、screenshots、verdicts 五组字段形成最小 QA 包。"],
+  ["Next handoff", "下一轮可以把 report 拆成 README 段落和 release checklist。"],
+];
+
+const PRODUCT_SHOWCASE_RELEASE_DOCS = [
+  ["README summary", "用一段说明串起真实 GLB、OrbitControls、DPR cap、fallback/retry 和 QA report。"],
+  ["Review path", "告诉评审先看 route smoke，再看 Visual self-check、pixel sample 和 report JSON。"],
+  ["Release checklist", "把 type check、route smoke、canvas evidence、mobile QA、fallback QA、report export 做成勾选项。"],
+  ["Incident appendix", "保留 source mode、error、fallback verdict 和 rollback 描述，异常时可直接贴到复盘。"],
+  ["Copy action", "作品页新增 `release-notes-export`、`release-notes-markdown` 和 copy release notes。"],
+];
+
+const PRODUCT_SHOWCASE_RELEASE_DOCS_RUN = [
+  ["Portable markdown", "Markdown 可以直接贴到 README、PR 描述或作品集页面。"],
+  ["Route smoke", "`/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` returned 200 on `127.0.0.1:3015`."],
+  ["SSR anchors", "`release-notes-export`、`release-notes-markdown`、`copy release notes` are present in `/lab/product-showcase` HTML."],
+  ["QA linked", "Release notes 引用 runtime state、visual verdict、overflow 和 fallback verdict。"],
+  ["Review ready", "评审不需要读源码，也能看到功能、验证、风险和回滚路径。"],
+  ["Next handoff", "下一轮可以推进 production build/release gate 的最终签收。"],
+];
+
+const PRODUCT_SHOWCASE_FINAL_GATE = [
+  ["Demo route", "`/lab/product-showcase` route smoke + `/lab` entry are release requirements."],
+  ["Type safety", "`npx tsc --noEmit` is the minimum code gate before portfolio signoff."],
+  ["Runtime evidence", "state/progress/DPR/canvas/draw calls/triangles/bytes must be visible in Runtime evidence."],
+  ["Visual evidence", "Visual self-check must expose pixel sample, overflow, viewport and fallback verdict."],
+  ["QA packet", "QA report JSON + release notes Markdown + final gate summary must be copyable."],
+  ["Known warning", "Next viewport meta warning belongs to `_document.js`, not this lab route change."],
+  ["Rollback", "If GLB fails, publish poster fallback and previous known-good GLB manifest first."],
+];
+
+const PRODUCT_SHOWCASE_FINAL_GATE_RUN = [
+  ["Signoff summary", "`final-release-gate` and `final-release-summary` are rendered on `/lab/product-showcase`."],
+  ["Route smoke", "`/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` returned 200 on `127.0.0.1:3015`."],
+  ["SSR anchors", "`final-release-gate`、`final-release-summary`、`copy final gate` are present in `/lab/product-showcase` HTML."],
+  ["Build decision", "Run `npm run build` only as a final release gate; if it fails, separate lab regressions from existing site export issues."],
+  ["Portfolio ready", "The package now contains route, runtime evidence, visual self-check, QA JSON, README notes, incident appendix and rollback."],
+  ["Next handoff", "下一轮可以做 production build 复验、归档截图或收尾停止自动推进。"],
+];
+
+const PRODUCT_SHOWCASE_PRODUCTION_BUILD = [
+  ["Compile", "`npm run build` reached `Compiled successfully` before static export."],
+  ["Static export", "Next generated 1331 static pages before the export rename failure."],
+  ["Failure", "Build failed on existing `.next/export/tags/Life.html` -> `.next/server/pages/tags/Life.html` rename."],
+  ["Warnings", "`/news` 853 kB, `/` 304 kB, `/tags/ai-summary` and `/tags/news` 301 kB page-data warnings."],
+  ["Lab impact", "`/lab/product-showcase` still passes type check and local route smoke; no lab regression found."],
+];
+
+const PRODUCT_SHOWCASE_PRODUCTION_BUILD_RUN = [
+  ["Gate result", "Production build is not fully green because of a site-wide tags export issue."],
+  ["Separation", "This failure matches the earlier known `/tags/Life.html` export problem, not the product showcase changes."],
+  ["Release decision", "Portfolio demo can be reviewed locally; production deploy should wait for the tags export fix."],
+  ["Next handoff", "下一轮可以补截图归档或修复全站 tags export，而不是继续堆 WebGL 功能。"],
+];
+
 const MODEL_LOADER_CHECKS = [
   ["Loader", "使用 GLTFLoader 解析 glTF JSON + binary buffer，模拟真实模型加载链路。"],
   ["Scene graph", "加载后遍历 gltf.scene，统计 node 和 mesh 数量，理解模型层级。"],
@@ -670,6 +830,54 @@ const MODEL_SHIPPING_DECISIONS = [
   ["poster fallback", "低端设备、prefers-reduced-motion、context lost 或 GLB 失败时展示。"],
 ];
 
+const MODEL_ASSET_PIPELINE_STEPS = [
+  {
+    step: "Inspect",
+    command: "gltf-transform inspect source.glb --format md",
+    output: "asset-report.md",
+    check: "统计 scenes、meshes、materials、textures、animations、total bytes，先定位体积来源。",
+  },
+  {
+    step: "Geometry",
+    command: "gltf-transform optimize source.glb build/model.meshopt.glb --compress meshopt",
+    output: "model.meshopt.glb",
+    check: "顶点、索引、法线进入 Meshopt；保留可回退 Draco 策略给旧链路。",
+  },
+  {
+    step: "Texture",
+    command: "gltf-transform etc1s build/model.meshopt.glb build/model.ktx2.glb",
+    output: "model.ktx2.glb",
+    check: "大贴图转 KTX2/Basis，降低下载体积和显存；记录贴图尺寸上限。",
+  },
+  {
+    step: "Hash",
+    command: "node scripts/hash-asset.mjs build/model.ktx2.glb",
+    output: "camera.mobile.meshopt.ktx2.v18.glb",
+    check: "产物 URL 带内容 hash 或版本号，CDN 长缓存，manifest 可快速回滚。",
+  },
+  {
+    step: "Budget",
+    command: "node scripts/check-webgl-budget.mjs build/model.ktx2.glb --max 2000000",
+    output: "asset-budget.json",
+    check: "CI 阻止超过 2 MB 的移动端 GLB；同时输出 original、optimized、saved、ratio。",
+  },
+];
+
+const MODEL_ASSET_PIPELINE_GATES = [
+  ["Source", "原始 source.glb 只进资产仓库，不直接上首屏。"],
+  ["Report", "每次压缩都生成 inspect/budget 报告，方便 PR review 和面试复盘。"],
+  ["Decoder", "manifest 声明 Meshopt/KTX2 decoder path；加载失败能回退 poster 或上一版 GLB。"],
+  ["Cache", "GLB/KTX2 hash URL immutable，manifest/HTML 短缓存，线上异常先切上一版。"],
+  ["Mobile", "phone 档默认 mobile optimized；raw handoff 和大贴图不能进入移动首屏。"],
+];
+
+const MODEL_ASSET_PIPELINE_OUTPUTS = [
+  ["model", "camera.mobile.meshopt.ktx2.v18.glb", "移动端默认 3D 资源，目标 < 2 MB。"],
+  ["poster", "camera.poster.webp", "加载失败、慢网、低端设备和 context lost 的可见兜底。"],
+  ["manifest", "camera.webgl-manifest.json", "记录 GLB URL、poster、decoder、budget、rollback version。"],
+  ["report", "camera.asset-budget.json", "CI 和 README 共用的体积、压缩率、资源门禁证据。"],
+];
+
 const MODEL_SOURCE_MODES = [
   {
     id: "api-glb",
@@ -701,6 +909,136 @@ const MODEL_FALLBACK_CHECKS = [
   ["Poster", "展示轻量 2D poster/占位文案，让用户知道产品内容仍可浏览。"],
   ["Retry", "提供一键重试，恢复到最近可用 GLB URL，而不是让用户刷新整页。"],
   ["Observe", "记录 source、URL、错误信息、DPR 和资源预算，方便线上复盘。"],
+];
+
+const MODEL_FIRST_SCREEN_STEPS = [
+  {
+    id: "poster",
+    range: "0-10%",
+    label: "Poster first",
+    signal: "先展示 2D poster、产品名和轻量背景，WebGL 初始化期间不留白。",
+    doneAt: 10,
+  },
+  {
+    id: "progress",
+    range: "10-20%",
+    label: "Progress visible",
+    signal: "创建 renderer、限制 DPR、展示加载条和当前 source，用户能感知正在加载。",
+    doneAt: 20,
+  },
+  {
+    id: "decoder",
+    range: "20-40%",
+    label: "Decoder gate",
+    signal: "按需准备 Meshopt/Draco/KTX2 decoder；本实验用 contract 模拟 decoder 懒加载门禁。",
+    doneAt: 40,
+  },
+  {
+    id: "glb",
+    range: "40-80%",
+    label: "GLB fetch + parse",
+    signal: "GLTFLoader 拉取真实 GLB URL，记录 Content-Length、progress、nodes、meshes、buffer bytes。",
+    doneAt: 80,
+  },
+  {
+    id: "reveal",
+    range: "80-100%",
+    label: "3D reveal",
+    signal: "模型进入 scene 后再隐藏 poster；首帧可见后才算 3D 首屏完成。",
+    doneAt: 100,
+  },
+  {
+    id: "fallback",
+    range: "error",
+    label: "Fallback + retry",
+    signal: "GLB 失败、decoder 缺失或 context lost 时展示 poster，并保留 Retry 到 Real GLB API。",
+    doneAt: 100,
+  },
+];
+
+const MODEL_FIRST_SCREEN_STATES = [
+  ["idle", "等待路由进入 model-loader，保留 SSR/静态内容，避免 hydration 前白屏。"],
+  ["poster", "canvas 区域先有 2D 产品视觉，占位图和进度 UI 不依赖 GLB 成功。"],
+  ["loading", "加载条绑定 progress，旁路记录 decoder/source/budget，用户知道等待原因。"],
+  ["ready", "GLTF scene 加入 Three.js 后再 reveal，确保首帧非空白。"],
+  ["fallback", "失败时 poster 常驻、展示错误 source，并给 Retry 恢复真实 GLB URL。"],
+];
+
+const MODEL_FIRST_SCREEN_GATES = [
+  ["No blank", "poster 或 3D 首帧必须始终有一个可见，不能让 canvas 区域空白等待。"],
+  ["Progress", "0-100% 阶段要可解释；无 Content-Length 时也要展示保守进度和加载文案。"],
+  ["Budget", "移动端默认使用 mobile optimized，目标 < 2 MB；raw handoff 不进首屏。"],
+  ["Decoder", "Meshopt/Draco/KTX2 decoder 只在需要时加载，失败要切 fallback。"],
+  ["Retry", "Broken GLB URL 能进入 fallback，点击 Retry 能恢复到 Real GLB API。"],
+  ["Observe", "记录 source、URL、progress、bytes、DPR、status 和错误信息，方便线上复盘。"],
+];
+
+const PORTFOLIO_FIRST_SCREEN_REQUIREMENTS = [
+  ["Product signal", "首屏第一眼必须看到产品、3D 画布或 poster，不让技术 demo 抢走业务表达。"],
+  ["Runtime proof", "展示 source、progress、bytes、DPR、canvas pixels、draw calls，证明不是静态截图。"],
+  ["Mobile budget", "移动端默认 mobile optimized，DPR cap 和 GLB 体积都要进入验收材料。"],
+  ["Fallback proof", "Broken GLB URL 能走 poster fallback，Retry 回 Real GLB API，录屏可复现。"],
+  ["Interview story", "从用户等待体验讲到 GLTFLoader、decoder、资源预算、可观测和回滚。"],
+];
+
+const PORTFOLIO_VIEWPORT_MATRIX = [
+  ["phone", "390 x 520", "DPR cap <= 1.5，poster 不溢出，加载条和 Retry 可点。"],
+  ["tablet", "720 x 520", "模型居中，OrbitControls 可用，progress 和预算面板不挤压。"],
+  ["desktop", "960 x 520", "3D 首帧、资源指标、README 叙事同时可截图。"],
+];
+
+const PORTFOLIO_INCIDENT_REHEARSAL = [
+  ["GLB 404", "切 Broken GLB URL，记录 failed url、error、source mode，并展示 poster。"],
+  ["Decoder miss", "说明 Meshopt/Draco/KTX2 decoder 懒加载失败时回退 poster 或未压缩版本。"],
+  ["Slow network", "progress 卡住时保留 poster、预算和 source，不让用户只看到空 canvas。"],
+  ["Context lost", "沿用 context lost 策略：停止 draw、展示 fallback、恢复后重建资源。"],
+];
+
+const DEVICE_QA_MATRIX = [
+  {
+    device: "iPhone SE / narrow",
+    viewport: "390 x 520",
+    dpr: "cap 1.0-1.5",
+    network: "Slow 4G",
+    expected: "poster/progress 先可见，GLB 慢加载不横向溢出，Retry 可触达。",
+  },
+  {
+    device: "Android mid",
+    viewport: "412 x 640",
+    dpr: "cap 1.5",
+    network: "Fast 4G",
+    expected: "mobile optimized GLB 进预算，OrbitControls 可用，FPS/像素预算要留证。",
+  },
+  {
+    device: "iPad / tablet",
+    viewport: "720 x 520",
+    dpr: "cap 1.5-2.0",
+    network: "Wi-Fi",
+    expected: "模型居中，面板不挤压，progress、资源预算、telemetry 同屏可截图。",
+  },
+  {
+    device: "Desktop retina",
+    viewport: "960 x 520",
+    dpr: "cap 2.0",
+    network: "Wi-Fi",
+    expected: "最高质量截图可作为作品集封面，同时记录 draw calls、triangles、GLB source。",
+  },
+];
+
+const DEVICE_QA_EVIDENCE_CHECKS = [
+  ["Screenshot", "每个设备档保留首屏截图：poster/progress 或 3D 首帧必须非空白。"],
+  ["Canvas pixels", "记录 CSS 尺寸、真实 canvas pixels、DPR cap，确认移动端不横向溢出。"],
+  ["Resource", "记录 GLB URL、bytes、progress、budget status、decoder path 和 fallback source。"],
+  ["Interaction", "触摸/拖拽 OrbitControls，Retry 按钮可点击，加载失败不阻塞页面滚动。"],
+  ["Telemetry", "同步保存 webgl_render_sample、quality_change、asset_error 或 context_lost 事件字段。"],
+];
+
+const DEVICE_QA_REGRESSION_DRILLS = [
+  ["Slow network", "模拟 progress 长时间停留：poster 常驻、source/bytes 可见、用户不面对空 canvas。"],
+  ["Broken GLB", "切 Broken GLB URL：进入 poster fallback，记录 failed url/error，Retry 回 Real GLB API。"],
+  ["High DPR", "把 DPR cap 从 sharp 降到 battery：像素预算下降，画面仍可读，触控响应优先。"],
+  ["Context lost", "复用 context lost 单元：停止 draw，展示 fallback，restore 后重新加载 GPU 资源。"],
+  ["Budget fail", "切 Raw 预算：CI/budget 显示 fail，移动端矩阵禁止 raw handoff 上首屏。"],
 ];
 
 function arrayBufferToBase64(buffer: ArrayBuffer) {
@@ -941,6 +1279,38 @@ const TELEMETRY_INCIDENT_PLAYBOOK = [
   ["FPS low + pixel budget high", "优先降 DPR、关闭高分辨率后处理，移动端保触控响应。"],
   ["Triangles high", "检查模型 LOD、Meshopt/Draco、隐藏面和首屏是否加载过多部件。"],
   ["Asset error", "回滚资源版本，切 poster fallback，再检查 CDN、Content-Type、decoder 路径。"],
+];
+
+const INCIDENT_REPORT_TIMELINE = [
+  ["Detect", "telemetry severity 进入 incident/watch，或 asset_error/context_lost 事件出现。"],
+  ["Protect", "先切 poster fallback、battery DPR 或上一版 GLB，保护用户可见体验。"],
+  ["Diagnose", "用 route、device、DPR、pixelBudget、resourceStatus、model URL 和 error 分类。"],
+  ["Rollback", "资源类事故优先切 manifest 上一版；渲染类事故优先降级质量策略。"],
+  ["Follow-up", "把根因、修复 PR、预算门禁和真机复测证据写回 README/incident log。"],
+];
+
+const INCIDENT_REPORT_EVIDENCE_FIELDS = [
+  ["device", "nativeDpr、dpr、dprCap、canvasCss、canvasPixels、pixelBudget。"],
+  ["render", "fps、drawCalls、triangles、instances、qualityLevel、qualityTrigger。"],
+  ["asset", "resourceStatus、modelSourceMode、modelProgress、modelBytes、failed URL。"],
+  ["fallback", "poster active、retry path、rollback asset、recommendedDpr、recommendedInstances。"],
+  ["scope", "route、slot、demo、sampleReason、affected viewport、latest QA matrix row。"],
+];
+
+const INCIDENT_REPORT_ACTIONS = [
+  ["asset_error", "切 poster fallback，回滚 GLB/KTX2 manifest，检查 Content-Type、Content-Length、decoder path。"],
+  ["context_lost", "停止 draw，展示降级提示，释放并重建 geometry/material/texture，恢复失败则保持 poster。"],
+  ["slow_network", "poster 常驻，显示 progress/source/bytes，延迟加载 decoder 和非首屏模型部件。"],
+  ["budget_fail", "阻止 raw handoff 进入移动首屏，要求 asset-budget.json 通过 CI 后再发布。"],
+  ["fps_drop", "按 quality ladder 降 DPR、实例规模、阴影/后处理，再记录 quality_change。"],
+];
+
+const INCIDENT_POSTMORTEM_QUESTIONS = [
+  "事故是否只影响特定 DPR、设备、浏览器或 viewport？",
+  "用户是否始终看到 poster/progress/fallback，而不是空白 canvas？",
+  "是否有足够 telemetry 复盘资源、渲染、质量降级和交互状态？",
+  "回滚动作是否不需要重新发版，manifest 或资源版本能否独立切换？",
+  "修复后是否补齐 CI 预算、真机矩阵和截图/录屏证据？",
 ];
 
 function getTelemetrySeverity(stats: DemoStats, policy: ReturnType<typeof getMobileDegradePolicy>) {
@@ -1218,6 +1588,123 @@ const PLAN: Slot[] = [
     goal: "把 poster、progress、decoder、GLB、fallback 和 retry 编排成用户可感知的加载流程。",
     verify: "页面能说明首屏 0-100% 加载阶段、失败兜底和重试路径。",
     interview: "3D 首屏交付要设计等待体验和失败路径，不能只等 GLB 加载完成。",
+  },
+  {
+    time: "07:00-07:15",
+    stage: "Day 2",
+    title: "真实作品页首屏验收",
+    demo: "model-loader",
+    goal: "把首屏 3D 加载、移动端预算、fallback 录屏和面试叙事整理成作品页 QA 包。",
+    verify: "页面能输出作品页首屏证据：source、progress、bytes、DPR、canvas、draw calls、fallback 和 viewport matrix。",
+    interview: "我会把 3D 首屏当成产品页面验收：用户看到什么、加载怎么解释、失败如何恢复、指标如何留证。",
+  },
+  {
+    time: "07:15-07:30",
+    stage: "Asset Ops",
+    title: "模型资源自动化压缩管线",
+    demo: "model-loader",
+    goal: "把 glTF-Transform、Meshopt/Draco、KTX2、hash URL、预算报告和回滚版本整理成可执行资产管线。",
+    verify: "页面能展示 inspect、geometry、texture、hash、budget 五步管线，以及 CI 门禁和产物清单。",
+    interview: "我会把模型优化做成可重复的资产管线：报告、压缩、转码、hash、预算、回滚都自动化。",
+  },
+  {
+    time: "07:30-07:45",
+    stage: "QA",
+    title: "真机矩阵验收",
+    demo: "model-loader",
+    goal: "把 phone/tablet/desktop、DPR cap、慢网、context lost、fallback、截图证据和 telemetry 字段串成发布前 QA 流程。",
+    verify: "页面能展示设备矩阵、当前运行证据、截图清单、回归演练和上线门禁。",
+    interview: "WebGL 作品上线前我会用真机矩阵验收首屏、触控、资源、DPR、fallback 和可观测事件。",
+  },
+  {
+    time: "07:45-08:00",
+    stage: "Observe",
+    title: "线上异常复盘演练",
+    demo: "model-loader",
+    goal: "把 telemetry sample、asset error、context lost、慢网、预算失败和回滚动作整理成 incident report 模板。",
+    verify: "页面能输出 incident summary、timeline、evidence fields、action map、postmortem questions 和 JSON 报告。",
+    interview: "线上 WebGL 事故要先保护用户体验，再用 telemetry 分类根因、回滚资源或降级渲染，并把复盘沉淀成门禁。",
+  },
+  {
+    time: "08:00-08:15",
+    stage: "Portfolio",
+    title: "作品集发布包",
+    demo: "model-loader",
+    goal: "把 README 摘要、录屏脚本、截图清单、QA 证据、资产预算和 incident 模板整理成可提交材料。",
+    verify: "页面能输出 release summary、README outline、recording script、screenshot list、submission files 和 release gates。",
+    interview: "我会把 WebGL 学习成果打包成能交付的作品：可运行 demo、证据、预算、排障和复盘材料齐全。",
+  },
+  {
+    time: "08:15-08:30",
+    stage: "Portfolio",
+    title: "独立作品页切分",
+    demo: "model-loader",
+    goal: "从训练页抽取一个面向作品集访问者的 3D product showcase 子页面，并保持入口、QA 和 fallback 证据可追踪。",
+    verify: "`/lab/product-showcase` 有真实 GLB 加载、OrbitControls、DPR cap、poster fallback、Retry 和 runtime evidence。",
+    interview: "我会把训练成果拆成真正给访问者看的作品页，同时保留调试、QA、fallback 和发布证据链。",
+  },
+  {
+    time: "08:30-08:45",
+    stage: "Portfolio",
+    title: "作品页移动端视觉复核",
+    demo: "model-loader",
+    goal: "细化独立作品页的移动端布局、fallback poster 文案、录屏路径和截图验证清单。",
+    verify: "`/lab/product-showcase` 在 390px 宽度下按钮可换行、poster 文案可读、canvas 稳定、QA 面板可截图。",
+    interview: "我会把作品页按访问者视角做移动端复核：首屏可见、错误可恢复、证据可截图、录屏有脚本。",
+  },
+  {
+    time: "08:45-09:00",
+    stage: "Verify",
+    title: "本地浏览器验证",
+    demo: "model-loader",
+    goal: "启动可用 dev server 后，用桌面和 390px 移动视口验证 `/lab/product-showcase` 的首屏、fallback 和布局证据。",
+    verify: "页面记录 route smoke、desktop/mobile viewport、canvas pixel、fallback poster 和 overflow 五项验证标准。",
+    interview: "我会用浏览器截图和像素检查证明 WebGL 作品不是只通过类型检查，而是真正可见、可恢复、可交付。",
+  },
+  {
+    time: "09:00-09:15",
+    stage: "Verify",
+    title: "页面内视觉证据采样",
+    demo: "model-loader",
+    goal: "在 `/lab/product-showcase` 内置 WebGL 像素采样、overflow 检测和 fallback 可见性证据，补齐无截图工具时的验证闭环。",
+    verify: "作品页展示 Visual self-check、canvas pixel sample、data-overflow、viewport/stage/canvas 尺寸和 fallback verdict。",
+    interview: "当自动截图工具不可用时，我会先把可观察性做进页面：读像素、看溢出、验 fallback，让证据不是口头描述。",
+  },
+  {
+    time: "09:15-09:30",
+    stage: "Verify",
+    title: "QA 报告导出",
+    demo: "model-loader",
+    goal: "把 `/lab/product-showcase` 的 runtime、visual self-check、fallback 和截图场景整理成可复制 QA JSON。",
+    verify: "作品页展示 QA report export、copy report json、qa-report-json，并包含 route/runtime/visualEvidence/screenshots/verdicts。",
+    interview: "我会把 WebGL 验收数据做成可移动的证据包：页面能看，JSON 能交付，截图能归档，复盘能引用。",
+  },
+  {
+    time: "09:30-09:45",
+    stage: "Portfolio",
+    title: "README 与发布清单生成",
+    demo: "model-loader",
+    goal: "把 QA report 拆成 README 摘要、release checklist 和 incident appendix，让作品页具备可提交交付文档。",
+    verify: "作品页展示 README / release checklist、copy release notes、release-notes-markdown，并引用 runtime/visual/fallback 证据。",
+    interview: "我会把 WebGL 作品从 demo 推到交付：有页面、有 QA JSON、有 README 摘要、有发布清单，也有异常回滚说明。",
+  },
+  {
+    time: "09:45-10:00",
+    stage: "Release",
+    title: "最终发布签收",
+    demo: "model-loader",
+    goal: "把 product showcase 的 route、type check、runtime evidence、visual evidence、QA JSON、release notes、known warning 和 rollback 收成最终 release gate。",
+    verify: "作品页展示 Final release gate、copy final gate、final-release-summary；训练页记录生产 build 是否需要单独复验。",
+    interview: "我会用 release gate 证明 WebGL 作品已经从可运行 demo 进入可交付状态：证据、风险、回滚和评审路径齐全。",
+  },
+  {
+    time: "10:00-10:15",
+    stage: "Release",
+    title: "生产构建门禁记录",
+    demo: "model-loader",
+    goal: "执行 production build，并把编译成功、静态导出失败、page-data warning 和是否属于 lab 回归写入签收证据。",
+    verify: "训练页和作品页展示 Production build evidence；明确 `/tags/Life.html` export rename 是既有站点问题，不是 product showcase 回归。",
+    interview: "我会把生产门禁结果如实拆开：编译是否过、导出卡在哪里、哪些 warning 与本功能无关，以及发布决策是什么。",
   },
 ];
 
@@ -2152,6 +2639,69 @@ export default function FifteenMinuteWebGLPlan() {
     status: getBudgetStatus(modelAsset.optimizedBytes, modelAsset.targetBytes),
     target: modelAsset.targetBytes,
   };
+  const assetPipelineReport = {
+    source: "source.glb",
+    preset: modelAsset.name,
+    compression: modelAsset.compression,
+    original: formatBytes(modelCompressionSummary.original),
+    optimized: formatBytes(modelCompressionSummary.optimized),
+    saved: formatBytes(modelCompressionSummary.saved),
+    ratio: `${Math.round(modelCompressionSummary.ratio * 100)}%`,
+    target: formatBytes(modelCompressionSummary.target),
+    ci: modelCompressionSummary.status === "within budget" ? "pass" : "fail budget",
+    rollback: "camera.mobile.meshopt.ktx2.v17.glb",
+  };
+  const modelFirstScreenProgress = Math.min(100, Math.max(0, stats.modelProgress ?? 0));
+  const modelFirstScreenPhase =
+    stats.modelStatus === "fallback"
+      ? "fallback"
+      : modelFirstScreenProgress >= 100
+        ? "reveal"
+        : modelFirstScreenProgress >= 40
+          ? "glb"
+          : modelFirstScreenProgress >= 20
+            ? "decoder"
+            : modelFirstScreenProgress >= 10
+              ? "progress"
+              : "poster";
+  const modelFirstScreenTimeline = MODEL_FIRST_SCREEN_STEPS.map((item) => ({
+    ...item,
+    state:
+      modelFirstScreenPhase === item.id
+        ? "active"
+        : item.id !== "fallback" && stats.modelStatus !== "fallback" && modelFirstScreenProgress >= item.doneAt
+          ? "done"
+          : "pending",
+  }));
+  const portfolioFirstScreenEvidence = {
+    route: "/lab/15-minute-webgl-plan",
+    selectedSlot: selected + 1,
+    source: stats.modelSourceMode ?? modelSource.label,
+    progress: `${modelFirstScreenProgress}%`,
+    status: stats.modelStatus ?? "loading",
+    bytes: formatBytes(stats.modelBytes ?? modelSource.expectedBytes),
+    dpr: stats.dpr,
+    canvas: `${stats.pixelWidth ?? 0} x ${stats.pixelHeight ?? 0}`,
+    drawCalls: stats.drawCalls,
+    fallback: stats.modelStatus === "fallback" ? "poster active" : "ready to test",
+    budget: modelCompressionSummary.status,
+  };
+  const telemetrySeverity = getTelemetrySeverity(stats, mobileDegradePolicy);
+  const deviceQaEvidence = {
+    route: "/lab/15-minute-webgl-plan",
+    slot: selected + 1,
+    viewport: resizeViewport.name,
+    viewportWidth: `${resizeViewport.width}px`,
+    dpr: `${stats.dpr}x`,
+    dprCap: `${dprCap}x`,
+    canvasPixels: `${stats.pixelWidth ?? 0} x ${stats.pixelHeight ?? 0}`,
+    pixelBudget: (stats.pixelBudget ?? 0).toLocaleString(),
+    source: stats.modelSourceMode ?? modelSource.label,
+    progress: `${modelFirstScreenProgress}%`,
+    resourceStatus: stats.modelStatus ?? "loading",
+    fallback: stats.modelStatus === "fallback" ? "poster active" : "standby",
+    telemetry: telemetrySeverity,
+  };
   const qaEvidence = {
     sku: configuratorSku.code,
     fps: stats.fps,
@@ -2168,7 +2718,6 @@ export default function FifteenMinuteWebGLPlan() {
           ? "需要观察"
           : "可发布样例",
   };
-  const telemetrySeverity = getTelemetrySeverity(stats, mobileDegradePolicy);
   const telemetryPayload = {
     event: "webgl_render_sample",
     route: "/lab/15-minute-webgl-plan",
@@ -2194,6 +2743,50 @@ export default function FifteenMinuteWebGLPlan() {
     modelSourceMode: stats.modelSourceMode ?? "not_applicable",
     modelProgress: stats.modelProgress ?? 0,
     modelBytes: stats.modelBytes ?? 0,
+  };
+  const incidentReport = {
+    id: `webgl-${String(selected + 1).padStart(2, "0")}-${telemetrySeverity}`,
+    status: telemetrySeverity === "incident" ? "active incident" : telemetrySeverity === "degrade" ? "degraded" : "watch",
+    symptom:
+      stats.modelStatus === "fallback"
+        ? "asset_error_or_fallback"
+        : stats.contextState === "lost"
+          ? "context_lost"
+          : modelCompressionSummary.status === "over budget"
+            ? "budget_fail"
+            : telemetrySeverity,
+    route: telemetryPayload.route,
+    slot: telemetryPayload.slot,
+    telemetry: {
+      severity: telemetryPayload.severity,
+      fps: telemetryPayload.fps,
+      dpr: telemetryPayload.dpr,
+      dprCap: telemetryPayload.dprCap,
+      pixelBudget: telemetryPayload.pixelBudget,
+      drawCalls: telemetryPayload.drawCalls,
+      triangles: telemetryPayload.triangles,
+    },
+    asset: {
+      status: telemetryPayload.resourceStatus,
+      source: telemetryPayload.modelSourceMode,
+      progress: telemetryPayload.modelProgress,
+      bytes: telemetryPayload.modelBytes,
+      budget: modelCompressionSummary.status,
+      rollback: assetPipelineReport.rollback,
+    },
+    action: stats.modelStatus === "fallback" ? "keep poster fallback and retry Real GLB API" : "monitor telemetry and keep rollback ready",
+  };
+  const portfolioReleaseSummary = {
+    route: "/lab/15-minute-webgl-plan",
+    demo: current.demo,
+    source: stats.modelSourceMode ?? modelSource.label,
+    progress: `${modelFirstScreenProgress}%`,
+    budget: assetPipelineReport.ci,
+    canvas: `${stats.pixelWidth ?? 0} x ${stats.pixelHeight ?? 0}`,
+    dpr: `${stats.dpr}x / cap ${dprCap}x`,
+    qa: deviceQaEvidence.telemetry,
+    incident: incidentReport.id,
+    rollback: assetPipelineReport.rollback,
   };
   const uniformMatrix = {
     cos: Math.cos(uniformPreviewAngle),
@@ -3339,6 +3932,1228 @@ export default function FifteenMinuteWebGLPlan() {
                   </section>
                 ) : null}
 
+                {current.title === "首屏加载编排" ? (
+                  <>
+                    <section className="rounded-lg border border-sky-300/60 bg-sky-50/70 p-4 dark:border-sky-300/20 dark:bg-sky-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-sky-700 dark:text-sky-300">
+                        First-screen loading orchestration
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {[
+                          ["phase", modelFirstScreenPhase],
+                          ["progress", `${modelFirstScreenProgress}%`],
+                          ["source", modelSource.label],
+                          ["decoder", modelAsset.compression],
+                          ["fallback", stats.modelStatus === "fallback" ? "poster active" : "standby"],
+                          ["retry", "Real GLB API"],
+                          ["budget", modelCompressionSummary.status],
+                          ["bytes", formatBytes(stats.modelBytes ?? modelSource.expectedBytes)],
+                        ].map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-sky-300/50 bg-white/70 p-3 dark:border-sky-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-sky-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        本轮把首屏拆成 poster、progress、decoder、GLB fetch/parse、3D reveal、fallback/retry 六段；
+                        目标是用户从进入页面到模型可见期间始终知道发生了什么，失败时也有可见产品和恢复路径。
+                      </p>
+                    </section>
+
+                    <section className="rounded-lg border border-indigo-300/60 bg-indigo-50/70 p-4 dark:border-indigo-300/20 dark:bg-indigo-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-indigo-700 dark:text-indigo-300">
+                        0-100% loading timeline
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {modelFirstScreenTimeline.map((item, index) => {
+                          const tone =
+                            item.state === "active"
+                              ? "border-indigo-400 bg-indigo-100/80 dark:border-indigo-300/40 dark:bg-indigo-300/15"
+                              : item.state === "done"
+                                ? "border-emerald-300 bg-emerald-50/80 dark:border-emerald-300/30 dark:bg-emerald-300/10"
+                                : "border-indigo-200 bg-white/70 dark:border-indigo-300/15 dark:bg-black/20";
+                          return (
+                            <div key={item.id} className={`rounded-md border p-3 ${tone}`}>
+                              <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">
+                                  {String(index + 1).padStart(2, "0")} · {item.label}
+                                </span>
+                                <span className="cyber-num text-xs text-indigo-700 dark:text-indigo-200">
+                                  {item.range} · {item.state}
+                                </span>
+                              </div>
+                              <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                {item.signal}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        User-visible state machine
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {MODEL_FIRST_SCREEN_STATES.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                state {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                        Release gates for 3D first screen
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {MODEL_FIRST_SCREEN_GATES.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-amber-300/50 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-amber-700 dark:text-amber-200">
+                                gate {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：3D 首屏不是“等 GLB 加载完再显示”，而是先保证 poster 可见，再让 progress、decoder、GLB、
+                        reveal、fallback 和 retry 都有明确状态；这样产品体验和排障链路都可控。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "真实作品页首屏验收" ? (
+                  <>
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        Portfolio first-screen QA packet
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {Object.entries(portfolioFirstScreenEvidence).map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-cyan-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        这一格把可运行的 GLTFLoader 实验包装成作品页验收材料：截图时能同时说明产品首屏、资源来源、
+                        真实 canvas 指标、移动预算、fallback 状态和面试叙事。
+                      </p>
+                    </section>
+
+                    <section className="rounded-lg border border-violet-300/60 bg-violet-50/70 p-4 dark:border-violet-300/20 dark:bg-violet-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-violet-700 dark:text-violet-300">
+                        First-screen requirements
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PORTFOLIO_FIRST_SCREEN_REQUIREMENTS.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-violet-300/50 bg-white/70 p-3 dark:border-violet-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-violet-700 dark:text-violet-200">
+                                req {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        Viewport QA matrix
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PORTFOLIO_VIEWPORT_MATRIX.map(([label, size, body]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                              <span className="cyber-num text-xs text-emerald-700 dark:text-emerald-200">
+                                {size}
+                              </span>
+                            </div>
+                            <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              {body}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-rose-300/60 bg-rose-50/70 p-4 dark:border-rose-300/20 dark:bg-rose-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-rose-700 dark:text-rose-300">
+                        Incident rehearsal
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PORTFOLIO_INCIDENT_REHEARSAL.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-rose-300/50 bg-white/70 p-3 dark:border-rose-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-rose-700 dark:text-rose-200">
+                                drill {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：我不是只展示一个能转的 3D 模型，而是把首屏体验、移动端预算、失败恢复和线上证据一起验收；
+                        这样作品页能解释真实交付，而不是停留在局部 demo。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "真机矩阵验收" ? (
+                  <>
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        Device QA live evidence
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {Object.entries(deviceQaEvidence).map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-cyan-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        这组证据来自当前 WebGL runtime：真实 canvas pixels、DPR cap、GLB source、progress、fallback 和 telemetry severity。
+                        真机验收时每个设备档都要留下同样字段，避免只凭“我这里能跑”发布。
+                      </p>
+                    </section>
+
+                    <section className="rounded-lg border border-violet-300/60 bg-violet-50/70 p-4 dark:border-violet-300/20 dark:bg-violet-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-violet-700 dark:text-violet-300">
+                        Phone / tablet / desktop matrix
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {DEVICE_QA_MATRIX.map((item, index) => (
+                          <div
+                            key={item.device}
+                            className="rounded-md border border-violet-300/50 bg-white/70 p-3 dark:border-violet-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                                {String(index + 1).padStart(2, "0")} · {item.device}
+                              </span>
+                              <span className="cyber-num text-xs text-violet-700 dark:text-violet-200">
+                                {item.viewport} · {item.dpr} · {item.network}
+                              </span>
+                            </div>
+                            <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              {item.expected}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        Screenshot and telemetry evidence
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {DEVICE_QA_EVIDENCE_CHECKS.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                proof {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <pre className="mt-3 max-h-64 overflow-auto rounded-md bg-black/85 p-3 text-xs leading-relaxed text-cyan-100">
+                        {JSON.stringify(
+                          {
+                            event: telemetryPayload.event,
+                            severity: telemetryPayload.severity,
+                            dpr: telemetryPayload.dpr,
+                            dprCap: telemetryPayload.dprCap,
+                            canvasPixels: telemetryPayload.canvasPixels,
+                            resourceStatus: telemetryPayload.resourceStatus,
+                            modelSourceMode: telemetryPayload.modelSourceMode,
+                            modelProgress: telemetryPayload.modelProgress,
+                          },
+                          null,
+                          2,
+                        )}
+                      </pre>
+                    </section>
+
+                    <section className="rounded-lg border border-rose-300/60 bg-rose-50/70 p-4 dark:border-rose-300/20 dark:bg-rose-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-rose-700 dark:text-rose-300">
+                        Regression drills before release
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {DEVICE_QA_REGRESSION_DRILLS.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-rose-300/50 bg-white/70 p-3 dark:border-rose-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-rose-700 dark:text-rose-200">
+                                drill {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：我会把 WebGL 发布前 QA 做成矩阵，而不是只在自己电脑看一眼。每个设备档都要验证首屏非空白、
+                        DPR/像素预算、触控、慢网、fallback、context lost 和 telemetry 字段。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "线上异常复盘演练" ? (
+                  <>
+                    <section className="rounded-lg border border-rose-300/60 bg-rose-50/70 p-4 dark:border-rose-300/20 dark:bg-rose-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-rose-700 dark:text-rose-300">
+                        WebGL incident report
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {[
+                          ["id", incidentReport.id],
+                          ["status", incidentReport.status],
+                          ["symptom", incidentReport.symptom],
+                          ["severity", incidentReport.telemetry.severity],
+                          ["asset", incidentReport.asset.status],
+                          ["budget", incidentReport.asset.budget],
+                          ["rollback", incidentReport.asset.rollback],
+                          ["action", incidentReport.action],
+                        ].map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-rose-300/50 bg-white/70 p-3 dark:border-rose-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-rose-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <pre className="mt-3 max-h-72 overflow-auto rounded-md bg-black/85 p-3 text-xs leading-relaxed text-cyan-100">
+                        {JSON.stringify(incidentReport, null, 2)}
+                      </pre>
+                    </section>
+
+                    <section className="rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                        Response timeline
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {INCIDENT_REPORT_TIMELINE.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-amber-300/50 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-amber-700 dark:text-amber-200">
+                                t+{String(index).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        Evidence fields for postmortem
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {INCIDENT_REPORT_EVIDENCE_FIELDS.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-200">
+                                field {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        Action map
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {INCIDENT_REPORT_ACTIONS.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                fix {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-violet-300/60 bg-violet-50/70 p-4 dark:border-violet-300/20 dark:bg-violet-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-violet-700 dark:text-violet-300">
+                        Postmortem questions
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {INCIDENT_POSTMORTEM_QUESTIONS.map((body, index) => (
+                          <div
+                            key={body}
+                            className="rounded-md border border-violet-300/50 bg-white/70 p-3 text-sm leading-relaxed text-gray-600 dark:border-violet-300/20 dark:bg-black/20 dark:text-gray-300"
+                          >
+                            <span className="cyber-num mr-2 text-[10px] uppercase tracking-[0.18em] text-violet-700 dark:text-violet-200">
+                              q{String(index + 1).padStart(2, "0")}
+                            </span>
+                            {body}
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：线上 WebGL 事故我会先保护用户体验，再用 telemetry 把问题分成资源、渲染、设备、降级和交互，
+                        资源类优先回滚 manifest，渲染类优先降级质量，最后把根因和门禁补进资产管线与真机矩阵。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "作品集发布包" ? (
+                  <>
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        Portfolio release summary
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {Object.entries(portfolioReleaseSummary).map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-cyan-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        这个发布包把可运行 WebGL demo、模型加载证据、移动端 QA、资源预算和线上 incident 模板收束到同一个交付面板，
+                        便于录屏、截图和 README 复述。
+                      </p>
+                    </section>
+
+                    <section className="rounded-lg border border-fuchsia-300/60 bg-fuchsia-50/70 p-4 dark:border-fuchsia-300/20 dark:bg-fuchsia-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-fuchsia-700 dark:text-fuchsia-300">
+                        README outline
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PORTFOLIO_RELEASE_README.map(([label, body]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-fuchsia-300/50 bg-white/70 p-3 dark:border-fuchsia-300/20 dark:bg-black/20"
+                          >
+                            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                              <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        45s recording script
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PORTFOLIO_RELEASE_RECORDING_SCRIPT.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                clip {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-blue-300/60 bg-blue-50/70 p-4 dark:border-blue-300/20 dark:bg-blue-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-blue-700 dark:text-blue-300">
+                        Screenshot checklist
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PORTFOLIO_RELEASE_SCREENSHOTS.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-blue-300/50 bg-white/70 p-3 dark:border-blue-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-blue-700 dark:text-blue-200">
+                                shot {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                        Submission files
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PORTFOLIO_RELEASE_SUBMISSION.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-amber-300/50 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                                {String(index + 1).padStart(2, "0")} · {label}
+                              </span>
+                            </div>
+                            <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              {body}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-rose-300/60 bg-rose-50/70 p-4 dark:border-rose-300/20 dark:bg-rose-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-rose-700 dark:text-rose-300">
+                        Release gates
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PORTFOLIO_RELEASE_GATES.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-rose-300/50 bg-white/70 p-3 dark:border-rose-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-rose-700 dark:text-rose-200">
+                                gate {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：我会把 WebGL 作品交付成一个证据包，而不只是一个能打开的页面。里面要有 demo、README、录屏、
+                        截图、资源预算、真机 QA 和 incident report，这样招聘方能看到我理解真实发布流程。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "独立作品页切分" ? (
+                  <>
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        Product showcase handoff
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_HANDOFF.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-200">
+                                handoff {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-cyan-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-cyan-700 transition-colors hover:bg-cyan-400/10 dark:border-cyan-300/30 dark:text-cyan-200 cyber-num"
+                        >
+                          open product showcase
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        Split acceptance gates
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {[
+                          ["new route", "/lab/product-showcase"],
+                          ["lab entry", "added to /lab"],
+                          ["real asset", "/api/lab/product-marker-glb"],
+                          ["fallback", "Broken URL + Retry"],
+                          ["mobile", "DPR cap buttons"],
+                          ["evidence", "runtime + release panels"],
+                        ].map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-emerald-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：我不会把训练页直接丢给面试官，而是抽出一个独立作品页承接访问路径；
+                        训练页继续保留研发证据，作品页负责第一眼产品体验和可验证 fallback。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "作品页移动端视觉复核" ? (
+                  <>
+                    <section className="rounded-lg border border-violet-300/60 bg-violet-50/70 p-4 dark:border-violet-300/20 dark:bg-violet-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-violet-700 dark:text-violet-300">
+                        Product showcase visual review
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_VISUAL_REVIEW.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-violet-300/50 bg-white/70 p-3 dark:border-violet-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-violet-700 dark:text-violet-200">
+                                qa {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-violet-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-violet-700 transition-colors hover:bg-violet-400/10 dark:border-violet-300/30 dark:text-violet-200 cyber-num"
+                        >
+                          review product showcase
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                        Screenshot verification checklist
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {[
+                          ["phone", "390px no overflow"],
+                          ["poster", "fallback copy visible"],
+                          ["controls", "DPR/retry wrap"],
+                          ["canvas", "nonblank or poster"],
+                          ["evidence", "QA panels readable"],
+                          ["recording", "4-step path ready"],
+                        ].map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-amber-300/50 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-amber-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：独立作品页不只要能跑，还要在手机宽度下能看、能恢复、能录屏、能截图。视觉复核会把访问者体验和工程证据一起收口。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "本地浏览器验证" ? (
+                  <>
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        Local browser verification
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_BROWSER_VERIFICATION.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-200">
+                                check {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-cyan-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-cyan-700 transition-colors hover:bg-cyan-400/10 dark:border-cyan-300/30 dark:text-cyan-200 cyber-num"
+                        >
+                          open browser target
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        This run evidence
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_BROWSER_RUN.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                result {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-lime-300/70 bg-lime-50/70 p-4 dark:border-lime-300/25 dark:bg-lime-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-lime-700 dark:text-lime-300">
+                        Test anchors
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {[
+                          ["stage", "data-testid=product-showcase-stage"],
+                          ["state", "data-load-state"],
+                          ["canvas", "data-testid=product-showcase-canvas-host"],
+                          ["fallback", "data-testid=product-showcase-fallback"],
+                          ["runtime", "data-testid=runtime-evidence"],
+                          ["browser", "data-testid=browser-verification"],
+                        ].map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-lime-300/50 bg-white/70 p-3 dark:border-lime-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-lime-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 break-words text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：我会提前给 WebGL 作品页埋稳定测试锚点，避免只靠肉眼说“看起来没问题”。route、viewport、canvas、fallback 和 overflow 都能被复查。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "页面内视觉证据采样" ? (
+                  <>
+                    <section className="rounded-lg border border-sky-300/60 bg-sky-50/70 p-4 dark:border-sky-300/20 dark:bg-sky-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-sky-700 dark:text-sky-300">
+                        Visual self-check packet
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_SELF_CHECK.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-sky-300/50 bg-white/70 p-3 dark:border-sky-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-sky-700 dark:text-sky-200">
+                                sample {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-sky-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-sky-700 transition-colors hover:bg-sky-400/10 dark:border-sky-300/30 dark:text-sky-200 cyber-num"
+                        >
+                          inspect visual self-check
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-fuchsia-300/60 bg-fuchsia-50/70 p-4 dark:border-fuchsia-300/20 dark:bg-fuchsia-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-fuchsia-700 dark:text-fuchsia-300">
+                        This run visual evidence
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_SELF_CHECK_RUN.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-fuchsia-300/50 bg-white/70 p-3 dark:border-fuchsia-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-fuchsia-700 dark:text-fuchsia-200">
+                                result {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-rose-300/60 bg-rose-50/70 p-4 dark:border-rose-300/20 dark:bg-rose-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-rose-700 dark:text-rose-300">
+                        Troubleshooting record
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        本轮重点排查“没有自动截图工具就无法证明 WebGL 可见”的断点：作品页现在会自己采样 WebGL 像素、记录 viewport 与 canvas 尺寸、暴露 overflow，
+                        并在模型未 ready 时把 poster fallback 作为可见证据。后续截图只负责归档，不再承担唯一验证来源。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "QA 报告导出" ? (
+                  <>
+                    <section className="rounded-lg border border-fuchsia-300/60 bg-fuchsia-50/70 p-4 dark:border-fuchsia-300/20 dark:bg-fuchsia-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-fuchsia-700 dark:text-fuchsia-300">
+                        QA report export schema
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_QA_REPORT.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-fuchsia-300/50 bg-white/70 p-3 dark:border-fuchsia-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-fuchsia-700 dark:text-fuchsia-200">
+                                field {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-fuchsia-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-fuchsia-700 transition-colors hover:bg-fuchsia-400/10 dark:border-fuchsia-300/30 dark:text-fuchsia-200 cyber-num"
+                        >
+                          open qa report export
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        This run report evidence
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_QA_REPORT_RUN.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                report {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                        Screenshot archive guide
+                      </div>
+                      <div className="mt-3 grid gap-2 md:grid-cols-3">
+                        {[
+                          ["desktop", "1280x900 ready canvas + report"],
+                          ["mobile", "390x844 no overflow + controls"],
+                          ["fallback", "Broken URL poster + retry"],
+                        ].map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-amber-300/50 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-amber-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：我不会只说“我测过了”，而是导出一份可复制的 QA JSON。它把 route、runtime、视觉采样、fallback 和截图场景放在一起，方便异步评审。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "README 与发布清单生成" ? (
+                  <>
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        README release docs
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_RELEASE_DOCS.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                doc {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-emerald-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-emerald-700 transition-colors hover:bg-emerald-400/10 dark:border-emerald-300/30 dark:text-emerald-200 cyber-num"
+                        >
+                          open release notes export
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-blue-300/60 bg-blue-50/70 p-4 dark:border-blue-300/20 dark:bg-blue-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-blue-700 dark:text-blue-300">
+                        This run delivery evidence
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_RELEASE_DOCS_RUN.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-blue-300/50 bg-white/70 p-3 dark:border-blue-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-blue-700 dark:text-blue-200">
+                                run {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-rose-300/60 bg-rose-50/70 p-4 dark:border-rose-300/20 dark:bg-rose-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-rose-700 dark:text-rose-300">
+                        Troubleshooting record
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        本轮重点排查 WebGL 作品证据是否只停留在运行态：QA JSON 已经可复制，但交付还需要 README、发布验收和异常附录。
+                        作品页现在把这些内容生成 Markdown，并绑定 runtime、visual verdict、overflow 和 fallback verdict，减少交付时手工漏项。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "最终发布签收" ? (
+                  <>
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        Final release gate
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_FINAL_GATE.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-200">
+                                gate {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-cyan-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-cyan-700 transition-colors hover:bg-cyan-400/10 dark:border-cyan-300/30 dark:text-cyan-200 cyber-num"
+                        >
+                          open final gate
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-violet-300/60 bg-violet-50/70 p-4 dark:border-violet-300/20 dark:bg-violet-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-violet-700 dark:text-violet-300">
+                        This run signoff evidence
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_FINAL_GATE_RUN.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-violet-300/50 bg-white/70 p-3 dark:border-violet-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-violet-700 dark:text-violet-200">
+                                signoff {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                        Production build decision
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        本轮先把最终签收证据固化到页面。生产 build 应作为最终发布门禁单独执行：若失败，先区分是否为实验室路由回归；
+                        已知的 `_document.js` viewport meta warning 来自站点全局模板，不属于 product showcase 本轮改动。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "生产构建门禁记录" ? (
+                  <>
+                    <section className="rounded-lg border border-orange-300/70 bg-orange-50/70 p-4 dark:border-orange-300/25 dark:bg-orange-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-orange-700 dark:text-orange-300">
+                        Production build evidence
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_PRODUCTION_BUILD.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-orange-300/50 bg-white/70 p-3 dark:border-orange-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-orange-700 dark:text-orange-200">
+                                build {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-orange-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-orange-700 transition-colors hover:bg-orange-400/10 dark:border-orange-300/30 dark:text-orange-200 cyber-num"
+                        >
+                          inspect build evidence
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-rose-300/60 bg-rose-50/70 p-4 dark:border-rose-300/20 dark:bg-rose-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-rose-700 dark:text-rose-300">
+                        Build gate decision
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_PRODUCTION_BUILD_RUN.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-rose-300/50 bg-white/70 p-3 dark:border-rose-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-rose-700 dark:text-rose-200">
+                                decision {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                        Troubleshooting record
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        本轮重点排查 production build 失败是否来自 WebGL lab：`next build` 已完成编译和 1331 页静态生成，
+                        最终卡在既有 tags 导出重命名。product showcase 的 type check 和 route smoke 仍通过，因此发布决策应拆成“作品页可评审”和“全站生产导出待修”。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
                 <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
                   <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
                     Model loading check
@@ -3571,6 +5386,116 @@ export default function FifteenMinuteWebGLPlan() {
                       </div>
                       <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
                         面试表达：我会把模型交付拆成几何压缩、贴图转码、decoder 懒加载、缓存版本和失败兜底五件事一起验收。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "模型资源自动化压缩管线" ? (
+                  <>
+                    <section className="rounded-lg border border-blue-300/60 bg-blue-50/70 p-4 dark:border-blue-300/20 dark:bg-blue-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-blue-700 dark:text-blue-300">
+                        Automated asset pipeline report
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {Object.entries(assetPipelineReport).map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-blue-300/50 bg-white/70 p-3 dark:border-blue-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-blue-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        当前按钮选择的资源预设会直接改变预算报告：Raw 应该让 CI 失败，Mobile/Fallback 应通过首屏预算。
+                        这让模型优化不再是手工口头约定，而是能进入 PR 和发布门禁的产物。
+                      </p>
+                    </section>
+
+                    <section className="rounded-lg border border-fuchsia-300/60 bg-fuchsia-50/70 p-4 dark:border-fuchsia-300/20 dark:bg-fuchsia-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-fuchsia-700 dark:text-fuchsia-300">
+                        glTF-Transform command plan
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {MODEL_ASSET_PIPELINE_STEPS.map((item, index) => (
+                          <div
+                            key={item.step}
+                            className="rounded-md border border-fuchsia-300/50 bg-white/70 p-3 dark:border-fuchsia-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                                {String(index + 1).padStart(2, "0")} · {item.step}
+                              </span>
+                              <span className="cyber-num text-xs text-fuchsia-700 dark:text-fuchsia-200">
+                                {item.output}
+                              </span>
+                            </div>
+                            <code className="mt-2 block overflow-x-auto rounded bg-black/80 px-3 py-2 text-xs text-cyan-100">
+                              {item.command}
+                            </code>
+                            <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              {item.check}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        CI gates and rollback
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {MODEL_ASSET_PIPELINE_GATES.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                gate {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                        Versioned outputs
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {MODEL_ASSET_PIPELINE_OUTPUTS.map(([label, value, body]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-amber-300/50 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                              <span className="cyber-num text-xs text-amber-700 dark:text-amber-200">
+                                {value}
+                              </span>
+                            </div>
+                            <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              {body}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：模型优化不能停在“我压缩过”，我会让资产管线产出 inspect 报告、压缩 GLB、KTX2 贴图、
+                        hash URL、预算 JSON 和上一版回滚地址，发布时用 CI 守住移动端首屏。
                       </p>
                     </section>
                   </>

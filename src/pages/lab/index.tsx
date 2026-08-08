@@ -36,6 +36,22 @@ const LAB_ITEMS: LabItem[] = [
     tags: ["three.js", "3D", "PBR"],
     status: "live",
   },
+  {
+    slug: "splat-studio",
+    title: "Splat Studio · 3D Viewer",
+    en: "Splat Studio · Tauri × Three.js Viewer",
+    desc: "Tauri + React + Three.js 3D 查看器。GLB 导入、TransformControls 编辑、双端统一文件源、HUD，一页跑通。",
+    tags: ["Tauri", "three.js", "GLB", "Transform"],
+    status: "live",
+  },
+  {
+    slug: "product-showcase",
+    title: "Nocturne Camera · 3D 产品作品页",
+    en: "Nocturne Camera · 3D Product Showcase",
+    desc: "从训练页切出的独立作品页：真实 GLB、OrbitControls、DPR cap、fallback/retry、QA 证据。",
+    tags: ["three.js", "GLTFLoader", "Portfolio", "QA"],
+    status: "live",
+  },
 ];
 
 export default function LabIndex() {
