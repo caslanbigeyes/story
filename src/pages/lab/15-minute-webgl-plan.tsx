@@ -901,6 +901,59 @@ function getMobileDegradePolicy(stats: DemoStats, instanceCount: number, dprCap:
   };
 }
 
+const TELEMETRY_FIELD_GROUPS = [
+  {
+    group: "device",
+    fields: ["userAgent", "viewport", "nativeDpr", "dprCap"],
+    why: "定位是否是高 DPR 手机、窄屏设备或特定浏览器触发的问题。",
+  },
+  {
+    group: "render",
+    fields: ["fps", "drawCalls", "triangles", "pixelBudget"],
+    why: "区分 CPU 提交、GPU 几何压力和 fill-rate 压力。",
+  },
+  {
+    group: "quality",
+    fields: ["qualityLevel", "recommendedDpr", "recommendedInstances"],
+    why: "记录当前是否触发 balanced/battery/fallback 降级，方便复盘产品取舍。",
+  },
+  {
+    group: "asset",
+    fields: ["resourceStatus", "modelSourceMode", "modelProgress", "modelBytes"],
+    why: "把渲染卡顿和资源加载失败分开看，避免把 GLB 404 误判成性能问题。",
+  },
+  {
+    group: "interaction",
+    fields: ["route", "slot", "demo", "sampleReason"],
+    why: "知道用户在哪个页面、哪个实验、什么场景下触发采样。",
+  },
+];
+
+const TELEMETRY_SAMPLE_EVENTS = [
+  ["webgl_render_sample", "每 5-10 秒采样一次 FPS、DPR、draw calls、triangles、pixelBudget。"],
+  ["webgl_quality_change", "DPR cap、实例规模或 fallback 状态改变时立刻上报。"],
+  ["webgl_context_lost", "监听 webglcontextlost，带上 route、device、lastTelemetry 和恢复状态。"],
+  ["webgl_asset_error", "GLB/KTX2/decoder 加载失败时记录 URL、source、progress、error 和 fallback。"],
+];
+
+const TELEMETRY_INCIDENT_PLAYBOOK = [
+  ["FPS low + draw calls high", "先合批或实例化，检查材质/透明/阴影是否导致 draw call 激增。"],
+  ["FPS low + pixel budget high", "优先降 DPR、关闭高分辨率后处理，移动端保触控响应。"],
+  ["Triangles high", "检查模型 LOD、Meshopt/Draco、隐藏面和首屏是否加载过多部件。"],
+  ["Asset error", "回滚资源版本，切 poster fallback，再检查 CDN、Content-Type、decoder 路径。"],
+];
+
+function getTelemetrySeverity(stats: DemoStats, policy: ReturnType<typeof getMobileDegradePolicy>) {
+  if (policy.level === "fallback" || stats.contextState === "lost" || stats.modelStatus === "fallback") {
+    return "incident";
+  }
+  if (stats.fps > 0 && stats.fps < 30) return "degrade";
+  if ((stats.pixelBudget ?? 0) > 2_000_000 || stats.triangles > 120_000 || policy.level === "battery") {
+    return "watch";
+  }
+  return "healthy";
+}
+
 const DEMO_LABELS: Record<DemoKey, string> = {
   "webgl-triangle": "原生 WebGL 渐变三角形",
   "webgl-rotation": "WebGL uniform 旋转",
@@ -2115,6 +2168,33 @@ export default function FifteenMinuteWebGLPlan() {
           ? "需要观察"
           : "可发布样例",
   };
+  const telemetrySeverity = getTelemetrySeverity(stats, mobileDegradePolicy);
+  const telemetryPayload = {
+    event: "webgl_render_sample",
+    route: "/lab/15-minute-webgl-plan",
+    slot: selected + 1,
+    demo: current.demo,
+    sampleReason: current.title,
+    severity: telemetrySeverity,
+    fps: stats.fps,
+    nativeDpr: stats.nativeDpr ?? 1,
+    dpr: stats.dpr,
+    dprCap,
+    drawCalls: stats.drawCalls,
+    triangles: stats.triangles,
+    instances: stats.instances ?? instanceSet.count,
+    pixelBudget: stats.pixelBudget ?? 0,
+    canvasCss: `${stats.cssWidth ?? 0}x${stats.cssHeight ?? 0}`,
+    canvasPixels: `${stats.pixelWidth ?? 0}x${stats.pixelHeight ?? 0}`,
+    qualityLevel: mobileDegradePolicy.level,
+    qualityTrigger: mobileDegradePolicy.trigger,
+    recommendedDpr: mobileDegradePolicy.recommendedDpr,
+    recommendedInstances: mobileDegradePolicy.recommendedInstances,
+    resourceStatus: stats.modelStatus ?? "not_applicable",
+    modelSourceMode: stats.modelSourceMode ?? "not_applicable",
+    modelProgress: stats.modelProgress ?? 0,
+    modelBytes: stats.modelBytes ?? 0,
+  };
   const uniformMatrix = {
     cos: Math.cos(uniformPreviewAngle),
     sin: Math.sin(uniformPreviewAngle),
@@ -3068,6 +3148,113 @@ export default function FifteenMinuteWebGLPlan() {
                       </div>
                       <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
                         面试表达：我不会只说“优化性能”，而是用 FPS、DPR、像素预算、实例数和 fallback 状态触发明确降级。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "线上观测指标面板" ? (
+                  <>
+                    <section className="rounded-lg border border-violet-300/60 bg-violet-50/70 p-4 dark:border-violet-300/20 dark:bg-violet-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-violet-700 dark:text-violet-300">
+                        WebGL telemetry payload
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {[
+                          ["severity", telemetryPayload.severity],
+                          ["fps", telemetryPayload.fps],
+                          ["dpr", `${telemetryPayload.dpr}x / cap ${telemetryPayload.dprCap}x`],
+                          ["draw calls", telemetryPayload.drawCalls],
+                          ["triangles", telemetryPayload.triangles],
+                          ["instances", telemetryPayload.instances],
+                          ["pixel budget", telemetryPayload.pixelBudget.toLocaleString()],
+                          ["quality", telemetryPayload.qualityLevel],
+                        ].map(([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-violet-300/50 bg-white/70 p-3 dark:border-violet-300/20 dark:bg-black/20"
+                          >
+                            <div className="cyber-num text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-violet-300/80">
+                              {label}
+                            </div>
+                            <div className="mt-1 text-sm font-semibold leading-relaxed text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <pre className="mt-3 max-h-72 overflow-auto rounded-md border border-violet-300/50 bg-white/80 p-3 text-xs leading-relaxed text-gray-700 dark:border-violet-300/20 dark:bg-black/30 dark:text-gray-300">
+                        {JSON.stringify(telemetryPayload, null, 2)}
+                      </pre>
+                    </section>
+
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        Telemetry field contract
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {TELEMETRY_FIELD_GROUPS.map((item) => (
+                          <div
+                            key={item.group}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">{item.group}</span>
+                              <span className="cyber-num text-xs text-cyan-700 dark:text-cyan-200">
+                                {item.fields.join(" · ")}
+                              </span>
+                            </div>
+                            <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              {item.why}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/70 p-4 dark:border-emerald-300/20 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        Sampling events
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {TELEMETRY_SAMPLE_EVENTS.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                event {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-rose-300/60 bg-rose-50/70 p-4 dark:border-rose-300/20 dark:bg-rose-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-rose-700 dark:text-rose-300">
+                        Incident playbook
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {TELEMETRY_INCIDENT_PLAYBOOK.map(([label, body]) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-rose-300/50 bg-white/70 p-3 dark:border-rose-300/20 dark:bg-black/20"
+                          >
+                            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                              <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        面试表达：我会把 WebGL 线上问题拆成设备、资源、渲染、质量降级和用户场景五类字段，而不是只看自己的电脑是否流畅。
                       </p>
                     </section>
                   </>

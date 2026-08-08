@@ -2,11 +2,11 @@
   "automationId": "15-webgl-three-js",
   "cadenceMinutes": 15,
   "startedAt": "2026-08-05T16:53:26+0800",
-  "currentSlot": 27,
-  "completedSlots": 26,
-  "lastUpdatedAt": "2026-08-06T18:02:27+0800",
-  "lastSummary": "第 26 格已完成：model-loader demo 新增 Compression shipping strategy、Decoder loading plan、Cache and rollback、Shipping decision matrix，把 Draco/Meshopt/KTX2、poster fallback、缓存版本和回滚整理成模型交付方案。",
-  "nextAction": "第 27 轮推进线上观测指标面板：把 FPS、DPR、draw calls、triangles、资源状态和用户设备整理成 WebGL telemetry 字段。",
+  "currentSlot": 28,
+  "completedSlots": 27,
+  "lastUpdatedAt": "2026-08-08T21:30:37+0800",
+  "lastSummary": "第 27 格已完成：performance demo 新增 WebGL telemetry payload、Telemetry field contract、Sampling events 和 Incident playbook，把 FPS、DPR、draw calls、triangles、资源状态、质量降级和用户场景整理成线上观测字段。",
+  "nextAction": "第 28 轮推进首屏加载编排：把 poster、progress、decoder、GLB、fallback 和 retry 串成用户可感知的 3D 首屏流程。",
   "history": [
     {
       "slot": 1,
@@ -267,6 +267,16 @@
       "deliverable": "在 `/lab/15-minute-webgl-plan` 的 model-loader demo 中新增 Compression shipping strategy、Decoder loading plan、Cache and rollback、Shipping decision matrix，展示 raw/mobile/fallback 体积预算、压缩率、节省体积、decoder 懒加载、缓存版本和回滚策略。",
       "verification": "选择第 26 格后，切换 Raw/Mobile/Fallback 预算按钮会更新 original、optimized、saved、ratio、target、status；页面展示 Meshopt/Draco、KTX2/Basis、Lazy decoder、Poster fallback 的交付策略。",
       "troubleshooting": "本轮重点排查模型交付是否只谈压缩而忽略贴图、decoder、缓存和兜底；线上 GLB 应同时有 hashed URL、immutable cache、decoder fallback、poster fallback 和可回滚版本。"
+    },
+    {
+      "slot": 27,
+      "time": "06:30-06:45",
+      "title": "线上观测指标面板",
+      "status": "completed",
+      "completedAt": "2026-08-08T21:30:37+0800",
+      "deliverable": "在 `/lab/15-minute-webgl-plan` 的 performance demo 中新增 WebGL telemetry payload、Telemetry field contract、Sampling events 和 Incident playbook，展示可复制的 `webgl_render_sample` JSON 字段。",
+      "verification": "选择第 27 格后，页面展示 severity、fps、dpr、draw calls、triangles、instances、pixel budget、quality，以及 device/render/quality/asset/interaction 五组 telemetry 字段。",
+      "troubleshooting": "本轮重点排查线上 WebGL 问题是否有足够字段复盘；低 FPS、draw calls 高、pixel budget 高、triangles 高和资源错误分别对应不同处理路径。"
     }
   ]
 }
