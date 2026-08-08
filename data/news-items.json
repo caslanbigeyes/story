@@ -1,6 +1,38 @@
 {
   "items": [
     {
+      "id": "8a6f8a598a0b",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Building a local positioning system to track runners using Ultra-Wideband",
+      "url": "https://news.ycombinator.com/item?id=49133850",
+      "info": "10 points",
+      "hover": "",
+      "reflection": "刚看到这个新闻，突然就想到了自己最近几个头疼的事情。第一条是每天晚上跑步的时候，总是找不到合适的地方，有时候得跑上好远才找到一个空旷点。第二条是公司里的项目进度太赶，有时候加班到深夜，回到家还是一堆乱七八糟的东西等着处理。第三条是和朋友们聚会的次数越来越少，大家都有自己的事情，凑在一起的时间变得格外珍贵。\n\n说到这里，我突然想到了地铁里的一幕。那天晚上加班到11点，拖着疲惫的身体挤进地铁，看着周围人急匆匆的步伐，心里就涌起一股无奈。我想，如果我有一个超宽频定位系统，至少可以找到一条人少点的地铁，不用那么挤。其实，我知道这样不对，都这么大人了，还是这样矫情，但我难受啊。\n\n我都成年了还是这样矛盾，有时候觉得自己太过于追求效率和舒适，有时候又觉得这样太累了。我懂这道理但还是难受。如果只能选一个，我选一个超宽频定位系统，原因很简单——它能让我在疲惫的时候找到一点慰藉。",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-08-08T21:31:25.603Z"
+    },
+    {
+      "id": "315d54e81eb7",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Open-source interactive map for the Aug 12 total solar eclipse",
+      "url": "https://news.ycombinator.com/item?id=49225139",
+      "info": "21 points",
+      "hover": "",
+      "reflection": "哎呀，这条资讯里说啥来着？总共有两种日食，一种是全食，另一种是部分食？哈，别逗了，我都成年了还相信这种区分，简直就是逗比行为嘛。我记得小时候老师就说过，全食日食就是太阳被月亮完全挡住，部分食就是只挡住一部分。这不都一样吗？咱们大中国那么多人在网上看直播，不也是想体验那种氛围吗？\n\n我那天坐地铁，从四号线换到十号线，一路上都在刷手机，突然发现窗外太阳有点不一样，当时就兴奋得想跟旁边的人说：“看！这是日食呢！”可人家理都不理我，好像我就个神经病。我还记得我同事小李，加班到九点，还一个劲儿问我：“你说这是日食吗？是不是我得去楼顶上看？”他那样子，真是搞笑到家了。\n\n其实我懂这道理，全食和部分食本质上是同一件事，但心里还是觉得全食特别酷，有种难得的震撼感。我都成年了还是个日食迷，这得多傻啊！但就是这种感觉，让我觉得生活还有点意思。反正，不管别人怎么说，我总觉得全食就是不一样！",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-08-08T21:31:08.508Z"
+    },
+    {
       "id": "61dbf03371aa",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7967,39 +7999,7 @@
         "mood": "怀旧、怔忡、怅然"
       },
       "createdAt": "2026-08-07T05:18:52.451Z"
-    },
-    {
-      "id": "7b954e7b5e1d",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Can you reverse engineer an ASIC?",
-      "url": "https://news.ycombinator.com/item?id=49200933",
-      "info": "76 points",
-      "hover": "",
-      "reflection": "哎，看了这条Hacker News上的帖子，我就想起上次加班到深夜，在地铁上看到的那个人。你说这芯片reverse engineering，我是不信的。就那种高科技玩意儿，怎么可能随便一个人就能 reverse engineer？我就不信。\n\n我在公司那会儿，天天跟芯片打交道，那玩意儿复杂得很，不是随便什么人都搞得定的。就像那地铁上的人，拿着个手机，就自以为能 reverse engineer 芯片，简直就是天方夜谭。我就不信他能有那本事。\n\n可反过来想想，我又觉得自己是不是太固执了。这世界上无奇不有，也许真有人能 reverse engineer 芯片呢？可我还是觉得，这事儿得有专业的人来做，不是随便谁都能玩的。\n\n我就这样，心里有点矛盾。我知道这样不对，但我就是不舒服。我都成年了，还是这么容易被人戳到痛点。哎，可能这就是生活吧，总有些事情让你不舒服，但又不得不面对。",
-      "reflectionTemplate": {
-        "id": "manifesto",
-        "name": "观点宣言型",
-        "mood": "决绝、不退让，略冷"
-      },
-      "createdAt": "2026-08-07T05:18:32.101Z"
-    },
-    {
-      "id": "c4a2d5364381",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Show HN: The Channels SDK – Bring Any Agent to Any Channel (Slack, MS Teams)",
-      "url": "https://news.ycombinator.com/item?id=49198583",
-      "info": "94 points",
-      "hover": "",
-      "reflection": "刚刚看到这条Hacker News上的资讯，说是一个叫Channels SDK的工具，能让任何智能体（Agent）连接到任何渠道（Channel），比如Slack和MS Teams。这让我想起前两天我朋友小王跟我抱怨，他新买的智能音箱总是连不上家里的Wi-Fi，弄得他一肚子火。\n\n你说，这智能音箱跟人似的，还挑Wi-Fi了？我那天还笑话他，现在一看，这技术发展得也太快了吧。我自个儿呢，虽然不至于连不上Wi-Fi，但有时候工作上的事情也让人头疼。比如，我正在做一个项目，已经推进到第二个月了，进度条快到80%了，可就是感觉有些力不从心。\n\n有时候，我也会想，是不是自己不够聪明，还是方法不对。就像那个Channels SDK，看起来很简单，但实际上要把它用好，还得花点心思。我懂，这道理我都懂，但还是难受。感觉像是在跟自己较劲，明明知道应该怎么去做，可就是迈不开步子。\n\n下一步打算做什么？我想，我得先给自己放个假，好好放松一下。然后，再重新审视一下我的工作方法，看看能不能找到更好的解决方案。毕竟，谁不想让自己变得更好呢？",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-08-07T05:18:15.652Z"
     }
   ],
-  "updatedAt": "2026-08-08T20:33:42.843Z"
+  "updatedAt": "2026-08-08T21:31:27.862Z"
 }
