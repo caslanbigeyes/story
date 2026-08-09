@@ -54,6 +54,5 @@ export default function TagsIndex({ tags }: Props) {
 export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: { tags: getAllTags() },
-    revalidate: 60,
   };
 };

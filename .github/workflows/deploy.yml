@@ -15,10 +15,24 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - run: npm install
+
+      # 静态导出模式不允许 API routes 存在，先移出 pages 目录再 build。
+      - name: Strip API routes for static export
+        run: rm -rf src/pages/api
+
       - run: npm run build
+
+      # 生成 rss.xml / sitemap.xml 到 out/ 根目录。
+      - run: node scripts/write-feeds.mjs
+
+      # GitHub Pages 自建域名，同时禁用 Jekyll 处理，避免下划线开头文件被吞。
+      - name: Add CNAME + .nojekyll
+        run: |
+          cp CNAME out/CNAME
+          touch out/.nojekyll
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
