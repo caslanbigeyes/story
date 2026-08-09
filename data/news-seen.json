@@ -1,16 +1,5 @@
 {
   "seen": [
-    "https://news.ycombinator.com/item?id=49112023",
-    "https://news.ycombinator.com/item?id=49148176",
-    "https://news.ycombinator.com/item?id=49109576",
-    "https://news.ycombinator.com/item?id=49181419",
-    "https://news.ycombinator.com/item?id=49182052",
-    "https://news.ycombinator.com/item?id=49181678",
-    "https://news.ycombinator.com/item?id=49181773",
-    "https://github.com/cloudflare/computer",
-    "https://www.v2ex.com/t/1232311",
-    "https://www.v2ex.com/t/1232305",
-    "https://www.v2ex.com/t/1232303",
     "https://www.v2ex.com/t/1232301",
     "https://www.producthunt.com/products/stepgrab?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.producthunt.com/products/capacity?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
@@ -999,7 +988,18 @@
     "https://www.producthunt.com/products/argos-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.producthunt.com/products/conferencegrid?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.zhihu.com/question/2065112578406328007",
-    "https://www.zhihu.com/question/5071651840"
+    "https://www.zhihu.com/question/5071651840",
+    "https://news.ycombinator.com/item?id=49229848",
+    "https://news.ycombinator.com/item?id=49154190",
+    "https://www.producthunt.com/products/papaya-4?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+    "https://www.producthunt.com/products/duckdisk?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+    "https://www.producthunt.com/products/workflo-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+    "https://www.producthunt.com/products/soup-cli?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+    "https://www.producthunt.com/products/grok-com-beta?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+    "https://www.producthunt.com/products/radiushq?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+    "https://www.producthunt.com/products/bunzee-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+    "https://www.producthunt.com/products/takt-3?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+    "https://www.zhihu.com/question/2067910668142093912"
   ],
-  "updatedAt": "2026-08-09T11:37:13.567Z"
+  "updatedAt": "2026-08-09T12:01:32.360Z"
 }
