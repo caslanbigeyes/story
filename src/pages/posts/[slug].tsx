@@ -173,6 +173,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
         next,
         related,
       },
+      revalidate: 60,
     };
   } catch {
     return { notFound: true };

@@ -150,5 +150,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const { html } = await markdownToHtml(item.reflection || "");
   return {
     props: { item, reflectionHtml: html },
+    revalidate: 60,
   };
 };
