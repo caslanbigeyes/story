@@ -2,11 +2,11 @@
   "automationId": "15-webgl-three-js",
   "cadenceMinutes": 15,
   "startedAt": "2026-08-05T16:53:26+0800",
-  "currentSlot": 41,
-  "completedSlots": 41,
-  "lastUpdatedAt": "2026-08-09T07:48:39+0800",
-  "lastSummary": "第 41 格已完成：执行 `npm run build` 生产门禁；编译成功并生成 1331 个静态页后，在既有 `/tags/Life.html` export rename 处失败；作品页和训练页新增 Production build evidence，明确不是 product showcase 回归。",
-  "nextAction": "第 42 轮建议二选一：修复全站 tags export 的 `/tags/Life.html` 问题，或为 product showcase 归档 desktop/mobile/fallback 截图并收尾当前 WebGL 产品训练。",
+  "currentSlot": 45,
+  "completedSlots": 45,
+  "lastUpdatedAt": "2026-08-09T08:48:39+0800",
+  "lastSummary": "第 45 格已完成：为 `/lab/product-showcase` 新增 WebGL completion certificate，把 45 个训练单元的能力覆盖、作品路由、验证证据、停止条件、下一 owner 和已知 `/tags/Life.html` build blocker 整理为可复制 JSON；训练页记录训练完成证书。",
+  "nextAction": "WebGL/Three.js 15 分钟训练链路已完成。若自动化继续触发，应切换到修复全站 `/tags/Life.html` production build blocker；若该自动化只服务 WebGL 学习，可以暂停或删除。",
   "history": [
     {
       "slot": 1,
@@ -417,6 +417,46 @@
       "deliverable": "执行 `npm run build`，并在 `/lab/product-showcase` Final release gate 中新增 Production build evidence；训练页第 41 格新增 Production build evidence、Build gate decision 和 Troubleshooting record。",
       "verification": "`npm run build` 编译成功并生成 1331 个静态页后失败于 `ENOENT rename .next/export/tags/Life.html -> .next/server/pages/tags/Life.html`；同时记录 `/news` 853 kB、`/` 304 kB、`/tags/ai-summary` 与 `/tags/news` 301 kB page-data warnings；`npx tsc --noEmit` 后续复验通过。",
       "troubleshooting": "本轮重点区分 production build 失败是否为 WebGL lab 回归：失败点是既有 tags 导出重命名问题，product showcase 的 type check 和 route smoke 仍通过；发布决策拆成作品页可本地评审、全站生产导出待修。"
+    },
+    {
+      "slot": 42,
+      "time": "10:15-10:30",
+      "title": "截图归档与收尾",
+      "status": "completed",
+      "completedAt": "2026-08-09T08:03:39+0800",
+      "deliverable": "`/lab/product-showcase` 新增 Screenshot archive manifest、copy archive manifest、screenshot-archive-json，输出 desktop-ready、mobile-ready、fallback-drill 三张截图的视口、文件名、证明点和当前 runtime/visual evidence；训练页第 42 格新增 Screenshot archive manifest、This run archive evidence 和 Troubleshooting record。",
+      "verification": "`npx tsc --noEmit` 通过；在 `127.0.0.1:3015` 上 `/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` 均返回 200；作品页 HTML 包含 `data-testid=screenshot-archive-manifest`、`data-testid=screenshot-archive-json`、`copy archive manifest`；浏览器显式导航截图成功，标题 `3D Product Showcase · llf`，截图大小 43824 bytes。",
+      "troubleshooting": "本轮重点排查 WebGL 训练是否已经从功能开发进入交付收尾：当前作品页已有真实 GLB、DPR cap、fallback/retry、runtime evidence、visual self-check、QA JSON、release notes、final gate、production build evidence 和截图归档 manifest；下一步不应继续堆功能，而应修复全站 build blocker 或暂停自动化。"
+    },
+    {
+      "slot": 43,
+      "time": "10:30-10:45",
+      "title": "GLB API 资产移交",
+      "status": "completed",
+      "completedAt": "2026-08-09T08:18:39+0800",
+      "deliverable": "`/lab/product-showcase` 新增 Asset handoff packet、copy asset handoff、asset-handoff-json，输出 `/api/lab/product-marker-glb` 的 HTTP route、MIME、Content-Length、GLB magic/version/declared length、缓存策略、资源预算和 rollback；训练页第 43 格新增 Asset handoff packet、This run GLB evidence 和 Troubleshooting record。",
+      "verification": "`npx tsc --noEmit` 通过；在 `127.0.0.1:3015` 上 `/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` 均返回 200；`/api/lab/product-marker-glb` 返回 200、`Content-Type: model/gltf-binary`、`Content-Length: 1224`，前 12 bytes 为 `676c544602000000c8040000`；作品页 HTML 包含 `data-testid=asset-handoff-packet`、`data-testid=asset-handoff-json`、`copy asset handoff`。",
+      "troubleshooting": "本轮重点排查真实 GLB 资产是否能作为接口移交：第一次 API HEAD 遇到 Next dev webpack-api-runtime 500，重启 dev server 后同一路由恢复 200，判定为本地 dev bundle 状态问题；资产路径要同时有 API 合同、二进制 header、runtime bytes、缓存策略和回滚路径；若这些通过，WebGL 资产链路可评审，生产部署仍由独立的全站 tags export blocker 决定。"
+    },
+    {
+      "slot": 44,
+      "time": "10:45-11:00",
+      "title": "Decoder 策略签收",
+      "status": "completed",
+      "completedAt": "2026-08-09T08:33:39+0800",
+      "deliverable": "`/lab/product-showcase` 新增 Decoder readiness manifest、copy decoder manifest、decoder-readiness-json，输出当前 1224B GLB 不压缩的判断，以及 Draco/Meshopt/KTX2 的启用阈值、decoder path、移动端预算、fallback 和 rollback；训练页第 44 格新增 Decoder readiness manifest、This run decoder evidence 和 Troubleshooting record。",
+      "verification": "`npx tsc --noEmit` 通过；在 `127.0.0.1:3015` 上 `/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` 均返回 200；`/api/lab/product-marker-glb` 返回 200、`Content-Type: model/gltf-binary`、`Content-Length: 1224`；作品页 HTML 包含 `data-testid=decoder-readiness-manifest`、`data-testid=decoder-readiness-json`、`copy decoder manifest`；训练页 HTML 包含 `Decoder 策略签收`、`Decoder readiness manifest`、`This run decoder evidence`。",
+      "troubleshooting": "本轮重点排查是否应该盲目接 Draco/Meshopt/KTX2：当前 GLB 只有 1224B，压缩会引入额外 decoder 成本和失败面，所以交付策略是保留未压缩真实 GLB，并把何时启用 decoder、decoder 路径、移动端预算、poster fallback 和上一版 GLB 回滚写入 manifest。"
+    },
+    {
+      "slot": 45,
+      "time": "11:00-11:15",
+      "title": "训练完成证书",
+      "status": "completed",
+      "completedAt": "2026-08-09T08:48:39+0800",
+      "deliverable": "`/lab/product-showcase` 新增 WebGL completion certificate、copy completion certificate、webgl-completion-json，输出 45 个训练单元的能力覆盖、作品路由、验证证据、停止条件、下一 owner 和已知 build blocker；训练页第 45 格新增 Completion certificate、This run completion evidence 和 Troubleshooting record。",
+      "verification": "`npx tsc --noEmit` 通过；在 `127.0.0.1:3015` 上 `/lab`、`/lab/15-minute-webgl-plan`、`/lab/product-showcase` 均返回 200；`/api/lab/product-marker-glb` 返回 200、`Content-Type: model/gltf-binary`、`Content-Length: 1224`；作品页 HTML 包含 `data-testid=webgl-completion-certificate`、`data-testid=webgl-completion-json`、`copy completion certificate`、`webgl-training-complete`；训练页 HTML 包含 `训练完成证书`、`Completion certificate`、`This run completion evidence`、`open completion certificate`。",
+      "troubleshooting": "本轮重点排查自动化是否还应该继续添加 WebGL 功能：当前作品页已经拥有真实 GLB、DPR cap、fallback/retry、runtime evidence、visual self-check、QA JSON、release notes、final gate、asset handoff、decoder readiness 和 completion certificate。继续推进时应先处理全站 `/tags/Life.html` production build blocker，而不是继续扩大 WebGL demo 面。"
     }
   ]
 }

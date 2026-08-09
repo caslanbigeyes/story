@@ -110,6 +110,35 @@ const PRODUCTION_BUILD_EVIDENCE = [
   ["Impact", "No TypeScript or route-smoke failure was observed for `/lab/product-showcase` in this gate."],
 ];
 
+const SCREENSHOT_ARCHIVE_MANIFEST = [
+  ["desktop-ready", "1280x900", "Real GLB ready state with runtime evidence, final release gate and QA report visible."],
+  ["mobile-ready", "390x844", "Controls wrap, canvas remains in viewport, `data-overflow=false`, product still visible."],
+  ["fallback-drill", "390x844", "Broken GLB URL shows poster fallback, error text, Retry button and incident note."],
+];
+
+const ASSET_HANDOFF_PACKET = [
+  ["HTTP route", "`/api/lab/product-marker-glb` is the real GLB source used by GLTFLoader."],
+  ["MIME", "`Content-Type: model/gltf-binary` keeps loader behavior aligned with production GLB hosting."],
+  ["Size", "`Content-Length: 1224` bytes matches the runtime evidence bytes for this tiny lab asset."],
+  ["Magic", "First 12 bytes resolve to GLB magic `glTF`, version 2 and declared length 1224."],
+  ["Cache", "The lab API uses `no-store`; production should move to a hashed immutable GLB plus short-cache manifest."],
+  ["Rollback", "If the API or decoder path fails, keep poster fallback and previous known-good GLB manifest reviewable."],
+];
+
+const DECODER_READINESS_MATRIX = [
+  ["Draco", "Geometry compression", "Use only when geometry savings beat decoder cost on target devices."],
+  ["Meshopt", "Fast geometry delivery", "Preferred first production step for compact meshes and quick decode."],
+  ["KTX2", "Texture transcode", "Use when texture payload dominates; keep Basis/KTX2 support feature-tested."],
+  ["Fallback", "Poster + prior GLB", "If any decoder fails or times out, keep a visible poster and retry path."],
+];
+
+const COMPLETION_CERTIFICATE = [
+  ["Coverage", "Shader, uniform, matrix, Raycaster, materials, DPR, resize, context lost, InstancedMesh and GLTFLoader were exercised across the 45 slots."],
+  ["Product route", "`/lab/product-showcase` is the portfolio route with real GLB loading, fallback, QA export and release evidence."],
+  ["Evidence", "Type check, route smoke, GLB headers, visual self-check, QA JSON, release notes, final gate and decoder manifest are all copyable."],
+  ["Stop condition", "Do not add more WebGL features until the site-wide `/tags/Life.html` production export blocker is fixed."],
+];
+
 function disposeObject(root: THREE.Object3D) {
   root.traverse((object) => {
     const mesh = object as THREE.Mesh;
@@ -136,6 +165,10 @@ export default function ProductShowcase() {
   const [copyState, setCopyState] = useState("copy report json");
   const [copyDocState, setCopyDocState] = useState("copy release notes");
   const [copyGateState, setCopyGateState] = useState("copy final gate");
+  const [copyArchiveState, setCopyArchiveState] = useState("copy archive manifest");
+  const [copyAssetState, setCopyAssetState] = useState("copy asset handoff");
+  const [copyDecoderState, setCopyDecoderState] = useState("copy decoder manifest");
+  const [copyCompletionState, setCopyCompletionState] = useState("copy completion certificate");
   const [visualEvidence, setVisualEvidence] = useState<VisualEvidence>({
     viewport: "pending",
     documentWidth: "pending",
@@ -430,6 +463,130 @@ export default function ProductShowcase() {
     "- Known warning: Next viewport meta and large page-data warnings come from site-wide/non-lab routes, outside this lab release gate.",
     "- Signoff: product showcase is ready for portfolio review after screenshot archive is attached; site-wide export issue remains separate.",
   ].join("\n");
+  const screenshotArchiveManifest = JSON.stringify(
+    {
+      route: "/lab/product-showcase",
+      completedSlot: 42,
+      capturedAt: "2026-08-09T08:03:39+0800",
+      status: "archive-plan-ready",
+      currentEvidence: {
+        loadState,
+        progress,
+        dprCap,
+        runtime: stats,
+        visualEvidence,
+      },
+      requiredShots: SCREENSHOT_ARCHIVE_MANIFEST.map(([id, viewport, proof]) => ({
+        id,
+        viewport,
+        proof,
+        fileName: `product-showcase-${id}.png`,
+      })),
+      finalDecision:
+        "Portfolio review can proceed with local route/type evidence; production deploy remains blocked by the unrelated /tags/Life.html export issue.",
+    },
+    null,
+    2,
+  );
+  const assetHandoffManifest = JSON.stringify(
+    {
+      route: "/lab/product-showcase",
+      completedSlot: 43,
+      capturedAt: "2026-08-09T08:18:39+0800",
+      asset: {
+        api: "/api/lab/product-marker-glb",
+        contentType: "model/gltf-binary",
+        contentLengthBytes: 1224,
+        glbMagicHex: "676c5446",
+        glbVersion: 2,
+        declaredLengthBytes: 1224,
+        cacheControl: "no-store",
+      },
+      runtime: {
+        loadState,
+        progress,
+        sourceMode,
+        stats,
+        visualEvidence,
+      },
+      productionHandoff: {
+        target: "hashed immutable GLB + short-cache manifest",
+        budget: "mobile first asset should remain under 2 MB before texture compression exceptions",
+        rollback: "poster fallback plus previous known-good GLB manifest",
+        blocker: "site-wide /tags/Life.html export issue remains outside this lab asset path",
+      },
+    },
+    null,
+    2,
+  );
+  const decoderReadinessManifest = JSON.stringify(
+    {
+      route: "/lab/product-showcase",
+      completedSlot: 44,
+      capturedAt: "2026-08-09T08:33:39+0800",
+      currentAsset: {
+        source: "/api/lab/product-marker-glb",
+        bytes: 1224,
+        compression: "none for the lab asset",
+        reason: "The current 1224-byte GLB is below the threshold where decoder cost is worth paying.",
+      },
+      productionThresholds: {
+        draco: "enable for heavy geometry after measuring decode cost",
+        meshopt: "prefer for mobile geometry delivery once model payload grows",
+        ktx2: "enable when texture bytes dominate the GLB budget",
+        maxMobileGlbBytes: 2000000,
+      },
+      decoderPaths: {
+        draco: "/decoders/draco/",
+        meshopt: "/decoders/meshopt_decoder.module.js",
+        ktx2: "/basis/",
+      },
+      runtime: {
+        loadState,
+        progress,
+        stats,
+        visualEvidence,
+      },
+      fallback:
+        "If decoder import, transcode or parse fails, show poster fallback, keep Retry, and switch to the previous known-good GLB manifest.",
+    },
+    null,
+    2,
+  );
+  const completionCertificateManifest = JSON.stringify(
+    {
+      route: "/lab/product-showcase",
+      completedSlot: 45,
+      capturedAt: "2026-08-09T08:48:39+0800",
+      status: "webgl-training-complete",
+      capabilities: [
+        "Raw WebGL shader/program/buffer pipeline",
+        "Uniform-driven animation and matrix transforms",
+        "Three.js scene/camera/renderer/materials/lights",
+        "Raycaster interaction",
+        "Mobile DPR cap and resize evidence",
+        "Context lost fallback path",
+        "InstancedMesh performance budget",
+        "GLTFLoader real GLB API",
+        "Poster fallback and retry",
+        "Runtime evidence and visual self-check",
+        "QA report JSON and release notes",
+        "Final release gate, asset handoff and decoder readiness manifest",
+      ],
+      stopCondition:
+        "Do not add more WebGL features until the site-wide /tags/Life.html production export blocker is fixed.",
+      nextOwner: "site build pipeline",
+      knownBlocker: "/tags/Life.html export rename ENOENT",
+      runtime: {
+        loadState,
+        progress,
+        stats,
+        visualEvidence,
+      },
+    },
+    null,
+    2,
+  );
 
   const copyReport = async () => {
     try {
@@ -461,6 +618,50 @@ export default function ProductShowcase() {
     } catch {
       setCopyGateState("copy unavailable");
       window.setTimeout(() => setCopyGateState("copy final gate"), 1500);
+    }
+  };
+
+  const copyArchiveManifest = async () => {
+    try {
+      await navigator.clipboard.writeText(screenshotArchiveManifest);
+      setCopyArchiveState("copied");
+      window.setTimeout(() => setCopyArchiveState("copy archive manifest"), 1500);
+    } catch {
+      setCopyArchiveState("copy unavailable");
+      window.setTimeout(() => setCopyArchiveState("copy archive manifest"), 1500);
+    }
+  };
+
+  const copyAssetHandoff = async () => {
+    try {
+      await navigator.clipboard.writeText(assetHandoffManifest);
+      setCopyAssetState("copied");
+      window.setTimeout(() => setCopyAssetState("copy asset handoff"), 1500);
+    } catch {
+      setCopyAssetState("copy unavailable");
+      window.setTimeout(() => setCopyAssetState("copy asset handoff"), 1500);
+    }
+  };
+
+  const copyDecoderManifest = async () => {
+    try {
+      await navigator.clipboard.writeText(decoderReadinessManifest);
+      setCopyDecoderState("copied");
+      window.setTimeout(() => setCopyDecoderState("copy decoder manifest"), 1500);
+    } catch {
+      setCopyDecoderState("copy unavailable");
+      window.setTimeout(() => setCopyDecoderState("copy decoder manifest"), 1500);
+    }
+  };
+
+  const copyCompletionCertificate = async () => {
+    try {
+      await navigator.clipboard.writeText(completionCertificateManifest);
+      setCopyCompletionState("copied");
+      window.setTimeout(() => setCopyCompletionState("copy completion certificate"), 1500);
+    } catch {
+      setCopyCompletionState("copy unavailable");
+      window.setTimeout(() => setCopyCompletionState("copy completion certificate"), 1500);
     }
   };
 
@@ -899,6 +1100,180 @@ export default function ProductShowcase() {
               </div>
             ))}
           </div>
+          <section
+            data-testid="screenshot-archive-manifest"
+            className="mt-3 rounded-lg border border-emerald-300/70 bg-emerald-50/70 p-4 dark:border-emerald-300/25 dark:bg-emerald-400/10"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                  Screenshot archive manifest
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                  收尾归档清单：desktop、mobile 和 fallback 三张截图绑定同一份 runtime/visual evidence，避免作品评审只看静态图。
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={copyArchiveManifest}
+                className="rounded-full border border-emerald-300/70 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-emerald-700 transition-colors hover:bg-emerald-400/10 dark:border-emerald-300/30 dark:text-emerald-200 cyber-num"
+              >
+                {copyArchiveState}
+              </button>
+            </div>
+            <div className="mt-3 grid gap-2 md:grid-cols-3">
+              {SCREENSHOT_ARCHIVE_MANIFEST.map(([id, viewport, proof], index) => (
+                <div
+                  key={id}
+                  className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                >
+                  <div className="cyber-num text-[10px] uppercase tracking-[0.16em] text-emerald-700 dark:text-emerald-200">
+                    shot {String(index + 1).padStart(2, "0")} · {viewport}
+                  </div>
+                  <p className="mt-2 text-sm font-semibold text-gray-900 dark:text-gray-100">{id}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-gray-500 dark:text-gray-400">{proof}</p>
+                </div>
+              ))}
+            </div>
+            <pre
+              data-testid="screenshot-archive-json"
+              className="mt-3 max-h-72 overflow-auto rounded-md border border-emerald-300/50 bg-white/80 p-3 text-xs leading-relaxed text-gray-700 dark:border-emerald-300/20 dark:bg-black/25 dark:text-gray-300"
+            >
+              {screenshotArchiveManifest}
+            </pre>
+          </section>
+          <section
+            data-testid="asset-handoff-packet"
+            className="mt-3 rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                  Asset handoff packet
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                  真实 GLB API 的移交证据：HTTP 合同、MIME、体积、GLB magic、缓存策略和回滚路径放在同一个可复制包里。
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={copyAssetHandoff}
+                className="rounded-full border border-amber-300/70 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-amber-700 transition-colors hover:bg-amber-400/10 dark:border-amber-300/30 dark:text-amber-200 cyber-num"
+              >
+                {copyAssetState}
+              </button>
+            </div>
+            <div className="mt-3 grid gap-2 md:grid-cols-2">
+              {ASSET_HANDOFF_PACKET.map(([label, body], index) => (
+                <div
+                  key={label}
+                  className="rounded-md border border-amber-300/50 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                >
+                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                    <span className="cyber-num mr-2 text-[10px] uppercase tracking-[0.16em] text-amber-700 dark:text-amber-200">
+                      asset {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                    <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+            <pre
+              data-testid="asset-handoff-json"
+              className="mt-3 max-h-72 overflow-auto rounded-md border border-amber-300/50 bg-white/80 p-3 text-xs leading-relaxed text-gray-700 dark:border-amber-300/20 dark:bg-black/25 dark:text-gray-300"
+            >
+              {assetHandoffManifest}
+            </pre>
+          </section>
+          <section
+            data-testid="decoder-readiness-manifest"
+            className="mt-3 rounded-lg border border-indigo-300/70 bg-indigo-50/70 p-4 dark:border-indigo-300/25 dark:bg-indigo-400/10"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-indigo-700 dark:text-indigo-300">
+                  Decoder readiness manifest
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                  Draco、Meshopt、KTX2 的生产启用条件和 fallback 路径。当前 1224B lab GLB 不压缩，但移交时保留明确阈值。
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={copyDecoderManifest}
+                className="rounded-full border border-indigo-300/70 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-indigo-700 transition-colors hover:bg-indigo-400/10 dark:border-indigo-300/30 dark:text-indigo-200 cyber-num"
+              >
+                {copyDecoderState}
+              </button>
+            </div>
+            <div className="mt-3 grid gap-2 md:grid-cols-2">
+              {DECODER_READINESS_MATRIX.map(([label, role, decision], index) => (
+                <div
+                  key={label}
+                  className="rounded-md border border-indigo-300/50 bg-white/70 p-3 dark:border-indigo-300/20 dark:bg-black/20"
+                >
+                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                    <span className="cyber-num mr-2 text-[10px] uppercase tracking-[0.16em] text-indigo-700 dark:text-indigo-200">
+                      decoder {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                    <span className="text-gray-500 dark:text-gray-400"> - {role}: {decision}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+            <pre
+              data-testid="decoder-readiness-json"
+              className="mt-3 max-h-72 overflow-auto rounded-md border border-indigo-300/50 bg-white/80 p-3 text-xs leading-relaxed text-gray-700 dark:border-indigo-300/20 dark:bg-black/25 dark:text-gray-300"
+            >
+              {decoderReadinessManifest}
+            </pre>
+          </section>
+          <section
+            data-testid="webgl-completion-certificate"
+            className="mt-3 rounded-lg border border-sky-300/70 bg-sky-50/70 p-4 dark:border-sky-300/25 dark:bg-sky-400/10"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-sky-700 dark:text-sky-300">
+                  WebGL completion certificate
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                  45 个 15 分钟单元的移交证书：能力覆盖、作品路由、验证证据和停止继续堆功能的条件合并为一份可复制 JSON。
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={copyCompletionCertificate}
+                className="rounded-full border border-sky-300/70 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-sky-700 transition-colors hover:bg-sky-400/10 dark:border-sky-300/30 dark:text-sky-200 cyber-num"
+              >
+                {copyCompletionState}
+              </button>
+            </div>
+            <div className="mt-3 grid gap-2 md:grid-cols-2">
+              {COMPLETION_CERTIFICATE.map(([label, body], index) => (
+                <div
+                  key={label}
+                  className="rounded-md border border-sky-300/50 bg-white/70 p-3 dark:border-sky-300/20 dark:bg-black/20"
+                >
+                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                    <span className="cyber-num mr-2 text-[10px] uppercase tracking-[0.16em] text-sky-700 dark:text-sky-200">
+                      complete {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                    <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+            <pre
+              data-testid="webgl-completion-json"
+              className="mt-3 max-h-72 overflow-auto rounded-md border border-sky-300/50 bg-white/80 p-3 text-xs leading-relaxed text-gray-700 dark:border-sky-300/20 dark:bg-black/25 dark:text-gray-300"
+            >
+              {completionCertificateManifest}
+            </pre>
+          </section>
         </section>
       </article>
     </>

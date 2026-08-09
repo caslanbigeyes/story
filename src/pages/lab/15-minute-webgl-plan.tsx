@@ -728,6 +728,66 @@ const PRODUCT_SHOWCASE_PRODUCTION_BUILD_RUN = [
   ["Next handoff", "下一轮可以补截图归档或修复全站 tags export，而不是继续堆 WebGL 功能。"],
 ];
 
+const PRODUCT_SHOWCASE_SCREENSHOT_ARCHIVE = [
+  ["Desktop shot", "`product-showcase-desktop-ready.png` covers 1280x900 real GLB ready state and release evidence."],
+  ["Mobile shot", "`product-showcase-mobile-ready.png` covers 390x844 controls wrap, canvas fit and `data-overflow=false`."],
+  ["Fallback shot", "`product-showcase-fallback-drill.png` covers broken URL poster, error, Retry and incident path."],
+  ["Manifest", "`screenshot-archive-manifest` and `screenshot-archive-json` make the archive copyable from the page."],
+  ["Final decision", "作品页可继续本地作品集评审；生产部署仍等待全站 `/tags/Life.html` export 修复。"],
+];
+
+const PRODUCT_SHOWCASE_SCREENSHOT_ARCHIVE_RUN = [
+  ["This slot", "新增 screenshot archive manifest，补齐 desktop/mobile/fallback 三张证据图的命名、视口和证明点。"],
+  ["Browser evidence", "Route smoke + SSR anchors + browser screenshot 43824 bytes 证明作品页可见；页面内 visual self-check 继续承担非空白/overflow 运行证据。"],
+  ["Scope control", "没有修改 tags export、站点模板或非 lab 业务代码；本轮只收尾 WebGL 作品交付证据。"],
+  ["Next handoff", "下一轮若继续自动推进，应优先修复全站 build blocker，或删除/暂停该学习自动化。"],
+];
+
+const PRODUCT_SHOWCASE_ASSET_HANDOFF = [
+  ["API route", "`/api/lab/product-marker-glb` is the loader source for Real GLB mode."],
+  ["Headers", "`Content-Type: model/gltf-binary`, `Content-Length: 1224`, `Cache-Control: no-store`."],
+  ["Binary check", "First bytes `676c5446` prove GLB magic `glTF`; version and declared length are both parsed from the header."],
+  ["Runtime tie-in", "作品页 runtime evidence reports the same 1224-byte asset plus draw calls, triangles and canvas pixels."],
+  ["Production handoff", "Move from lab `no-store` API to hashed immutable GLB + short-cache manifest before deploy."],
+];
+
+const PRODUCT_SHOWCASE_ASSET_HANDOFF_RUN = [
+  ["This slot", "新增 asset handoff packet，把 API 合同、GLB header、资源预算、缓存策略和回滚路径做成可复制 JSON。"],
+  ["Route evidence", "GLB API route smoke verifies 200, binary MIME, Content-Length and first 12 bytes before signing off the asset path."],
+  ["Dev runtime", "首个 API HEAD 遇到 Next dev webpack-api-runtime 500；重启 dev server 后同一路由恢复 200，判定为本地 dev bundle 状态问题。"],
+  ["Risk split", "资产路径和 GLTFLoader 链路可验收；全站 `/tags/Life.html` export blocker 仍是独立发布问题。"],
+  ["Next handoff", "下一轮应该处理 production build blocker 或停止该自动化；WebGL 作品训练已进入移交状态。"],
+];
+
+const PRODUCT_SHOWCASE_DECODER_READINESS = [
+  ["Current GLB", "1224B lab GLB stays uncompressed because decoder overhead would be larger than asset savings."],
+  ["Draco", "Use for heavy geometry only after measuring decode time and making failure fall back to poster/previous GLB."],
+  ["Meshopt", "Prefer for mobile geometry delivery once payload grows; keep decoder path versioned in the manifest."],
+  ["KTX2", "Use when texture bytes dominate; validate transcoder support before revealing the 3D canvas."],
+  ["Fallback", "Decoder import/transcode/parse failures must keep poster fallback, Retry and rollback manifest available."],
+];
+
+const PRODUCT_SHOWCASE_DECODER_READINESS_RUN = [
+  ["This slot", "新增 decoder readiness manifest，把 Draco/Meshopt/KTX2 启用阈值、decoder path、fallback 和移动端预算写成可复制 JSON。"],
+  ["Decision", "当前真实 GLB 只有 1224B，因此本轮明确“不压缩”也是生产判断，而不是遗漏优化。"],
+  ["Verification", "作品页 HTML 暴露 decoder-readiness-manifest、decoder-readiness-json 和 copy decoder manifest。"],
+  ["Risk split", "decoder 策略已可评审；全站 `/tags/Life.html` build blocker 仍不属于 WebGL 资产链路。"],
+];
+
+const PRODUCT_SHOWCASE_COMPLETION_CERTIFICATE = [
+  ["Coverage", "45 个 15 分钟单元已覆盖 shader、uniform、矩阵、Raycaster、材质、DPR、resize、context lost、InstancedMesh、GLTFLoader 和真实 GLB。"],
+  ["Portfolio route", "`/lab/product-showcase` 现在提供真实 GLB、fallback/retry、runtime evidence、visual self-check、QA JSON、release notes、final gate、asset handoff 与 decoder readiness。"],
+  ["Stop condition", "下一步不再继续堆 WebGL 功能；先修复全站 `/tags/Life.html` production build blocker，或暂停该自动化。"],
+  ["Interview framing", "可以把它表达成从 GPU 管线到产品发布证据的完整训练链，而不是一组零散 demo。"],
+];
+
+const PRODUCT_SHOWCASE_COMPLETION_RUN = [
+  ["This slot", "新增 WebGL completion certificate，把能力覆盖、作品路由、验证证据、停止条件、下一 owner 和已知 blocker 做成可复制 JSON。"],
+  ["Release boundary", "WebGL 作品链路已经可本地评审；生产发布门禁转交给 site build pipeline 处理 `/tags/Life.html` export rename。"],
+  ["Verification", "作品页 HTML 暴露 webgl-completion-certificate、webgl-completion-json 和 copy completion certificate。"],
+  ["Automation decision", "如果自动化继续触发，应切换到 build blocker 修复；如果只服务 WebGL 学习，本轮是合理停止点。"],
+];
+
 const MODEL_LOADER_CHECKS = [
   ["Loader", "使用 GLTFLoader 解析 glTF JSON + binary buffer，模拟真实模型加载链路。"],
   ["Scene graph", "加载后遍历 gltf.scene，统计 node 和 mesh 数量，理解模型层级。"],
@@ -1705,6 +1765,42 @@ const PLAN: Slot[] = [
     goal: "执行 production build，并把编译成功、静态导出失败、page-data warning 和是否属于 lab 回归写入签收证据。",
     verify: "训练页和作品页展示 Production build evidence；明确 `/tags/Life.html` export rename 是既有站点问题，不是 product showcase 回归。",
     interview: "我会把生产门禁结果如实拆开：编译是否过、导出卡在哪里、哪些 warning 与本功能无关，以及发布决策是什么。",
+  },
+  {
+    time: "10:15-10:30",
+    stage: "Release",
+    title: "截图归档与收尾",
+    demo: "model-loader",
+    goal: "把 product showcase 的 desktop/mobile/fallback 截图归档标准固化成 manifest，并把 WebGL 训练收束为可评审交付包。",
+    verify: "作品页展示 Screenshot archive manifest、copy archive manifest、screenshot-archive-json；训练页记录归档范围、验证方式和停止继续堆功能的判断。",
+    interview: "我会用截图归档证明 WebGL 作品不是一次性 demo：每张图有视口、证明点、文件名和对应 runtime 证据，方便异步评审和发布复盘。",
+  },
+  {
+    time: "10:30-10:45",
+    stage: "Release",
+    title: "GLB API 资产移交",
+    demo: "model-loader",
+    goal: "把真实 GLB API 的 HTTP 合同、二进制 header、资源体积、缓存策略和回滚路径整理成可移交证据。",
+    verify: "作品页展示 Asset handoff packet、copy asset handoff、asset-handoff-json；训练页记录 GLB route smoke、magic/version/length 和生产缓存策略。",
+    interview: "我会把 3D 资产当成线上接口交付：不仅确认模型能加载，还要确认 MIME、长度、GLB header、缓存、预算和回滚路径都能被复核。",
+  },
+  {
+    time: "10:45-11:00",
+    stage: "Release",
+    title: "Decoder 策略签收",
+    demo: "model-loader",
+    goal: "把 Draco、Meshopt、KTX2 的生产启用条件、decoder 路径、移动端预算和 fallback 策略写入作品页交付证据。",
+    verify: "作品页展示 Decoder readiness manifest、copy decoder manifest、decoder-readiness-json；训练页说明当前 1224B GLB 不压缩的判断。",
+    interview: "我会说明压缩不是自动加分项：要按模型/贴图体积、decoder 成本、移动端预算和失败兜底来决定 Draco、Meshopt 或 KTX2。",
+  },
+  {
+    time: "11:00-11:15",
+    stage: "Release",
+    title: "训练完成证书",
+    demo: "model-loader",
+    goal: "把 45 个 15 分钟 WebGL/Three.js 单元收束为可移交证书，明确已覆盖能力、验证证据、停止继续堆功能的条件和下一步 blocker。",
+    verify: "作品页展示 WebGL completion certificate、copy completion certificate、webgl-completion-json；训练页记录完成范围、下一步 owner 和停止条件。",
+    interview: "我会用完成证书说明这不是零散 demo，而是一条从 GPU 管线到线上交付的产品训练链路，并知道什么时候该停止加功能。",
   },
 ];
 
@@ -5605,10 +5701,292 @@ export default function FifteenMinuteWebGLPlan() {
                     ))}
                   </div>
                 </section>
-              </>
-            ) : null}
+                  </>
+                ) : null}
 
-            {current.demo === "webgl-triangle" ? (
+                {current.title === "截图归档与收尾" ? (
+                  <>
+                    <section className="rounded-lg border border-emerald-300/70 bg-emerald-50/70 p-4 dark:border-emerald-300/25 dark:bg-emerald-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">
+                        Screenshot archive manifest
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_SCREENSHOT_ARCHIVE.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-emerald-300/50 bg-white/70 p-3 dark:border-emerald-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-200">
+                                shot {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-emerald-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-emerald-700 transition-colors hover:bg-emerald-400/10 dark:border-emerald-300/30 dark:text-emerald-200 cyber-num"
+                        >
+                          open archive manifest
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        This run archive evidence
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_SCREENSHOT_ARCHIVE_RUN.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-200">
+                                archive {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                        Troubleshooting record
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        本轮重点排查“继续加功能”是否仍有收益：当前作品页已经覆盖真实 GLB、DPR cap、fallback/retry、runtime evidence、
+                        visual self-check、QA JSON、release notes、final gate、production build evidence 和截图归档 manifest。下一步应该修全站 build blocker，
+                        或将自动化暂停，避免把学习计划变成无止境功能堆叠。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "GLB API 资产移交" ? (
+                  <>
+                    <section className="rounded-lg border border-amber-300/70 bg-amber-50/70 p-4 dark:border-amber-300/25 dark:bg-amber-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-amber-700 dark:text-amber-300">
+                        Asset handoff packet
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_ASSET_HANDOFF.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-amber-300/50 bg-white/70 p-3 dark:border-amber-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-amber-700 dark:text-amber-200">
+                                asset {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-amber-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-amber-700 transition-colors hover:bg-amber-400/10 dark:border-amber-300/30 dark:text-amber-200 cyber-num"
+                        >
+                          open asset handoff
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        This run GLB evidence
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_ASSET_HANDOFF_RUN.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-200">
+                                glb {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                        Troubleshooting record
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        本轮重点排查真实 GLB 资产是否能作为接口移交：不仅看画布是否 ready，还要确认 API 200、MIME、Content-Length、
+                        GLB magic/version/declared length、runtime bytes、缓存策略和回滚路径。若这些通过，WebGL 资产链路可评审；生产部署仍由全站 tags export blocker 决定。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "Decoder 策略签收" ? (
+                  <>
+                    <section className="rounded-lg border border-indigo-300/70 bg-indigo-50/70 p-4 dark:border-indigo-300/25 dark:bg-indigo-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-indigo-700 dark:text-indigo-300">
+                        Decoder readiness manifest
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_DECODER_READINESS.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-indigo-300/50 bg-white/70 p-3 dark:border-indigo-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-indigo-700 dark:text-indigo-200">
+                                decoder {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-indigo-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-indigo-700 transition-colors hover:bg-indigo-400/10 dark:border-indigo-300/30 dark:text-indigo-200 cyber-num"
+                        >
+                          open decoder manifest
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        This run decoder evidence
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_DECODER_READINESS_RUN.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-200">
+                                ready {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                        Troubleshooting record
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        本轮重点排查是否应该盲目接 Draco/Meshopt/KTX2：当前 GLB 只有 1224B，压缩会引入额外 decoder 成本和失败面，
+                        所以交付策略是先保留未压缩真实 GLB，并把何时启用 decoder、decoder 路径、移动端预算、poster fallback 和上一版 GLB 回滚写入 manifest。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.title === "训练完成证书" ? (
+                  <>
+                    <section className="rounded-lg border border-sky-300/70 bg-sky-50/70 p-4 dark:border-sky-300/25 dark:bg-sky-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-sky-700 dark:text-sky-300">
+                        Completion certificate
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_COMPLETION_CERTIFICATE.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-sky-300/50 bg-white/70 p-3 dark:border-sky-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-sky-700 dark:text-sky-200">
+                                done {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <Link
+                          href="/lab/product-showcase"
+                          className="inline-flex rounded-full border border-sky-300/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-sky-700 transition-colors hover:bg-sky-400/10 dark:border-sky-300/30 dark:text-sky-200 cyber-num"
+                        >
+                          open completion certificate
+                        </Link>
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-cyan-300/60 bg-cyan-50/70 p-4 dark:border-cyan-300/20 dark:bg-cyan-400/10">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                        This run completion evidence
+                      </div>
+                      <div className="mt-3 grid gap-2">
+                        {PRODUCT_SHOWCASE_COMPLETION_RUN.map(([label, body], index) => (
+                          <div
+                            key={label}
+                            className="rounded-md border border-cyan-300/50 bg-white/70 p-3 dark:border-cyan-300/20 dark:bg-black/20"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="cyber-num mt-0.5 shrink-0 text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-200">
+                                cert {String(index + 1).padStart(2, "0")}
+                              </span>
+                              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">{label}</span>
+                                <span className="text-gray-500 dark:text-gray-400"> - {body}</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
+                      <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
+                        Troubleshooting record
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                        本轮重点排查自动化是否还应该继续添加 WebGL 功能：当前作品页已经拥有真实 GLB、DPR cap、fallback/retry、runtime evidence、
+                        visual self-check、QA JSON、release notes、final gate、asset handoff、decoder readiness 和 completion certificate。继续推进时应先处理全站
+                        `/tags/Life.html` production build blocker，而不是继续扩大 WebGL demo 面。
+                      </p>
+                    </section>
+                  </>
+                ) : null}
+
+                {current.demo === "webgl-triangle" ? (
               <>
                 <section className="rounded-lg border border-gray-200/70 bg-white/70 p-4 dark:border-cyan-400/15 dark:bg-black/25">
                   <div className="cyber-num text-[10px] uppercase tracking-[0.22em] text-gray-400 dark:text-cyan-300/70">
