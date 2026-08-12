@@ -1,11 +1,5 @@
 {
   "seen": [
-    "https://news.ycombinator.com/item?id=49187681",
-    "https://news.ycombinator.com/item?id=49230066",
-    "https://news.ycombinator.com/item?id=49228426",
-    "https://github.com/vitali87/code-graph-rag",
-    "https://github.com/msitarzewski/agency-agents",
-    "https://github.com/google-deepmind/weathernext",
     "https://github.com/addyosmani/agent-skills",
     "https://github.com/ZhuLinsen/daily_stock_analysis",
     "https://github.com/Comfy-Org/ComfyUI",
@@ -999,7 +993,13 @@
     "https://news.ycombinator.com/item?id=49244339",
     "https://news.ycombinator.com/item?id=49275335",
     "https://www.zhihu.com/question/665158131",
-    "https://www.zhihu.com/question/2070981033655378203"
+    "https://www.zhihu.com/question/2070981033655378203",
+    "https://news.ycombinator.com/item?id=49274950",
+    "https://news.ycombinator.com/item?id=49274757",
+    "https://news.ycombinator.com/item?id=49218190",
+    "https://news.ycombinator.com/item?id=49274858",
+    "https://www.zhihu.com/question/2070969819730536375",
+    "https://www.zhihu.com/question/2069144593418003411"
   ],
-  "updatedAt": "2026-08-12T17:32:23.841Z"
+  "updatedAt": "2026-08-12T18:30:34.360Z"
 }
