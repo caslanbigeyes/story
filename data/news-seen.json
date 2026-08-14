@@ -1,10 +1,5 @@
 {
   "seen": [
-    "https://www.producthunt.com/products/claude-market?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/aegyn?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/sagi?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/free-pdf-tools?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/wayfare-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.producthunt.com/products/oluulaa-systems?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.zhihu.com/question/2013241400406332840",
     "https://www.zhihu.com/question/2062262812324508088",
@@ -999,7 +994,12 @@
     "https://www.v2ex.com/t/1234519",
     "https://news.ycombinator.com/item?id=49303046",
     "https://news.ycombinator.com/item?id=49269809",
-    "https://www.zhihu.com/question/403038115"
+    "https://www.zhihu.com/question/403038115",
+    "https://news.ycombinator.com/item?id=49303350",
+    "https://news.ycombinator.com/item?id=49303652",
+    "https://news.ycombinator.com/item?id=49303237",
+    "https://news.ycombinator.com/item?id=49303433",
+    "https://news.ycombinator.com/item?id=49303292"
   ],
-  "updatedAt": "2026-08-14T19:50:00.776Z"
+  "updatedAt": "2026-08-14T20:32:52.306Z"
 }
