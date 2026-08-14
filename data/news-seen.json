@@ -1,7 +1,5 @@
 {
   "seen": [
-    "https://www.producthunt.com/products/court-daemon?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/canooq-ca?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.producthunt.com/products/donatello-studio?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.producthunt.com/products/letgrow?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.producthunt.com/products/i-like-tool?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
@@ -999,7 +997,9 @@
     "https://news.ycombinator.com/item?id=49302943",
     "https://news.ycombinator.com/item?id=49303202",
     "https://www.zhihu.com/question/2071228852404052912",
-    "https://news.ycombinator.com/item?id=49215682"
+    "https://news.ycombinator.com/item?id=49215682",
+    "https://news.ycombinator.com/item?id=49305492",
+    "https://www.v2ex.com/t/1234521"
   ],
-  "updatedAt": "2026-08-14T22:50:26.658Z"
+  "updatedAt": "2026-08-14T23:22:25.718Z"
 }
