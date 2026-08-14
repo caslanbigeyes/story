@@ -1,15 +1,5 @@
 {
   "seen": [
-    "https://www.producthunt.com/products/donatello-studio?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/letgrow?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/i-like-tool?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/financeai-pro?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/bettter-app?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/intelliestate?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/chngd?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.zhihu.com/question/1885361163342153687",
-    "https://www.zhihu.com/question/2070481032956962155",
-    "https://news.ycombinator.com/item?id=49255918",
     "https://github.com/nvm-sh/nvm",
     "https://github.com/anthropics/skills",
     "https://github.com/3b1b/manim",
@@ -999,7 +989,17 @@
     "https://www.zhihu.com/question/2071228852404052912",
     "https://news.ycombinator.com/item?id=49215682",
     "https://news.ycombinator.com/item?id=49305492",
-    "https://www.v2ex.com/t/1234521"
+    "https://www.v2ex.com/t/1234521",
+    "https://news.ycombinator.com/item?id=49305642",
+    "https://news.ycombinator.com/item?id=49262841",
+    "https://www.zhihu.com/question/2071625579925869050",
+    "https://www.zhihu.com/question/2071625519641146760",
+    "https://www.zhihu.com/question/2071487809492456110",
+    "https://www.zhihu.com/question/2071518442885328973",
+    "https://www.zhihu.com/question/2070938404129454013",
+    "https://www.zhihu.com/question/2061220785021268499",
+    "https://www.zhihu.com/question/1925130890524221640",
+    "https://www.zhihu.com/question/2071527887660737785"
   ],
-  "updatedAt": "2026-08-14T23:22:25.718Z"
+  "updatedAt": "2026-08-14T23:50:46.534Z"
 }
