@@ -1,6 +1,38 @@
 {
   "items": [
     {
+      "id": "4c61b930d21c",
+      "sourceId": "v2ex-share",
+      "sourceLabel": "V2EX",
+      "title": "在 DeepSeek Harness 里使用 V2EX 提供的 deepseek-v4-flash:0731",
+      "url": "https://www.v2ex.com/t/1234521",
+      "info": "",
+      "hover": "",
+      "reflection": "哎，这事儿啊，我一看就有点儿不爽。你说这什么 DeepSeek Harness，V2EX 提供的 deepseek-v4-flash:0731，这名字听起来就让人头大。咱这生活已经够复杂了，还弄这么个玩意儿，让人怎么整？\n\n我那天晚上加班到九点，坐地铁回家的路上，看着窗外，一闪一闪的灯，心里就想着，这什么技术发展，真是让人搞不懂。我同事老张还跟我炫耀，说他在用这个，我一听，心里就有点儿不是滋味。我都这把年纪了，还学这些个什么技术，真是服了。\n\n我懂，这社会就是得不断进步，但有时候，我真觉得，这进步的速度有点儿太快了，让人跟不上了。就像我那天晚上回家，路上看到一个老人摔倒了，本来想上去帮忙，一看周围人都在玩手机，没人理，我就有点儿难受。这社会，好像越来越冷漠了。\n\n我就想，这技术发展，是不是应该慢一点，给咱们这些普通人留点时间适应？不然，咱们这些普通人，岂不是要被这个快速发展的社会给抛弃了？哎，说到底，我还是觉得，技术进步得慢一点，咱们的生活才能更和谐。",
+      "reflectionTemplate": {
+        "id": "manifesto",
+        "name": "观点宣言型",
+        "mood": "决绝、不退让，略冷"
+      },
+      "createdAt": "2026-08-14T23:22:24.261Z"
+    },
+    {
+      "id": "8c4d8d6c2015",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "RISC-V: They should have known better",
+      "url": "https://news.ycombinator.com/item?id=49305492",
+      "info": "7 points",
+      "hover": "",
+      "reflection": "半年前，我还傻乎乎地研究着各种CPU架构，那时候对RISC-V和MIPS这些名词如数家珍。一年前的我，在地铁上，耳机里塞满了技术讲座，对那些复杂的指令集如痴如醉。现在的我，坐在办公室里，加班到深夜，看着窗外的霓虹灯，突然意识到，自己好像已经很久没有关注这些技术动态了。\n\n读到这条Hacker News上的资讯，我突然意识到，自己已经不再那么热衷于这些技术讨论了。我懂，时代在变，我也在变。我懂这个道理，但还是难受。我都成年了，还是会对这些技术细节产生矛盾感。\n\n就像那天晚上，我加班到十一点，和同事一起走出大楼，看着夜空中的星星，我突然想起了RISC-V。我知道这样不对，但还是忍不住问：“咱们是不是也应该关注一下这些新技术了？”同事笑了笑，说：“别太较真，工作嘛，能解决问题就好。”\n\n是啊，工作嘛，能解决问题就好。我释然了，时间真是个好东西，它让我们学会放下，学会接受。",
+      "reflectionTemplate": {
+        "id": "before-after",
+        "name": "前后对比型",
+        "mood": "释然中夹一点自嘲，时间的钝感"
+      },
+      "createdAt": "2026-08-14T23:22:05.940Z"
+    },
+    {
       "id": "ed89839193b9",
       "sourceId": "hackernews",
       "sourceLabel": "Hacker News",
@@ -7967,39 +7999,7 @@
         "mood": "决绝、不退让，略冷"
       },
       "createdAt": "2026-08-13T07:48:45.539Z"
-    },
-    {
-      "id": "240b3a5070ea",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Tooltrace",
-      "url": "https://www.producthunt.com/products/tooltrace?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Every tool deserves a home",
-      "reflection": "哇，这条资讯里提到的“Tooltrace”，听起来好像是在说每个工具都值得一个家。我就纳闷了，这和我有什么关系呢？想想自己，工具倒是不少，可感觉就是没安放对地方。比如说，我的手机，整天跟着我，有时候我在地铁上拿着它刷到半夜，有时候加班到深夜还离不开它，但有时候它就在那静静地躺在桌子上，好像是个摆设。\n\n嗯，给我当年的自己个建议吧。第一条，手机少玩玩，多陪陪家人。第二条，加班别太晚，健康最重要。第三条，学点新技能，别让工具成了摆设。\n\n我以前在哪一步踩过坑呢？可能就是在第一条上吧。我知道手机少玩玩对身体好，但就是忍不住。我懂这道理，但还是难受。哎，真希望那个当年的自己能听进去这句话。",
-      "reflectionTemplate": {
-        "id": "how-to",
-        "name": "教学实操型",
-        "mood": "沉稳、克制的说教感，干净"
-      },
-      "createdAt": "2026-08-13T07:48:26.114Z"
-    },
-    {
-      "id": "9336065dbf96",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "karo",
-      "url": "https://www.producthunt.com/products/karo-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "A calmer focus timer that blocks distractions",
-      "reflection": "半年前，我还在地铁二号线里，手机上各种APP轮番轰炸，眼睛盯着屏幕，耳朵里塞着耳机，想着怎么才能在上班路上高效利用时间。一年前的我，加班到九点，回到家还是习惯性地打开手机，哪怕已经很累，却还是忍不住要刷一会儿。现在的我，读完这条关于karo的资讯，我突然意识到，我变了。\n\n以前，我觉得这样是对的，我知道这样不对但还是忍不住。我都成年了还是这么容易受到手机诱惑，我懂这道理但还是难受。现在，我开始尝试用这个focus timer，试着让生活慢下来，让心静下来。看着窗外，夜色中那些忙碌的身影，我笑了，原来时间的钝感，真的能让人释然。",
-      "reflectionTemplate": {
-        "id": "before-after",
-        "name": "前后对比型",
-        "mood": "释然中夹一点自嘲，时间的钝感"
-      },
-      "createdAt": "2026-08-13T07:48:10.730Z"
     }
   ],
-  "updatedAt": "2026-08-14T22:50:28.271Z"
+  "updatedAt": "2026-08-14T23:22:27.216Z"
 }
