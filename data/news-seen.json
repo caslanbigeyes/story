@@ -1,8 +1,5 @@
 {
   "seen": [
-    "https://www.producthunt.com/products/cvadapter?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/better-call-salon?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/opti-pipe?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.producthunt.com/products/claude-market?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.producthunt.com/products/aegyn?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.producthunt.com/products/sagi?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
@@ -999,7 +996,10 @@
     "https://www.zhihu.com/question/2066494113734828774",
     "https://news.ycombinator.com/item?id=49253831",
     "https://news.ycombinator.com/item?id=49299364",
-    "https://www.v2ex.com/t/1234519"
+    "https://www.v2ex.com/t/1234519",
+    "https://news.ycombinator.com/item?id=49303046",
+    "https://news.ycombinator.com/item?id=49269809",
+    "https://www.zhihu.com/question/403038115"
   ],
-  "updatedAt": "2026-08-14T18:55:56.801Z"
+  "updatedAt": "2026-08-14T19:50:00.776Z"
 }
