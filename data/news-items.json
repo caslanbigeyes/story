@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "id": "ed89839193b9",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Super Mario Derivations",
+      "url": "https://news.ycombinator.com/item?id=49215682",
+      "info": "8 points",
+      "hover": "",
+      "reflection": "嘿，老兄，我刚看到个新闻，说有个程序员把超级马里奥游戏做成了数学公式，还挺有意思的。我就想起了自己当年玩游戏的那些日子，那时候觉得马里奥就是最帅的！现在回想起来，其实那是个挺不错的教育游戏呢。\n\n哎，说起来，我要是回到那时候，我得给自己点建议。首先，得多学点数学，这样看那些公式就不会觉得那么陌生了。其次，别总沉迷游戏，那时候晚上都玩到一两点，现在想想，真是浪费了不少时间。还有，得多思考，多问问题，这样就不会对一些看似无聊的东西感到困惑了。\n\n我记得有一次，我在地铁上，看着窗外灯火通明的城市，突然想起那个公式，心里就挺不是滋味的。我懂这道理，但还是难受。我成年了，但还是那个爱玩游戏的小伙子，有时候还是会不知不觉就沉迷进去。\n\n我以前在哪一步踩过坑？可能就是没学会平衡游戏和现实生活吧。",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-08-14T22:50:25.233Z"
+    },
+    {
       "id": "bf5f5d44dddf",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7983,23 +7999,7 @@
         "mood": "释然中夹一点自嘲，时间的钝感"
       },
       "createdAt": "2026-08-13T07:48:10.730Z"
-    },
-    {
-      "id": "f1b5ce9063b9",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Wan 3.0 AI Video Generator",
-      "url": "https://www.producthunt.com/products/wan-3-0-ai-video-generator-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Create cinematic AI videos with Wan 3.0",
-      "reflection": "哎，这 Wan 3.0 AI 视频生成器，说起来，我一直以为这种高科技玩意儿离咱们普通人挺远的，结果一看，这不就是能随便造视频嘛。嘿，这不就是大家默认的“科技离我们远”嘛，我差点儿就信了。\n\n可这东西一出，我就在想，哎哟，这不就是把我们拍视频的门槛给降低了嘛。比如说，我平时上班累得要死，下班了哪有心思拍视频啊，这玩意儿一出，我直接把想法扔进去，不就成视频了？这不就是颠覆了咱们“拍视频难”的认知嘛。\n\n记得有一次，我加班到深夜，地铁上看着窗外，累得眼睛都睁不开，那时候真想拍个视频发朋友圈，结果手机里连个素材都没有。现在想想，要是那时候有个这样的视频生成器，我就能随便搞个视频发出去，多轻松啊。\n\n但转念又一想，这玩意儿不也是让我们越来越懒嘛？咱们成年人的世界，不就讲究个“自己动手，丰衣足食”嘛。现在好了，连动手的功夫都省了，这不就是有点儿矛盾嘛。哎，我都成年了，但还是有点儿难受，这科技发展得也太快了。",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-08-13T07:47:59.459Z"
     }
   ],
-  "updatedAt": "2026-08-14T22:24:12.172Z"
+  "updatedAt": "2026-08-14T22:50:28.271Z"
 }
