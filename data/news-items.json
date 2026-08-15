@@ -1,6 +1,38 @@
 {
   "items": [
     {
+      "id": "078f6551eb76",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "为什么说马拉多纳的「上帝之手」经典？",
+      "url": "https://www.zhihu.com/question/28529388",
+      "info": "74 万热度",
+      "hover": "",
+      "reflection": "今天看到这条关于马拉多纳“上帝之手”的资讯，突然想到自己最近纠结的几件事。第一件，就是每天上下班挤地铁的时候，看着那些抢座位的乘客，心里就会想，这世界怎么这么多人，都像是在争抢什么似的。第二件，加班到深夜，看到窗外的城市灯火通明，就会觉得生活是不是太拼命了。第三件，和朋友聊天，说到未来规划，发现大家都有点迷茫，不知道下一步该往哪里走。\n\n如果只能选一个，我选第三件，原因很简单——我都成年了还是这么迷茫，有时候甚至觉得自己在原地踏步。就像马拉多纳的那个“上帝之手”，虽然经典，但也充满了争议，让人琢磨不透。我们的生活不也是这样，有时候看似得心应手，有时候却让人摸不着头脑。",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-08-15T20:49:02.740Z"
+    },
+    {
+      "id": "e88a9f4a51a0",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Why tech bosses keep sharing their manifestos about AI",
+      "url": "https://news.ycombinator.com/item?id=49313519",
+      "info": "6 points",
+      "hover": "",
+      "reflection": "哎，我刚看了一条Hacker News上的新闻，说的是为什么科技老板们总是喜欢分享他们关于AI的宣言。哎，你说这事儿，让我想起我最近的一个小项目，一个进度条已经到了80%的小项目。\n\n你知道，我这个人吧，就是有点儿自我怀疑，虽然我已经成年了，但有时候还是会觉得自己的想法不够成熟。我就跟AI聊天，你说这AI多神奇啊，可以帮你升级图片，甚至生成表情包，但它能替代朋友吗？我看那些科技大佬们，好像都觉得AI能替代朋友一样，我就觉得有点儿不靠谱。\n\n我记得那天晚上，我加班到9点，从1号线地铁上下来，看着窗外的灯火通明，心里就挺不是滋味的。我就想，我这是在干嘛呢？我懂这个社会需要创新，需要AI，但我就是觉得，这AI再怎么发展，也代替不了人与人之间的真挚情感。\n\n那接下来，我得想想，我这个小项目做到80%了，下一步我得怎么做，是继续推进，还是停下来思考一下，到底我是不是在做对的事情。哎，成年人的世界，真是矛盾重重啊。",
+      "reflectionTemplate": {
+        "id": "in-progress",
+        "name": "过程透明型",
+        "mood": "实诚的轻焦虑，自我怀疑"
+      },
+      "createdAt": "2026-08-15T20:48:49.816Z"
+    },
+    {
       "id": "37036d127846",
       "sourceId": "hackernews",
       "sourceLabel": "Hacker News",
@@ -7967,39 +7999,7 @@
         "mood": "实诚的轻焦虑，自我怀疑"
       },
       "createdAt": "2026-08-14T07:44:25.140Z"
-    },
-    {
-      "id": "0f28def7ea45",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "janapasabi letters",
-      "url": "https://www.producthunt.com/products/janapasabi-letters?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Write a letter, not another text message",
-      "reflection": "半年前，我还热衷于在微信上和朋友们斗嘴，每天都是几百条信息来回轰炸。一年前的我，那时候刚入职，每天加班到深夜，手机屏幕上都是工作邮件和群聊消息。现在的我呢，坐在回家的地铁上，看着手机上的janapasabi letters，突然觉得自己好像很久没写过一封完整的信了。\n\n读到这条资讯我才意识到，现在的我，每天忙碌于生活和工作，却越来越少有时间去坐下来，认认真真地写一封信。有时候，我会想，是不是我们已经习惯了快速的信息交流，以至于忘记了用文字去表达那些细微的情感？\n\n记得有一次，我加班到深夜，看着窗外的灯火阑珊，突然觉得心里挺难受的。那时候，我就想，如果这时候能收到一封朋友的信，该有多好。可现实是，我只是在微信上随便发了个朋友圈，然后匆匆忙忙地回了家。\n\n现在想想，真是有点矛盾。我知道这样不对，但还是忍不住用手机刷刷刷。我都成年了，但还是这样。我懂这道理，但还是难受。有时候，我觉得自己就像被时间钝化了一样，对生活的细节不再敏感。\n\njanapasabi letters，这个产品让我突然意识到，或许我们应该慢下来，用文字去记录那些平凡而珍贵的瞬间。哪怕只是一封信，也能让我们重新感受到那份温暖和感动。",
-      "reflectionTemplate": {
-        "id": "before-after",
-        "name": "前后对比型",
-        "mood": "释然中夹一点自嘲，时间的钝感"
-      },
-      "createdAt": "2026-08-14T07:44:02.895Z"
-    },
-    {
-      "id": "0edee460866c",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Anql",
-      "url": "https://www.producthunt.com/products/anql?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "A note-taking app with built-in math calculations.",
-      "reflection": "嘿，老哥，今儿刷Product Hunt看到个新玩意儿，叫Anql，是个记事本还能算数的App。我就有点儿纠结了，A和B两件事摆出来吧。\n\nA是，这App确实方便，平时我加班到晚上十一点多，还得算算账，这App直接算，省事儿多了。B是，我又觉得这App有点儿不伦不类，记事本加计算器，感觉有点像拿手机拍照还要加个望远镜一样，搞复杂了。\n\n说到底，我矛盾啊。就像我坐地铁3号线回家，看窗外夜景，想着工作的事情，心里就有点儿难受。我知道这样不对，但还是想试试这App，毕竟谁不想让生活更方便呢？不过，我还是得说，这事儿得看情况，比如我加班到很晚，或者需要算复杂账的时候，我可能就会考虑用Anql。但是，如果是日常记个东西，我还是觉得简单点的记事本更合适。哎，成年了还是有点儿纠结啊。",
-      "reflectionTemplate": {
-        "id": "ab-compare",
-        "name": "对比分析型",
-        "mood": "中立、拉锯、平和"
-      },
-      "createdAt": "2026-08-14T07:43:42.805Z"
     }
   ],
-  "updatedAt": "2026-08-15T20:23:16.982Z"
+  "updatedAt": "2026-08-15T20:49:05.292Z"
 }
