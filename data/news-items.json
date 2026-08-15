@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "id": "e4581dacff6d",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Tess's Android Wayland Compositor",
+      "url": "https://news.ycombinator.com/item?id=49313068",
+      "info": "9 points",
+      "hover": "",
+      "reflection": "哎，今天看到这条资讯，突然想到如果现在的我给当年的自己一些建议，会是什么呢？首先，多花点时间研究技术，不要总是把时间浪费在无关紧要的事情上。比如，当年我总是喜欢熬夜打游戏，结果耽误了不少学技术的时间。\n\n然后，多关注一些前沿的技术动态，不要被固有的思维模式所束缚。就像这条资讯里提到的Tess's Android Wayland Compositor，当时我就没有关注到这样的新技术，导致在技术上落后于人。\n\n最后，保持一颗谦逊的心，不要因为自己的一点小成就就沾沾自喜。我记得有一次和同事聊天，他提到自己在技术上遇到的瓶颈，我当时还挺得意的，觉得自己在这方面挺厉害的。但现在想想，那其实是我自满的表现。\n\n哎，说起来，前两天晚上加班到九点，地铁上看着窗外，心里突然挺不是滋味的。我知道这样不对，但还是忍不住想要多学点东西。我都成年了，但还是这样，难受啊。我以前在哪一步踩过坑呢？可能就是没能在关键时刻把握住学习的机会吧。",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-08-15T21:46:11.731Z"
+    },
+    {
       "id": "f815effb2f5f",
       "sourceId": "hackernews",
       "sourceLabel": "Hacker News",
@@ -7983,23 +7999,7 @@
         "mood": "冷静自信里夹着普通人的克制"
       },
       "createdAt": "2026-08-14T07:45:35.524Z"
-    },
-    {
-      "id": "bf6121580c23",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "SnappShort",
-      "url": "https://www.producthunt.com/products/snappshort?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Smart URL Shortener for Links, Analytics, QR Codes & Surveys",
-      "reflection": "嘿，老兄，我刚看到个玩意儿，叫SnappShort，是个智能网址缩短器，还能做数据分析、二维码和调查问卷。你说这玩意儿，听起来挺高级的，但我想起了上次加班到深夜，在地铁上刷手机，看到窗外的夜景，突然想起小时候和爸妈一起过的那些日子，那时候哪有这么多高科技玩意儿，但现在想想，我们那时候的简单生活，现在的人可能觉得无聊吧。\n\n我那时候，手机就一个功能，打电话，发短信，现在这玩意儿，功能多到我都不知道怎么用了。哎，我就纳闷，我们这代人，明明生活条件好了，可为什么心里总是空荡荡的，有时候觉得，我们这代人，好像被科技绑架了，但又离不开它。\n\n我就在想，我们小时候，哪有那么多数据分析，现在的人，每天忙忙碌碌，为了数据、为了排名，有时候连自己都忘了。我就想，这SnappShort，虽然是个好东西，但用得太多，会不会有一天，我们连生活的本质都忘了呢？",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-08-14T07:45:18.637Z"
     }
   ],
-  "updatedAt": "2026-08-15T21:21:58.331Z"
+  "updatedAt": "2026-08-15T21:46:13.638Z"
 }
