@@ -1,6 +1,54 @@
 {
   "items": [
     {
+      "id": "f815effb2f5f",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Meta will train its AI on Newsmax, a far-right media outlet",
+      "url": "https://news.ycombinator.com/item?id=49313778",
+      "info": "12 points",
+      "hover": "",
+      "reflection": "嘿，老朋友，我刚看到一条新闻，有点让人想不通。说是Meta要训练AI用Newsmax的数据，这家媒体可是个极端右翼的媒体。我就在想，这AI得学会多少偏见和扭曲的信息啊。我就在想，是不是以后我们看到的、听到的，都会带点那个味道。\n\n我下班回家，坐在地铁里，看着窗外，心里就有点闷闷的。我在想，我们生活的世界，信息真是复杂，有时候真的分不清什么是真相。我在想，那些大公司，是不是都这样，只顾着利益，不管后果。\n\n突然，旁边的小哥跟我说话了，说：“哎，这世道，你说是好是坏？”我愣了一下，不知道怎么回答。我知道这样不对，但我还是想说，都成年了，还是会有这样的迷茫和担忧。",
+      "reflectionTemplate": {
+        "id": "story-hook",
+        "name": "故事钩型",
+        "mood": "怀旧、怔忡、怅然"
+      },
+      "createdAt": "2026-08-15T21:21:54.994Z"
+    },
+    {
+      "id": "eb5610b5c304",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Geek Fighter – 2d fighter game",
+      "url": "https://news.ycombinator.com/item?id=49247495",
+      "info": "4 points",
+      "hover": "",
+      "reflection": "哇，刚看完Hacker News上的这条2D格斗游戏资讯，怎么说呢，我心里那个小火花一下子就被点着了。你猜我现在在哪？地铁10号线，晚上九点半了，还挤在人堆里往回赶，真够累的。\n\n话说回来，这个游戏，你说搞笑不搞笑？那个\"CHOOSE DIFFICULTY\"和\"CHANGE FIGHTER\"的字体，哈哈哈，真是让我笑到肚子疼。我想当年，要是能有个这样的游戏，那得多开心啊，放学回家能玩，考试复习累了也能玩。但现在呢，我就想不起来当时那个无忧无虑的自己是哪去了。\n\n对了，我好像还记不清当初为了玩游戏跟家长大吵大闹的那会儿，那时候的自己怎么就这么犟呢？现在想想，虽然知道不能光顾着玩，但心里就是不舒服。我都这么大了，还是这样。\n\n我记得有一次加班到半夜，窗外的月亮特别亮，那会儿我心里也是矛盾的，我知道这样不对，但还是偷偷打开了手机。哎呀，我以前在哪一步踩过坑，怎么就控制不住自己呢？唉...",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-08-15T21:21:43.714Z"
+    },
+    {
+      "id": "8aea409b53a5",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Cultivating a state of mind where new ideas are born",
+      "url": "https://news.ycombinator.com/item?id=49314235",
+      "info": "3 points",
+      "hover": "",
+      "reflection": "哎，今儿个在 Hacker News 上看到一条标题是“培养一个孕育新想法的心态”，这标题直接就勾起了我。你想想，我每天加班到深夜，挤地铁挤得要命，这会儿突然看到一个标题说怎么培养新想法，我就忍不住点了进去。\n\n第一步，我得说，这标题让我在意，因为我现在的生活状态，工作压力大，有时候真觉得自己就是个“机器人”，没时间去想那些新点子。\n\n第二步，我再想想，这种状态下，我咋可能培养出新想法呢？这不就像我每天晚上躺在床上，想着明天早上得早起赶地铁，心里头全是压力，哪来的灵感？\n\n第三步，我又琢磨了琢磨，那咋办呢？是不是得改变一下生活方式，比如，多休息，给自己留点思考的时间。\n\n但话说回来，我懂这道理，但还是难受。你看，今儿个我加班到九点，下班回家，一坐地铁，又是人山人海，这生活节奏，你让我怎么静下心来想新点子啊？\n\n我坐在地铁上，看着窗外，一栋栋高楼，人来人往，我就想，是不是得改变一下了，但具体咋改变，我又不知道。矛盾啊！",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-08-15T21:21:31.996Z"
+    },
+    {
       "id": "078f6551eb76",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7951,55 +7999,7 @@
         "mood": "怀旧、怔忡、怅然"
       },
       "createdAt": "2026-08-14T07:45:18.637Z"
-    },
-    {
-      "id": "7497df0b6c01",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "My File",
-      "url": "https://www.producthunt.com/products/my-file-secure-photo-vault?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "100 % Free, No Ads, Lots of features",
-      "reflection": "哎呀，这产品名字，一看就挺安全可靠，保不齐还真的能让人把照片锁得严严实实。但我得说，现在这年代，信息这么发达，谁敢保证一点泄露没有啊？我就想起上周加班到十一点多，坐地铁十号线回家，那时候车厢里就俩人，一个看手机的，一个睡觉的。手机屏幕那亮晶晶的，谁不知道那是藏着多少隐私呢？\n\n这“我的文件”再安全，总得联网用吧？一联网，风险不就出来了？我有个朋友，他那手机上所有应用都设置双重验证，但还是时不时接到什么垃圾短信，说是他个人信息泄露了。我都快30岁了，还不能有自己的秘密，你说我难受不难受？\n\n所以，你看，我就想不通，为什么大家都默认手机里那些加密应用就能百分之百保安全。我知道这有点抬杠，但我就是忍不住觉得，这世道，哪有什么绝对的隐私保护嘛！",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-08-14T07:44:57.948Z"
-    },
-    {
-      "id": "4c96c48877df",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Bull vs Bear",
-      "url": "https://www.producthunt.com/products/bull-vs-bear?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Build your trading instincts, one chart at a time",
-      "reflection": "哎哟，刚看到 Product Hunt 上有个新玩意儿叫 Bull vs Bear，说是帮你培养交易直觉，每次看一个图表就能进步一点。我这人啊，最近正好在琢磨这几件事。\n\n第一，每天地铁上看着窗外，看着那些高楼大厦，心里就犯嘀咕，到底是该炒股还是买房？你说我这样都30多岁了，还是个小白，有时候觉得自己挺逗的。\n\n第二，最近公司加班特别多，每天都是对着电脑到晚上10点，看着那些股票行情图，有时候觉得自己就像个没头苍蝇，根本不知道该买什么。\n\n第三，昨天和同事聊天，说起投资的事，他说他看中了某只股票，让我也试试。我一听，心里又痒又怕，痒的是想跟着他试试水，怕的是万一赔了怎么办。\n\n如果只能选一个，我选 Bull vs Bear。原因很简单——它能帮我一个图表一个图表地学习，不像那些大道理，听起来简单，一用到实际就懵了。我倒是想看看，能不能跟着这个慢慢学会点门道。",
-      "reflectionTemplate": {
-        "id": "curated-list",
-        "name": "清单型",
-        "mood": "实用、带一点强迫症的整理感"
-      },
-      "createdAt": "2026-08-14T07:44:42.855Z"
-    },
-    {
-      "id": "38d1639d632f",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Trim Forge",
-      "url": "https://www.producthunt.com/products/trim-forge?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Fast lossless trimming for drone and camera videos",
-      "reflection": "哎，刚看了个资讯，是关于Trim Forge的，就是那个无人机和摄像机视频快速无损剪辑的工具。哎，我这不刚把这段视频剪辑完嘛，结果发现剪辑出来的效果和原始的差远了。你说我这不是跟这工具似的，剪来剪去，还是不如人家专业。我就纳闷了，我明明花了这么多时间，咋就比不上个工具呢？\n\n想想也是，人家Trim Forge这种专业工具，我这点手艺比起来确实不够看。我在地铁上都能感觉到周围的人，一个个都在用这玩意儿剪视频，而我还在那儿手工剪辑，哎，心里这股子焦虑啊。我都这么大了，还是免不了跟个小孩儿似的，对这种新玩意儿心生羡慕。\n\n下班路上，我看着窗外，那些忙碌的人群，心里那个难受劲儿啊。我知道自己应该去学习一下，可是一想到那么多的专业术语和复杂的操作，我又打退堂鼓了。矛盾啊，矛盾。\n\n行吧，下一步打算还是去研究一下这Trim Forge，看能不能把剪辑技巧提高提高。唉，希望别又是一场空吧。",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-08-14T07:44:25.140Z"
     }
   ],
-  "updatedAt": "2026-08-15T20:49:05.292Z"
+  "updatedAt": "2026-08-15T21:21:58.331Z"
 }
