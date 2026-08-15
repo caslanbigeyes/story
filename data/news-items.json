@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "id": "37036d127846",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Pizza Box Project Stack",
+      "url": "https://news.ycombinator.com/item?id=49258177",
+      "info": "3 points",
+      "hover": "",
+      "reflection": "嘿，老兄，我刚看完这个Hacker News上的资讯，说真的，我脑子里突然闪过一个念头，要是能回到过去，我真想给当年的自己几条建议。\n\n首先，得学会规划。你看，当年我加班到深夜，累得跟狗一样，却总是临时抱佛脚，搞到最后项目堆得像山一样高。现在想想，当时要是能像这个Pizza Box Project Stack一样，提前规划好时间，把任务分门别类，那得多轻松啊。\n\n第二，得学会拒绝。有时候，我知道这样不对，但还是忍不住答应别人的请求，结果自己累得半死。成年了，还是这样，有时候难受得想哭。\n\n第三，得多关注细节。我以前有一次，就是没注意细节，结果项目出了大问题，客户都开始投诉了。现在想想，当时要是能像这个Pizza Box Project Stack一样，注重每一个细节，可能就不会那么狼狈了。\n\n我以前在哪一步踩过坑？嗯，可能就是在规划上吧。那时候总是觉得时间还多，结果一转眼就火烧眉毛了。哎，说起来都是泪啊。",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-08-15T20:23:14.952Z"
+    },
+    {
       "id": "94d3905d74d8",
       "sourceId": "v2ex-share",
       "sourceLabel": "V2EX",
@@ -7983,23 +7999,7 @@
         "mood": "中立、拉锯、平和"
       },
       "createdAt": "2026-08-14T07:43:42.805Z"
-    },
-    {
-      "id": "ea15b96d9411",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Script It",
-      "url": "https://www.producthunt.com/products/script-it?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Write like a pro, on the go",
-      "reflection": "那天晚上，地铁13号线，我加班到深夜，看着窗外灯火阑珊，突然想起了Script It这个应用。我记得那时候，我还在为写文档头疼，每次都要翻来覆去地修改，浪费时间又累心。后来用了Script It，才发现原来写文档也可以这么轻松。\n\n转折点一，那天和同事讨论一个项目方案，他拿着Script It在手机上快速整理思路，我惊讶地发现，他居然能这么迅速地组织语言。转折点二，我自己也开始尝试用Script It，发现它真的能帮我理清思路，提高效率。转折点三，有一次，我在Script It上写了一篇小文章，意外地收到了编辑的青睐，竟然发表了。\n\n现在回头看才发现，其实我之前那么抵触写作，只是因为害怕面对自己的不完美。我知道这样不对，但还是每次写东西都要修改很多遍。我都成年了，但还是难受。Script It让我意识到，写作其实也可以是一件快乐的事情，只要找到适合自己的工具和方法。",
-      "reflectionTemplate": {
-        "id": "personal-trace",
-        "name": "个人经历拆解型",
-        "mood": "复盘的平静里藏一丝后怕"
-      },
-      "createdAt": "2026-08-14T07:43:24.959Z"
     }
   ],
-  "updatedAt": "2026-08-15T19:48:37.405Z"
+  "updatedAt": "2026-08-15T20:23:16.982Z"
 }
