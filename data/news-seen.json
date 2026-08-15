@@ -1,7 +1,5 @@
 {
   "seen": [
-    "https://github.com/localsend/localsend",
-    "https://github.com/Lightricks/LTX-2",
     "https://github.com/embabel/embabel-agent",
     "https://www.v2ex.com/t/1233918",
     "https://www.v2ex.com/t/1233917",
@@ -999,7 +997,9 @@
     "https://news.ycombinator.com/item?id=49312845",
     "https://news.ycombinator.com/item?id=49313047",
     "https://news.ycombinator.com/item?id=49310829",
-    "https://www.zhihu.com/question/2070876212935783496"
+    "https://www.zhihu.com/question/2070876212935783496",
+    "https://news.ycombinator.com/item?id=49241551",
+    "https://news.ycombinator.com/item?id=49312823"
   ],
-  "updatedAt": "2026-08-15T18:59:50.456Z"
+  "updatedAt": "2026-08-15T19:28:10.248Z"
 }
