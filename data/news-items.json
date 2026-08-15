@@ -1,6 +1,230 @@
 {
   "items": [
     {
+      "id": "becab5f61204",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "如何评价米哈游《原神》奥黛塔 & 沃雅妮莎 CP？",
+      "url": "https://www.zhihu.com/question/2071589447360108530",
+      "info": "116 万热度",
+      "hover": "[图片]",
+      "reflection": "哎，看到这条关于《原神》的资讯，我突然想到，如果我现在能回到过去，对那时候的自己说些什么呢？\n\n首先，我可能会告诉自己，玩游戏别太当真。那时候我追得那个游戏CP，每天下班后第一件事就是刷动态，晚上睡觉前还得看一眼他们的互动。那时候的自己是多么幼稚啊，现在想想都觉得好笑。\n\n然后，我会提醒自己，生活不能只有游戏。记得有一次，我在地铁上，看着窗外昏黄的路灯，突然意识到自己好像很久没有和朋友们出去聚会了。那时候我还在为了那个游戏CP的互动而烦恼，现在想想，那根本不值一提。\n\n还有，我会告诉那时的自己，要懂得自我调节情绪。记得有一次，因为那个游戏CP的互动没有达到预期，我居然在办公室里偷偷哭了一场。我懂这道理，但还是难受，感觉自己的心情被完全控制了。\n\n我以前在哪一步踩过坑呢？可能就是在那个游戏CP的事情上，我没有把握好自己，被情绪牵着鼻子走。希望现在的我能从这段经历中吸取教训，更加成熟地面对生活中的各种事情。",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-08-15T10:52:02.569Z"
+    },
+    {
+      "id": "f500d2b65a71",
+      "sourceId": "producthunt",
+      "sourceLabel": "Product Hunt",
+      "title": "Michael AI",
+      "url": "https://www.producthunt.com/products/michael-ai-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+      "info": " △︎ 0",
+      "hover": "Where AI feels less like a search box",
+      "reflection": "哎，说到这个 Michael AI，我就来气。你说现在谁没个智能助手？一搜啥都能出来，可这不就是把我们的大脑给闲置了嘛？我就在想，咱们是不是太依赖这些所谓的“智能”了？比如我每天地铁上，手捧手机，一号线到二号线，全靠导航。可我这大脑，是不是也越来越退化啊？\n\n你说这 AI 好用是好用，可它哪有感情？它不懂你心里那一丝丝的犹豫，那一抹抹的期待。就像昨天晚上加班到九点，和同事讨论项目，窗外的夜景那么美，我们却只能盯着屏幕。这 AI 能懂我们的心情吗？\n\n我懂，这世界都在追求效率，可我还是觉得，咱们得留点时间给自己，别让这些“智能”给取代了我们的思考。不然，咱这日子过得，不就太没劲了？就像那句老话，科技是第一生产力，但别忘了，人是第一创造力。别让 AI 给取代了。",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-08-15T10:51:47.143Z"
+    },
+    {
+      "id": "bb53cb9945c1",
+      "sourceId": "producthunt",
+      "sourceLabel": "Product Hunt",
+      "title": "Resume-X",
+      "url": "https://www.producthunt.com/products/resume-x?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+      "info": " △︎ 0",
+      "hover": "AI Resume Builder | ATS-friendly resumes",
+      "reflection": "半年前，我还在那个破旧的电脑前，熬夜修改简历，那时候的我是那么焦虑，担心自己找不到工作。一年前的我，更是把所有的精力都放在了简历上，那时候觉得简历就是我的全部。\n\n现在，我翻开手机，看到这条关于Resume-X的资讯，突然意识到，原来我的焦虑和努力，都只是为了一个工具。我突然明白，现在的我已经不再那么焦虑了，因为我知道，有了这样的AI工具，我的简历会更加完美。\n\n但心里还是有点难受，我懂这个道理，但还是难受。就像那天晚上，我在地铁2号线，看着窗外的人群，突然觉得，我们都在为了生活奔波，但我们追求的，真的是我们想要的吗？我知道这样不对，但还是忍不住想。\n\n矛盾感就像一把双刃剑，一边是现实的压力，一边是内心的渴望。我都成年了，但还是难受。这或许就是时间的钝感吧，我们总是在不经意间，发现了一些问题的真相。",
+      "reflectionTemplate": {
+        "id": "before-after",
+        "name": "前后对比型",
+        "mood": "释然中夹一点自嘲，时间的钝感"
+      },
+      "createdAt": "2026-08-15T10:51:34.103Z"
+    },
+    {
+      "id": "5e3057f7e688",
+      "sourceId": "producthunt",
+      "sourceLabel": "Product Hunt",
+      "title": "ReducerImage",
+      "url": "https://www.producthunt.com/products/reducerimage?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+      "info": " △︎ 0",
+      "hover": "Free online image compressor, resizer, and format converter",
+      "reflection": "嘿，老兄，我刚看到一个资讯，是关于一个在线图片压缩、调整大小的工具，叫ReducerImage。我一看，心里就有点儿小惊讶。这玩意儿能压缩图片，还能转换格式，感觉还挺实用的。\n\n首先，我得说，这玩意儿能免费用，真是方便。就像我昨晚加班到十一点，还得处理一大堆图片，要是没有这个工具，我得头疼死。\n\n然后，我就在想，这东西能压缩图片，那它对图片质量影响大不大？我得检查一下，看看图片压缩前后效果怎么样。第一步，我试试上传一张高清照片，第二步，我看看压缩后的效果，第三步，我对比一下压缩前后的细节。\n\n但是，我就有点儿矛盾了。我知道过度压缩图片会影响画质，但还是忍不住想试试看。我都成年了，还是控制不住好奇心。\n\n我正想着呢，突然地铁到站了，我赶紧下车，往公司赶。路上，我还想着这个ReducerImage，想着它能在哪些情况下派上用场。不过，我还是觉得，压缩图片这事儿，得有个度，不能太过了。",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-08-15T10:51:22.182Z"
+    },
+    {
+      "id": "404b56bcdba2",
+      "sourceId": "producthunt",
+      "sourceLabel": "Product Hunt",
+      "title": "TextSight ai",
+      "url": "https://www.producthunt.com/products/textsight-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+      "info": " △︎ 0",
+      "hover": "Detect AI text. Humanize it. Built for the world.",
+      "reflection": "哎，说起来，前两天在地铁上看到那个TextSight ai的介绍，突然就想起了去年夏天那件事。那时候，我加班到晚上十一点，累得不行，还在和客户电话沟通。那天晚上，地铁里特别挤，我站在车厢里，看着窗外，心里想着，这日子什么时候是个头啊。\n\n然后，客户突然说了一句：“你能不能把这份报告改得再简洁一点？”我当时就懵了，心想，这都几点了，还让我改。但我还是照做了，一边改一边心里直骂自己，都这么大人了，还这么没出息。\n\n现在回头看才发现，那时候的自己，其实挺傻的。我懂，工作嘛，总是要加班的，但那时候，我就是觉得委屈，觉得不平衡。哎，人啊，有时候就是矛盾，明明知道这样不对，但还是忍不住难受。",
+      "reflectionTemplate": {
+        "id": "personal-trace",
+        "name": "个人经历拆解型",
+        "mood": "复盘的平静里藏一丝后怕"
+      },
+      "createdAt": "2026-08-15T10:50:57.084Z"
+    },
+    {
+      "id": "c5cac851bc5b",
+      "sourceId": "producthunt",
+      "sourceLabel": "Product Hunt",
+      "title": "Creator Media Kit Generator",
+      "url": "https://www.producthunt.com/products/creator-media-kit-generator?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+      "info": " △︎ 0",
+      "hover": "Know your sponsorship rate in 60 seconds",
+      "reflection": "哎，我刚看到这条Product Hunt上的资讯，那个Creator Media Kit Generator，说能60秒帮你算出赞助费率。我本来想试试，但想到自己现在做的这个项目，唉，心里就有点不是滋味。\n\n你看，我现在这个项目，已经做到第五个版本了，每天晚上都要加到十点多，有时候还要坐地铁到终点站再转回来。我就想，要是真的能有个工具，帮我算算赞助能有多少，那多好。但转念一想，这东西真的那么准吗？我这么努力，难道就是为了一个赞助费率吗？\n\n我记得有一次，在地铁2号线上，看到一个年轻人，背着包，看起来挺累的。我就想起自己，虽然我也累，但心里还有点不甘心。我都这么大了，还是得靠自己的努力吃饭，这赞助费率算得再准，也不如自己能力强。\n\n哎，说到底，我还是得继续努力，不能光想着那个赞助费率。下一步，我得先把这个版本优化好，说不定到时候，赞助费率自己就上来了。不过，我还是得提醒自己，别太依赖它，毕竟，我想要的，不是那个数字，而是真正做出来的成果。",
+      "reflectionTemplate": {
+        "id": "in-progress",
+        "name": "过程透明型",
+        "mood": "实诚的轻焦虑，自我怀疑"
+      },
+      "createdAt": "2026-08-15T10:50:42.414Z"
+    },
+    {
+      "id": "fc3be7312a0d",
+      "sourceId": "producthunt",
+      "sourceLabel": "Product Hunt",
+      "title": "Freelance Digital Marketer in Jeddah",
+      "url": "https://www.producthunt.com/products/freelance-digital-marketer-in-jeddah?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+      "info": " △︎ 0",
+      "hover": "Building Strong Brands in a Scroll First World",
+      "reflection": "哎呀，看了这条资讯，我心里有点小小的纠结。A是沙特吉达的自由职业数字营销者，B是我们国内的自由职业者。这俩对比起来，差异可大了去了。\n\n先说工作环境吧，A在吉达，一个以宗教文化著称的地方，工作节奏可能相对悠闲；B在我们这，快节奏、加班狗一枚。你说这环境一快一慢，得适应多久啊！\n\n再说客户群体，A的客户可能更注重宗教文化，B的客户可能更追求潮流和个性。这俩群体需求不一样，得花时间研究吧。\n\n那啥情况下选哪个呢？我觉得，如果喜欢自由、不怕挑战、对文化差异有一定了解的人，可以选择A。像我这种，对国内的环境更适应，还是老老实实在这边干吧。哎，我懂这道理但还是难受，毕竟心里还是想去看看不一样的世界。就像上次加班到深夜，看着窗外的夜景，心里想的却是：要是能在那样的环境中工作该多好。😂\n\n总之，这事儿没有绝对的答案，关键看个人喜好和适应能力吧。不过，我倒是希望，无论在哪里工作，都能找到自己的节奏和乐趣。",
+      "reflectionTemplate": {
+        "id": "ab-compare",
+        "name": "对比分析型",
+        "mood": "中立、拉锯、平和"
+      },
+      "createdAt": "2026-08-15T10:50:27.665Z"
+    },
+    {
+      "id": "26b8ffaa7446",
+      "sourceId": "producthunt",
+      "sourceLabel": "Product Hunt",
+      "title": "PicJury",
+      "url": "https://www.producthunt.com/products/picjury?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+      "info": " △︎ 0",
+      "hover": "Create photo polls. Share a link. Decide faster",
+      "reflection": "哎，今天在Product Hunt上看到这个PicJury，本来没怎么在意，但后来一琢磨，心里头就有点儿不是滋味儿。想当年，我上学那会儿，选东西啊，做决定啊，可没这玩意儿方便，那时候都是跟同学你一言我一语的，争得面红耳赤，最后还不见得能达成一致。现在有了这个PicJury，直接发个链接，大家手机一投票，立马就决出胜负了。\n\n我琢磨着，要是那时候有这东西，我估计我的人生轨迹得改观。比如，高中选文科还是理科，现在回想起来，当时真是纠结死了，要是当时能让大家投票决定，可能我早就选定了呢。想想看，那时候晚上12点还窝在教室里讨论，第二天还得起个大早去上课，现在想想，真是够呛。\n\n不过，说到底，我还是觉得这种东西有点儿太简单粗暴了。我知道这样不对，但还是有点儿喜欢这种快捷方便的决策方式。我都成年了，还是这副德性，真是挺难受的。我记得有一次，下班高峰期，我在地铁2号线里，看着窗外，人来人往的，大家都急匆匆的，突然想起自己当初的雄心壮志，现在想想，那时候的自己真是傻啊。\n\n哎，我以前在哪一步踩过坑，大概就是那个选文理科的时候吧。",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-08-15T10:50:14.669Z"
+    },
+    {
+      "id": "d65668b896b8",
+      "sourceId": "producthunt",
+      "sourceLabel": "Product Hunt",
+      "title": "Helfman Maserati",
+      "url": "https://www.producthunt.com/products/helfman-maserati?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+      "info": " △︎ 0",
+      "hover": "Helfman Maserati,Helfman Maserati Houston, Maserati Houston ",
+      "reflection": "哎，你说说这Helfman Maserati是个啥玩意儿啊？一看标题，还以为是个新出的什么产品呢。结果点进去一看，就几个字，Helfman Maserati，Helfman Maserati Houston，Maserati Houston。我寻思，这也不算啥新鲜事儿啊，顶多就是一家卖玛莎拉蒂的店吧。\n\n可就是这，让我心里一阵不爽。你说，咱们平时一看新闻，总得有个标题，有个简介，让人一看就明白这东西是干啥的。这Helfman Maserati，连个简介都没有，就几个名字，这谁看得懂啊？我上次坐地铁，看到有人拿着手机在那看，我还以为是个啥大人物呢，结果一看，就这玩意儿。\n\n再说了，咱们成年了，不是小孩子了，看个东西还得有个头绪。我加班到深夜，看着窗外的城市灯火，想着自己一天天的努力，就为了能过上好日子，结果看到这种东西，心里就一阵难受。我都这么大了，还是会被这种没有头绪的东西戳到。\n\n哎，你说这世道，真是让人摸不着头脑。",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-08-15T10:49:59.859Z"
+    },
+    {
+      "id": "4c3baad6bb3c",
+      "sourceId": "producthunt",
+      "sourceLabel": "Product Hunt",
+      "title": "Persian360",
+      "url": "https://www.producthunt.com/products/persian360?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+      "info": " △︎ 0",
+      "hover": "Learn Persian through the content you love",
+      "reflection": "半年前，我还热衷于各种语言学习软件，每天晚上都要在地铁上背单词，那时的我，觉得学习一门新语言离自己好近。可现在呢，连手机上的波斯语学习应用 Persian360 都没打开几次。\n\n一年前，我曾在一次和朋友的对话中，信誓旦旦地说，等我学会了波斯语，一定要去伊朗旅行。可现在，连伊朗的地图都懒得翻看一眼。\n\n读到这条资讯，我突然意识到，时间这东西，真是个磨人的小妖精。它悄无声息地改变着我们，让我们在不经意间，从一个对世界充满好奇的孩子，变成了一个对新鲜事物麻木不仁的大人。\n\n我懂这道理，但还是难受。我都成年了，还是会被这种矛盾感困扰。看着窗外，地铁的灯光一闪一闪，我忽然想起，曾经那个晚上，我在地铁上背单词的自己，那个对未来充满憧憬的自己，如今却只剩下了一丝释然和自嘲。",
+      "reflectionTemplate": {
+        "id": "before-after",
+        "name": "前后对比型",
+        "mood": "释然中夹一点自嘲，时间的钝感"
+      },
+      "createdAt": "2026-08-15T10:49:46.769Z"
+    },
+    {
+      "id": "029695b7fce7",
+      "sourceId": "producthunt",
+      "sourceLabel": "Product Hunt",
+      "title": "Aesthetics Gaming Experience",
+      "url": "https://www.producthunt.com/products/aesthetics-gaming-experience?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
+      "info": " △︎ 0",
+      "hover": "Community for like-minded men who care about their style.",
+      "reflection": "哎呀，今儿晚上看了个Product Hunt上的东西，叫\"Aesthetics Gaming Experience\"，说是个关注游戏审美的社区。我其实不是个游戏玩家，但看到这个标题，心里就莫名其妙地想起前阵子加班到凌晨三点，在二号线地铁上看着窗外，突然冒出个念头：咱们这些成年人，不就是在追求自己的审美嘛。\n\n想到这，我就想起了那次跟同事的对话。我们俩都是设计狗，讨论到工作压力太大，连审美都顾不上的时候，她突然感慨：“我都成年了，还是得有自己的风格啊。”那一瞬间，我突然感到一丝后怕，觉得自己好像好久没认真关注过自己的审美了。\n\n现在回头看才发现，其实审美不是小事，它和我们的生活方式、情绪状态都息息相关。就像那天加班到深夜，看着窗外城市的灯火阑珊，我突然意识到，即使生活再忙碌，也不能丢了自己的审美。毕竟，我们都是在追求一个“像人”的生活体验嘛。",
+      "reflectionTemplate": {
+        "id": "personal-trace",
+        "name": "个人经历拆解型",
+        "mood": "复盘的平静里藏一丝后怕"
+      },
+      "createdAt": "2026-08-15T10:49:30.768Z"
+    },
+    {
+      "id": "043bd5b8d4e0",
+      "sourceId": "v2ex-share",
+      "sourceLabel": "V2EX",
+      "title": "我又做了一個 OpenClash 的替代品 · LocalClash",
+      "url": "https://www.v2ex.com/t/1234643",
+      "info": "",
+      "hover": "",
+      "reflection": "哎哟，这资讯我一看，突然感觉有点怀旧。还记得以前用路由器的时候，那种简单直接的感觉，现在看这个LocalClash，好像又回到了那个年代。我记得有一次，晚上十一点多，我在地铁二号线，那个车厢里昏暗的灯光，看着手机上的路由器设置界面，那时候的配置简单，操作起来也方便。现在这LocalClash，说起来是替代品，但其实也像回到了那个简单又直接的时代。但是，哎，我现在都这么大了，还是觉得那个年代的东西更纯粹，更让人怀念。就像我现在加班到凌晨两点，看着窗外的夜景，心里总是有一种矛盾感，我知道这样不对，但还是觉得那个年代的生活更有味道。",
+      "reflectionTemplate": {
+        "id": "story-hook",
+        "name": "故事钩型",
+        "mood": "怀旧、怔忡、怅然"
+      },
+      "createdAt": "2026-08-15T10:49:19.688Z"
+    },
+    {
+      "id": "8182c60f644d",
+      "sourceId": "v2ex-share",
+      "sourceLabel": "V2EX",
+      "title": "追觅大家电解散",
+      "url": "https://www.v2ex.com/t/1234645",
+      "info": "",
+      "hover": "",
+      "reflection": "嘿，老兄，我刚看到个新闻，感觉有点意思。说的是追觅大家电解散了，之前还听说他们拿到了几十亿订单呢，结果现在解散了。这事儿让我想起前两天在地铁上看到的一对情侣，女的加班到很晚，男的却在那玩手机。俩人坐一起，一个在努力工作，一个在消磨时间，感觉有点讽刺。\n\n你说这追觅电解散，我琢磨了一下，感觉吧，它跟那对情侣有点像。一个是大企业解散，一个是情侣关系破裂，都是一种“表面繁荣，实则空心”的感觉。不过呢，追觅的解散让人感觉更复杂，因为它涉及到的是经济、市场、战略这些大问题。\n\n我呢，有时候也会想，这社会是不是就是这样，看起来光鲜亮丽，背后却暗流涌动。比如，我有时候加班到很晚，看着窗外的夜景，心里就挺难受的。我知道这样不对，但还是有点矛盾，毕竟谁不想有个平衡的生活呢？\n\n那啥，这种情况吧，我觉得得看个人需求。比如，如果你是个追求事业成功的人，那可能就得牺牲一些个人时间。但如果你更看重生活品质，那可能就得考虑换个工作了。总之，得看自己到底想要什么。\n\n哎，说到底，生活就是这样的，有得有失，矛盾感无处不在。咱们也只能尽量找到适合自己的平衡点吧。",
+      "reflectionTemplate": {
+        "id": "ab-compare",
+        "name": "对比分析型",
+        "mood": "中立、拉锯、平和"
+      },
+      "createdAt": "2026-08-15T10:49:09.666Z"
+    },
+    {
+      "id": "35034f81ba2c",
+      "sourceId": "v2ex-share",
+      "sourceLabel": "V2EX",
+      "title": "分享一个操作路径，可以不用捣鼓 figma 来制作切割风格的商店预览图",
+      "url": "https://www.v2ex.com/t/1234646",
+      "info": "",
+      "hover": "",
+      "reflection": "哎，这信息一看，突然想到当年自己学设计的时候，老是在figma上浪费时间，搞那些复杂的图。现在想想，其实有个简单的操作路径就足够了，比如用shots.so这种网站，直接上传截图，就能快速制作出切割风格的商店预览图。哎，我当时怎么就没想到呢？要是早知道，说不定我早就是个高效的设计师了。\n\n我那时候，每天晚上加班到九、十点，地铁上看着窗外，心里想着怎么设计得更好，但就是不知道从哪一步开始下手。有时候，我都成年了还是那个样子，明明知道这样不对，但还是难受。\n\n现在回想起来，我当时是不是在“怎么快速制作预览图”这一步上踩过坑？那时候，可能就是太追求完美，结果反而浪费时间，没有抓住重点。\n\n哎，这操作路径的信息给我提了个醒，以后再遇到类似的事情，我得先想想有没有更简单、更高效的方法。不然，浪费的时间和精力，真是让人心疼啊。",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-08-15T10:48:53.315Z"
+    },
+    {
       "id": "0d0af96308e6",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7775,231 +7999,7 @@
         "mood": "决绝、不退让，略冷"
       },
       "createdAt": "2026-08-13T18:32:26.943Z"
-    },
-    {
-      "id": "28e8d6c14088",
-      "sourceId": "zhihu",
-      "sourceLabel": "知乎",
-      "title": "怎么看 DeepSeek Harness 正式开源，采用一切皆插件的架构？",
-      "url": "https://www.zhihu.com/question/2071348486667237276",
-      "info": "253 万热度",
-      "hover": "",
-      "reflection": "哎，刚看完这条关于 DeepSeek Harness 开源的资讯，心里有点东西堵着。想起自己当年刚毕业那会儿，也是满腔热血，想学技术，结果一提到编程架构就一脸懵。要是现在能回到那时候，我得多给当年那个自己几条建议啊。\n\n首先，我得让那时候的自己少刷一会儿抖音，多花点时间在那些技术论坛上，比如 GitHub 和 Stack Overflow，那里全是牛人分享的经验。然后，得买本《深入理解计算机系统》那样的书，虽然厚，但基础打牢了，以后的路会好走不少。\n\n还有啊，得多实践。我当时就喜欢看技术文章，可就是不动手写代码。你看，现在回想起来，那些理论知识要是没有实际操作来消化，很快就忘了。我就得跟自己说，不管多忙，每天都要抽出时间来写代码，哪怕只有一行。\n\n最后，我得学会筛选信息。信息时代，每天铺天盖地都是各种资讯，有用的没用的混在一起。我当时就是太喜欢追新，有时候看个文章就一头雾水，不知道自己该学什么。我得告诉自己，专注于一两个方向，深入下去。\n\n哎，我以前在哪一步踩过坑啊，现在想想都难受。那时候，我明明知道这些道理，但还是被那些表面的东西吸引，没走稳。现在回想起来，真是惋惜。",
-      "reflectionTemplate": {
-        "id": "how-to",
-        "name": "教学实操型",
-        "mood": "沉稳、克制的说教感，干净"
-      },
-      "createdAt": "2026-08-13T18:32:10.796Z"
-    },
-    {
-      "id": "a03a260819de",
-      "sourceId": "juejin",
-      "sourceLabel": "掘金",
-      "title": "后端API没写好，前端难道干等着吗？",
-      "url": "https://juejin.cn/post/7673068632563793929",
-      "info": "",
-      "hover": "",
-      "reflection": "那天晚上，我加班到九点多，站在地铁里，看着窗外模糊的城市灯光，突然想起了这条资讯。记得当时后端API出了点问题，我这边前端代码写得好好的，就只能干等。心里那个急啊，但又不敢催后端同事，就那么在地铁里站着，看着周围的人来人往，感觉自己就像个局外人。\n\n然后我想起那次，后端同事因为接口问题一直没解决，我就自己一个人加班加点地改代码，直到深夜。那天晚上，我在地铁站出口，看着地铁呼啸而过，心想：我都成年了，怎么还这么容易被这些琐事影响心情呢？\n\n现在回头看，才发现自己那时候多傻。工作上的事情，其实没有那么复杂，关键是要沟通到位。不过，我还是会偶尔觉得矛盾，知道这样不对，但还是难受。就像那次加班到深夜，我明明知道这样对身体不好，但还是忍不住。哎，这就是生活吧，有时候让人哭笑不得。",
-      "reflectionTemplate": {
-        "id": "personal-trace",
-        "name": "个人经历拆解型",
-        "mood": "复盘的平静里藏一丝后怕"
-      },
-      "createdAt": "2026-08-13T18:31:52.461Z"
-    },
-    {
-      "id": "9c40ae6877b2",
-      "sourceId": "v2ex-share",
-      "sourceLabel": "V2EX",
-      "title": "分享一下我做的 4 个 DeepSeek Harness 插件",
-      "url": "https://www.v2ex.com/t/1234231",
-      "info": "",
-      "hover": "",
-      "reflection": "今天看到这条V2EX上的分享，哎呀，心里突然有几件事儿像被戳了一下似的。比如说，我这几天一直在纠结晚上是看剧还是看书，每次都犹豫半天；再比如，工作上的事情堆得像山一样，我老是在想怎么才能更高效地处理；还有，最近总感觉手机里的APP越来越多，得想个办法好好整理整理。\n\n说起来，我最近在坐地铁的时候，就特别想有个这样的插件，比如那个“DeepSeek 内存”，能帮我把看过的网页、文章都给存起来，以后想找的时候不用再翻遍历史记录。想想都挺方便的。\n\n如果只能选一个，我选“DeepSeek 内存”，原因很简单——像我这种强迫症晚期患者，看到信息乱糟糟的，心里就不得劲。🙈",
-      "reflectionTemplate": {
-        "id": "curated-list",
-        "name": "清单型",
-        "mood": "实用、带一点强迫症的整理感"
-      },
-      "createdAt": "2026-08-13T18:31:37.842Z"
-    },
-    {
-      "id": "4b758a7f686a",
-      "sourceId": "v2ex-share",
-      "sourceLabel": "V2EX",
-      "title": "随手 vibe 了一个桌面 ai 客户端横向对比的网页",
-      "url": "https://www.v2ex.com/t/1234232",
-      "info": "",
-      "hover": "",
-      "reflection": "哎哟，说真的，以前总觉得AI客户端嘛，不就是个工具，能提高效率不就得了。但今天看到这条V2EX上的资讯，我瞬间感觉被戳了一下。你说这AI客户端，能横向对比，还直接发布成网站，这操作，是不是有点太方便了？\n\n记得那天晚上，我在地铁上，看了一眼窗外，心里就想着，这要是能有个AI帮我筛选信息，那多好。结果今天一看，这不就是现成的吗？我有点不服气，但同时又觉得，这AI的发展速度，真是让人难以想象。\n\n再想想，我在公司加班到深夜，那会儿脑袋里全是工作的事情，要是有个AI能帮我整理思路，那得多省心啊。但转念一想，这种便利，是不是会让我们变得越来越懒惰，越来越依赖这些工具？\n\n哎，说到底，这AI客户端横评的网页，虽然看起来挺酷，但用不用，还得看我们自己。毕竟，我知道这样不对，但还是有点心动。我都成年了，但还是容易被新鲜事物吸引，这可咋办呢？",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-08-13T18:31:22.658Z"
-    },
-    {
-      "id": "5c1c12b63533",
-      "sourceId": "v2ex-share",
-      "sourceLabel": "V2EX",
-      "title": "DeepSeek Harness 开发版，七嘴八舌交流篇",
-      "url": "https://www.v2ex.com/t/1234236",
-      "info": "",
-      "hover": "",
-      "reflection": "哎，你猜怎么着？我今天刚看了一篇关于DeepSeek Harness开发版的新闻，心里有点不大舒服。我自己的工作也是软件开发这一块，但有时候看着这些新技术的兴起，心里那个焦虑啊，感觉自己就像是个落伍的人。\n\n比如，我今天就在写一个项目的需求文档，到晚上9点还没写完。我在想，如果我也去学学DeepSeek Harness，说不定效率能提高，但我又担心自己学的太慢，跟上不上趟。\n\n哎，说起来，前天在地铁上还和一个同事讨论了一下，他也在学新技能。我当时就说，咱们都已经这个年纪了，还学这些，真是给自己找罪受。但心里又有点不甘心，觉得自己不能就这么认输。\n\n所以说，看着这些新技术的发展，我既羡慕又焦虑，感觉自己就像是个夹心饼干。那我现在该怎么办呢？继续按部就班地工作，还是尝试着去学习新技能？我下一步打算，就是先休息一下，好好想想这个问题。毕竟，生活不是只有工作，也要有属于自己的空间和节奏。😓",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-08-13T18:31:08.087Z"
-    },
-    {
-      "id": "ffa6426835fc",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "GoAccess – Open-source real-time log analyzer and interactive viewer",
-      "url": "https://news.ycombinator.com/item?id=49288296",
-      "info": "7 points",
-      "hover": "",
-      "reflection": "半年前，我还傻乎乎的对着电脑屏幕研究各种数据分析工具，那时候总觉得数据能告诉我一切。可一年后的今天，我坐在地铁上，看着窗外的人潮，突然意识到，原来我一直以来都在和数据较劲，却忘了，真正的人才是这个世界的核心。\n\n我记得有一次加班到深夜，对着电脑屏幕，和数据线里的数字较劲，心里想着，只要我能把这些数据弄懂，就能明白用户的需求。可现在，读到这条资讯，我才恍然大悟，原来我一直以来都在和数据打交道，却忘了，真正的人才是这个世界的核心。\n\n我突然想起了那次和朋友的对话，他说：“你总是对着电脑，不累吗？”我笑着回答：“习惯了，总觉得只要我懂了数据，就能掌控一切。”现在想想，那是不是一种自嘲呢？我都成年了，还是这样执着于数据，好像忘了，生活远比数据复杂得多。\n\n这个世界上，有那么多“我”这样的成年人，我们执着于数据，执着于掌控，却忘了，真正的力量来自于那些我们看似无足轻重的瞬间。",
-      "reflectionTemplate": {
-        "id": "before-after",
-        "name": "前后对比型",
-        "mood": "释然中夹一点自嘲，时间的钝感"
-      },
-      "createdAt": "2026-08-13T18:30:51.713Z"
-    },
-    {
-      "id": "1af5cb634c3b",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "From 13.5M installs to 499 active devices",
-      "url": "https://news.ycombinator.com/item?id=49243104",
-      "info": "13 points",
-      "hover": "",
-      "reflection": "哎，你说说这啥玩意儿，一个游戏，下载量有1300万，结果活跃用户才500来个。这不扯淡呢吗？我就想不明白，现在这软件这么多，好的坏的，堆在一起，谁看得过来啊。就像我前两天在地铁上，看着那屏幕，上面全是各种APP，我下载了那么多，有几个是真用的？大部分都是躺在那里，成了摆设。\n\n你说这算法，商业利益，AI推荐，搞的跟什么似的。我真是服了，这玩意儿不解决，那所谓的“小众”软件，不就都成弃用了？我就不信了，这问题就解决不了。除非咱们自己动手，搞个啥社区项目，不然这事儿就悬了。\n\n说到这，我最近还跟同事聊过，说这“商业化”简直是把一切都搞坏了。哎，我都这把年纪了，还是觉得这样不对劲。不过，我也知道，这世界就这样，你没办法。哎，矛盾啊，难受啊。",
-      "reflectionTemplate": {
-        "id": "manifesto",
-        "name": "观点宣言型",
-        "mood": "决绝、不退让，略冷"
-      },
-      "createdAt": "2026-08-13T18:30:25.886Z"
-    },
-    {
-      "id": "6bc5c071c5c5",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Show HN: OJCP – an open protocol for agent-consumable job data",
-      "url": "https://news.ycombinator.com/item?id=49273922",
-      "info": "12 points",
-      "hover": "",
-      "reflection": "哎哟，刚才看到那个Hacker News上的资讯，你说我怎么突然想起小时候在老房子里玩捉迷藏的场景呢？那时候，家里还没那么多电子玩意儿，我们就跟现在这些AI似的，在房间里七拐八弯的，就为了找到一个藏身之处。\n\n然后呢，那个资讯里说的OJCP，我听着就挺新鲜的。你说这些AI要是不按套路出牌，那我们这些求职的岂不是得跟它们捉迷藏了？哎，想想都头疼。\n\n记得上次加班到深夜，地铁上人特多，我靠着窗户，看着外面黑漆漆的，突然就想起小时候的那个游戏。那时候觉得藏起来就是胜利，现在想想，胜利个啥啊，不就那么一瞬间的快感嘛。现在呢，我们得跟AI斗智斗勇，还哪来的什么胜利？\n\n我就纳闷，这AI发展得是越来越快了，我们这些人类是不是就得一直这样跟着跑？我懂这道理，但还是难受。哎，你说这OJCP到底是个啥玩意儿？它真能帮我们人类解决什么问题吗？",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-08-13T18:30:08.752Z"
-    },
-    {
-      "id": "a7c97c582b98",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "AI At Home Part 1: A Box Of Scraps",
-      "url": "https://news.ycombinator.com/item?id=49288293",
-      "info": "15 points",
-      "hover": "",
-      "reflection": "哎，刚刚看到Hacker News上的一条资讯，说的是在家搞AI的那些事，挺有意思的。这边说装了10,000 RPM的扇叶，想着能多吹点风，结果噪音大得吓人，那边又说本地推理还得依赖更新模型，感觉有点矛盾。\n\n你说这噪音吧，本来想着装个静音的，结果装上了还是那么吵，我就戴上了耳塞，心里想着：“这玩意儿怎么这么吵啊，我都成年了，还得戴耳塞。”然后又想到，这不就是技术进步的代价吗？想着想着，也就习惯了。\n\n再说到这个本地推理，说是用更新模型，但又不清楚这会带我们走向何方。就像我最近在装修房子，晚上11点还在墙上打孔，想着能早点完工，结果发现家里没网线，还得重新布线，这感觉和本地推理有点像，总是有各种各样的限制。\n\n那啥情况下选哪个呢？我觉得吧，如果你对噪音比较敏感，那就选静音的，如果对技术发展有兴趣，那就试试本地推理。不过，别太执着于追求完美，有时候妥协一下也是必要的。就像我，虽然现在还是得戴着耳塞，但至少装修快完成了。😂",
-      "reflectionTemplate": {
-        "id": "ab-compare",
-        "name": "对比分析型",
-        "mood": "中立、拉锯、平和"
-      },
-      "createdAt": "2026-08-13T18:29:50.420Z"
-    },
-    {
-      "id": "0b47e73a15fe",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Where did the old web go? We followed 657,607 links to find out",
-      "url": "https://news.ycombinator.com/item?id=49289532",
-      "info": "6 points",
-      "hover": "",
-      "reflection": "哎哟，这资讯一出来，我就觉得不对劲了。都知道互联网嘛，更新换代快，但是这回Hacker News的这条标题，简直颠覆了我的认知！你说这“旧互联网”去哪了？我一看，哎呀，这数据一出来，简直惊掉下巴。\n\n以前咱们都觉得，互联网嘛，就是不断发展，新玩意儿层出不穷。可这回一看，657,607个链接，结果呢？78.7%的链接都不存在了！这不是开玩笑吗？这让我想起了前两天，我在地铁上刷微博，看到一篇文章说“老网站都去哪了”，我那时候心里就直犯嘀咕，这不就是互联网发展的常态吗？\n\n可你看，人家这数据一出来，我才知道，原来不是那么回事。我朋友小张，是个程序员，他那天加班到深夜，还和我抱怨说，现在的网站更新太快了，连他以前写的代码都看不懂了。那时候我就想，这不就是互联网进步的表现吗？\n\n但现在想想，不对啊。就像我上次加班到凌晨三点，盯着电脑屏幕，突然意识到，这世界变化太快，我连自己都跟不上了。这不就是那个“旧互联网”吗？它去了，因为跟不上节奏。\n\n哎，我知道这样不对，但我还是有点难受。我都成年了，还是觉得，这个世界变化太快，让人应接不暇。但不管怎样，我得努力跟上，不是吗？",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-08-13T18:29:31.713Z"
-    },
-    {
-      "id": "17f811b6ab3c",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Tocharian Online",
-      "url": "https://news.ycombinator.com/item?id=49289026",
-      "info": "17 points",
-      "hover": "",
-      "reflection": "哎，刚看到这条Hacker News上的Tocharian Online，突然有点感慨。你说这什么破玩意儿，一个古老的吐火罗语在线平台，有什么好关注的？但就是这股莫名的好奇，让我停了下来。\n\n首先，我想到的是，这玩意儿能干嘛？我琢磨了三步：第一步，它可能是个学术研究工具，让学者们研究古代语言；第二步，也许它是个学习平台，让对古代语言感兴趣的人学习；第三步，说不定它就是个历史爱好者的聚集地，大家在这里交流心得。\n\n然后，我突然想到一个场景。那天晚上，我加班到九点，坐地铁回家。车厢里黑压压的，大家都低头刷手机。我看着窗外，突然觉得这种生活好没劲。明明我们都生活在现代社会，却对古老的文化知之甚少。\n\n矛盾感油然而生。我知道这样不对，但还是忍不住去想，我们是不是忽略了太多东西？我都成年了，但还是觉得这种生活挺难受的。哎，也许这就是成长的代价吧。",
-      "reflectionTemplate": {
-        "id": "framework",
-        "name": "框架输出型",
-        "mood": "冷静自信里夹着普通人的克制"
-      },
-      "createdAt": "2026-08-13T18:29:11.952Z"
-    },
-    {
-      "id": "573c3d779e96",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Donkey.bas is 45 Years Old – 131 line of Glory",
-      "url": "https://news.ycombinator.com/item?id=49289465",
-      "info": "14 points",
-      "hover": "",
-      "reflection": "半年前，我还傻呼呼的对着电脑屏幕敲着什么FOR loop，觉得编程就是世界上最酷的事情了。一到年前，那会儿，加班到凌晨，跟朋友一起看窗外的高楼大厦，那时候觉得未来有无限可能。可现在呢，看完这条资讯，我愣住了，忽然意识到什么变了。\n\n现在呢，敲代码对我来说就像刷牙一样，每天必做，但就是没什么感觉了。我甚至怀疑自己是不是还在做同样的事情，可内心却空落落的。我懂，这是成长，可心里还是难受。\n\n想想以前，那时候看《DOCKEY.BAS》可能就两眼放光，现在却只能感叹，我们失去了一些东西。就像现在的地铁上，每个人都是低头族，连对话都成了指尖跳动，我们是不是也在某种程度上失去了什么？\n\n突然间，我想起上次加班到很晚，坐地铁回家，车厢里昏暗，我看着窗外的城市灯火阑珊，那时候我突然觉得，生活啊，是不是真的在某个时刻就失去了原本的纯粹和快乐。",
-      "reflectionTemplate": {
-        "id": "before-after",
-        "name": "前后对比型",
-        "mood": "释然中夹一点自嘲，时间的钝感"
-      },
-      "createdAt": "2026-08-13T18:28:50.448Z"
-    },
-    {
-      "id": "1e4c21518f62",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Choose Boring Technology (2015)",
-      "url": "https://news.ycombinator.com/item?id=49289512",
-      "info": "19 points",
-      "hover": "",
-      "reflection": "哎呀，刚看了那篇《Choose Boring Technology》的文章，直接被扎心了。我就说呢，现在的技术圈太浮躁了，总是想着追求新鲜感，搞那些花里胡哨的。可你看看，靠谱的东西不都是那些看似无趣的？我就不信那些新潮玩意儿真能耐看！\n\n我前两天刚加班到深夜，地铁上挤得跟沙丁鱼罐头似的。我就在想，要是能用点不那么炫酷的技术，比如那个什么Rust或者Elixir，多快好省多好。结果一看，嘿，原来大家都喜欢那种复杂又耗时的技术啊。我都快被这种“潮流”给带坏了。\n\n还有那次，和同事聊天，他推荐的某个新技术听起来好像挺酷的，可一想到实施起来那么复杂，我立马就拒绝了。我知道这样不对，但还是坚持自己的选择了。成年了还这么犟，哈哈。\n\n再说说这AI的事。我听说有人愿意为了AI的利益去改变社会，这不是扯呢吗？我觉得，技术还是应该服务于人类，而不是反过来。不过，这个话题又深了去了，先不说这个。\n\n总之，我决定以后就选择那些“无趣”的技术。别看别人吹得天花乱坠，我觉得可靠最重要。就酱，不退让！😂",
-      "reflectionTemplate": {
-        "id": "manifesto",
-        "name": "观点宣言型",
-        "mood": "决绝、不退让，略冷"
-      },
-      "createdAt": "2026-08-13T18:28:32.336Z"
-    },
-    {
-      "id": "fc2542096a3a",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "Mistral OCR 4.1",
-      "url": "https://news.ycombinator.com/item?id=49288889",
-      "info": "52 points",
-      "hover": "",
-      "reflection": "哎，看完这条关于Mistral OCR 4.1的资讯，我突然想起自己最近纠结的几件事。第一件，就是每天早上起床后，总是纠结穿哪件衣服，感觉每件衣服都有它的理由，但又不知道到底该穿哪件。第二件，是每次下班回家，总是纠结是直接回家还是先去健身，一边想着身体健康，一边又想着能多休息会儿。第三件，是最近在学习新技能，但总是纠结是应该集中精力攻克难点，还是分散精力多学一些。\n\n如果只能选一个，我选第二件，原因很简单——我懂健康的重要性，也知道休息的必要性，但就是那个“纠结”让我在两者之间摇摆不定。就像那个OCR模型，它可能在技术上已经足够优秀，但就是那个“价格”让我犹豫不决。哎，纠结啊，有时候我都成年了，还是摆脱不了这种矛盾感。",
-      "reflectionTemplate": {
-        "id": "curated-list",
-        "name": "清单型",
-        "mood": "实用、带一点强迫症的整理感"
-      },
-      "createdAt": "2026-08-13T18:28:09.284Z"
     }
   ],
-  "updatedAt": "2026-08-15T10:27:01.646Z"
+  "updatedAt": "2026-08-15T10:52:04.444Z"
 }
