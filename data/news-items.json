@@ -1,6 +1,54 @@
 {
   "items": [
     {
+      "id": "365b51e850e6",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "In the Shadow of the (Berlin) Wall",
+      "url": "https://news.ycombinator.com/item?id=49282652",
+      "info": "7 points",
+      "hover": "",
+      "reflection": "刚看完这条关于柏林墙的资讯，心里突然冒出几件事，跟这事儿还挺像的。\n\n第一件事，我最近老在纠结要不要换份工作。每天下班挤地铁，看着窗外，心里就想着，这日子什么时候是个头啊，总得有个盼头不是？\n\n第二件事，我成年了还是个强迫症晚期。比如，我家里东西得整整齐齐，书架上书都得按颜色排好，不然就难受。\n\n第三件事，我加班到深夜，跟同事聊天，说着说着就提到梦想。我们都懂，梦想这东西，得有，但是现实又那么骨感。\n\n如果只能选一个，我选换工作。原因很简单——我不想再在柏林墙的阴影下生活了，我要冲破它，去寻找自己的柏林墙。",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-08-16T21:45:47.831Z"
+    },
+    {
+      "id": "dd6d5c87e93e",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Anthropic IPO valuation hinges on $190-200B 2028 revenue forecast",
+      "url": "https://news.ycombinator.com/item?id=49323620",
+      "info": "9 points",
+      "hover": "",
+      "reflection": "半年前，我还沉迷于那些“未来科技”的新闻，总是对着什么“AI革命”啊、“无人驾驶”啊之类的兴奋得睡不着。现在，翻开这条资讯，我才意识到，我那时候的兴奋点其实挺傻的。现在的我，加班到深夜，坐在地铁上，看着窗外，脑子里想的都是怎么解决手头的工作，哪有心思去想那些天马行空的东西。\n\n说到这，想起前几天和同事聊天，他问我：“你说，我们这样每天忙忙碌碌的，到底是为了啥？”我愣了一下，回答不上来。我突然意识到，原来我们都在追逐的东西，可能连自己都不清楚它到底意味着什么。\n\n现在想想，可能就是那份时间的钝感吧。我们都成年了，还是有时候会莫名地被一些数字、一些所谓的“未来”给打动，但转过头来，又能清醒地认识到，这一切不过都是过眼云烟。我懂这个道理，但还是难受，因为我知道这样不对，但我就是停不下来。",
+      "reflectionTemplate": {
+        "id": "before-after",
+        "name": "前后对比型",
+        "mood": "释然中夹一点自嘲，时间的钝感"
+      },
+      "createdAt": "2026-08-16T21:45:34.993Z"
+    },
+    {
+      "id": "7ec51ac786a3",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Nvidia dramatically reduces amount of OpenAI infra financing it may guarantee",
+      "url": "https://news.ycombinator.com/item?id=49323686",
+      "info": "9 points",
+      "hover": "",
+      "reflection": "哎哟，看到这条关于Nvidia减少对OpenAI基础设施融资的消息，我那叫一个“懵圈”。你说，大家不是都说Nvidia是OpenAI的坚强后盾嘛，怎么突然画风一转，要削减融资了？\n\n这让我想起前天晚上，我坐地铁回家，那可是个高峰期啊，车厢里人挤人。突然，一个哥们儿站起来大声说：“你们知道吗，Nvidia就是技术界的顶梁柱！”我当时就愣了一下，心里默默想：“这哥们儿是不是看新闻太激动了？”后来想想，可能大家都这么认为，Nvidia确实挺厉害的。\n\n可是，这回消息一出，我突然有点不服气了。Nvidia再强，也不能把OpenAI的命脉完全攥在自己手里吧？这像什么话？想想看，我每天加班到九点，累得要命，还得忍受老板的挑剔。这不也是“默认的”吗？但有时候，我也忍不住想：“我成年了，就不能换个工作环境吗？”\n\n所以，我只能说，这世界啊，谁也别想一成不变。Nvidia可能也在思考，自己到底能走多远，是不是该放手一搏了。就像我，也许有一天，也会跳出这个“默认的”圈子，去寻找自己的路。",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-08-16T21:45:22.390Z"
+    },
+    {
       "id": "9f309cd602bb",
       "sourceId": "hackernews",
       "sourceLabel": "Hacker News",
@@ -7951,55 +7999,7 @@
         "mood": "决绝、不退让，略冷"
       },
       "createdAt": "2026-08-15T08:34:52.300Z"
-    },
-    {
-      "id": "4eb4125cc440",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Clamshell",
-      "url": "https://www.producthunt.com/products/clamshell?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Close your MacBook. Keep the work running.",
-      "reflection": "哎，刚才看到这条资讯，心里有点儿意思。说起来，这Clamshell产品，A是关上MacBook，B是保持工作运行。哎，这俩事放一块儿，感觉有点儿矛盾。\n\nA和B，一个是关机，一个是继续工作。A像是在休息，B像是在赶工。A是停下来，B是继续跑。A是休息，B是奋斗。哎，这俩事，一个是放松，一个是紧张。\n\n那啥情况下选哪个呢？比如，我加班到晚上十点，领导突然说有个紧急会议，我可能就得选B，继续工作。但要是周末，我就想选A，好好休息一下。\n\n说起来，前两天坐地铁，看到窗外有个画面，一个年轻人加班到深夜，旁边是他的电脑屏幕，屏幕上显示着“工作到天亮”。我就想，哎，这年轻人，他知道这样不对，但还是得继续干。我都成年了，还是难受。我懂这道理，但还是难受。哎，生活就是这样，矛盾感无处不在。",
-      "reflectionTemplate": {
-        "id": "ab-compare",
-        "name": "对比分析型",
-        "mood": "中立、拉锯、平和"
-      },
-      "createdAt": "2026-08-15T08:34:40.359Z"
-    },
-    {
-      "id": "a7cf68a5328c",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Post Formatter",
-      "url": "https://www.producthunt.com/products/post-formatter-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Formatting for LinkedIn, X and Threads that survives paste",
-      "reflection": "半年前，我还傻乎乎地用那个自以为高大上的排版工具，洋洋得意地在LinkedIn上发状态。一年前的我，看着那些精心排版的文字，心里美滋滋的。但现在呢，读完这条资讯，我突然意识到，我原来那么在乎别人的看法。\n\n那天晚上，我加班到十一点多，在地铁上看着窗外，心里想着，要是能用那个Post Formatter就好了，这样我发的状态就能保持格式了。结果一看，原来这玩意儿就是让那些格式化的东西在复制粘贴后还能保持原样。我笑了，觉得自己真是有够无聊的。\n\n我都成年了，还是这样在意别人的看法。我知道这样不对，但还是忍不住想要去迎合。我懂这道理，但还是难受。有时候，我就想，为什么我总是这样矛盾呢？\n\n哎，人啊，真是矛盾。",
-      "reflectionTemplate": {
-        "id": "before-after",
-        "name": "前后对比型",
-        "mood": "释然中夹一点自嘲，时间的钝感"
-      },
-      "createdAt": "2026-08-15T08:34:27.233Z"
-    },
-    {
-      "id": "baab003e0e70",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "SELF.md",
-      "url": "https://www.producthunt.com/products/self-md?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Turn psychometric data into context for AI",
-      "reflection": "哎，刚刚看到Product Hunt上有个叫SELF.md的东西，说是能把心理测量数据变成AI的上下文，我有点懵。你记得那天晚上，我们俩在地铁2号线，我看着窗外，突然想起小时候玩的那种心理测试，那时候总觉得这些测试能窥见未来，现在想想，真是幼稚。然后我手机上那个自我检测的APP，每天推送那些问题，我有时候会认真回答，有时候又觉得是在浪费时间。我懂，成年人的世界哪有那么多未解之谜，但还是难受。就像那天加班到九点，同事问我怎么还不走，我笑着说“再看看”，其实心里想的是，如果这时候有个心理测试，告诉我该不该继续加班，就好了。矛盾啊，我都这把年纪了，还是逃不出这些“心理测试”的魔爪。😂",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-08-15T08:34:17.984Z"
     }
   ],
-  "updatedAt": "2026-08-16T21:21:01.548Z"
+  "updatedAt": "2026-08-16T21:45:50.642Z"
 }
