@@ -1,9 +1,5 @@
 {
   "seen": [
-    "https://www.producthunt.com/products/qencode?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/mem-2-0?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.zhihu.com/question/2067634093093818544",
-    "https://www.zhihu.com/question/2071182463498445493",
     "https://news.ycombinator.com/item?id=49284774",
     "https://news.ycombinator.com/item?id=49284697",
     "https://news.ycombinator.com/item?id=49258428",
@@ -999,7 +995,11 @@
     "https://www.v2ex.com/t/1234827",
     "https://www.v2ex.com/t/1234825",
     "https://www.v2ex.com/t/1234823",
-    "https://www.zhihu.com/question/2070555651827131614"
+    "https://www.zhihu.com/question/2070555651827131614",
+    "https://news.ycombinator.com/item?id=49321717",
+    "https://news.ycombinator.com/item?id=49313920",
+    "https://www.v2ex.com/t/1234829",
+    "https://www.zhihu.com/question/2072381310463746157"
   ],
-  "updatedAt": "2026-08-16T17:47:09.643Z"
+  "updatedAt": "2026-08-16T18:30:42.922Z"
 }
