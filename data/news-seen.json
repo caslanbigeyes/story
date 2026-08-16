@@ -1,11 +1,5 @@
 {
   "seen": [
-    "https://www.v2ex.com/t/1234201",
-    "https://www.v2ex.com/t/1234199",
-    "https://www.v2ex.com/t/1234197",
-    "https://www.v2ex.com/t/1234196",
-    "https://www.v2ex.com/t/1234195",
-    "https://www.v2ex.com/t/1234194",
     "https://www.producthunt.com/products/coarena-by-coasty?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.producthunt.com/products/webbrain?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.producthunt.com/products/fluiddocs-html-deck-builder?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
@@ -999,7 +993,13 @@
     "https://www.v2ex.com/t/1234831",
     "https://news.ycombinator.com/item?id=49322330",
     "https://news.ycombinator.com/item?id=49322107",
-    "https://www.zhihu.com/question/1940427571205478236"
+    "https://www.zhihu.com/question/1940427571205478236",
+    "https://news.ycombinator.com/item?id=49322573",
+    "https://news.ycombinator.com/item?id=49322695",
+    "https://news.ycombinator.com/item?id=49259980",
+    "https://www.v2ex.com/t/1234833",
+    "https://juejin.cn/post/7673978658779955251",
+    "https://www.zhihu.com/question/2071593116092708663"
   ],
-  "updatedAt": "2026-08-16T19:27:31.114Z"
+  "updatedAt": "2026-08-16T19:47:44.477Z"
 }
