@@ -1,6 +1,70 @@
 {
   "items": [
     {
+      "id": "815e1b549b0b",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "为什么欧洲王室接受一夫一妻制，私生子和妾没有继承权？",
+      "url": "https://www.zhihu.com/question/1907158055105307813",
+      "info": "75 万热度",
+      "hover": "据说一夫一妻制来自基督教会，可是这种私生子没有继承权，妾生子没有继承权，那很容易家族绝嗣吧，这种情况对于王室不好吧，为什么王室会同意这种做法？",
+      "reflection": "哎，你看这个欧洲王室的一夫一妻制，我就想起了自己当年那个“不靠谱”的恋爱观。当年我可是坚决支持一夫一妻的，可现实呢，我连个对象都找不到。那天加班到深夜，地铁上看着人群，心里就泛起了嘀咕，这种坚持到底对不对呢？\n\n首先，我得给自己当年的看法来个调整。一夫一妻制固然好，可也不能一刀切。就像欧洲王室，他们接受一夫一妻制，可对私生子和妾生子却不管不顾，这让我想起了自己曾经对爱情的执着。我那时候总觉得，爱情就应该专一，不能有半点瑕疵。可现实呢，我发现，爱情这东西，有时候真的挺复杂的。\n\n那得怎么做呢？我得先学会接受不完美的爱情。比如，我以前总觉得自己的感情生活得井井有条，不能有半点杂音。但现在想来，这种想法也太天真了。得学会宽容，宽容自己的不完美，也宽容别人的不同。\n\n然后，我得学会平衡。爱情和事业，家庭和朋友，都得找到那个平衡点。就像那天地铁上的画面，看着那些忙碌的人群，我得承认，我以前在平衡感情和事业这方面，是真的踩过坑。\n\n我以前在哪一步踩过坑呢？可能在那个执着于专一的时刻吧。我都成年了，但还是那么一根筋，不肯妥协。我懂这道理，但还是难受。哎，生活嘛，就是不断学习的过程，不是吗？",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-08-16T20:49:10.585Z"
+    },
+    {
+      "id": "aba2704992d3",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "ICE Shot a Journalist and Threw Him in Detention. He's Approaching 300 Days",
+      "url": "https://news.ycombinator.com/item?id=49323157",
+      "info": "7 points",
+      "hover": "",
+      "reflection": "哎，你信不信，刚才刷Hacker News看到这个标题，我一瞬间就想到去年夏天晚上，地铁上那对吵架的情侣。你知道吧，就是我在一号线，快到天通苑那站的时候，俩人声音越来越大，一个女的说“你看看你，还是这个态度”，男的回应“我也不是故意”，当时我就想着，这要是俩人中间有个啥误会，闹起来可真麻烦。结果你看，现在新闻上说的那个记者，也是被人误会，还被关了接近300天，我心里就感觉，这不就是现实版的情侣吵架吗？\n\n我记得那会我也没说话，就站在车厢连接处，看着窗外的灯光，一闪一闪的，感觉这世界太大，我们每个人都是其中一粒沙。我就想，这记者估计也跟我当时一样，心里挺不是滋味的吧。你说这生活，咋就这么矛盾呢，明明都知道这样不对，但还是难受。\n\n哎，你说说，我们这些人，都成年了，还是得像小孩子一样，闹脾气，然后呢？还不是自己难受。这记者的事，让我想起那个场景，感觉自己就像是在冰库里，看着外面的世界，想出去又出不去。唉，生活啊，真是说不清道不明。",
+      "reflectionTemplate": {
+        "id": "story-hook",
+        "name": "故事钩型",
+        "mood": "怀旧、怔忡、怅然"
+      },
+      "createdAt": "2026-08-16T20:48:48.750Z"
+    },
+    {
+      "id": "f7955456ef46",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "SIMD in the 90s: Programming Intel's Pentium MMX",
+      "url": "https://news.ycombinator.com/item?id=49285096",
+      "info": "8 points",
+      "hover": "",
+      "reflection": "哎呀，我刚看到这个Hacker News上的文章标题，那啥，“SIMD in the 90s: Programming Intel's Pentium MMX”，我一想，哎哟喂，这不就是讲90年代那些电脑技术发展嘛。然后我就点进去看了，结果我...我竟然觉得有点儿不对劲。\n\n我记得那时候的电脑啊，也就是个 glorified calculator，能跑个游戏就不错了，哪儿来的什么SIMD编程啊？这让我有点儿颠覆三观的冲动了。你看，我就记得那时候的奔腾处理器，也就是个鸡肋，玩玩游戏卡的要死，谁去研究什么SIMD编程啊？\n\n我下班回家坐地铁的时候，旁边的小年轻儿还在那玩儿他那个平板，你说这代人，哪儿有我们那时候玩儿电脑的劲头。我那时候，一有空就研究怎么让电脑跑得快一些，但那时候也没听说过SIMD编程啊。哎，我都成年了，还是对这种认知颠覆有点儿小不服气。\n\n不过，说回来，这也许就是技术发展的残酷吧，你不懂的东西，可能转眼间就成了主流。就像我加班到深夜，看着窗外的夜景，心里也泛起一丝矛盾感，我知道这样不对但还是想跟上时代的脚步。不过，这事儿嘛，咱们就当个谈资聊聊吧，也别太较真儿了。",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-08-16T20:48:33.270Z"
+    },
+    {
+      "id": "ef5314d555c0",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "The Case Against Formal Verification, 50 Years Later",
+      "url": "https://news.ycombinator.com/item?id=49323459",
+      "info": "4 points",
+      "hover": "",
+      "reflection": "嘿，老友，今天看了一篇Hacker News上的文章，叫《五十年来反对形式验证的案例》。本来我对这种技术层面的东西不太感冒，但有个点，让我有点儿奇怪。\n\n你知道，我就那种平时喜欢自己动手捣鼓东西的人。今天晚上，我在地铁四号线上，从鼓楼一直做到南锣鼓巷，看手机的时候突然想到了这篇文章。我想，我这么一个普通人，平时修个灯泡啥的还得小心翼翼地按照说明书来，那专业人士搞编程，不就应该更得讲究规则嘛。\n\n我用了三个步骤来想这个事。第一，形式验证这事儿，理论上是对的，毕竟它确保了程序的正确性。第二，现实操作起来，可能太复杂、太费时费力，不适合所有项目。第三，即便这样，也不能就完全否定它的价值，关键还是看具体情况。\n\n不过，我心里又有点矛盾。我懂，搞技术就是要追求严谨，不能随便马虎。可现实是，我也得加班到晚上十点才能下班，还得赶紧回家弄点吃的，哪儿有那么多时间一个个验证呢？我就这么边想边坐车，到家都已经十二点了。\n\n哎，成年人的生活啊，真是有点儿无奈。我知道这样不对，但还是觉得有点难受。毕竟，我们都有自己的小确幸，有时候也不想让繁琐的规则来干扰我们的小日子。",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-08-16T20:48:18.961Z"
+    },
+    {
       "id": "391950b7f2e4",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7935,71 +7999,7 @@
         "mood": "冷静自信里夹着普通人的克制"
       },
       "createdAt": "2026-08-15T08:34:02.601Z"
-    },
-    {
-      "id": "1096dca2572e",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Ultimate Network Assister",
-      "url": "https://www.producthunt.com/products/ultimate-network-assister?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Stop fighting your router. Smart network management, simple.",
-      "reflection": "哎呀，刚刚看到这个 Product Hunt 的资讯，说是有个 Ultimate Network Assister，感觉名字挺有意思的。最近家里网速时快时慢，老是被这事儿烦。我自己也想过办法，但是弄来弄去，还是一头雾水。\n\n1. 上个星期六，我在家里跟老婆视频，网速突然卡顿，画面都花了，那时候特别尴尬。\n2. 周一晚上，我加班到九点，想着赶紧回家放松一下，结果刚进小区就发现路由器信号不好，手机上什么都没法刷。\n3. 昨天早上，我打车去公司，司机说最近小区附近修路，信号也受影响了，我这心里就有点不舒服。\n\n如果只能选一个，我选第二个，原因很简单——我是个强迫症晚期患者。看到网速慢，我就忍不住要找原因，但是结果往往是越弄越乱。哎，成年人的生活就是这样的矛盾吧，懂道理但还是难受。",
-      "reflectionTemplate": {
-        "id": "curated-list",
-        "name": "清单型",
-        "mood": "实用、带一点强迫症的整理感"
-      },
-      "createdAt": "2026-08-15T08:33:50.199Z"
-    },
-    {
-      "id": "19a1348c7b91",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Talvo",
-      "url": "https://www.producthunt.com/products/talvo-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Connect 2,500+ European banks to track your spending",
-      "reflection": "哎，刚刚看到Product Hunt上有个叫Talvo的产品，说是能连接2500多家欧洲银行，帮你跟踪支出。我一看这个，心里就有点儿不是滋味儿。哎，我以前啊，就是个花钱如流水的主儿，现在想想，真是有点儿后怕。\n\n得，给当年的自己提个醒吧。首先，我得学会记账，每天把花销记下来，这样才知道钱都花哪儿去了。其次，我得养成存钱的好习惯，每个月定个存钱目标，哪怕只存个百八十的也行。最后，我得学会理性消费，别看到什么便宜货就忍不住买，要想想自己是不是真的需要。\n\n说起来，我现在每天晚上都加班到九点，地铁上看着窗外，心里就挺难受的。我知道这样不对，但还是忍不住想买点啥犒劳自己。我都成年了，还是这样，真是有点儿矛盾。哎，我以前在哪一步踩过坑，现在想想，还是得从自己身上找原因。",
-      "reflectionTemplate": {
-        "id": "how-to",
-        "name": "教学实操型",
-        "mood": "沉稳、克制的说教感，干净"
-      },
-      "createdAt": "2026-08-15T08:33:37.687Z"
-    },
-    {
-      "id": "fc6df6c45caa",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Echo - AI Voice Notes & Ideas",
-      "url": "https://www.producthunt.com/products/echo-ai-voice-notes-ideas?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Voice notes that come back titled and filed",
-      "reflection": "哎，今天刷到个产品，叫Echo，说是能帮你记录语音笔记，还能自动给你标题和分类。我就想起了，啊，这玩意儿跟之前那啥智能助手有点像啊，但是功能上又不太一样。\n\n你想想，之前那智能助手，你问它个问题，它给你个回答，挺方便的。但是这个Echo，它更像是你的私人秘书，你说话它记，然后还能给你整理好。我就想，啊，这要是上班的时候用，岂不是能省好多时间？\n\n但是呢，我又觉得，哎呀，这种东西，用得太多，是不是会让人变得越来越懒啊。就像我，平时记笔记都是手动，突然用个自动的，说不定就找不到感觉了。\n\n我就在想，啊，要是早上起床，迷迷糊糊地录个语音，晚上回家一看，哦，原来我早上想的是这个。这种感觉，还是挺神奇的。但是，嗯，我又有点矛盾，因为我知道，我还是得学会自己整理思路，不能全靠机器。\n\n哎，说到底，这玩意儿吧，我觉得适合那种工作量大，但是又需要条理的人。像我这，平时就是处理点琐事，可能用不上。不过，要是有个加班到深夜，脑袋乱成一团的时候，这Echo说不定就能派上用场了。\n\n所以说呢，我觉得吧，这东西嘛，看个人需求。像我这种平时过得挺平淡的，可能就暂时不用考虑了。但是，对于那些工作压力大，时间紧迫的人来说，这Echo可能就是救命稻草了。哎，就是有点矛盾，不知道自己该不该试试。",
-      "reflectionTemplate": {
-        "id": "ab-compare",
-        "name": "对比分析型",
-        "mood": "中立、拉锯、平和"
-      },
-      "createdAt": "2026-08-15T08:33:26.850Z"
-    },
-    {
-      "id": "542c319cdc05",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "BOSS!",
-      "url": "https://www.producthunt.com/products/boss-3?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Your agentic hiring engine.",
-      "reflection": "哎哟，看标题还以为是个职场励志故事呢，点进去一看，原来是个招聘软件。嘿，我就说嘛，这年头，连找份工作都要用软件，真是够科技感的。但我就想不通了，咱们现在不都是讲究个性嘛，这软件一上来就自称“Your agentic hiring engine”，啥意思？说是帮人找工作的，可听起来怎么有点像机器在操作呢？\n\n我就记得那天晚上，我在十号线地铁上，挤得跟沙丁鱼似的，手机里刚好弹出一条招聘信息。我就纳闷了，这年头，连招聘都要靠软件推送，那咱们这些人力资源从业者岂不是要失业？我就和朋友吐槽说：“这世道，连找工作都要靠机器，那我们这些人情味儿呢？”结果人家还来一句：“这不是更高效吗？”\n\n我就想，是啊，效率是提高了，可那点人情味儿呢？我就想起了之前在一家公司加班到深夜，老板给我们开会，说的都是些“你们要努力，要上进”之类的废话。那时候，我就觉得，人与人之间的互动，有时候比工作本身更重要。\n\n可我还是有点难受，这世界发展得太快了，我们都在赶着往前跑，可是在这过程中，是不是丢掉了什么？我猜，这就是所谓的“矛盾感”吧。我知道这样不对，我还是喜欢看到老板和员工之间那种真实的人情味，而不是冷冰冰的机器操作。哎，这就是我，矛盾又有点不服气。",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-08-15T08:33:09.137Z"
     }
   ],
-  "updatedAt": "2026-08-16T19:47:45.769Z"
+  "updatedAt": "2026-08-16T20:49:13.303Z"
 }
