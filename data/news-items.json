@@ -1,6 +1,102 @@
 {
   "items": [
     {
+      "id": "b9ce1315b8ad",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "李宗盛为什么口碑变差了?",
+      "url": "https://www.zhihu.com/question/388993745",
+      "info": "59 万热度",
+      "hover": "为什么从「年少不听李宗盛，听懂已是不惑年」变成了「年少不听李宗盛，听懂已是老渣男」关于李宗盛的全变成了较差的评论",
+      "reflection": "哎，看到这条李宗盛口碑变差的新闻，我一下就想到自己最近在准备的一个项目。这项目得花我不少时间，每天晚上都要加班到九点，有时候还得通宵。本来想着能早点完成，结果进度一直卡在30%。我心里那个焦虑啊，感觉自己就像那个“听懂已是老渣男”的李宗盛，年轻时不懂事，现在懂了，却发现已经晚了。\n\n我记得那天晚上，我在地铁上，看着窗外，心里五味杂陈。旁边的小哥哥小姐姐们都在聊天，我就默默地玩手机，心里想着，我都这么大了，还这么不成熟，真是让人难受。我知道这样不对，但还是忍不住焦虑，感觉自己就像那个李宗盛，年轻时不懂事，现在懂了，却发现已经晚了。\n\n下一步打算做什么？我也不知道。可能就是继续努力吧，希望能早点把这个项目做完，然后好好放松一下。不过，我心里那个不安，估计还得持续一段时间。哎，生活就是这样，有时候你努力了，也不一定能得到你想要的。",
+      "reflectionTemplate": {
+        "id": "in-progress",
+        "name": "过程透明型",
+        "mood": "实诚的轻焦虑，自我怀疑"
+      },
+      "createdAt": "2026-08-17T22:52:41.069Z"
+    },
+    {
+      "id": "3cf32337e799",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "How do functions like alloca allocate memory from the stack?",
+      "url": "https://news.ycombinator.com/item?id=49337630",
+      "info": "3 points",
+      "hover": "",
+      "reflection": "嘿，老友，昨晚刷到Hacker News上一个关于alloca函数的文章，突然就想起我大学时候学编程那会儿的事了。记得那时候，我第一次在代码里用到了alloca，感觉挺酷的，好像掌握了什么高级技巧。\n\n那时候，我经常晚上学到十一点多，有时候还去地铁上复习。有一次，我坐在地铁一号线，看着窗外灯光闪烁，突然就想起老师说过alloca是动态分配栈内存的。我当时就傻了，心想，这不就是和malloc一样吗？后来才明白，原来还有这样的区别。\n\n还有一次，我和室友讨论这个，他说他看了一篇博客，说alloca在某些情况下会比malloc更快。我们俩就争论了起来，那时候的争论真是激烈啊。现在想想，我都成年了，还是这样容易激动。\n\n记得有一次加班到凌晨两点，看着电脑屏幕上的代码，我突然意识到，原来编程不仅仅是写代码，还有那么多的学问在里头。现在回头看才发现，那时候的自己，真是挺单纯的。",
+      "reflectionTemplate": {
+        "id": "personal-trace",
+        "name": "个人经历拆解型",
+        "mood": "复盘的平静里藏一丝后怕"
+      },
+      "createdAt": "2026-08-17T22:52:24.959Z"
+    },
+    {
+      "id": "d5537422d4f7",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Nation's Largest Reservoirs Are Drying Up, Threatening Life in the Southwest",
+      "url": "https://news.ycombinator.com/item?id=49338404",
+      "info": "11 points",
+      "hover": "",
+      "reflection": "哎，你说说，这西南部的水库都快干涸了，还说什么“生活没问题”？我这刚下班，在地铁10号线上挤了半天才到家，一看手机，嘿，这水库的事情怎么还跟咱这生活扯上了？哎，我就纳闷了，这沙漠里种个啥需要那么多水的农作物，还有那凤凰城，郊区草坪绿油油的，这不瞎胡闹嘛！\n\n我就记得上次在单位加班到晚上十点，那时候看着窗外的夜景，那灯光，那高楼，再想想这水资源的问题，真是让人心里堵得慌。我懂，这全球气候变暖，这水资源紧张是事实，但你说这战争就为水打？真是扯淡，我都成年了，还是觉得这事儿太荒谬了。\n\n我倒觉得，咱们是不是得反思一下，这发展是不是真的可持续？咱们是不是得有点长远的考虑？哎，这心里有点难受，但又说不出来。反正，这事儿得好好想想。",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-08-17T22:52:10.747Z"
+    },
+    {
+      "id": "fdcd692668d2",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Quake Shareware, a CD-ROM just a little too full",
+      "url": "https://news.ycombinator.com/item?id=49338328",
+      "info": "4 points",
+      "hover": "",
+      "reflection": "哎呀，这事儿一听就气不打一处来。你说现在这些所谓的“安全性通过隐蔽性”的算法，就那么点破技术，还敢出来晃悠？我就在想，我平时用的这些加密技术，不也跟这差不多嘛，不也是通过一些复杂的数学运算来加密数据，不也是基于什么“隐藏”的密码或者密钥？这要是都能算隐蔽性，那我还用得着这么小心谨慎吗？\n\n我那天坐地铁，旁边一个大妈在用手机支付，我一看她那操作，心说这要是有个黑客在后面跟着，那岂不是分分钟的事儿？我就跟她说：“大妈，你这样不太安全吧。”她白了我一眼，说：“你懂什么，这玩意儿加密得紧着呢。”我那时候真想给她一个白眼，心说：“大妈，您这是自欺欺人呢。”\n\n我懂这个道理，但还是难受。我都成年了，还是觉得现在的网络安全太脆弱了。你说这事儿，不就是一个例子嘛，明明是个大问题，却被人轻描淡写地一带而过。哎，这让我怎么放心？",
+      "reflectionTemplate": {
+        "id": "manifesto",
+        "name": "观点宣言型",
+        "mood": "决绝、不退让，略冷"
+      },
+      "createdAt": "2026-08-17T22:51:36.808Z"
+    },
+    {
+      "id": "88b1925d595f",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Fairphone 6 and PostmarketOS working main camera",
+      "url": "https://news.ycombinator.com/item?id=49338285",
+      "info": "19 points",
+      "hover": "",
+      "reflection": "哎哟，刚看到这条Hacker News上的新闻，说Fairphone 6和PostmarketOS的摄像头能工作了。这摄像头能工作，对我来说，就是那个啥，你知道的，就是那种突然想到小时候那种感觉。\n\n记得那时候，家里那台老式相机，咔嚓一下，就能拍出一张照片，那感觉，现在想想，还挺怀念的。现在手机摄像头那么高级，但那种简单直接的感觉，好像就找不到了。\n\n我就在想啊，现在的手机，功能那么强大，但有时候，还是觉得少了点什么。就像今天晚上，加班到九点，地铁上挤得跟沙丁鱼似的，看窗外，那个广告牌，灯还亮着，可我总觉得，那种感觉，好像少了点什么。\n\n我懂，现在的科技发展快，谁也挡不住。可我还是觉得，有时候，我们得慢下来，感受一下那个简单纯粹的东西。就像那个Fairphone 6，虽然摄像头功能简单，但那份坚持，那份执着，还是挺让人感慨的。\n\n哎，说回来，我还在想，是不是我们这一代人，都太追求效率，太追求速度了，反而忽略了那些简单纯粹的东西。你说呢，老朋友？",
+      "reflectionTemplate": {
+        "id": "story-hook",
+        "name": "故事钩型",
+        "mood": "怀旧、怔忡、怅然"
+      },
+      "createdAt": "2026-08-17T22:51:21.189Z"
+    },
+    {
+      "id": "ae1e260c7b31",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Bluesky draws its logo on screenshots",
+      "url": "https://news.ycombinator.com/item?id=49338459",
+      "info": "21 points",
+      "hover": "",
+      "reflection": "哎，这条Hacker News上的资讯让我有点儿不爽。你说这Bluesky搞什么飞机，截图还非要加上自己的logo，这不是明摆着跟用户过不去嘛。我这不就是想记录一下信息，方便以后查嘛，它这做法，真是让人头疼。\n\n说起来，我那天晚上加班到九点，坐地铁回的家。路上，我看着窗外，那灯火阑珊的城市，突然就想起了这事儿。我就想，这软件为了自己的品牌，就非要干扰用户的使用体验，是不是有点儿太自私了？\n\n我分析了一下，首先，这Bluesky的做法确实挺不合理的，用户截图是为了记录，不是为了分享。其次，它这种行为，实际上是在剥夺用户的自主权，让人感觉很不舒服。最后，这种做法也反映出现在很多软件工程的问题，就是过于注重品牌和营销，而忽略了用户体验。\n\n不过，说到底，这也只是一个小问题，可能过段时间就会忘了。但是，我还是觉得，作为用户，我们有权利表达自己的不满。毕竟，我们才是用这些软件的人，不是吗？",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-08-17T22:51:01.704Z"
+    },
+    {
       "id": "19f2ad29876d",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7903,103 +7999,7 @@
         "mood": "怀旧、怔忡、怅然"
       },
       "createdAt": "2026-08-16T10:53:34.841Z"
-    },
-    {
-      "id": "214df465d07e",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Menory - Your menu memory",
-      "url": "https://www.producthunt.com/products/menory-your-menu-memory?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Remember what you ordered",
-      "reflection": "嘿，老兄，我刚看到个产品，叫Menory，说是能帮你记住菜单。你说这事儿，我第一反应是，哎呦，现在科技发展真是神奇啊，连吃饭都能用上技术了。不过，转念一想，又有点儿纠结。\n\n先说A吧，这Menory能帮你记住菜单，听起来挺方便的。就像我上次去那家新开的火锅店，点了好多菜，现在回想起来，脑子里就剩下麻辣烫的味道了。有了这个，以后就不会再发生这种尴尬事，哈哈。\n\n再说说B，就是这种技术依赖让人有点儿不安。我记得有一次，我在地铁上，看到一个姑娘低头看手机，完全不知道周围的环境。现在想想，如果她用的是Menory，可能连自己的座位号都记不住了吧。\n\n不过，说到这，我又想到一个场景。那天加班到晚上十点，肚子饿得咕咕叫，可又不想出去吃，就在外卖平台上随便点了个套餐。结果，吃了一口，味道就不对劲，但是又不知道是哪道菜有问题。这时候，要是能有个Menory之类的工具，至少能告诉我哪道菜没吃对，不至于浪费。\n\n所以说呢，这Menory啊，我觉得在有需要的时候用一用是不错的。但是，也得注意，别太依赖它，毕竟有些东西，还是得靠自己的记忆和判断。不然，像我刚才说的那个姑娘，可能连自己在哪里都搞不清楚了。嗯，就是这样。",
-      "reflectionTemplate": {
-        "id": "ab-compare",
-        "name": "对比分析型",
-        "mood": "中立、拉锯、平和"
-      },
-      "createdAt": "2026-08-16T10:53:21.353Z"
-    },
-    {
-      "id": "35b34d7ae385",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "IncomeStream",
-      "url": "https://www.producthunt.com/products/streamsheet?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "One income dashboard for creators juggling 4-6 platforms",
-      "reflection": "哎哟，这 IncomeStream，说真的，一看标题我就来气。大家都默认一个创作者就得在各种平台上奔波，这哪是工作啊，简直是受罪啊！可你说这玩意儿能解决什么问题？不还是得创作者自己一个个平台去登录，去管理？\n\n我昨天晚上还和朋友在地铁上聊这个事儿呢。你说现在谁不是手机不离手，手机上注册了那么多平台，每次都得翻半天，累不累啊。朋友还开玩笑说，咱们这哪是创作，简直是数字时代的奴隶。这不就是 IncomeStream 要解决的问题吗？\n\n可我想了想，这玩意儿能解决什么实质问题？无非是让创作者在手机上多一个app而已。咱们这时代，谁的手机上没几个app啊？多一个少一个，有啥区别？我加班到深夜，盯着电脑屏幕，手指头都快点出老茧了，那才是真正的折磨。\n\n所以说，这 IncomeStream，我觉得也就是个噱头。真正的解决方案，还得是让这些平台自己好好优化，让创作者的工作更轻松。咱们这社会，有时候就是太浮躁，一看到什么新鲜玩意儿就兴奋得不行，可问题是，解决实际问题才是关键啊。我都不懂这道理，但还是难受。",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-08-16T10:53:03.812Z"
-    },
-    {
-      "id": "585cfc36d7c3",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Whimscope App",
-      "url": "https://www.producthunt.com/products/whimscope?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Micro-adventure ideas for your everyday life",
-      "reflection": "嘿，老友，我刚看完个App，叫Whimscope，感觉有点意思。我就在想，哎，咱俩以前也经常突发奇想，比如那次加班到九点，我们俩在地铁十号线看窗外，突然就想到要一起去西藏，那会儿的天气，嘿，还真是晴空万里呢。然后呢，我们就开始规划，你说得对，那时候我们俩都是热血青年，啥都不怕。\n\n后来呢，我们俩都工作了，各自有了家庭，再也没提过那事儿。我就纳闷了，为啥那时候那么大胆，现在反而畏首畏尾了呢？我都成年了，但还是觉得那会儿的自己挺傻的，但就是难受。现在回头看才发现，其实我们那时候的冒险精神，才是最宝贵的。哎，你说是不是啊？",
-      "reflectionTemplate": {
-        "id": "personal-trace",
-        "name": "个人经历拆解型",
-        "mood": "复盘的平静里藏一丝后怕"
-      },
-      "createdAt": "2026-08-16T10:52:50.113Z"
-    },
-    {
-      "id": "6547680bcf01",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Quantas Calorias",
-      "url": "https://www.producthunt.com/products/quantas-calorias?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Free health calculators for clearer self-care decisions",
-      "reflection": "哎，刚刚看了个资讯，感觉还挺有意思的，就是那个“Quantas Calorias”的，说是有免费的健康计算器，能帮人更清晰地做自我护理的决定。哎，想到以前自己，那时候也总想着要好好照顾自己，可就是没有这样的工具啊。我就想，如果当年有这样一个东西，我会给当年的自己什么建议呢？\n\n第一步，我得告诉当年的自己，要定期体检。那时候年轻，觉得自己身体好，不用那么麻烦。第二步，得学会控制饮食，别老吃那些高热量、没营养的东西。第三步，每天抽点时间锻炼身体，别整天就对着电脑。\n\n说到这里，我突然想起前两天加班到晚上十点，从地铁站出来，看到外面的人还不少。有个小贩在那儿卖夜宵，我走了过去，买了一杯热饮。心里想着，明天再好好吃饭，现在先慰劳一下自己。哎，我都成年了还是这个德性，就知道放纵自己。第四步，得多休息，那时候总觉得睡眠不重要，其实真的应该早点意识到。\n\n我以前在哪一步踩过坑呢？大概就是在饮食上吧，总是控制不住自己的嘴。哎，说起来都是泪。",
-      "reflectionTemplate": {
-        "id": "how-to",
-        "name": "教学实操型",
-        "mood": "沉稳、克制的说教感，干净"
-      },
-      "createdAt": "2026-08-16T10:52:34.627Z"
-    },
-    {
-      "id": "339ba52e5a1c",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "RotorRun",
-      "url": "https://www.producthunt.com/products/rotorrun?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "The all-in-one operations app for drone pilots",
-      "reflection": "哎，这RotorRun一看名字就感觉挺高级的，但说实话，读完之后我有点蒙。这无人机操作APP，我寻思着咱们这些普通人，平时哪有机会飞无人机啊？不过，转念一想，我那天在地铁上，看到一个小哥拿着无人机在窗边拍风景，那架势，我还真有点羡慕。\n\n我就纳闷了，这APP说是一站式服务，那得有多全面啊？但咱这生活里，有几个是无人机飞行员呢？我加班到深夜，累得要死，还得想怎么应对明天的客户提案，哪有功夫去学这无人机操作啊？\n\n哎，矛盾啊，我知道自己不该羡慕，成年人的世界哪有什么轻易就能学会的技能。但看到那小哥在窗边拍风景的样子，我还是忍不住想，要是我也能那样，该多好。我懂，我懂，这只是一厢情愿，但我还是难受。\n\n你说，这RotorRun再怎么全面，我也用不上啊。哎，生活就是这样的，有时候，你懂很多道理，但还是难受。",
-      "reflectionTemplate": {
-        "id": "manifesto",
-        "name": "观点宣言型",
-        "mood": "决绝、不退让，略冷"
-      },
-      "createdAt": "2026-08-16T10:52:19.890Z"
-    },
-    {
-      "id": "1bb1837eed63",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "kycidea.com",
-      "url": "https://www.producthunt.com/products/kycidea-com?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Buy Verified RedotPay Accounts ",
-      "reflection": "嘿，老朋友，我今天看到一条资讯，有点意思。说的是一个网站，卖验证过的RedotPay账号。我这人，对这类事总是特别敏感，你懂吧？就像前两天晚上，我在地铁二号线，加班到九点多，刚坐下就看到这个。\n\n第一步，我先想到，这种账号，靠谱吗？我搜了搜，发现这家公司叫kycidea.com，得，名字挺唬人的。第二步，我又想，这账号，得多少钱一个？结果一看，价格还不便宜，得，我这种月月光的人，还是算了。第三步，我就想，这玩意儿，有人买吗？想想也正常，现在网络支付这么普及，有人想省事，肯定有人买。\n\n可就在这时候，我突然想到，这玩意儿，要是有人用这些账号做坏事怎么办？我就这样坐着，看着窗外，心里挺不是滋味。我懂，这世界就是这样，有人为了方便，有人为了利益，可我还是难受。我都成年了，但还是忍不住想，这世界能不能简单点？我有时候知道这样不对，但还是忍不住想多管闲事。",
-      "reflectionTemplate": {
-        "id": "framework",
-        "name": "框架输出型",
-        "mood": "冷静自信里夹着普通人的克制"
-      },
-      "createdAt": "2026-08-16T10:52:04.649Z"
     }
   ],
-  "updatedAt": "2026-08-17T22:25:39.016Z"
+  "updatedAt": "2026-08-17T22:52:43.945Z"
 }
