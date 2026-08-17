@@ -1,6 +1,54 @@
 {
   "items": [
     {
+      "id": "370cab758d58",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "能说一种你「情有独钟」的面食吗？",
+      "url": "https://www.zhihu.com/question/1905222372186882832",
+      "info": "68 万热度",
+      "hover": "我喜欢简单的油泼面，你呢？",
+      "reflection": "哎，刚看完那个知乎的问题，突然想起自己最近在学做油泼面。已经坚持了三天了，每天晚上都在厨房里捣鼓，看着面条从生到熟，心里还挺得意的。但是，那个问题里的“情有独钟”，我心里突然就有点不安了。我对自己说，喜欢就好，学做饭不就是为了让自己开心吗？可是，我懂这个道理，但还是难受。\n\n记得那天晚上，我在六号线地铁上，旁边一个年轻人拿着一本书，低着头看。我突然就想，如果我也有自己的“情有独钟”，那会是啥呢？是那种能让我每天都想要去做的、一直坚持的事吗？我好像一直在路上，却找不到那个让自己停下来的理由。\n\n我懂，人不能总沉浸在自己喜欢的事情里，得学会平衡。可我还是难受，那种矛盾感就像油泼面里的辣椒，刺激又难以抗拒。那，下一步打算做什么呢？可能就是继续坚持学做油泼面吧，哪怕它不是我的“情有独钟”，至少它能让我感受到一些生活的温度。",
+      "reflectionTemplate": {
+        "id": "in-progress",
+        "name": "过程透明型",
+        "mood": "实诚的轻焦虑，自我怀疑"
+      },
+      "createdAt": "2026-08-17T20:56:48.775Z"
+    },
+    {
+      "id": "ac6d614d8eea",
+      "sourceId": "juejin",
+      "sourceLabel": "掘金",
+      "title": "AI Agent 都在疯狂加功能，它说：我全砍了",
+      "url": "https://juejin.cn/post/7674581715802308658",
+      "info": "",
+      "hover": "",
+      "reflection": "嘿，老兄，我刚看完那个AI的新闻，你说怎么那么巧，我正坐在地铁二号线，看着窗外夜色，突然想起小时候玩的那款游戏，它也能“砍功能”，结果就那么简单粗暴地变强大了。我就纳闷了，这AI是不是也和我一样，成年了还喜欢搞点小叛逆？我懂这道理但还是难受，你说是不是啊？\n\n哎，想到自己，加班到深夜，对着电脑屏幕，有时候也想砍掉一些不必要的功能，简化一下生活，可现实不允许啊。就像那个AI，它说“我全砍了”，可我们呢？能吗？我看着窗外，心里五味杂陈，你说这生活是不是也像那个AI一样，有时候简单点反而更自在呢？",
+      "reflectionTemplate": {
+        "id": "story-hook",
+        "name": "故事钩型",
+        "mood": "怀旧、怔忡、怅然"
+      },
+      "createdAt": "2026-08-17T20:56:31.680Z"
+    },
+    {
+      "id": "ff23f26a2cb7",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "An update on leaving Gmail for Fastmail",
+      "url": "https://news.ycombinator.com/item?id=49334409",
+      "info": "12 points",
+      "hover": "",
+      "reflection": "哎，你别说，这读着读着，我就想起自己最近几件烦心事了。第一，就是手机里的照片越来越多，我都不知道该存哪儿，怕丢了又担心备份不够安全。第二，就是微信里的聊天记录，一堆没用的信息全堆在那儿，想清理又怕漏掉重要消息。第三，就是我的书架，乱七八糟的，每次找书都费半天劲。\n\n就说我那手机照片吧，我以前是个特别爱拍照的人，现在一看相册，哎哟喂，那可真是五花八门。前两天我还想在地铁上看个照片，结果翻来翻去找不到，急得我差点把手机扔了。再说我微信聊天记录，那简直是信息垃圾场，我都知道应该删删减减，可就是下不去手。最后那书架，唉，每次找书都是一场大搜索，我都想换个地方存放了。\n\n如果只能选一个，我选手机照片。原因很简单——照片对我来说，那都是回忆，虽然乱，但每张照片后面都有故事。而且，我现在已经在考虑买个大点的云盘，把照片都备份起来，这样就不用担心丢失了。哎，生活就是这样，总是矛盾着。",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-08-17T20:56:18.511Z"
+    },
+    {
       "id": "11b8df184894",
       "sourceId": "hackernews",
       "sourceLabel": "Hacker News",
@@ -7951,55 +7999,7 @@
         "mood": "复盘的平静里藏一丝后怕"
       },
       "createdAt": "2026-08-16T10:26:46.564Z"
-    },
-    {
-      "id": "ee61ab3dbb85",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Prism Migration",
-      "url": "https://www.producthunt.com/products/prism-migration?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Enterprise Email Migration & PST Converter Software Suite.",
-      "reflection": "半年前，我还在那家初创公司熬夜到天亮，满脑子想着怎么把客户的项目搞定。一年前，我还信誓旦旦地说自己能干出一番事业，结果呢，看看现在，还是在挤地铁，还是在那个破电脑前加班。读完这条关于Prism Migration的资讯，我突然意识到，我的邮箱还是那堆乱糟糟的PST文件，工作环境一点都没变。\n\n记得有一次，我和一个同事一起坐地铁回家，他说他已经在用新的邮箱管理系统了，邮件整理得井井有条。我听着，心里挺不是滋味的，我都成年了还是用这种老掉牙的方式管理邮件。我懂这道理，但还是难受。\n\n突然，我意识到，其实变的是我的心境。半年前，我拼尽全力，只为了那个梦想。现在，我释然了，我知道自己不会成为下一个马云，但我可以活得真实、轻松。所以，就算我还是在用PST文件，也没关系。因为我知道，真正重要的不是工具，而是我在乎的人和事。",
-      "reflectionTemplate": {
-        "id": "before-after",
-        "name": "前后对比型",
-        "mood": "释然中夹一点自嘲，时间的钝感"
-      },
-      "createdAt": "2026-08-16T10:26:32.945Z"
-    },
-    {
-      "id": "c45a826e95ac",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Velvet: Get the Date",
-      "url": "https://www.producthunt.com/products/velvet-0e379216-c2e8-4736-a815-971d6b98b85a?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Get the Date, not another endless chat.",
-      "reflection": "哎哟，刚看到Product Hunt上有个新产品叫Velvet，说是能帮你把聊天变成约会。我寻思，这玩意儿倒是挺有意思的，但转念一想，心里就有点儿不踏实了。\n\n我最近这事儿可多了去了，比如今天早上刚跟领导汇报完项目进度，下午又得赶着去开会。这会儿加班到九点，还得赶回家照顾孩子。我有时候就在想，这日子过得跟打仗似的，哪还有心情去约会啊。\n\n记得上次跟朋友小聚，她抱怨说现在单身太不容易了，工作压力大，生活节奏快，哪有时间去认识新朋友。我当时就回了句，哎呀，你说的对，但我觉得自己还年轻，还有机会嘛。说完我就觉得自己有点儿虚伪，我都这把年纪了，还在这儿自我安慰呢。\n\n想想也是，生活就像这地铁，每天挤得跟沙丁鱼罐头似的，你总不能指望在拥挤的车厢里还能遇到那个对的人吧。我矛盾啊，我知道这样不对，但还是觉得心里有点儿难受。\n\n那啥，下一步打算啊，我得先把自己的生活理顺了，毕竟，连轴转的生活节奏已经让我有点儿招架不住了。先从调整作息开始吧，争取早日恢复元气，毕竟，生活还得继续不是吗？😂",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-08-16T10:26:19.687Z"
-    },
-    {
-      "id": "3e0ab0131fd7",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Sol by Ruzora",
-      "url": "https://www.producthunt.com/products/sol-by-ruzora?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "AI that shortlists pre-vetted senior LATAM engineers",
-      "reflection": "哎呀，这Sol by Ruzora一看就是那种高大上的AI工具，专给公司筛选高级工程师用的。我一看到这个，心里就有点不是滋味。你说说，现在这什么AI、大数据，把人搞得好像啥都不如机器了。我就在想，这要是用这种AI筛选，那咱们这些普通程序员不得都失业了？我在地铁站里，看着那来来往往的人群，心里就犯嘀咕，我们这些普通人，将来还能不能靠自己的手艺吃饭啊？\n\n我记得上次和同事加班到凌晨三点，那会儿我们讨论得热火朝天，谁也不想认输。但一想到现在这AI技术，我就觉得心里堵得慌。我都快三十岁了，我还是觉得，技术再发达，也代替不了人的智慧和感情。可是，我还是难受，因为这毕竟是个现实。\n\n唉，我知道这样想不对，但我就是忍不住。我懂，这世界是要发展的，不能墨守成规。但是，这股决绝的情绪，我还是压不下去。我就这么硬挺着，心里想着，不管怎样，我还是要努力提升自己，不能让这机器把我比下去。这就是我现在的心态，挺矛盾的吧？",
-      "reflectionTemplate": {
-        "id": "manifesto",
-        "name": "观点宣言型",
-        "mood": "决绝、不退让，略冷"
-      },
-      "createdAt": "2026-08-16T10:26:03.004Z"
     }
   ],
-  "updatedAt": "2026-08-17T20:29:05.146Z"
+  "updatedAt": "2026-08-17T20:56:52.153Z"
 }
