@@ -1,6 +1,86 @@
 {
   "items": [
     {
+      "id": "f5a68853d0cf",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "免费的 deepseek 能比得上 200 美元 / 月的 ChatGPT 吗？",
+      "url": "https://www.zhihu.com/question/14194805205",
+      "info": "73 万热度",
+      "hover": "",
+      "reflection": "哎，刚才看到这条资讯，真是让人想起以前的日子。记得那时候，我们都是用免费的软件，觉得挺满足的。现在一看，免费的东西真的能比得上付费的吗？这就像我昨天晚上在地铁上，一个年轻人一边拿着手机一边喊：“我懂这道理但还是难受。” 我心里一愣，是啊，我都成年了，但还是觉得有时候免费的不能跟付费的比。就像我那台用了十年的电脑，虽然还是能跑，但跟新买的比，速度慢得要命。我懂这道理，但还是难受。唉，这世界啊，真是让人矛盾。",
+      "reflectionTemplate": {
+        "id": "story-hook",
+        "name": "故事钩型",
+        "mood": "怀旧、怔忡、怅然"
+      },
+      "createdAt": "2026-08-18T23:23:41.649Z"
+    },
+    {
+      "id": "2b85b26cc27d",
+      "sourceId": "v2ex-share",
+      "sourceLabel": "V2EX",
+      "title": "[送码]省省奶茶，为了省秋天的第一杯奶茶，我 V 了个 APP 应用",
+      "url": "https://www.v2ex.com/t/1235443",
+      "info": "",
+      "hover": "",
+      "reflection": "哎，这事儿我咋听着有点儿不对劲呢。咱们平时都默认，省钱就得记账，这倒好，有人居然发明了个APP专门记录省下的奶茶。这不是自找麻烦嘛，我寻思着，省钱不就是为了买点自己喜欢的东西，干嘛要记录省下的奶茶呢？\n\n我记得上次加班到深夜，地铁上人挤人，我看着窗外，那灯火通明的城市，心里就想，这省下来的奶茶，能买多少杯咖啡，能看几场电影，能吃几顿好的呢？可现在，有人居然要记录省下的奶茶，这不是本末倒置嘛。\n\n我懂，这生活节奏快，压力大，喝杯奶茶放松一下无可厚非。但把省下来的奶茶记录下来，这算什么？我总觉得，这背后透着一股矫情劲。我都成年了，但还是觉得这事儿挺不靠谱的。\n\n哎，这世界变化太快，有的人为了省一杯奶茶，居然要搞个APP记录，我真是服了。不过，说到底，这又关我什么事呢？我只要记得，自己省下来的钱，是用来享受生活的，而不是用来记录省下的奶茶就得了。",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-08-18T23:23:25.158Z"
+    },
+    {
+      "id": "14b56a12e4e1",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Apple announces changes for apps in the European Union",
+      "url": "https://news.ycombinator.com/item?id=49348055",
+      "info": "84 points",
+      "hover": "",
+      "reflection": "哎哟，我刚看到Hacker News上的一条新闻，苹果在欧洲要调整app的政策了。这事儿让我想起去年我加班到深夜，在3号线地铁上刷到的那个广告，那时候我就觉得苹果这操作有点过了。\n\n记得那天天气特别闷热，我从地铁站出来，看着手机上那个app的广告，心里就想，这苹果真会做生意，先让人买手机，再让人买app，现在又想从开发者那里捞一笔。我当时就想，我都成年了，还是有点后怕，不知道自己什么时候也被这种商业套路给绕进去了。\n\n现在回头看，我突然发现，其实苹果的做法也没那么让人难以接受。毕竟，谁不想多赚点钱呢？但是，我还是觉得，这种做法多少有点矛盾，就像我明明知道加班对身体不好，但还是忍不住晚上熬夜一样。哎，这生活，有时候真让人难受。",
+      "reflectionTemplate": {
+        "id": "personal-trace",
+        "name": "个人经历拆解型",
+        "mood": "复盘的平静里藏一丝后怕"
+      },
+      "createdAt": "2026-08-18T23:23:07.011Z"
+    },
+    {
+      "id": "00f450f4b2bc",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Who owns the code? AI code == no author == no copyright",
+      "url": "https://news.ycombinator.com/item?id=49353603",
+      "info": "15 points",
+      "hover": "",
+      "reflection": "半年前，我还在那个破旧的出租屋里，对着电脑屏幕，一行行敲代码到深夜。那时的我，眼里只有代码，心里只有梦想。一年前的我，刚毕业，信心满满，觉得自己的代码就是自己的，谁也抢不走。\n\n现在，我看着这条Hacker News上的资讯，心里五味杂陈。AI生成的代码，没有作者，没有版权？这让我想起了前两天在地铁上，看到一个小年轻，拿着手机刷着AI绘画的教程，轻轻松松就能画出一张像样的画。我突然意识到，原来，有些东西，真的已经变了。\n\n我懂这个道理，但还是难受。我都成年了，还是会被这些变化戳到心里。就像那个AI绘画的小年轻，他可能根本没想过，自己的作品到底属于谁。而我们这些曾经的程序员，是不是也在不知不觉中，把自己的作品贡献给了这个时代呢？\n\n我突然觉得，时间的钝感真是件好事。它让我们在变化面前，不至于太过慌张。就像我现在，虽然心里有点乱，但更多的是释然。因为我知道，无论时代怎么变，代码始终是我的信仰。",
+      "reflectionTemplate": {
+        "id": "before-after",
+        "name": "前后对比型",
+        "mood": "释然中夹一点自嘲，时间的钝感"
+      },
+      "createdAt": "2026-08-18T23:22:49.865Z"
+    },
+    {
+      "id": "0015e06c2036",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "GLM-5.3 Artificial Analysis Benchmarks",
+      "url": "https://news.ycombinator.com/item?id=49353407",
+      "info": "19 points",
+      "hover": "",
+      "reflection": "哎，刚看到这条Hacker News上的资讯，关于GLM-5.3的人工智能分析基准，心里头就是一沉。你知道，我以前就是那种对新技术特别感兴趣的人，但后来发现，其实很多技术离我们普通人挺远的。\n\n我给自己提了个问题：如果我现在回到当年，我会给自己什么建议呢？嗯，首先，我会告诉自己，别光顾着追新，得多想想这些新技术对我们的生活到底有什么实际影响。比如说，这个GLM-5.3，它再厉害，但对我们这些普通人来说，日常用得着的地方并不多。\n\n然后，我会告诉自己，不要被那些看似很高级的东西蒙蔽了双眼。就像这次，看到GLM-5.3的token使用比K3和那些私有模型都要高，价格性能也不比K3强多少，我就想，其实很多技术进步，对于我们来说，更多的是一种心理上的满足，而不是实际上的需求。\n\n最后，我会告诉自己，要学会控制自己的好奇心，不要盲目跟风。就像我以前，看到什么新技术就兴奋得不行，结果呢，往往是花了大把时间精力，最后发现其实并没有什么卵用。\n\n我以前在哪一步踩过坑？嗯，就在那个好奇心膨胀的时候，盲目追求那些看似高大上的技术，结果发现自己并没有真正需要它们。",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-08-18T23:22:30.461Z"
+    },
+    {
       "id": "f6a8037e2aad",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7919,87 +7999,7 @@
         "mood": "决绝、不退让，略冷"
       },
       "createdAt": "2026-08-17T16:08:11.326Z"
-    },
-    {
-      "id": "6ce915070f5a",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Startup Program by Recall.ai",
-      "url": "https://www.producthunt.com/products/recall-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 116",
-      "hover": "Startup program for meeting recording infrastructure",
-      "reflection": "哎，刚看完这个Recall.ai的Startup Program，心里突然就冒出几件事儿。第一，我这几天一直在纠结要不要把家里的旧手机处理掉，反正现在都用手机app记录生活，手机里存的东西也都没啥秘密了。第二，公司最近在讨论新项目，我虽然觉得自己的想法挺不错的，但就是下不了决心，怕万一失败了，别人会怎么看我。第三，最近总是加班到很晚，看着窗外的城市灯火，心里有点不是滋味，感觉生活好像越来越没有自己的时间了。\n\n如果只能选一个，我选处理掉旧手机。原因很简单——我都成年了还是个强迫症，看到东西堆在一起就难受，而且手机里那些照片、短信，其实大部分时间都是用来回忆的，现在有了云存储，手机里空荡荡的反而更轻松。",
-      "reflectionTemplate": {
-        "id": "curated-list",
-        "name": "清单型",
-        "mood": "实用、带一点强迫症的整理感"
-      },
-      "createdAt": "2026-08-17T16:07:52.704Z"
-    },
-    {
-      "id": "fa837a171aed",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Treg",
-      "url": "https://www.producthunt.com/products/treg-openrouter-for-tools?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 116",
-      "hover": "OpenRouter for tools with 2,600 APIs, 0% markup",
-      "reflection": "哎，今天看了一条Product Hunt上的资讯，说有个叫Treg的OpenRouter，有2600个API，居然0% markup。我就在想，我这工作，每天得处理2600个任务，加班到晚上九点，工资还不见涨，这 markup 和不 markup 有啥区别啊？\n\n记得有一次，我在地铁上，看着窗外，心里就挺不是滋味的。我明明是个成年人了，但还是得为了这点工资拼死拼活。我知道这样不对，但还是得这么做。我都这么大了，还是得靠这点 markup 过日子。\n\n哎，这Treg的OpenRouter听起来倒是挺不错的，2600个API，0% markup，那得多省心啊。不过，我心里还是有点难受，感觉自己就像是个工具，没有自己的价值。\n\n下一步打算做什么？我也不知道。可能还是得继续加班，继续努力，希望能有一天，我的工作能像Treg那样，简单高效，不用再为 markup 而焦虑吧。",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-08-17T16:07:38.696Z"
-    },
-    {
-      "id": "46b4d91dbd8a",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "OpenTrade",
-      "url": "https://www.producthunt.com/products/opentrade?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 120",
-      "hover": "Open-source trading harness for Claude Code / Codex.",
-      "reflection": "哎，说起来，今天晚上看新闻，突然看到个新产品，叫什么OpenTrade，说是个开源的交易平台。嘿，这个点让我心里咯噔一下。\n\n想想我以前，那个年代，谁会用电脑炒股啊，都是拿着报纸比划。现在啊，这玩意儿一出，感觉好像回到了那个年代，但又不一样。就像昨晚，我加班到九点，坐在地铁上，看着窗外，那个熟悉的灯光，突然就想到，哎，以前我们那时候，哪有这么多高科技？\n\n我旁边那个小伙子，手机屏幕亮着，估计是在看股票。我心里想，我都这把年纪了，还研究这些，是不是有点不务正业啊？但就是忍不住，想看看这OpenTrade是个啥，是不是能让我也体验一把那个年代的炒股乐趣。\n\n我懂，这都啥年代了，还怀旧，好像有点矛盾。但是，我就是控制不住，心里那个小激动，就像那个小伙子手机屏幕上跳动的数字，让人忍不住想去追逐。唉，这矛盾感，真是让人难受。",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-08-17T16:07:25.462Z"
-    },
-    {
-      "id": "326b57832e69",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Replay QA for Teams",
-      "url": "https://www.producthunt.com/products/replayio?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 127",
-      "hover": "Autonomous QA for teams who ship faster than they can verify",
-      "reflection": "哎，今天看到 Product Hunt 上那个“Replay QA for Teams”的产品介绍，突然就想起去年那件事儿了。我记得那会儿，我还在一家初创公司加班到深夜，那会儿我们项目上线速度那叫一个快，但是验证的速度嘛，嗯，慢得像蜗牛。\n\n记得有一次，我们上线了一个新功能，那天晚上我加班到十一点多，地铁上人很多，我站在八号线车厢里，看着窗外黑漆漆的夜，心里想着这功能怎么还没测试出来。结果第二天，客户就反馈说出了问题，当时我心都凉了半截。\n\n还有一次，我坐在工位上，和一个同事讨论问题，天气突然变冷，我们俩都穿着单薄的衬衫，冻得直打哆嗦。我问他：“你说我们怎么才能提高测试效率？”他看着窗外，沉默了一会儿，说：“可能得找个好的 QA 工具。”我当时心里想，要是早点有这种工具就好了。\n\n现在回头看才发现，其实当时我们就是缺乏有效的测试管理工具，才导致出了那么多问题。哎，矛盾啊，我知道这样不对，但还是想加班加点赶进度，我都成年了，但还是难受。",
-      "reflectionTemplate": {
-        "id": "personal-trace",
-        "name": "个人经历拆解型",
-        "mood": "复盘的平静里藏一丝后怕"
-      },
-      "createdAt": "2026-08-17T16:07:05.315Z"
-    },
-    {
-      "id": "0cb6cf5235c8",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Scholé Scenarios",
-      "url": "https://www.producthunt.com/products/schole-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 129",
-      "hover": "Learn by doing",
-      "reflection": "刚看完这个Scholé Scenarios，心里有点东西。这玩意儿讲的是学东西要动手做做看，我突然就想，要是当年我上学的时候，能多动手实践实践就好了。\n\n记得有一次，我加班到深夜，地铁上人挤人，我看着窗外，想着要是能早点毕业就好了。那时候，我在一个培训班，每天都是理论知识，根本没时间实践。后来毕业了，才发现，很多理论知识，光说不练那是真的不行。\n\n说回Scholé Scenarios，他们这个理念其实挺对的。想想看，我现在做项目，遇到问题的时候，如果能先动手试试，肯定比光想好得多。就像那天和同事讨论项目方案，我本来想着先画个草图，结果因为没动手，方案说得磕磕巴巴。\n\n我就记得有一次，我参加一个比赛，因为没动手实践，结果方案做得不好，最后没得奖。那时候真的难受，我懂这个道理，但还是难受。\n\n我以前在哪一步踩过坑，可能就是没动手实践那一步吧。",
-      "reflectionTemplate": {
-        "id": "how-to",
-        "name": "教学实操型",
-        "mood": "沉稳、克制的说教感，干净"
-      },
-      "createdAt": "2026-08-17T16:06:53.554Z"
     }
   ],
-  "updatedAt": "2026-08-18T22:52:35.943Z"
+  "updatedAt": "2026-08-18T23:23:44.157Z"
 }
