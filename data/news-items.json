@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "id": "a3b007ee4f21",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "How Kubernetes Probes Work",
+      "url": "https://news.ycombinator.com/item?id=49363665",
+      "info": "8 points",
+      "hover": "",
+      "reflection": "嘿，老兄，我刚看了个Hacker News上的文章，讲的是Kubernetes Probes怎么工作的。我以前没怎么关注这些技术细节，但看到这标题，我突然就有点好奇了。\n\n你知道不，这文章里说，Kubernetes Probes就像是一个健康检查，它能让系统知道容器是不是还在正常运行。比如说，一个服务如果突然挂了，Probes就能检测到，然后系统就会采取行动，比如重启容器。\n\n我一边看一边就在想，这不就是像我们公司那个监控系统嘛。那个系统也能检测到服务器有问题，然后自动处理。但转念一想，两者还是有点不一样。比如说，Kubernetes Probes更侧重于容器层面，而我们公司的系统更侧重于整个服务器集群。\n\n哎，我就这样想着，突然间有点矛盾。一方面，我挺佩服那种能把这些技术玩得转的人；另一方面，我又觉得，这种高级技术离我们这些普通人好像有点远。\n\n比如，我每天下班坐地铁回家，看着窗外那些高楼大厦，想着他们背后运行的这些技术，心里就有点复杂。我知道这样不对，我还是个技术小白，但就是难受。\n\n所以，我觉得吧，这种技术是好是坏，还得看用在哪里。如果用在对的地方，能提高效率，那就好；如果用错了，那可能就适得其反了。哎，说到底，我还是个门外汉，也不知道说什么好。",
+      "reflectionTemplate": {
+        "id": "ab-compare",
+        "name": "对比分析型",
+        "mood": "中立、拉锯、平和"
+      },
+      "createdAt": "2026-08-19T17:52:11.227Z"
+    },
+    {
       "id": "270ed22b8027",
       "sourceId": "v2ex-share",
       "sourceLabel": "V2EX",
@@ -7983,23 +7999,7 @@
         "mood": "决绝、不退让，略冷"
       },
       "createdAt": "2026-08-18T08:42:43.202Z"
-    },
-    {
-      "id": "607a4382cbfe",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "PoeysiaPRO",
-      "url": "https://www.producthunt.com/products/poeysiapro?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Find the moments. Shape the shorts.",
-      "reflection": "嘿，老朋友，我刚看完这条资讯，叫PoeysiaPRO，感觉有点意思。A是这玩意儿能帮你发现生活中的美好瞬间，B是它能帮你剪辑成短视频。俩事儿，差得有点大啊。\n\n比如说，A像是你在地铁上，看着窗外那个晚霞，突然想起小时候的玩伴，心里美滋滋的；B呢，就像是你在加班到深夜，用这软件把那个晚霞剪成小视频，发到朋友圈，然后被同事赞了一句“摄影技术不错”。一个图的是心里那点小确幸，一个图的是别人点赞后的虚荣心。\n\n那什么情况下选哪个呢？我觉得，如果是为了自己开心，那就选A，给自己留点时间享受生活；如果是为了博取他人关注，那就选B。但别忘了，适度就行，别因为追求别人的认可而忽略了自己内心的声音。\n\n就像昨天晚上，我加班到10点，累得要命，但是一想到能用这个软件把那天的夜景剪成视频，心里还是挺期待的。我知道这样不对，但我还是忍不住想试试。我都成年了，但还是个容易被外界影响的“小孩”。哈哈，这不就是现实吗？",
-      "reflectionTemplate": {
-        "id": "ab-compare",
-        "name": "对比分析型",
-        "mood": "中立、拉锯、平和"
-      },
-      "createdAt": "2026-08-18T08:42:31.676Z"
     }
   ],
-  "updatedAt": "2026-08-19T17:29:36.033Z"
+  "updatedAt": "2026-08-19T17:52:14.442Z"
 }
