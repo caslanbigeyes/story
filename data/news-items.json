@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "id": "33bcf1ea5b20",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Digital Immortality",
+      "url": "https://news.ycombinator.com/item?id=49366270",
+      "info": "16 points",
+      "hover": "",
+      "reflection": "哎，你说这数字永生，这玩意儿听起来挺科幻的，可读完这篇Hacker News上的文章，我突然有点儿怔忡。你说说，现在这啥啥AI，把咱们的文字都当饭吃，咱写啥，它都往里头塞，这感觉，怎么形容呢，就像是在深夜，你把心里话全说给一个陌生人听，还不知道他听完 gonna干嘛。\n\n我记得前两天晚上，地铁上特别挤，我站在一号线，看着窗外的灯光，那时候，旁边的小哥儿手机亮着，屏幕上显示的是“Digital Immortality”。我就在想，这小哥儿是不是也在思考这数字永生的事呢？他会不会也在担心，自己的这些想法、这些文字，以后会变成啥样？\n\n我懂这道理，成年人的世界嘛，数据就是金钱，隐私啥的都是浮云。可我就是难受，你知道不？有时候，我就想，我都这把岁数了，还在这儿瞎想些啥呢？可就是停不下来，就像那个小哥儿手机上的文章，它就像一根刺，扎在我心里，让我不舒服。\n\n哎，我也不知道这算不算怀旧，可能就是那种，看着身边的人来来往往，突然觉得，咱们这一代人，真的活在了挺有意思的时代。数字永生，听起来挺扯的，可它又真的让人想得多。",
+      "reflectionTemplate": {
+        "id": "story-hook",
+        "name": "故事钩型",
+        "mood": "怀旧、怔忡、怅然"
+      },
+      "createdAt": "2026-08-19T21:53:27.048Z"
+    },
+    {
       "id": "9e88aea99dd9",
       "sourceId": "hackernews",
       "sourceLabel": "Hacker News",
@@ -7983,23 +7999,7 @@
         "mood": "怀旧、怔忡、怅然"
       },
       "createdAt": "2026-08-18T09:39:21.798Z"
-    },
-    {
-      "id": "0a0bdf3601a0",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Bringtable",
-      "url": "https://www.producthunt.com/products/bringtable?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Realtime AI Interview and ATS tracking",
-      "reflection": "哎，这“Bringtable”啊，看到名字我第一反应就是：AI面试，效率肯定高，省时省力。但转念一想，不对啊，这玩意儿能替代人力的精准度吗？咱这就来拆解一下。\n\n第一步，这AI面试技术，先得看看它的识别准确率咋样。得能精准识别应聘者的能力和素质，对吧？\n\n第二步，咱再看看这ATS跟踪系统，能有效地筛选出合适的人才，不会误伤无辜。\n\n第三步，得保证用户体验，让面试者感觉舒服，愿意接受这种新方式。\n\n但问题是，这玩意儿真用在咱们公司，万一有个面试者正巧那天嗓子哑了，或者情绪不好，这AI能识别出真实的能力吗？\n\n记得有一次，我加班到深夜，在地铁十号线，看到一个年轻人在车厢里，手机屏幕亮着，应该是在面试。我就想着，要是他遇到的就是这种AI面试，得多心慌啊。我懂这道理但还是难受，毕竟，咱们还是得相信人的感觉嘛。",
-      "reflectionTemplate": {
-        "id": "framework",
-        "name": "框架输出型",
-        "mood": "冷静自信里夹着普通人的克制"
-      },
-      "createdAt": "2026-08-18T09:39:03.456Z"
     }
   ],
-  "updatedAt": "2026-08-19T21:29:31.528Z"
+  "updatedAt": "2026-08-19T21:53:30.493Z"
 }
