@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "id": "f2a8017734f6",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "IDE Nostalgia: Programming NLS in 1972: Keyset, Mouse, and Viewspecs",
+      "url": "https://news.ycombinator.com/item?id=49305415",
+      "info": "5 points",
+      "hover": "",
+      "reflection": "哎，今天晚上翻到这条Hacker News上的资讯，突然觉得心里有点不是滋味。你说说，现在都用着多先进的IDE，可这IDE的历史，居然追溯到1972年。那时候的程序员，用着键控、鼠标和视图规范，居然就能编程了。\n\n我就想想自己，现在这工作，每天对着电脑，搞各种框架和工具，其实本质上跟那时候差不了多少。可我就是觉得，自己好像少了点什么。像是，那种纯粹的编程乐趣，那种面对屏幕时全神贯注的感觉。\n\n今天下班晚高峰，我在2号线上，挤得像沙丁鱼罐头一样。突然想到，我今年都30岁了，还在为了生活奔波，为了那点微薄的薪水加班到九点十点。我都知道这样不对，可我还是得这么做。\n\n看着窗外，那些高楼大厦，我有时候也会想，我这是在追求什么？是那种所谓的成功吗？还是，仅仅是能在这个城市活下去？\n\n唉，我也不知道下一步打算做什么。但我知道，我得先弄清楚，我到底想要什么。",
+      "reflectionTemplate": {
+        "id": "in-progress",
+        "name": "过程透明型",
+        "mood": "实诚的轻焦虑，自我怀疑"
+      },
+      "createdAt": "2026-08-19T22:25:39.007Z"
+    },
+    {
       "id": "33bcf1ea5b20",
       "sourceId": "hackernews",
       "sourceLabel": "Hacker News",
@@ -7983,23 +7999,7 @@
         "mood": "释然中夹一点自嘲，时间的钝感"
       },
       "createdAt": "2026-08-18T09:39:38.641Z"
-    },
-    {
-      "id": "2e09284c05ea",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Tech Tools",
-      "url": "https://www.producthunt.com/products/tech-tools?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Free online tools for PDFs, images, files, and more",
-      "reflection": "哎，刚看到这条资讯，说啥呢，就是一些免费的在线工具，PDF、图片、文件都能处理。嘿，这玩意儿我以前好像用过，那时候还年轻，啥都不懂，就爱瞎捣鼓这些。记得有一次，我加班到深夜，地铁上人少，我拿着手机，就那么一页一页地翻着这些工具，想着怎么把工作里的文件弄得更顺眼些。\n\n突然，我看到了一个功能，就是可以把PDF转换成图片，这让我想起了大学时候的一个项目，那时候我们几个小伙伴为了一个报告，把厚厚的资料全转换成PDF，结果打印出来，字都小得看不清。那时候，我们也是这样，拿着手机，一页一页地翻，就为了找到一个合适的工具。\n\n现在想想，那时候的我们，真是傻，为了一个报告，搞到深夜，现在想想，还挺怀念的。可转念一想，现在不还是这样吗？工作压力大，还是得熬夜，还是得找这些工具来帮忙。我懂这道理，但还是难受，毕竟，我都成年了，还是得面对这些现实。哎，这科技发展得快，我们这些老骨头，真是跟不上了。",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-08-18T09:39:21.798Z"
     }
   ],
-  "updatedAt": "2026-08-19T21:53:30.493Z"
+  "updatedAt": "2026-08-19T22:25:41.916Z"
 }
