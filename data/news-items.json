@@ -1,6 +1,38 @@
 {
   "items": [
     {
+      "id": "88b4f6b4df4a",
+      "sourceId": "v2ex-share",
+      "sourceLabel": "V2EX",
+      "title": "许多外行 vibe coder 缺少的能力：主动降噪",
+      "url": "https://www.v2ex.com/t/1236023",
+      "info": "",
+      "hover": "",
+      "reflection": "嘿，老兄，今天看到V2EX上的一条帖子，说很多外行vibe coder缺少主动降噪的能力。这个点我挺在意的。\n\n首先，你知道吧，我现在每天加班到九点，地铁上就靠着听歌放松。但是有时候，歌里的噪音太多，我就得费好大劲才能静下心来。这让我想到，是不是我们生活中，很多所谓的“噪音”都是我们自己没学会过滤掉。\n\n然后，我琢磨了一下，这事儿其实有三个步骤。第一，识别出哪些是噪音，哪些是真正有用的信息。第二，学会忽略那些噪音，专注于核心任务。第三，保持冷静，不被噪音影响判断。\n\n但是，这事儿也不是那么简单。比如，今天下班回家，我老婆和我抱怨工作压力大，这时候我得主动降噪，不要被她的情绪带跑偏，还得给她出主意。矛盾吧？我知道这样不对，但还是忍不住想插嘴。\n\n所以，说到底，主动降噪这事儿，还是得看具体情况。不是所有时候都适用。不过，我还是觉得，学会这招儿，至少在地铁上听歌的时候，能让我更轻松一点。",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-08-20T23:53:11.739Z"
+    },
+    {
+      "id": "8903c4779c5a",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "In Which I Lose My Mind over Embeddings (HPLM Chapter 2)",
+      "url": "https://news.ycombinator.com/item?id=49335490",
+      "info": "5 points",
+      "hover": "",
+      "reflection": "那天晚上，我在地铁二号线，加班到九点多才下班。坐在我旁边的小哥哥，耳机里塞着个东西，时不时还点个头，我就纳闷，这歌怎么那么有魔力？后来才知道，他是在听那啥“Embeddings”的东西。我当时就想，这玩意儿能有多神奇？\n\n结果，没几天，我下班回家，路上还想着那事儿，突然就想到，我以前也经历过类似的事。记得有一次，天气超级热，我走在路上，和一个朋友聊天，那时候我们俩都挺年轻的，聊着聊着，我就突然觉得，哎，这世界真奇妙。\n\n现在回头看才发现，那时候的自己，还挺天真的。那时候不懂，现在想想，那时候的我们，都挺傻的。但那时候的快乐，是真的简单纯粹。现在呢，虽然明白了很多，但心里却总觉得少了点什么。我懂这道理，但还是难受。",
+      "reflectionTemplate": {
+        "id": "personal-trace",
+        "name": "个人经历拆解型",
+        "mood": "复盘的平静里藏一丝后怕"
+      },
+      "createdAt": "2026-08-20T23:53:01.376Z"
+    },
+    {
       "id": "fe9d78853531",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7967,39 +7999,7 @@
         "mood": "沉稳、克制的说教感，干净"
       },
       "createdAt": "2026-08-19T09:38:58.215Z"
-    },
-    {
-      "id": "595f0d0f74b1",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "CSSForge",
-      "url": "https://www.producthunt.com/products/github-477?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Safely refactor legacy CSS into modern native CSS",
-      "reflection": "半年前，我还傻乎乎地对着满屏的代码发愁，那时候的我觉得自己就是个编程小白。一年前的我，加班到深夜，看着窗外的灯火阑珊，心里想着什么时候能学成出师。现在的我，读完这条资讯，突然意识到，原来我一直在用的那些老旧的CSS，现在有了CSSForge这样的工具，可以轻松地转换成现代的CSS。\n\n我懂，技术更新换代很快，我也应该不断学习。但心里还是有点难受，我都成年了，还是得跟新技术打交道。就像那天晚上，我在地铁上，看着手机屏幕上的代码，想着怎么才能更快地掌握这个CSSForge，心里五味杂陈。\n\n矛盾感啊，我知道这样不对，但还是想学，都想变得更强。我懂这道理，但还是难受。哎，这就是生活吧，总是充满了矛盾。",
-      "reflectionTemplate": {
-        "id": "before-after",
-        "name": "前后对比型",
-        "mood": "释然中夹一点自嘲，时间的钝感"
-      },
-      "createdAt": "2026-08-19T09:38:43.466Z"
-    },
-    {
-      "id": "fb84c1d4164e",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "AI Comic Lab",
-      "url": "https://www.producthunt.com/products/ai-comic-lab?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Plan comics, design characters, create art",
-      "reflection": "哎，说起来，上次加班到深夜，在地铁上看到那个AI Comic Lab的宣传，当时就挺奇怪的。现在想想，那感觉还真是有点后怕。\n\n那天晚上，我加班到11点，坐的是2号线，车厢里人不多，空调吹得有点冷。我看着手机上的那个AI Comic Lab，心想，这玩意儿能干啥？后来，我回家路上，路过一家便利店，买了一杯热奶茶，边喝边想，嘿，这要是能帮我画漫画，那得多方便啊。\n\n然后，我回想起有一次和同事聊天，他提到自己想画漫画，但画技不行。我当时就想起那个AI Comic Lab，心里想，要是这东西真能用，那他肯定能少费不少劲。\n\n现在回头看才发现，我那时候其实挺矛盾的。我知道，这世上没有啥东西是完美的，但那时候，我就是觉得，要是能有个AI帮我画漫画，那该多好。我都成年了，但还是这样，有时候心里难受，但又觉得这样不对。",
-      "reflectionTemplate": {
-        "id": "personal-trace",
-        "name": "个人经历拆解型",
-        "mood": "复盘的平静里藏一丝后怕"
-      },
-      "createdAt": "2026-08-19T09:38:30.767Z"
     }
   ],
-  "updatedAt": "2026-08-20T23:29:52.860Z"
+  "updatedAt": "2026-08-20T23:53:13.688Z"
 }
