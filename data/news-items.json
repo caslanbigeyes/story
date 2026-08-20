@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "id": "d851d568bf5e",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "The August 17 outage, and the work ahead",
+      "url": "https://news.ycombinator.com/item?id=49378957",
+      "info": "72 points",
+      "hover": "",
+      "reflection": "哎，这事儿我看了心里有点儿不是滋味儿。你说微软这回对GitHub的态度，嘿，有点意思。他们宁愿让GitHub亏本，只要能让开发者继续用AI，这逻辑我真是服了。\n\n先说第一步，微软这是在赌AI的未来，对吧？第二步，GitHub的用户量暴增，每月提交量从14亿到29亿，这增长速度，简直让人咋舌。第三步，他们打算怎么应对这增长？提高服务稳定性，还是继续让用户买单？\n\n但问题是，这框架在什么情况下会失效呢？比如说，如果AI的发展不如预期，或者用户开始厌倦了这种模式，那微软的这盘棋怕是要打水漂了。\n\n想到这，我昨晚加班到十一点多，坐在地铁上，看着窗外，心里就想，这世界变化太快了，我们这些普通人，有时候真的不知道该怎么应对。我懂这道理，但还是难受。",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-08-20T21:35:32.034Z"
+    },
+    {
       "id": "71db6ef0764a",
       "sourceId": "hackernews",
       "sourceLabel": "Hacker News",
@@ -7983,23 +7999,7 @@
         "mood": "实用、带一点强迫症的整理感"
       },
       "createdAt": "2026-08-19T09:35:12.728Z"
-    },
-    {
-      "id": "b21d8c2dabc9",
-      "sourceId": "hackernews",
-      "sourceLabel": "Hacker News",
-      "title": "We turned off Pub/Sub and nobody noticed",
-      "url": "https://news.ycombinator.com/item?id=49285325",
-      "info": "35 points",
-      "hover": "",
-      "reflection": "哎，今天晚上加班到九点，地铁上看着窗外，突然想起Hacker News上的那条资讯，说他们公司关掉了Pub/Sub，结果没人注意。我这心里就有点儿不是滋味儿。我呢，每天忙得跟陀螺似的，生怕哪里出点差错，结果呢，好像大家都不太在乎。\n\n我想到自己刚入职那会儿，也是满怀激情，觉得每件事都得做到完美。可现在呢，每天重复着一样的工作，有时候甚至怀疑自己是不是在做无用功。就像那个Pub/Sub，虽然被关掉了，但好像对公司运营没什么影响，那我这努力的意义在哪里呢？\n\n哎，我都成年了，还是这么容易自我怀疑。不过，我也得承认，有时候这种焦虑也是动力。比如，明天我得把这个项目汇报做好，不能让领导失望。我得加油，不能被这种焦虑打败。\n\n下一步，我得好好梳理一下自己的工作，看看哪些是真正重要的，哪些可以适当放松。不能让这种焦虑影响我的工作状态。嗯，就这么定了。",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-08-19T09:35:03.407Z"
     }
   ],
-  "updatedAt": "2026-08-20T20:59:26.150Z"
+  "updatedAt": "2026-08-20T21:35:34.280Z"
 }
