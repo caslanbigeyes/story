@@ -1,6 +1,86 @@
 {
   "items": [
     {
+      "id": "10be4987a548",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "网传《空枪》案件原型为李嘉诚儿子被绑案，这一说法有依据吗？在电影里哪些情节有所体现？",
+      "url": "https://www.zhihu.com/question/2073693341028284107",
+      "info": "106 万热度",
+      "hover": "电影《空枪》热映，把张子强绑架李泽钜这桩世纪旧案重新推到公众视野。真实案件绝非影片渲染的「空枪求财」，绑匪团伙持有 AK‑47 等真枪实弹，作案时直接开枪击碎车窗实施劫持。 1996 年张子强团伙劫持李嘉诚长子李泽钜，张子强身绑炸药独闯李家谈判，最终拿到 10.38 亿港币巨额赎金后释放人质，人质虽未受伤，但这只是绑匪权衡利弊后的选择，绝非心存善念。 艺术加工可以戏剧化改编，但不能美化悍匪犯罪行为。张子强后续继续疯狂作案，最终落网伏法，犯罪终究难逃法律的严惩。影片为虚构创作，要分清影视演绎与残酷的案件史实。",
+      "reflection": "嘿，老兄，我刚刚看到那个李嘉诚儿子被绑架的新闻，你说巧不巧，我那天晚上刚好坐的是地铁3号线，加班到晚上10点，然后和同事去喝了个夜啤酒。那天晚上，我看着窗外的夜景，突然想起了这个事，心里就挺不是滋味的。\n\n我记得电影里那个绑匪拿着AK-47，直接开枪打碎车窗，那画面太血腥了。我当时就在想，这世界怎么就这么疯狂呢？我都成年了，但还是觉得这样的事情离我这么近，心里怪难受的。\n\n现在回头看才发现，我们每天在地铁里来来往往，谁也不知道，生活里还有这么阴暗的一面。我知道这样不对，但还是忍不住去想，如果真的遇到了这样的事，我会怎么办？我懂这道理但还是难受。唉，生活啊，有时候真的挺矛盾的。",
+      "reflectionTemplate": {
+        "id": "personal-trace",
+        "name": "个人经历拆解型",
+        "mood": "复盘的平静里藏一丝后怕"
+      },
+      "createdAt": "2026-08-20T19:32:53.828Z"
+    },
+    {
+      "id": "1dde940dbb83",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "TrueForge – The open-source agent harness",
+      "url": "https://news.ycombinator.com/item?id=49378419",
+      "info": "5 points",
+      "hover": "",
+      "reflection": "哎，看到这条Hacker News上的资讯，我就来气。你说这开源工具，不都是图个方便吗？可这TrueForge，我看它的介绍，怎么感觉有点“独树一帜”呢？\n\n我以前用过别的开源工具，那些都是老面孔，大家都熟。可这TrueForge，它这名字听起来就让人摸不着头脑。你说我用它，别人问我用啥，我得怎么回答？是得跟人家解释半天吗？\n\n我就想不明白，现在的人都怎么了？就爱搞些花里胡哨的东西。我记得上次加班到深夜，地铁上人挤人，我就看到一个小姑娘拿着手机在那研究什么新出的应用，好像特别得意。我就想，她这得多长时间才能适应工作啊。\n\n再说了，我就算想用这TrueForge，我哪有时间去研究它啊？我这人就是懒，不喜欢折腾。可我知道这样不对，我还是喜欢用那些简单、方便的工具。\n\n我懂，这社会变化快，都得跟上节奏。但我就是难受，感觉这世界太浮躁了。哎，我还是喜欢那些老老实实的工具，至少不用让我花时间去适应。",
+      "reflectionTemplate": {
+        "id": "manifesto",
+        "name": "观点宣言型",
+        "mood": "决绝、不退让，略冷"
+      },
+      "createdAt": "2026-08-20T19:32:43.117Z"
+    },
+    {
+      "id": "1ee72f7d06f8",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Consumer Rights Wiki",
+      "url": "https://news.ycombinator.com/item?id=49378243",
+      "info": "5 points",
+      "hover": "",
+      "reflection": "嘿，老朋友，我今天刷到了一个Hacker News上的资讯，说是有个Consumer Rights Wiki，专门讲消费者权益啥的。哎，说起来我自己也遇到了一件事儿，心里有点儿不是滋味儿。\n\n今天下午我坐地铁回公司，在4号线上来来回回，看了好几遍手机，就那个Consumer Rights Wiki上的东西，突然感觉自己好被动。我就纳闷了，明明是我花了钱买的东西，怎么权益都成问题了？\n\n我在公司加到9点，累得跟狗似的，回到家还跟朋友吐槽，他听完说：“这年头，消费陷阱这么多，谁都不容易。”我听了心里更不是滋味了，我都这么大人了，还总感觉被套路，这种感觉真的很矛盾。\n\n我懂，要自己学会维权，可现实是，我这种普通上班族，哪有那么多时间和精力去研究这些？唉，想想还是得提高自己的意识，但也不知道下一步该怎么办。得想想看，是得找找律师咨询咨询，还是得先从自己做起，少买那些质量没保障的东西。\n\n总之，就是这种感觉，有点儿焦虑，又有点儿无奈。也不知道你怎么看，老兄。",
+      "reflectionTemplate": {
+        "id": "in-progress",
+        "name": "过程透明型",
+        "mood": "实诚的轻焦虑，自我怀疑"
+      },
+      "createdAt": "2026-08-20T19:32:27.045Z"
+    },
+    {
+      "id": "1ff38bd828f0",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Seeking God in Science Part 10.5: The Mind-Body Problem (Take 2)",
+      "url": "https://news.ycombinator.com/item?id=49378724",
+      "info": "3 points",
+      "hover": "",
+      "reflection": "哎，刚看了Hacker News上的一条资讯，标题是《Seeking God in Science Part 10.5: The Mind-Body Problem (Take 2)》。这个标题本身就让我不太舒服，感觉有点故弄玄虚。\n\n首先，这个“心灵与身体问题”，我之前还真没想过。但看完这条评论，我突然觉得，这不就是人类自以为高人一等的表现吗？就好像我们人类是上帝的杰作，天生就比别人高级。这种想法，不就跟种族主义、物种主义一样吗？\n\n我以前也这样想过，觉得自己与众不同，高人一等。可现在想想，这不就是自己骗自己吗？我每天挤地铁、加班到深夜，跟那些“普通”人有什么区别？我懂这个道理，但还是难受。\n\n就像我昨晚加班到十一点多，地铁上人挤人，我看着窗外，心里想着，这不就是人类自以为是的表现吗？我们以为自己掌握了科学，就能解释一切，就能超越自然。可实际上，我们还不是得在这拥挤的地铁里奔波，为了生活而劳碌？\n\n哎，这世界，真是矛盾啊。",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-08-20T19:32:07.572Z"
+    },
+    {
+      "id": "b4517474e235",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Scientific study reveals TikTok videos deactivate key cognitive brain regions",
+      "url": "https://news.ycombinator.com/item?id=49378630",
+      "info": "11 points",
+      "hover": "",
+      "reflection": "哎，刚才看Hacker News那篇关于TikTok的视频影响大脑的报道，心里突然有几件事像被戳了一下。比如说，我最近总感觉看短视频时间长了，大脑反应就慢了，就像那个地铁上人们低头刷手机，明明几站地，都到了还不知道；还有，加班到深夜，有时候也会忍不住刷一会儿抖音，虽然我知道这样不对，但还是控制不住；还有，和朋友们聊天，发现大家都有类似的困扰，但又好像找不到解决办法。\n\n矛盾感啊，我都成年了还是这么容易被这些短平快的视频吸引，这到底是为什么？哎，如果只能选一个，我选地铁上不刷手机，原因很简单——地铁上刷手机，真的挺没意思的，还不如多看看窗外的风景呢。",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-08-20T19:31:48.925Z"
+    },
+    {
       "id": "cb4fe5484b43",
       "sourceId": "juejin",
       "sourceLabel": "掘金",
@@ -7919,87 +7999,7 @@
         "mood": "略带抬杠的不服，克制的锐利"
       },
       "createdAt": "2026-08-19T08:42:25.452Z"
-    },
-    {
-      "id": "8488038ce888",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "DEVRIAN",
-      "url": "https://www.producthunt.com/products/devrian?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Privacy-first developer tools that run in your browser",
-      "reflection": "嘿，老友，今儿看到个东西，叫DEVRIAN，说是隐私优先的开发工具，浏览器里就能用。我本来觉得，哎呀，这玩意儿挺不错的，咱们开发工作也能轻松点。但是，我又想到，现在的软件这隐私问题，唉，说起来都是泪。\n\n先说A，这个DEVRIAN，它能在浏览器里直接运行，听起来挺方便的。就像我平时坐地铁，刷个手机就能处理点事儿，不用带电脑，多省事啊。B呢，就是隐私这事儿，虽然这工具说是隐私优先，但我总觉得，现在的软件，哪个不是数据满天飞？就像我加班到深夜，回家路上，看着窗外的灯火阑珊，心里五味杂陈。\n\n差在哪呢？首先，A这方便，B那隐私。方便的是不用装什么客户端，直接浏览器就能用。隐私呢，唉，现在的软件，你用得越多，它知道的越多。就像我有时候跟同事聊天，都会想起那句“我都成年了但还是喜欢在别人面前装嫩”。\n\n那什么情况下选哪个呢？我觉得，如果你对隐私比较看重，那就选B。但如果方便更重要，那就选A。不过，这事儿也不能太绝对，得看个人需求。\n\n哎，写到这里，我忽然想到，其实咱们平时用的各种APP，不都是这样矛盾的吗？方便是方便，但隐私这关，谁又能说得清呢？",
-      "reflectionTemplate": {
-        "id": "ab-compare",
-        "name": "对比分析型",
-        "mood": "中立、拉锯、平和"
-      },
-      "createdAt": "2026-08-19T08:42:05.787Z"
-    },
-    {
-      "id": "c8cbbcb44341",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Mind Map, Ebook and Quiz",
-      "url": "https://www.producthunt.com/products/panda-video?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Turn any video lesson into an ebook, mind map and quiz",
-      "reflection": "哎，你猜我今天干了什么？我把那个“Mind Map, Ebook and Quiz”弄了个大概，弄完了我发现，嘿，这不是跟我在地铁上边看边记笔记一个套路嘛！我坐在地铁三号线上，眼看着车窗外灯光闪烁，心里那个焦虑啊，感觉自己就像个小学生似的，学东西总想有个“思维导图”来帮忙。可一想到我都这么大人了，还搞这些玩意儿，心里又挺不是滋味的。\n\n其实，我知道这样不对，但就是控制不住。我懂，成年人的生活不应该靠这些小工具来帮忙，可我就是难受啊。就像我现在写这篇文章，我知道我应该直截了当，但脑子里就是蹦不出那个“点子”。哎，真是矛盾。\n\n下一步打算做什么？我也不知道。可能就是继续这样，一边焦虑，一边自我怀疑，一边又忍不住去寻找那些能让我稍微安心一点的小工具吧。",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-08-19T08:41:45.057Z"
-    },
-    {
-      "id": "2a1b309a6255",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "ImagineMyHouse",
-      "url": "https://www.producthunt.com/products/imaginemyhouse?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Explore and compare AI home redesign styles in seconds",
-      "reflection": "哎，今天刷到这个ImagineMyHouse，就是那个能在几秒钟内探索和比较AI设计的家居风格的App。你说说，我现在加班到深夜，地铁上的人都是一个个的“幽灵”，我就那么一下瞥见屏幕上的“ImagineMyHouse”，突然就想起了小时候家里的那个小桌子。它旧旧的，但是上面放着我最喜欢的那个小摆件，现在想想，那时候的简单日子啊。\n\n我点开那个App，突然看到了一个类似我家客厅的装修图，就是那种复古风格的，哎，当时心里就是一颤。我知道现在这种东西对我来说已经不重要了，我懂，但还是难受。想想看，现在谁还在乎那些老玩意儿呢？但是，哎，我就是忍不住想起那些日子。\n\n刚才下班回家，看到楼下的小狗，它摇摇尾巴冲我跑来，突然就想起了小时候家里那只老狗，也是这样，每次回家它就围着我转。现在我长大了，狗也老了，但是每次看到小狗，我还会想起那些老狗的年代。\n\n哎，可能人就是这样的吧，有些东西明明知道已经不重要了，但是就是会时不时地冒出来，让人心里一阵阵的怀旧和怅然。",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-08-19T08:41:27.217Z"
-    },
-    {
-      "id": "abed93f5ef75",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Capcher",
-      "url": "https://www.producthunt.com/products/capcher?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Turn Posts Into Shareable Visuals",
-      "reflection": "半年前，我还傻乎乎地跟朋友炫耀，我学会了用各种美图工具，能把文字变成好看的艺术字。一年前，我加班到深夜，看着窗外的灯火，跟同事吹嘘，我可是互联网时代的弄潮儿，紧跟潮流。现在，我读到Capcher这个产品，才意识到，原来我一直都活在美图的泡泡里，离真正的内容分享差了十万八千里。\n\n地铁上，我看着手机里Capcher的介绍，心里五味杂陈。我知道这样不对，但还是忍不住想，如果早几年有这样的工具，我那堆美图工具是不是就白费了？我都成年了，但还是被这种表面功夫吸引了，真是矛盾。\n\n我懂，这时代，内容为王，但看到别人把文字变成图，心里还是有点不舒服。我懂这道理，但还是难受。哎，这时间的钝感，让我在潮流面前总是慢半拍。",
-      "reflectionTemplate": {
-        "id": "before-after",
-        "name": "前后对比型",
-        "mood": "释然中夹一点自嘲，时间的钝感"
-      },
-      "createdAt": "2026-08-19T08:41:11.715Z"
-    },
-    {
-      "id": "2522ff2f8428",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "SonicTube – Pinterest Video Downloader",
-      "url": "https://www.producthunt.com/products/sonictube-pinterest-video-downloader?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Download Pinterest Videos, GIFs, Images & MP3 in HD",
-      "reflection": "哎呀，这SonicTube的视频下载工具，看到的时候我那心里啊，就突然想起了那个晚上，加班到9点，地铁1号线的人挤人，手机屏幕上都是那些乱糟糟的广告，我突然就想起，哎，我能不能在地铁上看个高清视频放松一下呢？\n\n第一步，我脑子里就浮现出“高清视频”这四个字，想想看，现在这网速，能下高清视频那得啥速度啊？第二步，我又想到了“地铁里看”，这不就是那个下载神器该干嘛的嘛？第三步，我还想到，这种工具会不会侵犯版权啊？\n\n但话说回来，我都这个年纪了，还是时不时地会有这种念头，比如说，看个电影啊，玩个游戏啊，都不想因为版权问题受限制。可我又知道，这版权问题是大事儿，可不能乱来。\n\n唉，有时候我也挺矛盾，知道这不对但还是控制不住，我都成年了，还是这个样子。我就看着窗外的夜色，心里想着，这下载神器啊，它让我有了这个小小的期待，但又让我感到不安。我就这样，冷静地想，又自信地告诉自己，没事儿，我能控制住。",
-      "reflectionTemplate": {
-        "id": "framework",
-        "name": "框架输出型",
-        "mood": "冷静自信里夹着普通人的克制"
-      },
-      "createdAt": "2026-08-19T08:40:58.602Z"
     }
   ],
-  "updatedAt": "2026-08-20T18:55:14.548Z"
+  "updatedAt": "2026-08-20T19:32:56.312Z"
 }
