@@ -1,16 +1,5 @@
 {
   "seen": [
-    "https://news.ycombinator.com/item?id=49311814",
-    "https://news.ycombinator.com/item?id=49353339",
-    "https://www.zhihu.com/question/662906772",
-    "https://www.zhihu.com/question/2072075393025173444",
-    "https://news.ycombinator.com/item?id=49353407",
-    "https://news.ycombinator.com/item?id=49353603",
-    "https://news.ycombinator.com/item?id=49348055",
-    "https://www.v2ex.com/t/1235443",
-    "https://www.zhihu.com/question/14194805205",
-    "https://news.ycombinator.com/item?id=49353432",
-    "https://news.ycombinator.com/item?id=49295369",
     "https://news.ycombinator.com/item?id=49353618",
     "https://www.v2ex.com/t/1235446",
     "https://www.zhihu.com/question/2073007368435151461",
@@ -999,7 +988,18 @@
     "https://news.ycombinator.com/item?id=49392449",
     "https://www.zhihu.com/question/2073824982388433322",
     "https://news.ycombinator.com/item?id=49393051",
-    "https://news.ycombinator.com/item?id=49392877"
+    "https://news.ycombinator.com/item?id=49392877",
+    "https://news.ycombinator.com/item?id=49393733",
+    "https://github.com/microsoft/TypeScript",
+    "https://github.com/affaan-m/ECC",
+    "https://github.com/TryGhost/Ghost",
+    "https://github.com/ruvnet/ruflo",
+    "https://github.com/apache/maka",
+    "https://github.com/protocolbuffers/protobuf",
+    "https://github.com/elder-plinius/OBLITERATUS",
+    "https://github.com/microsoft/onnxruntime",
+    "https://juejin.cn/post/7676098169973473330",
+    "https://www.zhihu.com/question/266703398"
   ],
-  "updatedAt": "2026-08-21T20:51:59.356Z"
+  "updatedAt": "2026-08-21T21:53:08.377Z"
 }
