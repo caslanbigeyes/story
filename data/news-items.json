@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "id": "bf5537affebb",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Remotely Unlocking Electric Scooters",
+      "url": "https://news.ycombinator.com/item?id=49394028",
+      "info": "6 points",
+      "hover": "",
+      "reflection": "半年前，我还在为挤地铁时电动车被锁的尴尬局面发愁，那时候的我，每次看到那些能远程解锁的电动车，心里都挺羡慕的。一年前的我，下班后骑着电动车在街头飞驰，觉得生活自由自在。现在的我，加班到深夜，看着窗外的电动车，突然想到，其实我们这代人，对科技的依赖已经到了这种程度。\n\n读到这条资讯我才意识到，原来电动车解锁方式的改变，也反映了我们生活的变化。以前，我总是觉得时间过得好慢，现在想想，时间其实一直在跑，只是我们被各种琐事绊住了脚步，没注意到它的流逝。\n\n我突然觉得，成年人的世界真是矛盾啊。我知道这样不对，但还是喜欢那种一键解锁的便捷；我都成年了，但还是觉得生活应该有更多的自由。或许，这就是我们这代人的矛盾感吧。",
+      "reflectionTemplate": {
+        "id": "before-after",
+        "name": "前后对比型",
+        "mood": "释然中夹一点自嘲，时间的钝感"
+      },
+      "createdAt": "2026-08-21T22:51:39.616Z"
+    },
+    {
       "id": "fbaf4891b942",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7983,23 +7999,7 @@
         "mood": "怀旧、怔忡、怅然"
       },
       "createdAt": "2026-08-20T11:27:58.424Z"
-    },
-    {
-      "id": "1fb256ce62b7",
-      "sourceId": "github-trending-today",
-      "sourceLabel": "GitHub Trending",
-      "title": "cursor / plugins",
-      "url": "https://github.com/cursor/plugins",
-      "info": "✰ 3,850",
-      "hover": "Cursor plugin specification and official plugins",
-      "reflection": "这GitHub上的cursor/plugins，点开一看，挺有意思。就是那种，你知道有用，但又有点摸不着头脑的感觉。我想到那天晚上，我在地铁13号线，看到个哥们儿在那儿摆弄手机，好像就是在看这个。\n\n我脑子一下就闪过了，这玩意儿是干什么的呢？然后就开始分析。第一，它是一个插件，肯定是有特定的功能。第二，cursor这个名称，让我觉得可能跟编辑或者文本处理有关。第三，插件嘛，就意味着它得装到什么软件上才能用。\n\n但说到具体的应用场景，我脑子里又有点乱。比如，我是个程序员，可能会用到这个，但具体怎么用，我还没太明白。而且，我还挺矛盾，一边想学，一边又觉得时间不够。\n\n晚上加班到九点，坐地铁回家，路上就想想这些。这社会，技术进步得挺快，但你又不能样样都精通。我知道这样不对，但我就是控制不住自己去想这些新奇的东西。我都成年了，但还是像个好奇心强的小孩子。😂",
-      "reflectionTemplate": {
-        "id": "framework",
-        "name": "框架输出型",
-        "mood": "冷静自信里夹着普通人的克制"
-      },
-      "createdAt": "2026-08-20T11:27:37.546Z"
     }
   ],
-  "updatedAt": "2026-08-21T22:26:40.186Z"
+  "updatedAt": "2026-08-21T22:51:42.540Z"
 }
