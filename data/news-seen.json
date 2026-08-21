@@ -1,9 +1,5 @@
 {
   "seen": [
-    "https://news.ycombinator.com/item?id=49353618",
-    "https://www.v2ex.com/t/1235446",
-    "https://www.zhihu.com/question/2073007368435151461",
-    "https://www.zhihu.com/question/2072314414301237411",
     "https://www.zhihu.com/question/2073021310070952233",
     "https://www.zhihu.com/question/2072976977758368291",
     "https://www.zhihu.com/question/2070873087248184227",
@@ -999,7 +995,11 @@
     "https://github.com/elder-plinius/OBLITERATUS",
     "https://github.com/microsoft/onnxruntime",
     "https://juejin.cn/post/7676098169973473330",
-    "https://www.zhihu.com/question/266703398"
+    "https://www.zhihu.com/question/266703398",
+    "https://news.ycombinator.com/item?id=49333557",
+    "https://www.zhihu.com/question/2073330311388317205",
+    "https://www.zhihu.com/question/1987678614079161398",
+    "https://www.zhihu.com/question/670433709"
   ],
-  "updatedAt": "2026-08-21T21:53:08.377Z"
+  "updatedAt": "2026-08-21T22:26:38.650Z"
 }
