@@ -1,6 +1,38 @@
 {
   "items": [
     {
+      "id": "630042cd564b",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Church of the TigerBeetle: A Look at Tech Evangelism",
+      "url": "https://news.ycombinator.com/item?id=49392877",
+      "info": "8 points",
+      "hover": "",
+      "reflection": "哎，你说这技术布道，咋听着就那么玄乎呢？咱们不是都说利益驱使嘛，谁家不卖点货呢。我今儿看Hacker News上那篇文章，说啥技术布道有害，我寻思，这有啥好害怕的嘛，不都是各说各的好嘛。\n\n就比如我上次加班到九点，那地铁上的人，一个个儿儿都在刷手机，推销个啥新应用，新服务的，不也都这么吆喝吗？再说了，我就不信有谁愿意承认自己产品不好，不都想着吹吹牛，让客户买账吗？\n\n可这文章里又说布道会压制异见，嗯，这个倒是有几分道理。可我寻思，这也不是啥大问题啊。咱们都成年人了，知道啥是对的，啥是错的，不是吗？可心里还是有点别扭，就像那天晚上，我看着窗外的月亮，想着自己还得加班到凌晨，心里就有点不是滋味。\n\n唉，这技术布道，说大不大，说小也不小。我也说不清，这事儿到底该咋看。但不管咋样，我还是觉得，做人不能太迷信。别啥都说好，啥都说新。咱们得有自己的判断，不是吗？",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-08-21T20:51:57.820Z"
+    },
+    {
+      "id": "40395393ad61",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Quick impressions: A week of using Codex more than Claude",
+      "url": "https://news.ycombinator.com/item?id=49393051",
+      "info": "14 points",
+      "hover": "",
+      "reflection": "哎，你看，最近看到一个关于编程模型的文章，说 Codex 和 Claude，我本来想着这和我没啥关系，但读完之后，嘿，还挺有意思的。\n\n我就想，如果我现在回到大学，那会儿学编程的时候，得给自己啥建议呢？第一条，肯定是多练手，别老对着教程看。第二，得有自己的想法，别只会跟风。第三，得学会总结，每次写完代码，都得回头看看，哪里做得好，哪里还有提升空间。\n\n记得有一次，我在公司加班到晚上九点，那会儿正赶项目，领导催得紧，我写代码写得手都疼。当时要是能有一个 Codex 这样的工具，那得多爽啊。可那时候，我哪知道啊，只知道埋头苦干。现在想想，那时候真是有点盲目，就知道赶进度，根本不考虑效率和质量。\n\n矛盾感就来了，我知道自己是对的，但难受啊。我都成年了，还是这样。我懂这道理，但还是难受。我以前在哪一步踩过坑，可能就是在那种赶进度的时候，忽略了代码质量吧。",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-08-21T20:51:42.454Z"
+    },
+    {
       "id": "5d0956f62680",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7967,39 +7999,7 @@
         "mood": "怀旧、怔忡、怅然"
       },
       "createdAt": "2026-08-20T10:38:46.659Z"
-    },
-    {
-      "id": "2af13868c924",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Roleplay IA",
-      "url": "https://www.producthunt.com/products/roleplay-ia?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Formez vos équipes avec des simulations IA réalistes",
-      "reflection": "哎，刚才看了一个Product Hunt上的资讯，说是一个Roleplay IA，就是用AI来模拟真实场景。我这会儿正在赶稿，进度到第三稿了，看着窗外的月亮，心里有点乱。我就在想，我这工作是不是也太现实了点，现实到有时候我都分不清是我在操作AI，还是AI在操作我。\n\n我记得有一次，我在地铁2号线，看着来来往往的人，突然就想，如果每个人都是AI模拟出来的，那我们是不是也只是在完成某个预设的剧本？我都成年了，但还是觉得这事儿有点悬乎。\n\n然后，我就在想，我这工作是不是也像是个AI，按照一定的逻辑和规则来操作，没有自我意识，没有情感波动。我懂，这社会就是这样，机器替代人力是趋势，但我还是难受。我都这么努力了，但还是觉得自己像个机器人。\n\n那下一步打算做什么？我打算继续赶稿，争取明天能完成。然后，我再想想，我能不能给自己留点时间，去做点不那么现实的事情。毕竟，生活不只是工作，对吧？",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-08-20T10:38:27.502Z"
-    },
-    {
-      "id": "37236405cbe1",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Meme Accounts",
-      "url": "https://www.producthunt.com/products/meme-accounts?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Create faceless meme posts in a niche that fits your brand.",
-      "reflection": "哎，看到这个Meme Accounts，我第一反应就是，这玩意儿，能火多久？现在的人都喜欢搞这些花里胡哨的东西，可别到最后成了过眼云烟。就像我上次在地铁上，看到一群年轻人，拿着手机在那儿刷Meme，一个个笑得跟什么似的，我就在想，这玩意儿能给人带来什么实质性的改变吗？\n\n我呢，其实也刷过Meme，有时候觉得挺有意思的，但一想到自己成年了，还在这玩意儿上浪费时间，心里就挺不是滋味的。就像我加班到深夜，累得要命，还得在朋友圈发个Meme，假装自己很轻松，其实心里难受得要命。\n\n但说到底，我也不能完全否定Meme，毕竟每个人都有自己的娱乐方式嘛。就像那个Meme Accounts，虽然我觉得它可能火不了多久，但说不定能帮一些人找到适合自己的小圈子，也算是一种社交方式吧。\n\n所以，我只能说，Meme这东西，我懂，但我不会沉迷。该干嘛干嘛去，别让这些虚头巴脑的东西影响了生活。",
-      "reflectionTemplate": {
-        "id": "manifesto",
-        "name": "观点宣言型",
-        "mood": "决绝、不退让，略冷"
-      },
-      "createdAt": "2026-08-20T10:38:07.942Z"
     }
   ],
-  "updatedAt": "2026-08-21T20:27:53.624Z"
+  "updatedAt": "2026-08-21T20:52:01.053Z"
 }
