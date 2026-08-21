@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "id": "bcc4b4c9faa7",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Another Better Lower Bound for N=17 Square Packing",
+      "url": "https://news.ycombinator.com/item?id=49390775",
+      "info": "3 points",
+      "hover": "",
+      "reflection": "哎，这Hacker News上的东西，看了半天也不懂个啥。不过有一条标题吸引了我，什么“Another better lower bound for n=17 square packing”，这啥玩意儿啊？我就纳闷了，数学这东西，搞那么复杂干啥？我有时候在想，咱们这生活，不就图个简单嘛。\n\n比如我最近加班到九点，地铁上人挤人，看着那些密密麻麻的方块，我就想，这不就是生活嘛，就像那个啥n=17的方块排列，看似复杂，其实不就那么回事儿？但转念一想，哎，我都这么大了，还是觉得这世界太复杂了。\n\n我记得有一次，我跟我朋友聊天，他说：“你看，这世界多简单，你想要的，就去争取。”我说：“是啊，可有时候，我想要的，我自己都说不清楚。”他笑了笑，没再说话。\n\n我就这样，矛盾着，难受着，但又没办法。我知道，生活不能总按自己的想法来，但有时候，我就是控制不住自己。就像那个n=17的方块排列，我懂它复杂，但我就是想简单点。\n\n哎，说不清道不明，生活就是这样。",
+      "reflectionTemplate": {
+        "id": "manifesto",
+        "name": "观点宣言型",
+        "mood": "决绝、不退让，略冷"
+      },
+      "createdAt": "2026-08-21T17:59:10.325Z"
+    },
+    {
       "id": "10ff2cb84590",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7983,23 +7999,7 @@
         "mood": "冷静自信里夹着普通人的克制"
       },
       "createdAt": "2026-08-20T08:45:26.041Z"
-    },
-    {
-      "id": "8372f0945415",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "SourdoughCalc",
-      "url": "https://www.producthunt.com/products/sourdoughcalc?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Free sourdough hydration calculator with 34 in-deptharticles",
-      "reflection": "刚看了这个SourdoughCalc，突然想给当年的自己提个醒。记得那时候，我特别喜欢研究烘焙，尤其是做老面。那时候，每次做面，总是算不准水分含量，结果不是太干就是太湿，老是不满意。哎，现在想想，如果那时候有个这样的工具，该多好。\n\n第一步，得先学会查资料，比如SourdoughCalc这样的工具，平时得多关注这些。第二步，每次做面之前，先查查资料，了解各种面团的特性。第三步，动手之前，先试试小样，调整一下水分比例。第四步，多实践，多总结，逐步找到适合自己的配方。\n\n我以前在哪一步踩过坑啊？就是那个“动手之前先试试小样”这一步，那时候总是嫌麻烦，直接上手做，结果经常失败。现在想想，真是矛盾，明明知道这样不对，但还是忍不住想走捷径。哎，都成年了，还是这毛病。今晚加班到九点，地铁上看着窗外，心里有点难受，又有点无奈。",
-      "reflectionTemplate": {
-        "id": "how-to",
-        "name": "教学实操型",
-        "mood": "沉稳、克制的说教感，干净"
-      },
-      "createdAt": "2026-08-20T08:45:04.268Z"
     }
   ],
-  "updatedAt": "2026-08-21T17:32:45.703Z"
+  "updatedAt": "2026-08-21T17:59:13.800Z"
 }
