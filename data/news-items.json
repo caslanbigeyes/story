@@ -1,6 +1,70 @@
 {
   "items": [
     {
+      "id": "69b379648fb5",
+      "sourceId": "juejin",
+      "sourceLabel": "掘金",
+      "title": "我一路问 WorkBuddy，用腾讯云 OCR Skills 在几分钟内完成了投标审查",
+      "url": "https://juejin.cn/post/7675346841392070707",
+      "info": "",
+      "hover": "",
+      "reflection": "哎，你们说现在这工作啊，效率是挺高的，对吧？我最近看到一条新闻，说有人用腾讯云OCR Skills几分钟就搞定了投标审查，这不就是高科技改变生活嘛。可我一想，哎呀，不对啊，这不就是把我们这些打工人给比下去了嘛。\n\n我呢，就喜欢坐地铁上下班，尤其喜欢在二号线，人不多，能安静会儿。那天晚上，我加班到九点多，地铁里就我一人，看着窗外，心里想着这效率，我就想，哎呀，这要是都用AI来搞，那我们这些人的工作还怎么保啊？\n\n我记得有一次，我和一个朋友聊天，他也是做这个行业的，我就说：“这AI这么厉害，咱们是不是得赶紧学学？”他瞪我一眼，说：“学啥学，这东西能代替人吗？咱们还是得靠人啊。”我当时还挺不服气的，但想想，他说的也没错。\n\n我懂，这个时代是进步了，但我也难受啊。我懂这道理，但还是难受。哎，生活就是这样，矛盾感十足。",
+      "reflectionTemplate": {
+        "id": "cognitive-flip",
+        "name": "认知颠覆型",
+        "mood": "略带抬杠的不服，克制的锐利"
+      },
+      "createdAt": "2026-08-22T22:49:44.276Z"
+    },
+    {
+      "id": "bd85f5d03994",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Thinking in Python by Bruce Eckel",
+      "url": "https://news.ycombinator.com/item?id=49402202",
+      "info": "12 points",
+      "hover": "",
+      "reflection": "哎，今天看到这条Hacker News上的资讯，突然想起自己最近那几件纠结的事。第一件是，每天早上起床后，我总是在想，今天该穿哪双鞋？第二件是，每次下班回家，我都会纠结是直接回家还是先去健身房锻炼一下。第三件嘛，就是晚上躺在床上，翻来覆去睡不着，脑子里全是明天的工作计划。\n\n说到这第三件，我最近晚上总是加班到很晚，然后看着窗外的夜景，想着明天还要早起，心里就难受得不行。我都成年了，还是这样，真是服了自己了。就像今天，我加班到九点才回家，路上想着明天得早起开会，心里就有点慌。\n\n如果只能选一个，我选明天早起开会。原因很简单——早上开会的时候，我总觉得自己精神状态好，思路清晰，能更好地应对挑战。但是，我懂这道理还是难受，毕竟谁不想多睡会儿呢？哎，生活就是这样，矛盾感满满啊。",
+      "reflectionTemplate": {
+        "id": "curated-list",
+        "name": "清单型",
+        "mood": "实用、带一点强迫症的整理感"
+      },
+      "createdAt": "2026-08-22T22:49:27.444Z"
+    },
+    {
+      "id": "6d5b7480e1dd",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "Dynamical dark energy and the week that broke cosmology",
+      "url": "https://news.ycombinator.com/item?id=49381991",
+      "info": "34 points",
+      "hover": "",
+      "reflection": "哎，晚上看完了这条Hacker News上的资讯，心里就挺不是滋味的。你说说，咱这大半夜的，本来想着躺床上刷刷，结果一翻到这个，嘿，还真就睡不着了。\n\n那会儿，我正坐在地铁上，手机屏幕昏黄的灯光照在报纸上，那上面写着：“Dynamical dark energy and the week that broke cosmology。”我一边听着耳边呼啸而过的风，一边想，这什么意思啊，难道是宇宙又有了新的发现？\n\n再一看，原来是有个什么Dark Energy Survey Supernova Program，他们分析了数据，说发现了一种 evolving dark energy，也就是动态暗能量，这和之前的研究有点冲突。这让我想起了大学的时候，那时候我们学物理，老师总说，科学就是不断地推翻自己，再建立新的理论。\n\n想到这，我突然想起了那次加班到深夜，老板说：“你看，这个项目很重要，我们要赶在明天早上前提交。”那时候，我心里也是满满的忐忑，想着这会不会是公司历史上的一个转折点。\n\n可现在，看到这个动态暗能量的消息，我突然觉得，不管是宇宙还是工作，都不是那么容易看透的。你说，这宇宙的奥秘和生活的琐碎，是不是都像那个动态暗能量一样，总是让人摸不着头脑呢？",
+      "reflectionTemplate": {
+        "id": "story-hook",
+        "name": "故事钩型",
+        "mood": "怀旧、怔忡、怅然"
+      },
+      "createdAt": "2026-08-22T22:49:12.465Z"
+    },
+    {
+      "id": "8792bdf8390c",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "A New Kind of Science by Stephen Wolfram: Monster Raving Egomania",
+      "url": "https://news.ycombinator.com/item?id=49404282",
+      "info": "8 points",
+      "hover": "",
+      "reflection": "哎，我刚看完这条Hacker News上的资讯，你说巧不巧，今天下班路上我还和朋友讨论了呢。咱们说那个Wolfram，他那本《一种新的科学》，你说我看着就难受，我就想知道，一个人怎么能那么自以为是呢？你说我这不就事儿了么，我这不也老觉得自己对事儿有点看法，有时候还跟人家争辩来着，我都这把年纪了，还是这样。\n\n我就在想，我这不就像那资讯里说的Wolfram一样吗？我就想证明点什么，可我有时候就觉得自己就像那个模型，虽然能弄出点东西来，可我到底弄明白了吗？我朋友问我：“你说，那生物的演化，是能简单用一个模型就说明白的吗？”我一想，好像也是，我就这么盲目自信，不也是像Wolfram一样吗？\n\n然后我就想到，我这不就是今天晚上还在纠结地铁该坐几号线回家吗？我就想省点时间，结果一琢磨，发现这地铁的路线跟那生物演化似的，看起来简单，里面门道儿可多了。我就这么纠结来纠结去，其实不就是在重复Wolfram的错误吗？\n\n哎，你说我下一步该怎么办呢？我得好好想想，是得先弄明白自己到底在纠结什么，还是说，我就这样吧，别跟人家一样盲目自信了。",
+      "reflectionTemplate": {
+        "id": "in-progress",
+        "name": "过程透明型",
+        "mood": "实诚的轻焦虑，自我怀疑"
+      },
+      "createdAt": "2026-08-22T22:48:54.772Z"
+    },
+    {
       "id": "f4b446cfead4",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7935,71 +7999,7 @@
         "mood": "中立、拉锯、平和"
       },
       "createdAt": "2026-08-21T08:46:46.552Z"
-    },
-    {
-      "id": "c3c76f01e15b",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Actx0",
-      "url": "https://www.producthunt.com/products/actx0?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Memory infrastructure for AI agents.",
-      "reflection": "最近，我一直在纠结这几件事：每天早晨起床后该先洗脸还是刷牙，加班到深夜要不要再刷会儿微博，还有周末是宅在家里还是出去走走。今天看到这条资讯，我突然想到，其实这些问题，不就像我们在日常生活中面对的各种选择吗？\n\n比如，早晨洗脸刷牙，我觉得先刷牙更卫生，但有时候还是先洗脸了。这不就像我们对待工作，明明知道应该先完成最重要的事，但最后还是被琐碎的事拖住了。还有，加班时刷微博，我知道这样不对，但还是忍不住。这不就像我们对待时间，明知道应该珍惜每一分钟，但还是被各种诱惑分散了注意力。\n\n我都有点强迫症了，总是想把自己的生活整理得井井有条。就像这个Actx0，它是为AI设计的一种记忆基础设施，我觉得它就像是我们的思维工具，可以帮助我们更好地管理自己的时间和注意力。\n\n如果只能选一个，我选那个周末出去走走。原因很简单——在忙碌的生活中，偶尔停下来看看窗外的风景，能让自己的心情变得舒畅，也能更好地整理思绪。",
-      "reflectionTemplate": {
-        "id": "curated-list",
-        "name": "清单型",
-        "mood": "实用、带一点强迫症的整理感"
-      },
-      "createdAt": "2026-08-21T08:46:28.068Z"
-    },
-    {
-      "id": "dbdb4c8149e7",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Studio Lib",
-      "url": "https://www.producthunt.com/products/studio-lib?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Free booking platform for creative spaces",
-      "reflection": "哎，刚刚看到这个Studio Lib的资讯，心里突然有点不是滋味。我最近不是在装修自己的小工作室嘛，想着找个地方弄个设计，结果这装修一搞，进度慢得跟蜗牛似的。我这边已经快把整个工作室都拆了，进度条才走了不到20%。\n\n你说这装修，本来想着能有个好环境搞创作，结果现在看着这乱糟糟的现场，心里就有点打鼓。我都知道，搞创作的地方不一定要多么豪华，但看到别人家那么顺畅的进度，我这心里就有点慌。我都成年了，还是个小白，搞个设计都这样，哎。\n\n刚才在地铁上，看着窗外那些忙碌的上班族，一个个都那么努力，我就想，我这是怎么了？我懂这道理，但还是难受。我懂，创作有时候就是要慢慢来，不能急，但看到别人，我还是忍不住想快一点。\n\n下一步，我得好好规划一下，把工作室装修的事情先搞定，然后再慢慢来。不能让这种焦虑影响我的创作。哎，希望这次能顺利点吧。",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-08-21T08:46:14.032Z"
-    },
-    {
-      "id": "1cdfaddd4201",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Imagild",
-      "url": "https://www.producthunt.com/products/imagild?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Curated AI photo styles that understand your image",
-      "reflection": "嘿，老哥，我今天刷到一个 Product Hunt 的产品，叫 Imagild。说是用 AI 给你图片换个风格，懂吧？就是那种感觉吧，看到一些老照片或者某个画面，你想给它们来点变化。\n\n记得那天晚上，加班到九点多，从五号线坐到家门口。当时车厢里静悄悄的，只有空调的风声。我在看窗外，天快黑了，那个街角的咖啡店灯还亮着。我就突然想起了，前几年刚工作的时候，每天下班也像这样挤地铁，那时候看着那些灯，觉得好温馨，但现在回头看看，其实自己也是在这灯下加班加点，没多少休息时间。\n\n那天跟朋友聊起来，说起这个 Imagild，他笑话我，说“你还年轻，有活力啊，不像我，看个图片都要换个风格，好像自己多老一样。”我愣了一下，然后笑着回：“对啊，我就这矛盾，懂这道理还是难受。”\n\n哎，有时候想想，人就是这样的吧，知道不对还是改不了，就比如现在的我，知道生活不应该这样，但还是在追求那些变化和新鲜感。这就是现在回头看才发现的事，有时候，生活，不就是要这样的吗？",
-      "reflectionTemplate": {
-        "id": "personal-trace",
-        "name": "个人经历拆解型",
-        "mood": "复盘的平静里藏一丝后怕"
-      },
-      "createdAt": "2026-08-21T08:45:57.054Z"
-    },
-    {
-      "id": "ecf8819ca48f",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Claim the Earth",
-      "url": "https://www.producthunt.com/products/claim-the-earth?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "Stand on a piece of Earth, tap once, keep it forever",
-      "reflection": "嘿，老李，我刚看到个玩意儿，名字叫“Claim the Earth”，说是站那儿按一下，地球就是你的了。你说这啥意思啊？我在地铁站里看到这广告牌，那灯光下，感觉有点儿荒诞，但又觉得有点儿意思。\n\n我那时候刚从加班的地方出来，地铁里人很多，大家都在低头看手机，我也跟着看了一眼那个广告。我站在车厢里，想着自己每天这么拼命工作，不就是为了有个小窝，有个能叫家的地方嘛。可是看到那个广告，我突然感觉，我们是不是都在拼命争取一个根本不属于我们的东西？\n\n我就这么想着，突然听到旁边一个妹子说：“哎，你说这地球，真的是按个按钮就能要的吗？”我当时一愣，心里五味杂陈。我懂，地球不是随便就能占为己有的，但我们不就是这样吗？每天都在争取那些看似属于自己的东西，却忘了，真正属于自己的，其实不是那些物质，而是内心的平静和自由。\n\n我抬头看看窗外，月亮还亮着，可心里却有点儿空荡荡的。哎，成年了还是这样，矛盾得要命。",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-08-21T08:45:37.645Z"
     }
   ],
-  "updatedAt": "2026-08-22T22:22:33.677Z"
+  "updatedAt": "2026-08-22T22:49:46.606Z"
 }
