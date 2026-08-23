@@ -1,10 +1,5 @@
 {
   "seen": [
-    "https://github.com/agent-substrate/substrate",
-    "https://github.com/PostHog/posthog",
-    "https://github.com/mahlernim/google-timeline-visualizer",
-    "https://github.com/JuliusBrussee/caveman",
-    "https://github.com/makeplane/plane",
     "https://github.com/Tencent/AI-Infra-Guard",
     "https://github.com/RyanCodrai/turbovec",
     "https://www.v2ex.com/t/1235966",
@@ -999,7 +994,12 @@
     "https://news.ycombinator.com/item?id=49407507",
     "https://www.v2ex.com/t/1236611",
     "https://www.zhihu.com/question/2074793323445711007",
-    "https://www.zhihu.com/question/2074064812326090233"
+    "https://www.zhihu.com/question/2074064812326090233",
+    "https://news.ycombinator.com/item?id=49408550",
+    "https://news.ycombinator.com/item?id=49407509",
+    "https://github.com/AprilNEA/OpenLogi",
+    "https://www.v2ex.com/t/1236620",
+    "https://www.zhihu.com/question/2041587484543431583"
   ],
-  "updatedAt": "2026-08-23T12:42:10.195Z"
+  "updatedAt": "2026-08-23T13:34:03.999Z"
 }
