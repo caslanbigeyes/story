@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "id": "b6773085f128",
+      "sourceId": "github-trending-today",
+      "sourceLabel": "GitHub Trending",
+      "title": "multica-ai / andrej-karpathy-skills",
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "info": "✰ 207,167",
+      "hover": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+      "reflection": "嘿，老兄，我刚看完那个GitHub Trending上的资讯，发现了个事儿让我心里有点儿矛盾。A是Andrej Karpathy的观察，B是这个所谓的CLAUDE.md文件。A呢，是关于LLM编码的坑，B呢，就是基于A观察的一个代码行为改进文件。哎，差距有点儿大。\n\n比如说，A说的是LLM编码可能会遇到的问题，感觉挺理论性的。B呢，是具体到代码层面，怎么改进。一个像天，一个像地。A讲的是“可能”，B讲的是“解决”。\n\n再比如说，A是观察，B是实践。一个像学者，一个像工程师。\n\n那什么情况下选哪个呢？要是你想搞理论研究，那就看A。想动手实践，那就选B。\n\n说到这，我突然想起上次加班到深夜，看到窗外月亮，想起之前读过的那些理论，心里就挺矛盾的。我知道这样不对但还是难受。我懂这道理但还是难受。",
+      "reflectionTemplate": {
+        "id": "ab-compare",
+        "name": "对比分析型",
+        "mood": "中立、拉锯、平和"
+      },
+      "createdAt": "2026-08-25T23:29:49.410Z"
+    },
+    {
       "id": "043bbed6f5b4",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7983,23 +7999,7 @@
         "mood": "实诚的轻焦虑，自我怀疑"
       },
       "createdAt": "2026-08-24T08:10:08.467Z"
-    },
-    {
-      "id": "ed5afb1ae9e2",
-      "sourceId": "zhihu",
-      "sourceLabel": "知乎",
-      "title": "为啥百米大战中的人形机器人大多最终是撞墙摔停的？它们不会刹车吗？",
-      "url": "https://www.zhihu.com/question/2074951497901786715",
-      "info": "83 万热度",
-      "hover": "8 月 22 日晚，2026 世界人形机器人运动会开幕。来自六大洲、 16 个国家 666 支队伍的 2056 台机器人同台竞技。在百米赛跑预赛中，机器人速度快到跑出残影，冲线后撞到了防护墙上。",
-      "reflection": "哎，说真的，看完这个资讯，我心里有点不爽。哎哟，你们说机器人百米赛跑不刹车就撞墙摔停，不会是设计得太简陋了吧？但我回想一下，哎，这不就是我们成年人日常的缩影嘛，有时候，明明知道前面是坑，还得往前冲，就差那么一点点，结果就翻车了。\n\n我记得有一次加班到深夜，我和同事坐在办公室里，窗外的天色已经完全暗下来。我们看着对面楼顶的广告牌，一个接一个地熄灭，就像那些撞墙的机器人，速度快得快来不及刹车。我们都笑了，但我知道，这笑中带着多少无奈和苦涩。\n\n我都这把年纪了，还这样“盲目冲锋”，真是有点儿可笑。我知道这样不对，但还是控制不住，这不就是我们所谓的“冲动”吗？就像那个百米赛跑的机器人，明明可以慢慢减速，但还是直接撞了上去。哎，有时候想想，我们人类不也像这些机器人一样，有时候冲动得让人心疼。\n\n唉，这或许就是我们这个时代的矛盾吧，一边追求速度和效率，一边又在痛苦中反思。",
-      "reflectionTemplate": {
-        "id": "cognitive-flip",
-        "name": "认知颠覆型",
-        "mood": "略带抬杠的不服，克制的锐利"
-      },
-      "createdAt": "2026-08-24T08:09:54.639Z"
     }
   ],
-  "updatedAt": "2026-08-25T22:59:00.343Z"
+  "updatedAt": "2026-08-25T23:29:51.975Z"
 }
