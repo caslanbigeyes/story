@@ -1,11 +1,5 @@
 {
   "seen": [
-    "https://github.com/n8n-io/n8n",
-    "https://github.com/anthropics/claude-code",
-    "https://github.com/multica-ai/andrej-karpathy-skills",
-    "https://github.com/ripienaar/free-for-dev",
-    "https://www.v2ex.com/t/1236456",
-    "https://www.v2ex.com/t/1236455",
     "https://www.v2ex.com/t/1236447",
     "https://www.zhihu.com/question/450488929",
     "https://www.zhihu.com/question/2074298519398135339",
@@ -999,7 +993,13 @@
     "https://news.ycombinator.com/item?id=49441033",
     "https://news.ycombinator.com/item?id=49440410",
     "https://news.ycombinator.com/item?id=49439296",
-    "https://news.ycombinator.com/item?id=49441101"
+    "https://news.ycombinator.com/item?id=49441101",
+    "https://news.ycombinator.com/item?id=49441375",
+    "https://news.ycombinator.com/item?id=49440786",
+    "https://news.ycombinator.com/item?id=49430259",
+    "https://github.com/openai/codex",
+    "https://www.zhihu.com/question/2075714717176303763",
+    "https://www.zhihu.com/question/2075499047142667659"
   ],
-  "updatedAt": "2026-08-25T22:29:02.040Z"
+  "updatedAt": "2026-08-25T22:58:59.033Z"
 }
