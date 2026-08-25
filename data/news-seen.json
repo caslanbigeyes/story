@@ -1,9 +1,5 @@
 {
   "seen": [
-    "https://www.zhihu.com/question/275468231",
-    "https://news.ycombinator.com/item?id=49398904",
-    "https://github.com/openai/codex",
-    "https://github.com/Wei-Shaw/sub2api",
     "https://github.com/n8n-io/n8n",
     "https://github.com/anthropics/claude-code",
     "https://github.com/multica-ai/andrej-karpathy-skills",
@@ -999,7 +995,11 @@
     "https://news.ycombinator.com/item?id=49439535",
     "https://news.ycombinator.com/item?id=49435641",
     "https://www.zhihu.com/question/2071712043883930836",
-    "https://news.ycombinator.com/item?id=49439499"
+    "https://news.ycombinator.com/item?id=49439499",
+    "https://news.ycombinator.com/item?id=49441033",
+    "https://news.ycombinator.com/item?id=49440410",
+    "https://news.ycombinator.com/item?id=49439296",
+    "https://news.ycombinator.com/item?id=49441101"
   ],
-  "updatedAt": "2026-08-25T21:35:27.851Z"
+  "updatedAt": "2026-08-25T22:29:02.040Z"
 }
