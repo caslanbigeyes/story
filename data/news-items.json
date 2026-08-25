@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "id": "d345ef738e20",
+      "sourceId": "hackernews",
+      "sourceLabel": "Hacker News",
+      "title": "C2PA Cameras Do Not Survive Contact with Reality",
+      "url": "https://news.ycombinator.com/item?id=49439499",
+      "info": "6 points",
+      "hover": "",
+      "reflection": "哎哟，看到这个Hacker News上的新闻，我突然想到，哎，这C2PA相机啊，听起来挺高大上的，结果一看，原来现实里这么不经碰。这不就是A和B两个事儿的对比嘛，A是相机听起来牛逼，B是现实里一碰就碎。\n\n你看，A是相机一拿出来，那都是高科技，感觉能干翻全世界，B呢，一碰就挂，哎，这差距，真是大得很。A是宣传里各种牛，B是现实中各种崩，你说这差距，得有哪儿呢？\n\n首先，A说这是高科技，B说这高科技一碰就垮。然后，A说这相机能干大事，B说现实里啥都干不了。最后，A说这相机独一无二，B说现实里遍地都是。\n\n那啥情况下选A呢？我觉得，如果就图个新鲜，或者当个玩具，那A这高科技还是不错的。但你要是指望它干点实际的，那还是得看看B这现实里的硬货。\n\n哎，这不就是嘛，我有时候也犯迷糊，比如我那天晚上加班到九点，地铁上看着窗外，就想着，这高科技的相机，是不是也能像手机一样，随时随地拍下生活呢？结果，哎，现实就是那么残酷，我懂这道理但还是难受。",
+      "reflectionTemplate": {
+        "id": "ab-compare",
+        "name": "对比分析型",
+        "mood": "中立、拉锯、平和"
+      },
+      "createdAt": "2026-08-25T21:35:26.296Z"
+    },
+    {
       "id": "a5164fb59893",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7983,23 +7999,7 @@
         "mood": "决绝、不退让，略冷"
       },
       "createdAt": "2026-08-24T08:07:22.046Z"
-    },
-    {
-      "id": "3e931dcbeb7a",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Bidnoww — The Leaderboard for Startups",
-      "url": "https://www.producthunt.com/products/bidnoww?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 0",
-      "hover": "The leaderboard where your bid puts your startup on top.",
-      "reflection": "哎哟，刚看到 Product Hunt 上有个新产品叫 Bidnoww，说是创业公司的排行榜，我一下子就想起了自己最近那几件事儿。\n\n1. 昨儿加班到九点，心里琢磨着怎么跟老板提加薪。\n2. 早上通勤坐地铁，看窗外的上班族，心里想着自己什么时候能有自己的公司。\n3. 和朋友聊天，他抱怨公司制度太死板，我默默想，自己要是老板就好了。\n\n如果只能选一个，我选第三条。原因很简单——我都成年了还是羡慕那些能自己当老板的人，虽然我知道那样很累，但我还是难受。看着别人在职场拼杀，心里那种矛盾感，就像是坐在地铁里看着那些忙碌的身影，却又不想成为他们中的一员。😭",
-      "reflectionTemplate": {
-        "id": "curated-list",
-        "name": "清单型",
-        "mood": "实用、带一点强迫症的整理感"
-      },
-      "createdAt": "2026-08-24T08:07:10.958Z"
     }
   ],
-  "updatedAt": "2026-08-25T20:30:52.602Z"
+  "updatedAt": "2026-08-25T21:35:29.608Z"
 }
