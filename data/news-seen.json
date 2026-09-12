@@ -1,8 +1,5 @@
 {
   "seen": [
-    "https://www.producthunt.com/products/hey-new?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/geniuscook?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-    "https://www.producthunt.com/products/adcar?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
     "https://www.zhihu.com/question/2079970428131468554",
     "https://www.zhihu.com/question/2079975095728959913",
     "https://www.zhihu.com/question/2079976272428361577",
@@ -999,7 +996,10 @@
     "https://www.zhihu.com/question/2081887737754415468",
     "https://www.zhihu.com/question/2081904462331908716",
     "https://www.zhihu.com/question/2082097949958485411",
-    "https://www.zhihu.com/question/2079837487493543459"
+    "https://www.zhihu.com/question/2079837487493543459",
+    "https://www.v2ex.com/t/1241556",
+    "https://www.zhihu.com/question/2082137769556628252",
+    "https://www.zhihu.com/question/2080991958110040765"
   ],
-  "updatedAt": "2026-09-12T18:47:14.071Z"
+  "updatedAt": "2026-09-12T21:17:44.570Z"
 }
