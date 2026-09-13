@@ -1,6 +1,54 @@
 {
   "items": [
     {
+      "id": "bd001a47df82",
+      "sourceId": "zhihu",
+      "sourceLabel": "知乎",
+      "title": "《原神》中薇斯纳的诱惑在哪里？",
+      "url": "https://www.zhihu.com/question/2073033212176213031",
+      "info": "76 万热度",
+      "hover": "",
+      "reflection": "哎，刚看完那篇《原神》里薇斯纳的诱惑在哪，心里有点不是滋味。想给当年的自己提个醒，得注意点啥。\n\n首先，别被游戏里的诱惑迷惑了眼。那时候，我天天加班到深夜，就喜欢在地铁上玩手机，看到那些游戏里的画面，心里就痒痒的，总想着什么时候能玩一把。现在想想，真该那时候就给自己定个规矩，下班后就不碰手机，哪怕就是看看窗外的夜景，也比在那虚拟世界里瞎忙活强。\n\n其次，别被所谓的“诱惑”绑架。我那时候总想着，要是能像薇斯纳那样，多好呀。可现在想想，那玩意儿哪有现实中的人来得踏实。我有时候还是忍不住，幻想自己能像游戏里那样厉害，可现实是，我还是得一步一个脚印，脚踏实地。\n\n最后，别让诱惑影响了生活。我那时候，为了玩游戏，连饭都顾不上吃，跟朋友聚会也总是心不在焉。现在想想，我以前在哪一步踩过坑啊？就是那一步，让生活变得乱糟糟的。\n\n哎，成年了还是这样，有时候知道这样不对，但还是忍不住。",
+      "reflectionTemplate": {
+        "id": "how-to",
+        "name": "教学实操型",
+        "mood": "沉稳、克制的说教感，干净"
+      },
+      "createdAt": "2026-09-13T21:36:08.761Z"
+    },
+    {
+      "id": "cee925b70260",
+      "sourceId": "juejin",
+      "sourceLabel": "掘金",
+      "title": "从codex转战workbuddy使用一周的感受",
+      "url": "https://juejin.cn/post/7684460980934049807",
+      "info": "",
+      "hover": "",
+      "reflection": "哎，说起来这条资讯，我就有点儿意思。这 WorkBuddy 和 Codex 之间的转换，真是让我五味杂陈。你说说，我刚适应了 Codex，结果它就给我来个封站，这不摆明了逼我换嘛。\n\n一开始，我那叫一个不习惯。修了个小 bug，还选了个 GLM-5.3，想着能快点儿解决问题。结果呢？800 多积分就没了，这让我有点儿心疼。我那月卡都还没用完呢，心里那个难受啊。\n\n后来，我那同事给我推荐了 GLM-5.3-flash，说这个模型消耗小，性价比高。一试，还真是这么回事。我换了模型，日常开发基本没问题。不过，前端还原度那叫一个糙，有时候还得手动调整。\n\n哎，说起来这事儿，我还挺矛盾的。我知道这样不对，但还是想找 Codex 的替代品。我下班后，坐在地铁上，看着窗外的人群，心里想，要是能有个工具既能提高效率，又不那么费钱就好了。\n\n矛盾归矛盾，我还是决定继续用 WorkBuddy。毕竟，这玩意儿在用户体验上做得挺不错，积分体系友好，还有暗色皮肤和 AI 宠物，挺贴心的。我懂这道理，但还是难受。我成年了，但还是希望生活能简单一点。",
+      "reflectionTemplate": {
+        "id": "framework",
+        "name": "框架输出型",
+        "mood": "冷静自信里夹着普通人的克制"
+      },
+      "createdAt": "2026-09-13T21:35:44.913Z"
+    },
+    {
+      "id": "5ecc27d8d95d",
+      "sourceId": "v2ex-share",
+      "sourceLabel": "V2EX",
+      "title": "WikiNow: 一个阅读 Wikipedia 的 App，以抖音的方式",
+      "url": "https://www.v2ex.com/t/1241735",
+      "info": "",
+      "hover": "",
+      "reflection": "这WikiNow阅读维基百科的App，说句实话，我看了那标题，就感觉挺有趣的。想想现在大家都习惯短视频那一套，这App估计是想抓住年轻人的胃。但其实啊，用起来效果怎样，还得看实际使用的人怎么评价。\n\n我就想，咱比如平时地铁上看新闻，那节奏多快，要不是手机快充，这电池都不够看。那WikiNow这种模式，我觉得，适合喜欢刷刷快节奏内容的人。但你要是说这就能替代正常阅读，我觉得也不一定。\n\n就拿我看新闻来说，地铁里那几秒钟的标题，我可能也就瞥一眼。但如果是一个深入的话题，我得坐下来好好看看。这App的设计，和咱阅读的深度需求，是不是有点差距？\n\n我有时候会想，是不是我太传统了，人家都是抖音抖音刷一整天，我就得坐下来慢慢品。但我也清楚，每个人适合的阅读方式不一样。就像晚上加班到十点，那会儿累得半死，要是能找个像抖音一样的App轻松一下，可能也就不那么焦虑了。\n\n所以，到底什么情况下选哪个呢？我估计还是看个人需求和喜好。就像那句话说的，适合你的才是最好的。至于我，我得看看它上线之后反响怎么样再说。😄 就这样了。",
+      "reflectionTemplate": {
+        "id": "ab-compare",
+        "name": "对比分析型",
+        "mood": "中立、拉锯、平和"
+      },
+      "createdAt": "2026-09-13T21:35:13.028Z"
+    },
+    {
       "id": "239f8f71da45",
       "sourceId": "zhihu",
       "sourceLabel": "知乎",
@@ -7951,55 +7999,7 @@
         "mood": "沉稳、克制的说教感，干净"
       },
       "createdAt": "2026-09-10T11:49:28.506Z"
-    },
-    {
-      "id": "1de94877046d",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Modeinspect",
-      "url": "https://www.producthunt.com/products/modeinspect-1-0?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 85",
-      "hover": "99 Days Free AI Credits - Design product UI in your codebase",
-      "reflection": "哎，刚看完那个Modeinspect的东西，心里有点儿不大舒服。你说这99天免费AI信用额度，听起来挺诱人的，但我想到了自己最近在搞的那个项目，进度已经到第三十天了，还差好几个功能没写完，这要是真的开始收费，我得加紧赶进度了。\n\n昨天晚上加班到九点，坐地铁回家，看着窗外，天都黑了，心里想着这项目还得赶，有点儿累，也有点焦虑。我懂，成年人的世界哪有那么多顺心的事，但有时候就是控制不住自己的情绪，觉得自己挺无能的。\n\n这Modeinspect的UI设计功能听起来挺高级的，但我想，如果我连手头的工作都搞不定，那再好的工具也帮不上忙。哎，我都这把年纪了，还是这么没出息，有点儿难受。\n\n下一步打算啥？我得先把项目进度提上去，把那几个功能给写了。不过，我也得给自己放个小假，不然这样下去，真要把自己累垮了。嗯，明天晚上早点儿下班，去吃顿好的，犒劳一下自己。",
-      "reflectionTemplate": {
-        "id": "in-progress",
-        "name": "过程透明型",
-        "mood": "实诚的轻焦虑，自我怀疑"
-      },
-      "createdAt": "2026-09-10T11:49:12.204Z"
-    },
-    {
-      "id": "37aff3caea6f",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "FreeScan.app",
-      "url": "https://www.producthunt.com/products/freescan-app?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 86",
-      "hover": "Fix what’s hurting your visibility, trust, and conversions",
-      "reflection": "嘿，哥们，刚刚看到一条关于这个FreeScan.app的东西，真是让人火大！我就不明白，这世道怎么那么多App整得跟广告似的，你不说你有多牛逼也就算了，还一个劲地吹嘘自己能提升啥啥啥的，让人一看就反感。\n\n比如，我在地铁上看到那啥FreeScan.app的宣传，本来就想赶紧避开，可它那个口号还真是抓人心，说它能提高啥可见性和信任度。可问题是，我都用手机加班到凌晨两点，就为了那点信任和转化率，它能帮我解决啥实质性问题啊？我心里这矛盾感就来了，我都知道这道理，但还是难受。\n\n就说我今天下班后，在窗口边看夜景，那时候的我就特别希望有人能真正解决工作中的难题，而不是那些听起来就让人反感的功能。我就想知道，这App是不是真的能让人舒服地工作，而不是变成它的奴隶，被那些所谓的可见性和转化率折磨。\n\n反正我是不会再为这种东西动心，哪怕是再好听的功能和宣传，我也绝不妥协。我就这么直截了当，别以为我会为了那点表面的东西改变自己。",
-      "reflectionTemplate": {
-        "id": "manifesto",
-        "name": "观点宣言型",
-        "mood": "决绝、不退让，略冷"
-      },
-      "createdAt": "2026-09-10T11:48:59.399Z"
-    },
-    {
-      "id": "a3dd7ae0fe3b",
-      "sourceId": "producthunt",
-      "sourceLabel": "Product Hunt",
-      "title": "Desert Ant Labs",
-      "url": "https://www.producthunt.com/products/desert-ant-labs?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+newsnow+%28ID%3A+239216%29",
-      "info": " △︎ 86",
-      "hover": "Small specialized AI models for speech, text, vision",
-      "reflection": "哎，今儿晚上看到这条资讯，我那个心里啊，怎么说呢，就像突然间回到了大学时代。那时候，晚上熬夜，点着蜡烛，就为了写那篇论文，研究着那些复杂的算法模型。\n\n我记得有一次，我们几个室友坐在宿舍楼顶，看着窗外的灯火阑珊，讨论着未来。那时候，我们谈的是人工智能，谈的是梦想。而现在，这条资讯里提到的Desert Ant Labs，又勾起了我那时的回忆。\n\n说起来，我毕业后就进了这行，每天忙忙碌碌，加班到深夜。今天加班到十一点，回家的路上，看着地铁里人潮涌动，心里突然觉得，那些年我们谈的梦想，好像越来越远了。\n\n我懂，生活就是这样，不能总做梦。但我还是难受，感觉自己在某个地方，好像失去了什么。就像那句话说的，我们都成年了，但还是那个梦想的孩子。哎，这就是矛盾吧。",
-      "reflectionTemplate": {
-        "id": "story-hook",
-        "name": "故事钩型",
-        "mood": "怀旧、怔忡、怅然"
-      },
-      "createdAt": "2026-09-10T11:48:43.186Z"
     }
   ],
-  "updatedAt": "2026-09-13T19:17:52.398Z"
+  "updatedAt": "2026-09-13T21:36:11.742Z"
 }
